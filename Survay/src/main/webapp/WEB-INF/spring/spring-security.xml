@@ -7,6 +7,7 @@
 
 	<http auto-config="true">
 	
+		<intercept-url pattern="/" access="ROLE_ADMIN" />
 		<intercept-url pattern="/admin" access="ROLE_ADMIN" />
 		<intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/admin*" access="ROLE_ADMIN" />
@@ -14,6 +15,9 @@
 		<form-login login-page="/login" default-target-url="/index" authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />
 		
+		
+		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
+		<remember-me />
 	</http>
 
 	<authentication-manager>
