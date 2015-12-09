@@ -15,13 +15,7 @@
 	<!-- Настраивает управление транзакциями с помощью аннотации @Transactional -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-	<property name="basename">
-        <list>
-         <value>messages_ru</value>
-        </list>
-        </property>
-</bean>
+	
 
 
 </beans>

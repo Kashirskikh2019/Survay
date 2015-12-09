@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 @Controller
-public class AdminController {
+public class AllController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String listPetits(Map<String, Object> map) {
-        return "petit";
+    public String home() {
+        return "private/admin";
     }
 }

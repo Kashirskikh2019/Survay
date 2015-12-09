@@ -1,44 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=utf8" pageEncoding="utf8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ page session="false"%>
+<!doctype html>
+<html lang="ru">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-	<title><spring:message code="label.title" /></title>
+<meta charset="utf-8">
+<title>Вход</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 </head>
-<body>
 
-<a href="<c:url value="/index" />">
-	<spring:message code="label.authority" />
-</a><br/>
+<body onload='document.f.j_username.focus();'>
 
-<c:if test="${not empty param.error}">
-	<font color="red"> <spring:message code="label.loginerror" />
-	: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
-</c:if>
+	<form name='f' action="<c:url value='j_spring_security_check' />"
+		method='POST'>
+		<div class="logincontainer">
 
-<form name='login_form' method="POST" action="<c:url value="/j_spring_security_check" />">
-<table>
-	<tr>
-		<td align="right"><spring:message code="label.login" /></td>
-		<td><input type="text" name="j_username" /></td>
-	</tr>
-	<tr>
-		<td align="right"><spring:message code="label.password" /></td>
-		<td><input type="password" name="j_password" /></td>
-	</tr>
-	<tr>
-		<td align="right"><spring:message code="label.remember" /></td>
-		<td><input type="checkbox" name="_spring_security_remember_me" /></td>
-	</tr>
-	<tr>
-		<td colspan="2" align="right"><input type="submit" value="Login" name="ok_button"/>
-		<input type="reset" value="Reset" /></td>
-	</tr>
-</table>
-</form>
-
+			<div class="login">
+				<table>
+					<tr>
+						<td>Имя <input type='text' name='j_username'>
+						</td>
+					</tr>
+					<tr>
+						<td>Пароль <input type='password' name='j_password' />
+						</td>
+					</tr>
+				</table>
+				<br /> <input class="btn btn-primary" name="submit" type="submit"
+					value="Вход" /> <br />
+			</div>
+			<c:if test="${not empty error}">
+				<div class="alert alert-danger" style="width: 285px; margin: 0px auto;" role="alert">
+					${error}</div>
+			</c:if>
+		</div>
+	</form>
 </body>
 </html>
