@@ -17,6 +17,6 @@ public class AllController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
     public String home() {
-        return "private/admin";
+        return "private/general";
     }
 }

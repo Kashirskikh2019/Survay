@@ -1,19 +1,60 @@
-.logincontainer {
-	text-align: center;
-	margin: 80px auto;
+/* ƒÀﬂ ÀŒ√»Õ¿*/
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  padding-top: 80px;
+  margin: 0 auto;
 }
 
-.login {
-	border: 1px solid #D6D6D6;
-	background-color: #F7F7F7;
-	text-align: right;
-	padding: 60px 40px 20px 20px;
-	width: 300px;
-	height: 170x;
-	margin: 10px auto;
+.form-signin.form-signin-heading,
+ {
+  margin-bottom: 10px;
 }
 
-#admin-section {
-	padding: 10px 10px 10px 10px;
-	text-align: center;
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 4px;
 }
+.btn-block
+{
+	 max-width: 100px;
+	margin: 0 auto;  	
+}
+.form-signin {
+ -webkit-filter: url(#blur);
+ filter: url(#blur);
+ -webkit-filter: blur(0px);
+ filter: blur(0px);
+ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+ -webkit-transition: 1s -webkit-filter linear;
+ transition: 1s filter linear;
+}
+.form-signin:hover {
+ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0'); 
+ -webkit-filter: blur(0px); 
+ filter: blur(0px); 
+}
+
+/*  ŒÕ≈÷ ƒÀﬂ ÀŒ√»Õ¿*/
+
+/* «¿—“¿¬ ¿ › –¿Õ¿*/
+body {
+
+ background: url('../image/logo2.2.png'), url('../image/logo2.1.png') no-repeat center center fixed;
+ -webkit-background-size: auto,cover;
+ background-size: auto,cover;
+  
+ -webkit-background-blend-mode: multiply, normal;
+ background-blend-mode: multiply, normal;
+  
+ -webkit-animation: bgAnim 80s linear infinite;
+ animation: bgAnim 80s linear infinite;
+}
+
+/*  ŒÕ≈÷ «¿—“¿¬ ¿ › –¿Õ¿*/
