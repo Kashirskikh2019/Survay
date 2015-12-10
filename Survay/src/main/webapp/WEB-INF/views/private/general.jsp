@@ -11,8 +11,33 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function()
+{ 
+		
+	   $('#one_ambul_pol').click(function()
+               {  
+		   			if ($('#dim').is(':visible'))
+    	    		{
+		   				$("#dim").fadeOut();
+    	    		}
+		   			else
+		   			{
+		   				var widthGet = $('.container-fluid').width();
+		    	        var heightGet = $(window).height();
+		    	        
+		    	        $('#dim').width(widthGet-20);
+	    	            $('#dim').height(heightGet-300);
+	    	            $("#dim").fadeIn();
+		   			}
+  	     		 	
+               });
+});
+</script>
 </head>
 <body>
 <div class="conteinerHeader">
@@ -35,7 +60,7 @@
 			                <li class="dropdown">
 			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Анкеты первого уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#">Амбул.-полик. помощь</a></li>
+			                        <li><a href="#" id="one_ambul_pol">Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
 			                        <li><a href="#">Дневной стационар</a></li>
 			                        <li class="divider"></li>
@@ -101,7 +126,21 @@
 			    <!-- /.container-fluid -->
 			</nav>
 
+<div id="dim">
+			<div class="msgbox">
+				<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->
+				<div class="msgboxp">
+					<h4>Анкета первого уровня амбулаторно-поликлинической помощи</h4>
+				</div>
+			</div>
+		</div>
+
 </div> <!-- <div class="conteinerHeader"> -->
 
+
+
+<c:forEach var="p" items="${oneclinic}">
+    Id: ${p.id} Name: ${p.dataInput}<br/>
+  </c:forEach>
 </body>
 </html>

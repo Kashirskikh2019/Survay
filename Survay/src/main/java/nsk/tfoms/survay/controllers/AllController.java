@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Alex Dl.
  *
  */
+
 @Controller
 public class AllController {
 	

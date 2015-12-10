@@ -224,4 +224,49 @@ public class SurvayClinic implements Serializable {
 		this.waitingTime2 = waitingTime2;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SurvayClinic [age=");
+		builder.append(age);
+		builder.append(", ambulance=");
+		builder.append(ambulance);
+		builder.append(", clinicDoctor=");
+		builder.append(clinicDoctor);
+		builder.append(", dataInput=");
+		builder.append(dataInput);
+		builder.append(", dataResp=");
+		builder.append(dataResp);
+		builder.append(", diagnosticTests=");
+		builder.append(diagnosticTests);
+		builder.append(", equipment=");
+		builder.append(equipment);
+		builder.append(", freeHelp=");
+		builder.append(freeHelp);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", laboratoryResearch=");
+		builder.append(laboratoryResearch);
+		builder.append(", medicalSpecialists=");
+		builder.append(medicalSpecialists);
+		builder.append(", polzovatel=");
+		builder.append(polzovatel);
+		builder.append(", qualityAmbulance=");
+		builder.append(qualityAmbulance);
+		builder.append(", repairs=");
+		builder.append(repairs);
+		builder.append(", seeADoctor=");
+		builder.append(seeADoctor);
+		builder.append(", sex=");
+		builder.append(sex);
+		builder.append(", therapist=");
+		builder.append(therapist);
+		builder.append(", waitingTime=");
+		builder.append(waitingTime);
+		builder.append(", waitingTime2=");
+		builder.append(waitingTime2);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

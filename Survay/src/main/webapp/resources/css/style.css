@@ -121,3 +121,10 @@ body {
 
 /* йнмеж акнй лемч */
 
+
+#dim{margin:auto;top:0;border-radius: 7px;border:1px solid #222;left:0; width:100%; z-index:10000; background-color: rgba(0, 120, 201, 0.7); display:none; text-align:left; }
+.msgbox{ height:50px; z-index:200; border-top:1px solid #222; border-bottom:4px solid #fff; color:white; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 5px; border-top-left-radius: 5px; background: #FFF;  left: 35%; background-color: #3b5998;}
+.msgbox img {border:none; margin:5px;}
+.close{ top:0px; float:right; }
+.msgboxp { text-align:center;}
+
