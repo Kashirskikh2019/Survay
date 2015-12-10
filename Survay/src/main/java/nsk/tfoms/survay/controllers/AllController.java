@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AllController {
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/general", method = RequestMethod.GET)
     public String home() {
+		System.out.println("@@@@@@@@@@@@@@@@@@@@ general");
         return "private/general";
     }
 }

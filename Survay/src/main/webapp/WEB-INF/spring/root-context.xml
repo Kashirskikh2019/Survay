@@ -19,5 +19,8 @@ xsi:schemaLocation="
 	
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
+	
+	<!-- Файл с настройками безопасности -->
+	<import resource="spring-security.xml" />
 		
 </beans>
