@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/1.11.2/themes/smoothness/jquery-ui.css">
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/1.11.2/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 
 
@@ -24,6 +26,15 @@
 
 $(document).ready(function()
 { 
+	$( "#dateBegin" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#datePartOneClinic" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEnd" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateBeginAppealPay" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndAppealPay" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateBeginConsultOther" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndConsultOther" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateBeginCountDetail" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndCountDetail" ).datepicker({dateFormat:'dd.mm.yy'});
 	
 		// Кнопка амбул-полик помощь
 	   $('#one_ambul_pol').click(function()
@@ -184,6 +195,27 @@ $(document).ready(function()
 				</div>
 			</div>
 			
+			<div class="col-xs-4" style="position: absolute; left:35%;">
+			<TABLE>
+				<TR> 
+					<TD style="padding-right:15px;">
+						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBegin1" placeholder="">
+					</TD>
+					<td style="padding-right:15px;">
+     					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEnd" placeholder="">
+     				</td>
+     				<td style="padding-right:15px;">
+     					<button class="btn btn-success" id="">Выбрать</button>
+     				</td>
+     				<td>
+     					<button class="btn btn-success" id="" data-toggle="modal" data-target="#myModal">Добавить запись</button>
+     				</td>
+     			</TR>
+     		</TABLE>
+			</div>
+			
+			
+			
 </div>
 <div id="dim2">
 			<div class="msgbox2">
@@ -201,13 +233,87 @@ $(document).ready(function()
 				</div>
 			</div>
 		</div>		
-
 </div> <!-- <div class="conteinerHeader"> -->
+
+<!-- Добавить запись (модальное окно) -->
+					<div class="modal fade" id="myModal" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Добавить анкету первого уровня</h3>
+									<p>Добавление анкеты  амбулаторно-поликлинической помощи</p>
+
+								</div>
+					<form method="post" action="addClinic">			
+								<div class="modal-body">
+									<div>Укажите медицинское учреждение где проходил опрос</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>ДОРАБОТАТЬ</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Укажите дату проведения опроса в данном мед учреждении</div>
+								    <div class="col-xs-4">
+								      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneClinic" placeholder="">
+								    </div><br><br>
+								    								
+									<p>1.	Оцените уровень вашей  удовлетворенности следующими характеристиками работы поликлиники:</p>
+									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+		 						    
+								    <div>Техническим состоянием, ремонтом помещений:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Оснащенностью современным медицинским оборудованием:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary">Закрыть окно</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					</form>		
+<!-- конец Добавить запись (модальное окно) -->
 
 
 
 <c:forEach var="p" items="${oneclinic}">
-    Id: ${p.id} Name: ${p.dataInput}<br/>
+    Id: ${p.id} Name: ${p.dataInput} Name: ${p.freeHelp}<br/>
   </c:forEach>
+  
+<!-- <h1>Add New</h1>
+  <form method="post" action="addClinic">
+  Name: <input type="text" name="freeHelp"/>
+  <button>Add</button>
+  </form>  -->  
 </body>
 </html>

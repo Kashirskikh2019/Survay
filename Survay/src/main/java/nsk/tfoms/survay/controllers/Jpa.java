@@ -11,12 +11,12 @@ import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.service.ClinicService;
 
 @Controller
-@RequestMapping("/general123")
+//@RequestMapping("/general")
 public class Jpa {
 
   @Autowired private ClinicService personSvc;
   
-  @RequestMapping(method = RequestMethod.GET)
+  @RequestMapping(value = "/general",method = RequestMethod.GET)
   public String listAll(Model model) {
     model.addAttribute("oneclinic", personSvc.getAll());
     return "private/general";
@@ -25,6 +25,6 @@ public class Jpa {
   @RequestMapping(value = "/addClinic", method = RequestMethod.POST)
   public String addClinic(@ModelAttribute SurvayClinic survay) {
     personSvc.add(survay);
-    return "redirect:/";
+    return "redirect:general";
   }
 }

@@ -25,5 +25,6 @@ public class ClinicService {
   @Transactional
   public void add(SurvayClinic p) {
     em.persist(p);
+    System.out.println("@@ "+p);
   }
 }
