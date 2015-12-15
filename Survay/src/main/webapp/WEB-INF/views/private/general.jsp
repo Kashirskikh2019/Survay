@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <%@ page session="false"%>
@@ -251,10 +252,12 @@ $(document).ready(function()
 								<div class="modal-body">
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="">
-								        <option>ДОРАБОТАТЬ</option>
-								      </select>
+								      <form:select class="form-control input-sm" path="" name="">
+								        <form:option value="0" label="" />
+    									<form:options items="${moList}"/>
+								      </form:select>
 								    </div><br><br>
+								    
 								    
 								    <div>Укажите дату проведения опроса в данном мед учреждении</div>
 								    <div class="col-xs-4">
@@ -294,9 +297,137 @@ $(document).ready(function()
 								        <option>Затрудняюсь ответить</option>
 								      </select>
 								    </div><br><br>
+								    
+								    <div>Организацией записи на прием к врачу:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Временем ожидания приема врача:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Сроками ожидания медицинских услуг после записи:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div>Доступностью необходимых лабораторных исследований/анализов:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.):</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Доступностью мед.помощи терапевтов:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Доступностью мед.помощи врачей-специалистов:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Работой врачей в поликлинике:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Да</option>
+								        <option>Нет -к вопросу 4</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div><p>4.	Пол респондента:</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Мужской</option>
+								        <option>Женский</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div><p>5.	Возраст респондента:</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" name="">
+								        <option>Доработать</option>
+								      </select>
+								    </div><br><br>
+								    
 								</div>
 								<div class="modal-footer">
-									<button type="submit" class="btn btn-primary">Закрыть окно</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button type="submit" class="btn btn-success">Добавить анкету</button>
 								</div>
 							</div>
 						</div>

@@ -3,16 +3,25 @@ package nsk.tfoms.survay.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import nsk.tfoms.survay.entity.SurvayClinic;
+import nsk.tfoms.survay.fields.Fields;
 import nsk.tfoms.survay.service.ClinicService;
 
 @Controller
 //@RequestMapping("/general")
 public class Jpa {
+	
+	@ModelAttribute
+	public ModelMap setupForm(ModelMap map)
+	{
+		map.put("moList", Fields.getMO());
+		return map;
+	}
 
   @Autowired private ClinicService personSvc;
   

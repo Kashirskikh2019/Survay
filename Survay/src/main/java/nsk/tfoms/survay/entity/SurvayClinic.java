@@ -39,6 +39,9 @@ public class SurvayClinic implements Serializable {
 	@Column(name="FREE_HELP")
 	private String freeHelp;
 	
+	@Column(name="MO")
+	private String mo;
+	
 	@Id
 	@GeneratedValue
 	private BigDecimal id;
@@ -224,6 +227,14 @@ public class SurvayClinic implements Serializable {
 		this.waitingTime2 = waitingTime2;
 	}
 
+	public String getMo() {
+		return mo;
+	}
+
+	public void setMo(String mo) {
+		this.mo = mo;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -243,6 +254,8 @@ public class SurvayClinic implements Serializable {
 		builder.append(equipment);
 		builder.append(", freeHelp=");
 		builder.append(freeHelp);
+		builder.append(", mo=");
+		builder.append(mo);
 		builder.append(", id=");
 		builder.append(id);
 		builder.append(", laboratoryResearch=");
@@ -269,4 +282,5 @@ public class SurvayClinic implements Serializable {
 		return builder.toString();
 	}
 
+	
 }
