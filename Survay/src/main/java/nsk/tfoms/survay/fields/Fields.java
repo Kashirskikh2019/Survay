@@ -20,10 +20,7 @@ public class Fields implements ResourceLoaderAware
 	
 	
 	public static Map<Integer, String> getMO() {
-		Resource resource = resourceLoader.getResource("classpath::webapp/webapp/resources/res/mo.txt");
-		System.out.println("PPPPPPPPPPPPPPPPPP  "+resource.toString());
-
-		return getProperties(resource.toString());
+		return getProperties("D:\\Pylypiv\\Eclipse\\Local repo\\Survay\\Survay\\src\\main\\webapp\\resources\\res\\mo.txt");
 	}
 	
 	private static Map<Integer, String> getProperties(String filename) {

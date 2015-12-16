@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <%@ page session="false"%>
@@ -200,7 +199,7 @@ $(document).ready(function()
 			<TABLE>
 				<TR> 
 					<TD style="padding-right:15px;">
-						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBegin1" placeholder="">
+						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBegin" placeholder="">
 					</TD>
 					<td style="padding-right:15px;">
      					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEnd" placeholder="">
@@ -214,6 +213,13 @@ $(document).ready(function()
      			</TR>
      		</TABLE>
 			</div>
+			
+			
+
+
+<c:forEach var="p" items="${oneclinic}">
+    Id: ${p.id} Name: ${p.dataInput} Name: ${p.freeHelp}<br/>
+  </c:forEach>
 			
 			
 			
@@ -252,10 +258,12 @@ $(document).ready(function()
 								<div class="modal-body">
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
-								      <form:select class="form-control input-sm" path="" name="">
-								        <form:option value="0" label="" />
-    									<form:options items="${moList}"/>
-								      </form:select>
+								      <select class="form-control input-sm" name="">
+								        <option value=""></option>
+								        <c:forEach var="ls" items="${listmo}">
+								        <option>${ls.value}</option>
+								        </c:forEach>
+								      </select>
 								    </div><br><br>
 								    
 								    
@@ -268,6 +276,7 @@ $(document).ready(function()
 									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -279,6 +288,7 @@ $(document).ready(function()
 								    <div>Техническим состоянием, ремонтом помещений:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -290,6 +300,7 @@ $(document).ready(function()
 								    <div>Оснащенностью современным медицинским оборудованием:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -301,6 +312,7 @@ $(document).ready(function()
 								    <div>Организацией записи на прием к врачу:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -312,6 +324,7 @@ $(document).ready(function()
 								    <div>Временем ожидания приема врача:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -323,6 +336,7 @@ $(document).ready(function()
 								    <div>Сроками ожидания медицинских услуг после записи:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -335,6 +349,7 @@ $(document).ready(function()
 								    <div>Доступностью необходимых лабораторных исследований/анализов:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -346,6 +361,7 @@ $(document).ready(function()
 								    <div>Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.):</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -357,6 +373,7 @@ $(document).ready(function()
 								    <div>Доступностью мед.помощи терапевтов:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -379,6 +396,7 @@ $(document).ready(function()
 								    <div>Работой врачей в поликлинике:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -391,6 +409,7 @@ $(document).ready(function()
 									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Да</option>
 								        <option>Нет -к вопросу 4</option>
 								      </select>
@@ -400,6 +419,7 @@ $(document).ready(function()
 								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
 								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
@@ -412,15 +432,19 @@ $(document).ready(function()
 								    <div><p>4.	Пол респондента:</p></div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
+								      	<option value=""></option>
 								        <option>Мужской</option>
 								        <option>Женский</option>
 								      </select>
 								    </div><br><br>
 								    
-								    <div><p>5.	Возраст респондента:</p></div>
+								    <div><p>5.	Возраст респондента (лет):</p></div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" name="">
-								        <option>Доработать</option>
+								      	<option value=""></option>
+								      	<c:forEach var="ag" items="${listage}">
+								        <option>${ag.value}</option>
+								        </c:forEach>
 								      </select>
 								    </div><br><br>
 								    
@@ -435,11 +459,6 @@ $(document).ready(function()
 					</form>		
 <!-- конец Добавить запись (модальное окно) -->
 
-
-
-<c:forEach var="p" items="${oneclinic}">
-    Id: ${p.id} Name: ${p.dataInput} Name: ${p.freeHelp}<br/>
-  </c:forEach>
   
 <!-- <h1>Add New</h1>
   <form method="post" action="addClinic">
