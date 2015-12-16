@@ -15,6 +15,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/1.11.2/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
 
 
 
@@ -97,6 +98,22 @@ $(document).ready(function()
 		   			}
   	     		 	
                });
+		
+	   $("#form1").validate({
+			errorLabelContainer: $("#form1 div.errorOneClinic")
+		});
+	   
+	   $("#cancelOneClinic").click(function()
+		{
+		   var $form = $('#form1') 
+		      $('select', $form).each(function() {
+		        $(this).val($(this).prop('defaultSelected'));
+		      });	
+		   
+		   $(".errorOneClinic").css('display','none');
+		   
+		});
+
 });
 </script>
 </head>
@@ -208,7 +225,7 @@ $(document).ready(function()
      					<button class="btn btn-success" id="">Выбрать</button>
      				</td>
      				<td>
-     					<button class="btn btn-success" id="" data-toggle="modal" data-target="#myModal">Добавить запись</button>
+     					<button class="btn btn-success" id="addOneClinic" data-toggle="modal" data-target="#myModal">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
@@ -272,11 +289,11 @@ $(document).ready(function()
 									<p>Добавление анкеты  амбулаторно-поликлинической помощи</p>
 
 								</div>
-					<form method="post" action="addClinic">			
+					<form method="post" class="cmxform" id="form1" action="addClinic">			
 								<div class="modal-body">
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="mo">
+								      <select class="form-control input-sm" name="mo" title="Введите лечебное учреждение" required>
 								        <option value=""></option>
 								        <c:forEach var="ls" items="${listmo}">
 								        <option>${ls.value}</option>
@@ -287,13 +304,13 @@ $(document).ready(function()
 								    
 								    <div>Укажите дату проведения опроса в данном мед учреждении</div>
 								    <div class="col-xs-4">
-								      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneClinic" placeholder="" name="">
+								      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneClinic" placeholder="" name="dataResp" title="Введите дату опроса" required>
 								    </div><br><br>
 								    								
 									<p>1.	Оцените уровень вашей  удовлетворенности следующими характеристиками работы поликлиники:</p>
 									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="freeHelp">
+								      <select class="form-control input-sm" name="freeHelp" title="Введите качество удовлетворенности бесплатной мед помощи" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -305,7 +322,7 @@ $(document).ready(function()
 		 						    
 								    <div>Техническим состоянием, ремонтом помещений:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="repairs">
+								      <select class="form-control input-sm" name="repairs" title="Введите удовлетворенность техническим состоянием" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -317,7 +334,7 @@ $(document).ready(function()
 								    
 								    <div>Оснащенностью современным медицинским оборудованием:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="equipment">
+								      <select class="form-control input-sm" name="equipment" title="Введите удовлетворенность оснащенностью мед оборудованием" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -329,7 +346,7 @@ $(document).ready(function()
 								    
 								    <div>Организацией записи на прием к врачу:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="seeADoctor">
+								      <select class="form-control input-sm" name="seeADoctor" title="Введите удовлетворенность организации записи на прием к врачу" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -341,7 +358,7 @@ $(document).ready(function()
 								    
 								    <div>Временем ожидания приема врача:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="waitingTime">
+								      <select class="form-control input-sm" name="waitingTime" title="Введите удовлетворенность временем ожидания" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -353,7 +370,7 @@ $(document).ready(function()
 								    
 								    <div>Сроками ожидания медицинских услуг после записи:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="waitingTime2">
+								      <select class="form-control input-sm" name="waitingTime2" title="Введите удовлетворенность сроками ожидания после записи" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -366,7 +383,7 @@ $(document).ready(function()
 								    
 								    <div>Доступностью необходимых лабораторных исследований/анализов:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="laboratoryResearch">
+								      <select class="form-control input-sm" name="laboratoryResearch" title="Введите удовлетворенность доступностью необходимыми лабораторными исследованиями или анализами" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -378,7 +395,7 @@ $(document).ready(function()
 								    
 								    <div>Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.):</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="diagnosticTests">
+								      <select class="form-control input-sm" name="diagnosticTests" title="Введите удовлетворенность доступностью диагностическими исследованиями" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -390,7 +407,7 @@ $(document).ready(function()
 								    
 								    <div>Доступностью мед.помощи терапевтов:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="therapist">
+								      <select class="form-control input-sm" name="therapist" title="Введите удовлетворенность мед помощью терапевтов" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -402,7 +419,7 @@ $(document).ready(function()
 								    
 								    <div>Доступностью мед.помощи врачей-специалистов:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="medicalSpecialists">
+								      <select class="form-control input-sm" name="medicalSpecialists" title="Введите удовлетворенность мед помощью врачей-специалистов" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -414,7 +431,7 @@ $(document).ready(function()
 								    
 								    <div>Работой врачей в поликлинике:</div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="clinicDoctor">
+								      <select class="form-control input-sm" name="clinicDoctor" title="Введите удовлетворенность работой врачей в поликлинике" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -427,17 +444,17 @@ $(document).ready(function()
 								    
 									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="ambulance">
+								      <select class="form-control input-sm" name="ambulance" title="Введите обращения к скорой помощи" required>
 								      	<option value=""></option>
 								        <option>Да</option>
-								        <option>Нет -к вопросу 4</option>
+								        <option>Нет</option>
 								      </select>
 								    </div><br><br>
 								    
 								    
 								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="qualityAmbulance">
+								      <select class="form-control input-sm" name="qualityAmbulance" title="Введите удовлетворенность качеством скорой помощи" required>
 								      	<option value=""></option>
 								        <option>Удовлетворен(а)</option>
 								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -450,7 +467,7 @@ $(document).ready(function()
 								    
 								    <div><p>4.	Пол респондента:</p></div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="sex">
+								      <select class="form-control input-sm" name="sex"title="Введите пол" required>
 								      	<option value=""></option>
 								        <option>Мужской</option>
 								        <option>Женский</option>
@@ -459,7 +476,7 @@ $(document).ready(function()
 								    
 								    <div><p>5.	Возраст респондента (лет):</p></div>
 								    <div class="col-xs-4">
-								      <select class="form-control input-sm" name="age">
+								      <select class="form-control input-sm" name="age" title="Введите возраст" required>
 								      	<option value=""></option>
 								      	<c:forEach var="ag" items="${listage}">
 								        <option>${ag.value}</option>
@@ -469,8 +486,9 @@ $(document).ready(function()
 								    
 								</div>
 								<input type="hidden" name="polzovatel" value="${principal.username}"/>
-								<div class="modal-footer">
-								<button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+								
+								<div class="modal-footer"><div class="errorOneClinic"> </div>
+								<button type="button" id="cancelOneClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button>
 									<button type="submit" class="btn btn-success">Добавить анкету</button>
 								</div>
 							</div>

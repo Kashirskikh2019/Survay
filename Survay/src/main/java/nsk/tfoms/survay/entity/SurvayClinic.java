@@ -2,7 +2,10 @@ package nsk.tfoms.survay.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -16,6 +19,7 @@ import java.util.Date;
 public class SurvayClinic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	
 	private String age;
 
 	private String ambulance;
@@ -23,13 +27,14 @@ public class SurvayClinic implements Serializable {
 	@Column(name="CLINIC_DOCTOR")
 	private String clinicDoctor;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="DATA_INPUT")
-	private Date dataInput;
 
-	@Temporal(TemporalType.DATE)
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
+	@Column(name="DATA_INPUT")
+	private String dataInput=new SimpleDateFormat("dd.MM.yyyy").format(new Date());;
+
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_RESP")
-	private Date dataResp;
+	private String dataResp;
 
 	@Column(name="DIAGNOSTIC_TESTS")
 	private String diagnosticTests;
@@ -99,19 +104,19 @@ public class SurvayClinic implements Serializable {
 		this.clinicDoctor = clinicDoctor;
 	}
 
-	public Date getDataInput() {
+	public String getDataInput() {
 		return this.dataInput;
 	}
 
-	public void setDataInput(Date dataInput) {
+	public void setDataInput(String dataInput) {
 		this.dataInput = dataInput;
 	}
 
-	public Date getDataResp() {
+	public String getDataResp() {
 		return this.dataResp;
 	}
 
-	public void setDataResp(Date dataResp) {
+	public void setDataResp(String dataResp) {
 		this.dataResp = dataResp;
 	}
 
