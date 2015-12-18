@@ -17,10 +17,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
 
-
-
-
-
+<sec:authentication var="principal" property="principal" />
 
 
 
@@ -50,6 +47,9 @@ function doAjax() {
 
 $(document).ready(function()
 { 
+	var user = '${principal.username}';
+	console.log('log '+ user);
+	
 	$( "#dateBegin" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneClinic" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEnd" ).datepicker({dateFormat:'dd.mm.yy'});
@@ -100,7 +100,7 @@ $(document).ready(function()
 			                <li class="dropdown">
 			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Анкеты первого уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic()">Амбул-полик помощь</a></li>
+			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic('${principal.username}')">Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
 			                        <li><a href="#" id="one_day">Дневной стационар</a></li>
 			                        <li class="divider"></li>
@@ -152,7 +152,6 @@ $(document).ready(function()
 			                                        </div>
 			                                </div>
 			                                <div class="bottom text-center">
-			                                	<sec:authentication var="principal" property="principal" />
 			                                    Вы вошли как: <a href="#"><b>${principal.username}</b></a>
 			                                </div>
 			                            </div>
@@ -184,18 +183,23 @@ $(document).ready(function()
      					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEnd" placeholder="">
      				</td>
      				<td style="padding-right:15px;">
-     					<button class="btn btn-success" id="getqueryoneclinic" onclick="oneclinicbetween()">Выбрать</button>
+     					<button class="btn btn-success" id="getqueryoneclinic" onclick="oneclinicbetween('${principal.username}')">Выбрать</button>
      				</td>
      				<td>
      					<button class="btn btn-success" id="addOneClinic" data-toggle="modal" data-target="#myModal">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
-			</div><br>
-			
-   <br><br><br>
-	<div id="info" class="success"></div>
-			
+			</div><br><br>
+<div id="fgf"style="overflow-y: scroll; height:100px;">			
+			<table id="records_table" class="table">
+            <tr>
+                <th>Title</th>
+                <th>Categories</th>
+                <th>Tags</th>
+            </tr>
+        </table>
+</div>			
 </div>
 <div id="dim2">
 			<div class="msgbox2">

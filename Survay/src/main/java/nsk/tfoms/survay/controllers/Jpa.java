@@ -16,14 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import nsk.tfoms.survay.entity.SurvayClinic;
-import nsk.tfoms.survay.pojo.SearchCriteria;
 import nsk.tfoms.survay.service.ClinicService;
-import nsk.tfoms.survay.util.TimesAndDate;
 import nsk.tfoms.survay.util.Util;
 
 import java.io.File;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -95,19 +92,20 @@ public class Jpa {
 		// добовляем запись в базу
 	    personSvc.add(survay);
 	    // вытаскиваем из базы 
-	    List<SurvayClinic> list = personSvc.getAll();
+	    List<SurvayClinic> list = personSvc.getAll(survay.getPolzovatel());
 	    res.setStatus("SUCCESS");
 	    res.setResult(list);
 
 		return res;
   }
   
-  @RequestMapping(value = "/oneclinic", method = RequestMethod.POST)
-  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save()
+  @RequestMapping(value = "/oneclinic", method = RequestMethod.GET)
+  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestParam String test)
   { 
+	  System.out.println("test@@@@@@@@@@@@@@@@@ "+ test);
 		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 	    // вытаскиваем из базы 
-	    List<SurvayClinic> list = personSvc.getAll();
+	    List<SurvayClinic> list = personSvc.getAll(test);
 	    res.setStatus("SUCCESS");
 	    res.setResult(list);
 
@@ -115,14 +113,11 @@ public class Jpa {
   }
   
   @RequestMapping(value = "/oneclinicbetween", method = RequestMethod.GET)
-  public @ResponseBody nsk.tfoms.survay.util.JsonResponse getDataBetween(@RequestParam String datebegin,String dateend) throws ParseException
+  public @ResponseBody nsk.tfoms.survay.util.JsonResponse getDataBetween(@RequestParam String datebegin,String dateend,String userp) throws ParseException
   { 
 		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
-		
-		//Date  d1 = TimesAndDate.parseDate(datebegin, "dd.MM.yyyy");
-		//Date  d2 = TimesAndDate.parseDate(dateend, "dd.MM.yyyy");
 	    // вытаскиваем из базы 
-	    List<SurvayClinic> list = personSvc.getAllbetween(datebegin, dateend);
+	    List<SurvayClinic> list = personSvc.getAllbetween(datebegin, dateend,userp);
 	    res.setStatus("SUCCESS");
 	    res.setResult(list);
 

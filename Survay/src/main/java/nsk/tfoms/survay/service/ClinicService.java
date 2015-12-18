@@ -19,16 +19,19 @@ public class ClinicService {
   private EntityManager em;
   
   @Transactional
-  public List<SurvayClinic> getAll() {
-    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p ORDER BY p.id DESC", SurvayClinic.class).getResultList();
+  public List<SurvayClinic> getAll(String userp) {
+    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.polzovatel =:userp ORDER BY p.id DESC", SurvayClinic.class)
+    		.setParameter("userp", userp)
+    		.getResultList();
     return result;
   }
   
   @Transactional
-  public List<SurvayClinic> getAllbetween(String d1, String d2) {
-    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.dataInput BETWEEN :d1 AND :d2 ORDER BY p.id DESC", SurvayClinic.class)
+  public List<SurvayClinic> getAllbetween(String d1, String d2,String userp) {
+    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.polzovatel =:userp AND p.dataInput BETWEEN :d1 AND :d2 ORDER BY p.id DESC", SurvayClinic.class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
+    .setParameter("userp", userp)
     .getResultList();
     return result;
   }
