@@ -23,6 +23,8 @@
 
 
 
+
+
 <script type="text/javascript">
 function doAjax() {
 	
@@ -45,48 +47,6 @@ function doAjax() {
 	});
 } 
 
-function oneclinic() {
-	
-	var search = {}
-	
-	search["age"] = $("#age").val();     
-	search["ambulance"] = $("#ambulance").val();
-	search["clinicDoctor"] = $("#clinicDoctor").val();
-	search["dataResp"] = $("input[name='dataRespN']").val();
-	search["diagnosticTests"] = $("#diagnosticTests").val();
-	search["equipment"] = $("#equipment").val();
-	search["freeHelp"] = $("#freeHelp").val();
-	search["mo"] = $("#mo").val();
-	search["laboratoryResearch"] = $("#laboratoryResearch").val();
-	search["medicalSpecialists"] = $("#medicalSpecialists").val();
-	search["qualityAmbulance"] = $("#qualityAmbulance").val();
-	search["repairs"] = $("#repairs").val();
-	search["seeADoctor"] = $("#seeADoctor").val();
-	search["sex"] = $("#sex").val();
-	search["therapist"] = $("#therapist").val();
-	search["waitingTime"] = $("#waitingTime").val();
-	search["waitingTime2"] = $("#waitingTime2").val();
-	
-	search["polzovatel"] = $("#polzovatel").val();
-	
-	console.log('log '+$("#age").val());
-	$('#cancelOneClinic').trigger('click');
-	$.ajax({
-		url : 'addoneclinic',
-		type: 'Post',
-		dataType: 'json',
-		contentType: 'application/json',
-	    mimeType: 'application/json',
-		data : JSON.stringify(search),
-		success: function (data) {	
-			var result = '"'+data.text+'", '+data.count+' characters';
-			$("#result_text").text(result);
-			
-		}
-	});
-} 
-
-
 
 $(document).ready(function()
 { 
@@ -99,73 +59,6 @@ $(document).ready(function()
 	$( "#dateEndConsultOther" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateBeginCountDetail" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndCountDetail" ).datepicker({dateFormat:'dd.mm.yy'});
-	
-		// Кнопка амбул-полик помощь
-	   $('#one_ambul_pol').click(function()
-               {  
-		   			if ($('#dim').is(':visible'))
-    	    		{
-		   				$("#dim").fadeOut();
-    	    		}
-		   			else
-		   			{
-		   				if ($('#dim2,#dim3').is(':visible')){	$("#dim2").fadeOut();$("#dim3").fadeOut();	}
-		   				var widthGet = $('.container-fluid').width();
-		    	        var heightGet = $(window).height();
-		    	        
-		    	        $('#dim').width(widthGet-20);
-	    	            $('#dim').height(heightGet-300);
-	    	            setTimeout("$('#dim').fadeIn();",500);
-		   			}
-  	     		 	
-               });
-	   
-		// Кнопка дневной стационвр
-	   $('#one_day').click(function()
-               {  
-		   			if ($('#dim2').is(':visible'))
-    	    		{
-		   				$("#dim2").fadeOut();
-    	    		}
-		   			else
-		   			{
-		   				if ($('#dim,#dim3').is(':visible')){	$("#dim").fadeOut();$("#dim3").fadeOut();	}
-		   				var widthGet = $('.container-fluid').width();
-		    	        var heightGet = $(window).height();
-		    	        
-		    	        $('#dim2').width(widthGet-20);
-	    	            $('#dim2').height(heightGet-300);
-	    	            setTimeout("$('#dim2').fadeIn();",500);
-		   			}
-  	     		 	
-               });
-	   
-		// Кнопка станионар
-	   $('#one_stac').click(function()
-               {  
-		   			if ($('#dim3').is(':visible'))
-    	    		{
-		   				$("#dim3").fadeOut();
-    	    		}
-		   			else
-		   			{
-		   				if ($('#dim2,#dim').is(':visible')){	$("#dim2").fadeOut();$("#dim").fadeOut()	}
-		   				
-		   				
-		   				var widthGet = $('.container-fluid').width();
-		    	        var heightGet = $(window).height();
-		    	        
-		    	        $('#dim3').width(widthGet-20);
-	    	            $('#dim3').height(heightGet-300);
-	    	            setTimeout("$('#dim3').fadeIn();",500);
-		   			}
-  	     		 	
-               });
-		
-		
-						 	//var formData = JSON.stringify($("#form1").serializeArray());
-		
-		
 		
 		// валидация заполненой анкеты поликлиника первый уровень
 	//   $("#form1").validate({
@@ -207,7 +100,7 @@ $(document).ready(function()
 			                <li class="dropdown">
 			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Анкеты первого уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#" id="one_ambul_pol">Амбул-полик помощь</a></li>
+			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic()">Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
 			                        <li><a href="#" id="one_day">Дневной стационар</a></li>
 			                        <li class="divider"></li>
@@ -291,7 +184,7 @@ $(document).ready(function()
      					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEnd" placeholder="">
      				</td>
      				<td style="padding-right:15px;">
-     					<button class="btn btn-success" id="">Выбрать</button>
+     					<button class="btn btn-success" id="getqueryoneclinic" onclick="oneclinicbetween()">Выбрать</button>
      				</td>
      				<td>
      					<button class="btn btn-success" id="addOneClinic" data-toggle="modal" data-target="#myModal">Добавить запись</button>
@@ -300,10 +193,8 @@ $(document).ready(function()
      		</TABLE>
 			</div><br>
 			
-<h3>Enter text:</h3>
-	<input id="input_str" type="text">
-	<input type="button" value="OK" onclick="doAjax()">
-	<p id="result_text"></p>
+   <br><br><br>
+	<div id="info" class="success"></div>
 			
 </div>
 <div id="dim2">
@@ -551,5 +442,8 @@ $(document).ready(function()
   Name: <input type="text" name="freeHelp"/>
   <button>Add</button>
   </form>  -->  
+  
+  <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 </body>
 </html>

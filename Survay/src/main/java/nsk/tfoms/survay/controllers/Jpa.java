@@ -18,9 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.pojo.SearchCriteria;
 import nsk.tfoms.survay.service.ClinicService;
+import nsk.tfoms.survay.util.TimesAndDate;
 import nsk.tfoms.survay.util.Util;
 
 import java.io.File;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 public class Jpa {
@@ -36,7 +40,6 @@ public class Jpa {
 	File mo = new File( servletContext.getRealPath("/WEB-INF/mo.txt"));
 	File age = new File( servletContext.getRealPath("/WEB-INF/age.txt"));
 	
-    model.addAttribute("oneclinic", personSvc.getAll());
 	model.addAttribute("listmo", Util.getMo(mo.getPath()));
 	model.addAttribute("listage", Util.getMo(age.getPath()));
 	
@@ -86,11 +89,44 @@ public class Jpa {
   	}
   
   @RequestMapping(value = "/addoneclinic", method = RequestMethod.POST)
-  public @ResponseBody nsk.tfoms.survay.pojo.SurvayClinicPojo save(@RequestBody @Valid SurvayClinic survay)
+  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestBody @Valid SurvayClinic survay)
   { 
-		nsk.tfoms.survay.pojo.SurvayClinicPojo result = new nsk.tfoms.survay.pojo.SurvayClinicPojo();
+		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+		// добовляем запись в базу
 	    personSvc.add(survay);
-		return result;
+	    // вытаскиваем из базы 
+	    List<SurvayClinic> list = personSvc.getAll();
+	    res.setStatus("SUCCESS");
+	    res.setResult(list);
+
+		return res;
+  }
+  
+  @RequestMapping(value = "/oneclinic", method = RequestMethod.POST)
+  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save()
+  { 
+		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+	    // вытаскиваем из базы 
+	    List<SurvayClinic> list = personSvc.getAll();
+	    res.setStatus("SUCCESS");
+	    res.setResult(list);
+
+		return res;
+  }
+  
+  @RequestMapping(value = "/oneclinicbetween", method = RequestMethod.GET)
+  public @ResponseBody nsk.tfoms.survay.util.JsonResponse getDataBetween(@RequestParam String datebegin,String dateend) throws ParseException
+  { 
+		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+		
+		//Date  d1 = TimesAndDate.parseDate(datebegin, "dd.MM.yyyy");
+		//Date  d2 = TimesAndDate.parseDate(dateend, "dd.MM.yyyy");
+	    // вытаскиваем из базы 
+	    List<SurvayClinic> list = personSvc.getAllbetween(datebegin, dateend);
+	    res.setStatus("SUCCESS");
+	    res.setResult(list);
+
+		return res;
   }
   
 }
