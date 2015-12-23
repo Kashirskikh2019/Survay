@@ -20,6 +20,7 @@ import nsk.tfoms.survay.service.ClinicService;
 import nsk.tfoms.survay.util.Util;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.List;
 
@@ -45,7 +46,6 @@ public class Jpa {
   
   @RequestMapping(value = "/addClinic", method = RequestMethod.POST)
   public String addClinic(@Valid SurvayClinic survay, BindingResult binding) {
-	 System.out.println("test "+survay.getDataResp());
 	
     personSvc.add(survay);
     return "redirect:general";
@@ -102,7 +102,6 @@ public class Jpa {
   @RequestMapping(value = "/oneclinic", method = RequestMethod.GET)
   public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestParam String test)
   { 
-	  System.out.println("test@@@@@@@@@@@@@@@@@ "+ test);
 		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 	    // вытаскиваем из базы 
 	    List<SurvayClinic> list = personSvc.getAll(test);
@@ -120,7 +119,19 @@ public class Jpa {
 	    List<SurvayClinic> list = personSvc.getAllbetween(datebegin, dateend,userp);
 	    res.setStatus("SUCCESS");
 	    res.setResult(list);
-
+		return res;
+  }
+  
+  @RequestMapping(value = "/onecliniceditid", method = RequestMethod.GET)
+  public @ResponseBody nsk.tfoms.survay.util.JsonResponse editOnId(@RequestParam String id,String user) throws ParseException
+  { 
+	  BigDecimal idBD = new BigDecimal(id.replaceAll(",", ""));
+	  
+		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+	    // вытаскиваем из базы 
+	    List<SurvayClinic> list = personSvc.getOnId(idBD, user);
+	    res.setStatus("SUCCESS");
+	    res.setResult(list);
 		return res;
   }
   

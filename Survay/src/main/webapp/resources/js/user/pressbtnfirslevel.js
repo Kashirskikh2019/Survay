@@ -17,6 +17,7 @@
 		    	        
 		    	        $('#dim').width(widthGet-20);
 	    	            $('#dim').height(heightGet-300);
+	    	            $('#fgf').height(heightGet-440);
 	    	            setTimeout("$('#dim').fadeIn();",500);
 		   			}
   	     		 	

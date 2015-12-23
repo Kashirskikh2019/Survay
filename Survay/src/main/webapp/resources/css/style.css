@@ -55,6 +55,9 @@ body {
   
  -webkit-animation: bgAnim 80s linear infinite;
  animation: bgAnim 80s linear infinite;
+ 
+ /* для вывода номера в таблицу oneclinic */
+ counter-reset: mycount;   
 }
 
 /* КОНЕЦ ЗАСТАВКА ЭКРАНА*/
@@ -140,4 +143,11 @@ body {
 }
 
 
-/* /сплывающее окно анкет первого уровня */
+
+
+ /* для вывода номера в таблицу oneclinic */
+.mycount:before{
+    counter-increment: mycount;      /* Increment the counter */
+    content: counter(mycount) ". "; /* Display the counter */
+}
+
