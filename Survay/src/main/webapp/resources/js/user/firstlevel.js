@@ -43,7 +43,7 @@ function alloneclinic(varr) {
  */
 function oneclinic() {
 	
-	if(	!$("#age").val()){  $(".errorOneClinic").css('display','block');	}else{
+	if(	validateOneClinic()){  $(".errorOneClinic").css('display','block');	}else{
 	
 						var search = {}
 						
@@ -66,7 +66,18 @@ function oneclinic() {
 						search["waitingTime2"] = $("#waitingTime2").val();
 						
 						search["polzovatel"] = $("#polzovatel").val();
+						/*
+						 * После того как была нажато редактирование и вылезло модальное с данными по редактированию ловим
+						 * id этой записи. Если же была нажата проста кнопка "добавить запись" то if не отрабатывает и новая
+						 * запись улетает с null id там он генериться тк запись новая.
+						 * 
+						 * Обрати внимание полсле отработки этого ajax поле input #id зануляется
+						 * иначе при добавлении новой записи этот одишник постоянно будет и соответственно не добавляться будет а 
+						 * редактироваться по этому id
+						 */
+						if($("#id").val()){ 	search["id"] = parseInt($("#id").val());}
 						
+						console.log('test'+$("#id").val()+'!'+ search["id"]);
 						$('#cancelOneClinic').trigger('click');
 						$.ajax({
 							url : 'addoneclinic',
@@ -88,11 +99,15 @@ function oneclinic() {
 							    	  setTimeout ("$('#records_table').append(userInfo);", 2000);
 							    	  
 							    	  $('#records_table').animate({opacity: 1}, 2000 );
+							    	  //  зануляем id input 
+							    	  $("#id").val('');
 							      }else{
 							      }	      
 							    },  
 							    error: function(e){  
-							      alert('Error: ' + e);  
+							      alert('Error: ' + e); 
+							      //  зануляем id input 
+						    	  $("#id").val('');
 							    }
 						});
 	}					
@@ -168,6 +183,24 @@ function onecliniceditid( varr,varr2) {
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
 		    		  $("#mo option:contains(" + response.result[i].mo +")").attr('selected', true);
+		    		  $("#age option:contains(" + response.result[i].age +")").attr('selected', true);
+		    		  $("#ambulance option:contains(" + response.result[i].ambulance +")").attr('selected', true);
+		    		  $("#clinicDoctor option:contains(" + response.result[i].clinicDoctor +")").attr('selected', true);
+		    		  $("#diagnosticTests option:contains(" + response.result[i].diagnosticTests +")").attr('selected', true);
+		    		  $("#equipment option:contains(" + response.result[i].equipment +")").attr('selected', true);
+		    		  $("#freeHelp option:contains(" + response.result[i].freeHelp +")").attr('selected', true);
+		    		  $("#laboratoryResearch option:contains(" + response.result[i].laboratoryResearch +")").attr('selected', true);
+		    		  $("#medicalSpecialists option:contains(" + response.result[i].medicalSpecialists +")").attr('selected', true);
+		    		  $("#qualityAmbulance option:contains(" + response.result[i].qualityAmbulance +")").attr('selected', true);
+		    		  $("#repairs option:contains(" + response.result[i].repairs +")").attr('selected', true);
+		    		  $("#seeADoctor option:contains(" + response.result[i].seeADoctor +")").attr('selected', true);
+		    		  $("#sex option:contains(" + response.result[i].sex +")").attr('selected', true);
+		    		  $("#therapist option:contains(" + response.result[i].therapist +")").attr('selected', true);
+		    		  $("#waitingTime option:contains(" + response.result[i].waitingTime +")").attr('selected', true);
+		    		  $("#waitingTime2 option:contains(" + response.result[i].waitingTime2 +")").attr('selected', true);
+		    		  
+		    		  $("#id").val(response.result[i].id);
+					  // $("input[name='dataRespN']").val();
 		    	  }
 		      }else
 		      {
@@ -178,4 +211,30 @@ function onecliniceditid( varr,varr2) {
 		      alert('Error: ' + e);  
 		    }
 	});
+}
+
+/*
+ * Метод проверяет на заполненость всей формы первый уровень АП-П
+ */
+function validateOneClinic()
+{
+	if(!$("#age").val()||
+	   !$("#ambulance").val()||
+	   !$("#clinicDoctor").val()||
+	   !$("input[name='dataRespN']").val()||
+	   !$("#diagnosticTests").val()||
+	   !$("#equipment").val()||
+	   !$("#freeHelp").val()||
+	   !$("#mo").val()||
+	   !$("#laboratoryResearch").val()||
+	   !$("#medicalSpecialists").val()||
+	   !$("#qualityAmbulance").val()||
+	   !$("#repairs").val()||
+	   !$("#seeADoctor").val()||
+	   !$("#sex").val()||
+	   !$("#therapist").val()||
+	   !$("#waitingTime").val()||
+	   !$("#waitingTime2").val()) return true;
+	
+		else return false;
 }

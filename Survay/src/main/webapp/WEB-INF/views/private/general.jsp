@@ -72,6 +72,7 @@ $(document).ready(function()
 </script>
 </head>
 <body>
+<div><img src="${pageContext.request.contextPath}/resources/image/logo.png"  style="width:40%;height:50%;margin-left:50px;margin-top:15px;"></div>
 <div class="conteinerHeader">
 					 <nav class="navbar navbar-default navbar-inverse" role="navigation">
 			    <div class="container-fluid">
@@ -416,6 +417,7 @@ $(document).ready(function()
 								    
 								</div>
 								<input type="hidden" id="polzovatel" value="${principal.username}"/>
+								<input type="hidden" id="id" value=""/>
 								
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button>

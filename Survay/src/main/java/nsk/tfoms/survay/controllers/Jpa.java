@@ -90,6 +90,7 @@ public class Jpa {
   { 
 		nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 		// добовляем запись в базу
+		System.out.println("ЕЕУЫЕ"+survay);
 	    personSvc.add(survay);
 	    // вытаскиваем из базы 
 	    List<SurvayClinic> list = personSvc.getAll(survay.getPolzovatel());
@@ -131,6 +132,7 @@ public class Jpa {
 	    // вытаскиваем из базы 
 	    List<SurvayClinic> list = personSvc.getOnId(idBD, user);
 	    res.setStatus("SUCCESS");
+	    System.out.println(list);
 	    res.setResult(list);
 		return res;
   }

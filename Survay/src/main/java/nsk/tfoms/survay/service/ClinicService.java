@@ -47,7 +47,7 @@ public class ClinicService {
   }
   @Transactional
   public void add(SurvayClinic p) {
-    em.persist(p);
-    System.out.println("@@ "+p);
+	  
+	  if (p.getId() == null) {this.em.persist(p);} else {this.em.merge(p);}
   }
 }
