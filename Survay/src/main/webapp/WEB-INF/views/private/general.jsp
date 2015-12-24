@@ -9,6 +9,7 @@
 <title>Главная</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tableoneClinic.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/shine.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/1.11.2/themes/smoothness/jquery-ui.css">
@@ -72,7 +73,20 @@ $(document).ready(function()
 </script>
 </head>
 <body>
-<div><img src="${pageContext.request.contextPath}/resources/image/logo.png"  style="width:40%;height:50%;margin-left:50px;margin-top:15px;"></div>
+<!-- <div><img src="${pageContext.request.contextPath}/resources/image/logo.png"  style="width:40%;height:50%;margin-left:50px;margin-top:15px;"></div> --> 
+<div class="mask pseudo"><a href="#" style="margin-top:20px;margin-left:50px;margin-bottom:0px;"><img src="${pageContext.request.contextPath}/resources/image/logo.png"/></a></div>
+<svg height="0">
+  <!-- THE mask -->
+  <mask id="mask-firefox">
+    <image width="150" height="64" xlink:href="http://dev.iamvdo.me/newLogoCSS3create2.png" filter="url(#filter)" /> 
+  </mask>
+  
+  <!-- the filter to make the image white -->
+  <filter id="filter">
+    <feFlood flood-color="white" />
+    <feComposite in2="SourceAlpha" operator="in" />
+  </filter>
+</svg>
 <div class="conteinerHeader">
 					 <nav class="navbar navbar-default navbar-inverse" role="navigation">
 			    <div class="container-fluid">
