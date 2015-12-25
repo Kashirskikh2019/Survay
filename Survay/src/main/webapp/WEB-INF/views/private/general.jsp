@@ -115,21 +115,21 @@ $(document).ready(function()
 			        <!-- Collect the nav links, forms, and other content for toggling -->
 			        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			            <ul class="nav navbar-nav">
-			            <li><a href="#">Выборка</a></li>
+			            <li><a href="#"><i class="fa fa-warning faa-flash animated-hover"></i>&nbsp;&nbsp;Выборка</a></li>
 			                <li class="dropdown">
-			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Анкеты первого уровня <span class="caret"></span></a>
+			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list-alt "></i>&nbsp;&nbsp;Анкеты первого уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic('${principal.username}')">Амбул-полик помощь</a></li>
+			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic('${principal.username}')"><i class="fa fa-ambulance"></i>&nbsp;&nbsp;Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#" id="one_day">Дневной стационар</a></li>
+			                        <li><a href="#" id="one_day"><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#" id="one_stac">Стационар</a></li>
+			                        <li><a href="#" id="one_stac"><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
 			                        
 			                    </ul>
 			                </li>
 			                
 			                <li class="dropdown">
-			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Анкеты второго уровня <span class="caret"></span></a>
+			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-align-right"></i>&nbsp;&nbsp;Анкеты второго уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
 			                        <li><a href="#">Action</a></li>
 			                        <li><a href="#">Another action</a></li>
@@ -142,7 +142,7 @@ $(document).ready(function()
 			                </li>
 			                
 			                <li class="dropdown">
-			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Отчеты <span class="caret"></span></a>
+			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i>&nbsp;&nbsp;Отчеты <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
 			                        <li><a href="#">Action</a></li>
 			                        <li><a href="#">Another action</a></li>
@@ -192,7 +192,7 @@ $(document).ready(function()
 				</div>
 			</div>
 			
-			<div class="col-xs-4" style="position: absolute; left:35%;">
+			<div  style="position: absolute; left:35%;">
 			<TABLE>
 				<TR> 
 					<TD style="padding-right:15px;">
@@ -447,7 +447,7 @@ $(document).ready(function()
 								
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success"  onclick="oneclinic()">Добавить анкету</button>
+									<button  class="btn btn-success"  onclick="oneclinic('${principal.username}')">Добавить анкету</button>
 								</div>
 							</div>
 						</div>

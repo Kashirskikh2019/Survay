@@ -127,7 +127,7 @@ body {
 /* сплывающее окно анкет первого уровня */
 
 
-#dim,#dim2,#dim3{margin:auto;top:0;border-radius: 7px;border:1px solid #222;left:0; width:100%; z-index:10000; background-color: rgba(0, 120, 201, 0.7); display:none; text-align:left;}
+#dim,#dim2,#dim3{margin:auto;top:0;border-radius: 7px;/*border:1px solid #222;left:0; */ width:100%; z-index:10000; background-color: rgba(0, 120, 201, 0.7); display:none; text-align:left;}
 .msgbox,.msgbox2,.msgbox3{ height:50px; z-index:200; border-top:1px solid #222; border-bottom:1px solid #222; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 5px; border-top-left-radius: 5px; background: #FFF;  left: 35%; background-color: #3b5998;margin-bottom: 20px; }
 .msgbox img,.msgbox2 img ,.msgbox3 img  {border:none; margin:5px;}
 .close{ top:0px; float:right; }
@@ -135,7 +135,7 @@ body {
 
 #shadow_oneclinic,#shadow_oneclinic2,#shadow_oneclinic3
 {
-	text-shadow: 3px 3px 3px black, 0 0 2em white; /* Параметры тени */
+	text-shadow: 1px 1px 3px black, 0 0 2em white; /* Параметры тени */
     color: white; /* Белый цвет текста */
     font-size: 1.2em; /* Размер надписи */	
     line-height: inherit;

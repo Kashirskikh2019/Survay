@@ -18,8 +18,7 @@ function alloneclinic(varr) {
 		      if(response.status == "SUCCESS"){
 		    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
 		    	  for(i =0 ; i < response.result.length ; i++){
-		    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].mo + "</a></td><td>" + 
-		    		  response.result[i].dataResp+  "</td><td>" +response.result[i].dataInput + "</td><td>" +response.result[i].sex + "</td><td>" +response.result[i].age + "</td><td>"+response.result[i].polzovatel + '</td></tr>';
+		    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].mo + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataResp + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInput + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sex + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].age + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzovatel + "</a></td></tr>";
 		    	  }
 		    	  
 		    	  $('#records_table').html(userInfo);
@@ -41,7 +40,7 @@ function alloneclinic(varr) {
  *  с уже добаленной записью
  * 
  */
-function oneclinic() {
+function oneclinic(varr) {
 	
 	if(	validateOneClinic()){  $(".errorOneClinic").css('display','block');	}else{
 	
@@ -77,7 +76,6 @@ function oneclinic() {
 						 */
 						if($("#id").val()){ 	search["id"] = parseInt($("#id").val());}
 						
-						console.log('test'+$("#id").val()+'!'+ search["id"]);
 						$('#cancelOneClinic').trigger('click');
 						$.ajax({
 							url : 'addoneclinic',
@@ -92,8 +90,7 @@ function oneclinic() {
 							    	  $('#records_table').animate({opacity: 0.0}, 2000 );
 							    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
 							    	  for(i =0 ; i < response.result.length ; i++){
-							    		  userInfo += "<tr><td><span class='mycount'></span></td><td>"  + response.result[i].mo + "</td><td>" + 
-							    		  response.result[i].dataResp+  "</td><td>" +response.result[i].dataInput + "</td><td>" +response.result[i].sex + "</td><td>" +response.result[i].age + "</td><td>"+response.result[i].polzovatel + '</td></tr>';
+							    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].mo + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataResp + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInput + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sex + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].age + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzovatel + "</a></td></tr>";
 							    	  }
 							    	  setTimeout ("$('#records_table').html('');",2000);
 							    	  setTimeout ("$('#records_table').append(userInfo);", 2000);
@@ -137,8 +134,7 @@ function oneclinicbetween( varr) {
 		    	  
 		    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
 		    	  for(i =0 ; i < response.result.length ; i++){
-		    		  userInfo += "<tr><td><span class='mycount'></span></td><td>"  + response.result[i].mo + "</td><td>" + 
-		    		  response.result[i].dataResp+  "</td><td>" +response.result[i].dataInput + "</td><td>" +response.result[i].sex + "</td><td>" +response.result[i].age + "</td><td>"+response.result[i].polzovatel + '</td></tr>';
+		    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].mo + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataResp + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInput + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sex + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].age + "</a></td><td><a href='#' onclick=onecliniceditid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzovatel + "</a></td></tr>";
 		    	  }
 		    	  setTimeout ("$('#records_table').html('');",3000);
 		    	  setTimeout ("$('#records_table').append(userInfo);", 3000);
