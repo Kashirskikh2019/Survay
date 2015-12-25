@@ -25,6 +25,17 @@
 
 
 <script type="text/javascript">
+// ловим нажите на отблекс логотипа
+function shine()
+{
+	$(".mask a").css("background-position", "10px 0");
+	$(".mask a").css({transition: 'all 8s'});
+	
+	//setTimeout("$('.mask a').removeAttr('style');",11000);
+	setTimeout("$('.mask a').css('background-position','');$('.mask a').css({transition: ''});",11000);
+	
+}
+
 function doAjax() {
 	
 	var inputText = $("#input_str").val(); 
@@ -49,6 +60,7 @@ function doAjax() {
 
 $(document).ready(function()
 { 
+	$(this).click(function(){ shine(); });
 	var user = '${principal.username}';
 	console.log('log '+ user);
 	
