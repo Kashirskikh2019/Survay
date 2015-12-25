@@ -196,7 +196,7 @@ function onecliniceditid( varr,varr2) {
 		    		  $("#waitingTime2 option:contains(" + response.result[i].waitingTime2 +")").attr('selected', true);
 		    		  
 		    		  $("#id").val(response.result[i].id);
-					  // $("input[name='dataRespN']").val();
+					  $("input[name='dataRespN']").val(response.result[i].dataResp);
 		    	  }
 		      }else
 		      {

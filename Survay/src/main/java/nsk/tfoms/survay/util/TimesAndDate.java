@@ -14,4 +14,14 @@ public class TimesAndDate
 		  date = df.parse(cunvertCurrentDate);
 		  return date;
 	 }
+	
+	
+	/*
+	 * ֿאנסטל האעף טח דדדד-לל-הה ג הה.לל.yyyy
+	 */
+	public static String parseDate(String date) throws ParseException
+	 {
+		date = date.substring(8,10)+"."+date.substring(5,7)+"."+date.substring(0,4);
+		  return date;
+	 }
 }

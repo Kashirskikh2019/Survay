@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.service.ClinicService;
+import nsk.tfoms.survay.util.TimesAndDate;
 
 /*
  * Контроллер обрабатывает все что связано с анкетой первого уровня АПУ
@@ -35,14 +36,19 @@ public class OneClinic {
 	 */
 	  
 	  @RequestMapping(value = "/addoneclinic", method = RequestMethod.POST)
-	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestBody @Valid SurvayClinic survay)
+	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestBody @Valid SurvayClinic survay) throws ParseException
 	  { 
+		    
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 			// добовляем запись в базу
 			System.out.println("ЕЕУЫЕ"+survay);
 		    personSvc.add(survay);
 		    // вытаскиваем из базы 
 		    List<SurvayClinic> list = personSvc.getAll(survay.getPolzovatel());
+		    for (int i = 0; i < list.size(); i++)
+		    {
+		    	list.get(i).setDataResp(	TimesAndDate.parseDate(list.get(i).getDataResp())	);
+			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
 
@@ -50,11 +56,15 @@ public class OneClinic {
 	  }
 	  
 	  @RequestMapping(value = "/oneclinic", method = RequestMethod.GET)
-	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestParam String test)
+	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestParam String test) throws ParseException
 	  { 
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 		    // вытаскиваем из базы 
 		    List<SurvayClinic> list = personSvc.getAll(test);
+		    for (int i = 0; i < list.size(); i++)
+		    {
+		    	list.get(i).setDataResp(	TimesAndDate.parseDate(list.get(i).getDataResp())	);
+			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
 
@@ -67,6 +77,11 @@ public class OneClinic {
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 		    // вытаскиваем из базы 
 		    List<SurvayClinic> list = personSvc.getAllbetween(datebegin, dateend,userp);
+		    for (int i = 0; i < list.size(); i++)
+		    {
+		    	list.get(i).setDataResp(	TimesAndDate.parseDate(list.get(i).getDataResp())	);
+			}
+		    
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
 			return res;
@@ -80,6 +95,7 @@ public class OneClinic {
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 		    // вытаскиваем из базы 
 		    List<SurvayClinic> list = personSvc.getOnId(idBD, user);
+		    list.get(0).setDataResp(	TimesAndDate.parseDate(list.get(0).getDataResp())	);
 		    res.setStatus("SUCCESS");
 		    System.out.println(list);
 		    res.setResult(list);

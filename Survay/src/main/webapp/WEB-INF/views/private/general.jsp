@@ -76,6 +76,9 @@ $(document).ready(function()
 		      $('select', $form).each(function() {
 		        $(this).val($(this).prop('defaultSelected'));
 		      });	
+		//   $('input', $form).each(function() {
+		  //      $(this).val($(this).prop('defaultSelected'));
+		    //  });	
 		   
 		   $(".errorOneClinic").css('display','none');
 		   
@@ -447,7 +450,7 @@ $(document).ready(function()
 								
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success"  onclick="oneclinic('${principal.username}')">Добавить анкету</button>
+									<button  class="btn btn-success"  onclick='oneclinic("+user+")'>Добавить анкету</button>
 								</div>
 							</div>
 						</div>
