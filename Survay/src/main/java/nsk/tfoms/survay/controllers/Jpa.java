@@ -27,7 +27,7 @@ import java.util.List;
 @Controller
 public class Jpa {
 	
-  private final String ERROR_MESSAGE = "Неправильно введен логин или пароль.";
+  
   @Autowired private ClinicService personSvc;
   @Autowired private ServletContext servletContext;
   
@@ -63,27 +63,7 @@ public class Jpa {
 		return result;
   }
   
-  @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String home()
-  {
-	  return "redirect:general";
-  }
-  	
-  	@RequestMapping(value = "/login", method = RequestMethod.GET)
-  	public String login() {
-  		return "login";
-  	}
-
-  	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
-  	public String loginerror(ModelMap model) {
-  		model.addAttribute("error", ERROR_MESSAGE);
-  		return "login";
-  	}
-
-  	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-  	public String logout() {
-  		return "login";
-  	}
+  
   
   @RequestMapping(value = "/addoneclinic", method = RequestMethod.POST)
   public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestBody @Valid SurvayClinic survay)

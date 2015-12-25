@@ -2,7 +2,7 @@
 .table tr:first-child th{
 	
 
-	background-color: #b9b3e3;
+	background-color: #9f97d9;
 	border:0px solid #000000;
 	text-align:center;
 	border-width:0px 0px 1px 1px;
@@ -25,7 +25,7 @@
 	color:#000000;
 }
 
-.table tr:nth-child(odd) td{ background-color:#faf9f8; }
+.table tr:nth-child(odd) td{ background-color:#eeebe8; }
 .table tr:nth-child(even)    { background-color:#ffffff; }
 
 
