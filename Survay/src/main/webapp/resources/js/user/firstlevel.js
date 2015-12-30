@@ -161,7 +161,7 @@ function oneLevel() {
  * Метод заполняет модальное окно первого уровня данными по id записи 
  */
 function onecliniceditid( varr,varr2) {
-	
+	console.log(varr+'  '+varr2);
 	$.ajax({
 		url : 'onecliniceditid',
 		type: 'get',
