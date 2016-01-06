@@ -6,10 +6,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import nsk.tfoms.survay.entity.SurvayClinic;
-import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
-import nsk.tfoms.survay.service.DayStacionarService;
 import nsk.tfoms.survay.service.StacionarService;
 import nsk.tfoms.survay.util.TimesAndDate;
 

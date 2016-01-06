@@ -35,7 +35,7 @@ public class Util {
 		    InputStreamReader  reader = new InputStreamReader(stream,"UTF-8");
 			prop.load(reader);
 	
-			Enumeration e = prop.keys();
+			Enumeration<?> e = prop.keys();
 			while(e.hasMoreElements()) {
 				String key = (String)e.nextElement();
 				map.put(Integer.parseInt(key), prop.getProperty(key));
