@@ -156,6 +156,8 @@ function oneclinicbetween( varr) {
  */
 function oneLevel() {
 	$('#myModal .modal-title').text('Добавить анкету первого уровня');
+	$('#myModal1 .modal-title').text('Добавить анкету первого уровня');
+	$('#myModal2 .modal-title').text('Добавить анкету первого уровня');
 }
 /*
  * Метод заполняет модальное окно первого уровня данными по id записи 

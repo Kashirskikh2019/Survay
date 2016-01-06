@@ -28,6 +28,9 @@
 .table tr:nth-child(odd) td{ background-color:#eeebe8; }
 .table tr:nth-child(even)    { background-color:#ffffff; }
 
+.table tr:nth-child(even):hover    { background-color:#c0b6ab; }
+.table tr:nth-child(odd) td:hover{ background-color:#c0b6ab; }
+
 
 .table tr:last-child td:last-child {
 	-moz-border-radius-bottomright:16px;

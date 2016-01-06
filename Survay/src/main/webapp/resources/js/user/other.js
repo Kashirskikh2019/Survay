@@ -1,5 +1,5 @@
 // кнопка отмена (при отмене на модальном окне анкеты)
-	   $("#cancelOneDayStacionar").click(function()
+	   $("#cancelOneDayStacionar,.close").click(function()
 		{
 		   var $form = $('#form2') 
 		      $('select', $form).each(function() {
@@ -13,7 +13,7 @@
 		});
 	   
 	// кнопка отмена (при отмене на модальном окне анкеты)
-	   $("#cancelOneStac").click(function()
+	   $("#cancelOneStac,.close").click(function()
 		{
 		   var $form = $('#form3') 
 		      $('select', $form).each(function() {

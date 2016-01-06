@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <title>Главная</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tableoneClinic.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tableoneLevel.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/shine.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -77,7 +77,7 @@ $(document).ready(function()
 	$( "#datePartOneStac" ).datepicker({dateFormat:'dd.mm.yy'});
 		
 	   // кнопка отмена (при отмене на модальном окне анкеты)
-	   $("#cancelOneClinic").click(function()
+	   $("#cancelOneClinic,.close").click(function()
 		{
 		   var $form = $('#form1') 
 		      $('select', $form).each(function() {
@@ -289,8 +289,8 @@ $(document).ready(function()
 </div> <!-- <div class="conteinerHeader"> -->
 
 <!-- Добавить запись (модальное окно первого уровня АПУ) -->
-					<div class="modal fade" id="myModal" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal  fade" id="myModal" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -513,7 +513,7 @@ $(document).ready(function()
 <!-- Добавить запись (модальное окно первого уровня дневного стационара) -->
 
 					<div class="modal fade" id="myModal1" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -699,12 +699,11 @@ $(document).ready(function()
 
 <!-- Добавить запись (модальное окно первого уровня Стационар) -->
 					<div class="modal fade" id="myModal2" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" >
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
-									<button type="button btn-primary" class="close"
-										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<button type="button btn-primary" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									<h3 class="modal-title">Добавить анкету первого уровня</h3>
 									<p>Добавление анкеты  стационарной помощи</p>
 
