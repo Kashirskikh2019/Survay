@@ -1,0 +1,153 @@
+/* ДЛЯ ЛОГИНА*/
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  padding-top: 80px;
+  margin: 0 auto;
+}
+
+.form-signin.form-signin-heading,
+ {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.btn-block
+{
+	 max-width: 100px;
+	margin: 0 auto;  	
+}
+.form-signin {
+ -webkit-filter: url(#blur);
+ filter: url(#blur);
+ -webkit-filter: blur(0px);
+ filter: blur(0px);
+ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+ -webkit-transition: 1s -webkit-filter linear;
+ transition: 1s filter linear;
+}
+.form-signin:hover {
+ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0'); 
+ -webkit-filter: blur(0px); 
+ filter: blur(0px); 
+}
+
+/* КОНЕЦ ДЛЯ ЛОГИНА*/
+
+/* ЗАСТАВКА ЭКРАНА*/
+body {
+
+ background:url('../image/logo2.1.png') no-repeat center center fixed;
+ -webkit-background-size: auto,cover;
+ background-size: auto,cover;
+  
+ -webkit-background-blend-mode: multiply, normal;
+ background-blend-mode: multiply, normal;
+  
+ -webkit-animation: bgAnim 80s linear infinite;
+ animation: bgAnim 80s linear infinite;
+ 
+ /* для вывода номера в таблицу oneclinic */
+ counter-reset: mycount;   
+}
+
+/* КОНЕЦ ЗАСТАВКА ЭКРАНА*/
+
+/* БЛОК МЕНЮ */
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 100%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+
+.conteinerHeader
+{
+	margin-top: 15px;
+	padding-top:3px;
+	padding-left:50px;
+	padding-right:50px;
+} 
+
+/* КОНЕЦ БЛОК МЕНЮ */
+
+/* сплывающее окно анкет первого уровня */
+
+
+#dim,#dim2,#dim3{margin:auto;top:0;border-radius: 7px;/*border:1px solid #222;left:0; */ width:100%; z-index:10000; background-color: rgba(0, 120, 201, 0.7); display:none; text-align:left;}
+.msgbox,.msgbox2,.msgbox3{ height:50px; z-index:200; border-top:1px solid #222; border-bottom:1px solid #222; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 5px; border-top-left-radius: 5px; background: #FFF;  left: 35%; background-color: #3b5998;margin-bottom: 20px; }
+.msgbox img,.msgbox2 img ,.msgbox3 img  {border:none; margin:5px;}
+.close{ top:0px; float:right; }
+.msgboxp,.msgboxp2,.msgboxp3 { text-align:center;}
+
+#shadow_oneclinic,#shadow_oneclinic2,#shadow_oneclinic3
+{
+	text-shadow: 1px 1px 3px black, 0 0 2em white; /* Параметры тени */
+    color: white; /* Белый цвет текста */
+    font-size: 1.2em; /* Размер надписи */	
+    line-height: inherit;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+
+
+ /* для вывода номера в таблицу oneclinic */
+.mycount:before{
+    counter-increment: mycount;      /* Increment the counter */
+    content: counter(mycount) ". "; /* Display the counter */
+}
+
