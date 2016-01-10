@@ -175,7 +175,7 @@ $(document).ready(function()
 			                                    </div>
 			                                        <div class="form-group">
 			                                           	<a href="#"><b>Главная</b></a><br>
-			                                           	<a href="j_spring_security_logout"><b>Выход</b></a><br>
+			                                           	<a href="j_spring_security_logout" id="exitfromsite"><b>Выход</b></a><br>
 			                                           	<a href="#"><b>Написать администратору</b></a><br><br>
 			                                        </div>
 			                                </div>
@@ -903,5 +903,7 @@ $(document).ready(function()
   <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>
 </body>
 </html>
