@@ -1,7 +1,12 @@
 package nsk.tfoms.survay.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -16,8 +21,8 @@ public class SurvayDaystacionar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	@GeneratedValue
+	private BigDecimal id;
 
 	@Column(name="AGE_DAYSTAC")
 	private String ageDaystac;
@@ -28,13 +33,13 @@ public class SurvayDaystacionar implements Serializable {
 	@Column(name="COMFORT_DAYSTAC")
 	private String comfortDaystac;
 
-	@Temporal(TemporalType.DATE)
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_INPUT_DAYSTAC")
-	private Date dataInputDaystac;
+	private String dataInputDaystac = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
 
-	@Temporal(TemporalType.DATE)
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_RESP_DAYSTAC")
-	private Date dataRespDaystac;
+	private String dataRespDaystac;
 
 	@Column(name="EQUIPMENT_DAYSTAC")
 	private String equipmentDaystac;
@@ -62,15 +67,23 @@ public class SurvayDaystacionar implements Serializable {
 
 	@Column(name="THERAPIST_DAYSTAC")
 	private String therapistDaystac;
+	
+	@Column(name="POLZOVATEL_DAYSTAC")
+	private String polzovateldaystacionar;
+	
+	@Column(name="MO_DAYSTAC")
+	private String moDayStac;
+	
+	
 
 	public SurvayDaystacionar() {
 	}
 
-	public long getId() {
+	public BigDecimal getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 
@@ -98,19 +111,19 @@ public class SurvayDaystacionar implements Serializable {
 		this.comfortDaystac = comfortDaystac;
 	}
 
-	public Date getDataInputDaystac() {
+	public String getDataInputDaystac() {
 		return this.dataInputDaystac;
 	}
 
-	public void setDataInputDaystac(Date dataInputDaystac) {
+	public void setDataInputDaystac(String dataInputDaystac) {
 		this.dataInputDaystac = dataInputDaystac;
 	}
 
-	public Date getDataRespDaystac() {
+	public String getDataRespDaystac() {
 		return this.dataRespDaystac;
 	}
 
-	public void setDataRespDaystac(Date dataRespDaystac) {
+	public void setDataRespDaystac(String dataRespDaystac) {
 		this.dataRespDaystac = dataRespDaystac;
 	}
 
@@ -184,6 +197,63 @@ public class SurvayDaystacionar implements Serializable {
 
 	public void setTherapistDaystac(String therapistDaystac) {
 		this.therapistDaystac = therapistDaystac;
+	}
+
+	public String getPolzovateldaystacionar() {
+		return polzovateldaystacionar;
+	}
+
+	public void setPolzovateldaystacionar(String polzovateldaystacionar) {
+		this.polzovateldaystacionar = polzovateldaystacionar;
+	}
+
+	public String getMoDayStac() {
+		return moDayStac;
+	}
+
+	public void setMoDayStac(String moDayStac) {
+		this.moDayStac = moDayStac;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SurvayDaystacionar [id=");
+		builder.append(id);
+		builder.append(", ageDaystac=");
+		builder.append(ageDaystac);
+		builder.append(", ambulanceDaystac=");
+		builder.append(ambulanceDaystac);
+		builder.append(", comfortDaystac=");
+		builder.append(comfortDaystac);
+		builder.append(", dataInputDaystac=");
+		builder.append(dataInputDaystac);
+		builder.append(", dataRespDaystac=");
+		builder.append(dataRespDaystac);
+		builder.append(", equipmentDaystac=");
+		builder.append(equipmentDaystac);
+		builder.append(", laboratoryDaystac=");
+		builder.append(laboratoryDaystac);
+		builder.append(", medicineDaystac=");
+		builder.append(medicineDaystac);
+		builder.append(", qualityAmbulanceDaystac=");
+		builder.append(qualityAmbulanceDaystac);
+		builder.append(", qualityDaystac=");
+		builder.append(qualityDaystac);
+		builder.append(", rapairsDaystac=");
+		builder.append(rapairsDaystac);
+		builder.append(", servicesDaystac=");
+		builder.append(servicesDaystac);
+		builder.append(", sexDaystac=");
+		builder.append(sexDaystac);
+		builder.append(", therapistDaystac=");
+		builder.append(therapistDaystac);
+		builder.append(", polzovateldaystacionar=");
+		builder.append(polzovateldaystacionar);
+		builder.append(", moDayStac=");
+		builder.append(moDayStac);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

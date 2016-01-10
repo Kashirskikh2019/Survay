@@ -26,12 +26,19 @@
     <property name="suffix" value=".jsp" />
   </bean>
   
-  <!-- MySQL Datasource with Commons DBCP connection pooling -->
+<!-- MySQL Datasource with Commons DBCP connection pooling
   <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
     <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
     <property name="url" value="jdbc:oracle:thin:@srv-oracle03:1521/olimp"/>
     <property name="username" value="petit"/>
     <property name="password" value="asu"/>
+  </bean> -->
+  <!-- MySQL Datasource with Commons DBCP connection pooling -->
+  <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/mybtest2"/>
+    <property name="username" value="root"/>
+    <property name="password" value="root"/>
   </bean>
   
   <!-- EntityManagerFactory -->

@@ -51,3 +51,4 @@ alter table SURVAY_CLINIC
     minextents 1
     maxextents unlimited
   );
+

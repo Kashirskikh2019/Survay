@@ -17,7 +17,7 @@
 		    	        
 		    	        $('#dim').width(widthGet-20);
 	    	            $('#dim').height(heightGet-300);
-	    	            $('#fgf').height(heightGet-440);
+	    	            $('#fgf').height(heightGet-460);
 	    	            setTimeout("$('#dim').fadeIn();",500);
 		   			}
   	     		 	
@@ -38,6 +38,7 @@
 		    	        
 		    	        $('#dim2').width(widthGet-20);
 	    	            $('#dim2').height(heightGet-300);
+	    	            $('#tableOneDayStacionar').height(heightGet-460);
 	    	            setTimeout("$('#dim2').fadeIn();",500);
 		   			}
   	     		 	
@@ -60,7 +61,7 @@
 		    	        
 		    	        $('#dim3').width(widthGet-20);
 	    	            $('#dim3').height(heightGet-300);
+	    	            $('#tableOneStacionar').height(heightGet-460);
 	    	            setTimeout("$('#dim3').fadeIn();",500);
 		   			}
-  	     		 	
                });

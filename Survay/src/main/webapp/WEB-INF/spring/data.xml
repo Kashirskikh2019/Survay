@@ -37,6 +37,4 @@
   <!-- Enable @Transactional annotation -->
   <tx:annotation-driven/>
 	
-
-
 </beans>

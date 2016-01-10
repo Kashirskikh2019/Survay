@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <title>Главная</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tableoneClinic.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tableoneLevel.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/shine.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -67,18 +67,23 @@ $(document).ready(function()
 	$( "#dateBegin" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneClinic" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEnd" ).datepicker({dateFormat:'dd.mm.yy'});
-		
+
+	$( "#dateBeginDayStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndDayStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#datePartOneDayStac" ).datepicker({dateFormat:'dd.mm.yy'});
+
+	$( "#dateBeginStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#datePartOneStac" ).datepicker({dateFormat:'dd.mm.yy'});
 		
 	   // кнопка отмена (при отмене на модальном окне анкеты)
-	   $("#cancelOneClinic").click(function()
+	   $("#cancelOneClinic,.close").click(function()
 		{
 		   var $form = $('#form1') 
 		      $('select', $form).each(function() {
 		        $(this).val($(this).prop('defaultSelected'));
 		      });	
-		//   $('input', $form).each(function() {
-		  //      $(this).val($(this).prop('defaultSelected'));
-		    //  });	
+
 		   $("input[name='dataRespN']").val('');
 		   $(".errorOneClinic").css('display','none');
 		   $("#id").val('');
@@ -125,9 +130,9 @@ $(document).ready(function()
 			                    <ul class="dropdown-menu" role="menu">
 			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic('${principal.username}')"><i class="fa fa-ambulance"></i>&nbsp;&nbsp;Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#" id="one_day"><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
+			                        <li><a href="#" id="one_day" onclick="allonedaystacionar('${principal.username}')"><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#" id="one_stac"><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
+			                        <li><a href="#" id="one_stac" onclick="allonestacionar('${principal.username}')"><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
 			                        
 			                    </ul>
 			                </li>
@@ -214,7 +219,7 @@ $(document).ready(function()
      			</TR>
      		</TABLE>
 			</div><br><br>
-<div id="fgf"style="overflow-y: scroll; height:100px; margin-top:35px;">			
+<div id="fgf" style="overflow-y: scroll; height:100px; margin-top:35px;">			
 			<table id="records_table" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 </div>	
 
@@ -227,6 +232,30 @@ $(document).ready(function()
 					<h4 id="shadow_oneclinic2">Анкета первого уровня дневного стационара</h4>
 				</div>
 			</div>
+			
+			<div  style="position: absolute; left:35%;">
+			<TABLE>
+				<TR> 
+					<TD style="padding-right:15px;">
+						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginDayStacionar" placeholder="">
+					</TD>
+					<td style="padding-right:15px;">
+     					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndDayStacionar" placeholder="">
+     				</td>
+     				<td style="padding-right:15px;">
+     					<button class="btn btn-success"  onclick="onedaystacbetween('${principal.username}')">Выбрать</button>
+     				</td>
+     				<td>
+     					<button class="btn btn-success" id="addOneDayStacionar" data-toggle="modal" data-target="#myModal1" onclick="oneLevel()">Добавить запись</button>
+     				</td>
+     			</TR>
+     		</TABLE>
+			</div>
+			<br><br>
+<div id="tableOneDayStacionar" style="overflow-y: scroll; height:100px; margin-top:35px;">			
+			<table id="records_tableOneDayStacionar" class="table table-striped" style="margin:0px auto; width:85%;"></table>
+</div>	
+			
 		</div>		
 <div id="dim3">
 			<div class="msgbox3">
@@ -235,12 +264,33 @@ $(document).ready(function()
 					<h4 id="shadow_oneclinic3">Анкета первого уровня стационарной помощи</h4>
 				</div>
 			</div>
+			<div  style="position: absolute; left:35%;">
+			<TABLE>
+				<TR> 
+					<TD style="padding-right:15px;">
+						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginStacionar" placeholder="">
+					</TD>
+					<td style="padding-right:15px;">
+     					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndStacionar" placeholder="">
+     				</td>
+     				<td style="padding-right:15px;">
+     					<button class="btn btn-success"  onclick="onestacbetween('${principal.username}')">Выбрать</button>
+     				</td>
+     				<td>
+     					<button class="btn btn-success" id="addOneStacionar" data-toggle="modal" data-target="#myModal2" onclick="oneLevel()">Добавить запись</button>
+     				</td>
+     			</TR>
+     		</TABLE>
+			</div>
+			<br><br>
+<div id="tableOneStacionar" style="overflow-y: scroll; height:100px; margin-top:35px;">			
+			<table id="records_tableOneStacionar" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 		</div>		
 </div> <!-- <div class="conteinerHeader"> -->
 
-<!-- Добавить запись (модальное окно) -->
-					<div class="modal fade" id="myModal" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Добавить запись (модальное окно первого уровня АПУ) -->
+					<div class="modal  fade" id="myModal" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -460,6 +510,389 @@ $(document).ready(function()
 <!-- конец Добавить запись (модальное окно) -->
 
 
+<!-- Добавить запись (модальное окно первого уровня дневного стационара) -->
+
+					<div class="modal fade" id="myModal1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Добавить анкету первого уровня</h3>
+									<p>Добавление анкеты  дневного стационара</p>
+
+								</div>
+					<div  id="form2" >			
+								<div class="modal-body">
+									<div>Укажите медицинское учреждение где проходил опрос</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="moDayStac" title="Введите лечебное учреждение">
+								        <option value=""></option>
+								        <c:forEach var="ls" items="${listmo}">
+								        <option>${ls.value}</option>
+								        </c:forEach>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div>Укажите дату проведения опроса в данном мед учреждении</div>
+								    <div class="col-xs-4">
+								      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneDayStac" name="dataRespDS" placeholder="">
+								    </div><br><br>
+								    								
+									<p>1.	 Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара:</p>
+									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="qualityDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+		 						    
+								    <div>Техническим состоянием, ремонтом помещений, площадью помещений:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="rapairsDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Комфортностью мест пребывания пациентов:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="comfortDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Комплексом предоставляемых медицинских услуг:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="servicesDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Оснащенностью современным медицинским оборудованием:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="equipmentDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Обеспеченностью медикаментами и расходными материалами:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="medicineDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div>Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.):</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="laboratoryDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Работой лечащего врача:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="therapistDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+
+									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="ambulanceDaystac">
+								      	<option value=""></option>
+								        <option>Да</option>
+								        <option>Нет</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="qualityAmbulanceDaystac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div><p>4.	Пол респондента:</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="sexDaystac">
+								      	<option value=""></option>
+								        <option>Мужской</option>
+								        <option>Женский</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div><p>5.	Возраст респондента (лет):</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="ageDaystac">
+								      	<option value=""></option>
+								      	<c:forEach var="ag" items="${listage}">
+								        <option>${ag.value}</option>
+								        </c:forEach>
+								      </select>
+								    </div><br><br>
+								    
+								</div>
+								<input type="hidden" id="polzovateldaystacionar" value="${principal.username}"/>
+								<input type="hidden" id="idoneDayStac" value=""/>
+								
+								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+								<button type="button" id="cancelOneDayStacionar" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button  class="btn btn-success"  onclick='onedaystacionar("${principal.username}")'>Добавить анкету</button>
+								</div>
+							</div>
+						</div>
+					</div>
+		</div>		
+<!-- конец Добавить запись (модальное окно) -->
+
+
+
+<!-- Добавить запись (модальное окно первого уровня Стационар) -->
+					<div class="modal fade" id="myModal2" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" >
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button btn-primary" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Добавить анкету первого уровня</h3>
+									<p>Добавление анкеты  стационарной помощи</p>
+
+								</div>
+					<div id="form3" >			
+								<div class="modal-body">
+									<div>Укажите медицинское учреждение где проходил опрос</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="moonestac">
+								        <option value=""></option>
+								        <c:forEach var="ls" items="${listmo}">
+								        <option>${ls.value}</option>
+								        </c:forEach>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div>Укажите дату проведения опроса в данном мед учреждении</div>
+								    <div class="col-xs-4">
+								      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStac" name="dataonestac" placeholder="">
+								    </div><br><br>
+								    								
+									<p>1.	Оцените уровень  вашей удовлетворенности следующими характеристиками работы стационара:</p>
+									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="qualityStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+		 						    
+								    <div>Техническим состоянием, ремонтом помещений, площадью помещений:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="rapairsStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Комфортностью больничной палаты и мест пребывания пациентов:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="comfortStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Питанием:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="foodStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Оснащенностью современным мед. оборудованием:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="equipmentStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Обеспеченностью медикаментами и расходными материалами:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="medicineStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div>Сроками ожидания плановой госпитализации:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="termsStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.):</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="laboratoryStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div>Работой лечащего врача:</div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="therapistStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="ambulanceStac">
+								      	<option value=""></option>
+								        <option>Да</option>
+								        <option>Нет</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="qualityAmbulanceStac">
+								      	<option value=""></option>
+								        <option>Удовлетворен(а)</option>
+								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+								        <option>Не удовлетворен(а)</option>
+								        <option>Затрудняюсь ответить</option>
+								      </select>
+								    </div><br><br>
+								    
+								    
+								    <div><p>4.	Пол респондента:</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="sexStac">
+								      	<option value=""></option>
+								        <option>Мужской</option>
+								        <option>Женский</option>
+								      </select>
+								    </div><br><br>
+								    
+								    <div><p>5.	Возраст респондента (лет):</p></div>
+								    <div class="col-xs-4">
+								      <select class="form-control input-sm" id="ageStac">
+								      	<option value=""></option>
+								      	<c:forEach var="ag" items="${listage}">
+								        <option>${ag.value}</option>
+								        </c:forEach>
+								      </select>
+								    </div><br><br>
+								    
+								</div>
+								<input type="hidden" id="polzovatelonestac" value="${principal.username}"/>
+								<input type="hidden" id="idoneStac" value=""/>
+								
+								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+								<button type="button" id="cancelOneStac" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button  class="btn btn-success"  onclick='onestacionar("${principal.username}")'>Добавить анкету</button>
+								</div>
+							</div>
+						</div>
+					</div>
+		</div>		
+<!-- конец Добавить запись (модальное окно) -->
+
+
   
 <!-- <h1>Add New</h1>
   <form method="post" action="addClinic">
@@ -469,5 +902,6 @@ $(document).ready(function()
   
   <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
 </body>
 </html>

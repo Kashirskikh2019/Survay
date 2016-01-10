@@ -1,7 +1,12 @@
 package nsk.tfoms.survay.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -16,8 +21,8 @@ public class SurvayStacionar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	@GeneratedValue
+	private BigDecimal id;
 
 	@Column(name="AGE_STAC")
 	private String ageStac;
@@ -28,13 +33,13 @@ public class SurvayStacionar implements Serializable {
 	@Column(name="COMFORT_STAC")
 	private String comfortStac;
 
-	@Temporal(TemporalType.DATE)
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_INPUT_STAC")
-	private Date dataInputStac;
+	private String dataInputStac = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
 
-	@Temporal(TemporalType.DATE)
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_RESP_STAC")
-	private Date dataRespStac;
+	private String dataRespStac;
 
 	@Column(name="EQUIPMENT_STAC")
 	private String equipmentStac;
@@ -65,15 +70,21 @@ public class SurvayStacionar implements Serializable {
 
 	@Column(name="THERAPIST_STAC")
 	private String therapistStac;
+	
+	@Column(name="MO_STAC")
+	private String moonestac;
+	
+	@Column(name="POLZOVATEL_STAC")
+	private String polzovatelonestac;
 
 	public SurvayStacionar() {
 	}
 
-	public long getId() {
+	public BigDecimal getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 
@@ -101,19 +112,19 @@ public class SurvayStacionar implements Serializable {
 		this.comfortStac = comfortStac;
 	}
 
-	public Date getDataInputStac() {
-		return this.dataInputStac;
+	public String getDataInputStac() {
+		return this.dataInputStac ;
 	}
 
-	public void setDataInputStac(Date dataInputStac) {
+	public void setDataInputStac(String dataInputStac) {
 		this.dataInputStac = dataInputStac;
 	}
 
-	public Date getDataRespStac() {
+	public String getDataRespStac() {
 		return this.dataRespStac;
 	}
 
-	public void setDataRespStac(Date dataRespStac) {
+	public void setDataRespStac(String dataRespStac) {
 		this.dataRespStac = dataRespStac;
 	}
 
@@ -195,6 +206,65 @@ public class SurvayStacionar implements Serializable {
 
 	public void setTherapistStac(String therapistStac) {
 		this.therapistStac = therapistStac;
+	}
+
+	public String getMoonestac() {
+		return moonestac;
+	}
+
+	public void setMoonestac(String moonestac) {
+		this.moonestac = moonestac;
+	}
+
+	public String getPolzovatelonestac() {
+		return polzovatelonestac;
+	}
+
+	public void setPolzovatelonestac(String polzovatelonestac) {
+		this.polzovatelonestac = polzovatelonestac;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SurvayStacionar [id=");
+		builder.append(id);
+		builder.append(", ageStac=");
+		builder.append(ageStac);
+		builder.append(", ambulanceStac=");
+		builder.append(ambulanceStac);
+		builder.append(", comfortStac=");
+		builder.append(comfortStac);
+		builder.append(", dataInputStac=");
+		builder.append(dataInputStac);
+		builder.append(", dataRespStac=");
+		builder.append(dataRespStac);
+		builder.append(", equipmentStac=");
+		builder.append(equipmentStac);
+		builder.append(", foodStac=");
+		builder.append(foodStac);
+		builder.append(", laboratoryStac=");
+		builder.append(laboratoryStac);
+		builder.append(", medicineStac=");
+		builder.append(medicineStac);
+		builder.append(", qualityAmbulanceStac=");
+		builder.append(qualityAmbulanceStac);
+		builder.append(", qualityStac=");
+		builder.append(qualityStac);
+		builder.append(", rapairsStac=");
+		builder.append(rapairsStac);
+		builder.append(", sexStac=");
+		builder.append(sexStac);
+		builder.append(", termsStac=");
+		builder.append(termsStac);
+		builder.append(", therapistStac=");
+		builder.append(therapistStac);
+		builder.append(", moonestac=");
+		builder.append(moonestac);
+		builder.append(", polzovatelonestac=");
+		builder.append(polzovatelonestac);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

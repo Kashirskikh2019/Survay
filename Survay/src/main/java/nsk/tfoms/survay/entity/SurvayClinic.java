@@ -30,7 +30,7 @@ public class SurvayClinic implements Serializable {
 
 	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_INPUT")
-	private String dataInput=new SimpleDateFormat("dd.MM.yyyy").format(new Date());;
+	private String dataInput=new SimpleDateFormat("dd.MM.yyyy").format(new Date());
 
 	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
 	@Column(name="DATA_RESP")
@@ -287,5 +287,4 @@ public class SurvayClinic implements Serializable {
 		return builder.toString();
 	}
 
-	
 }

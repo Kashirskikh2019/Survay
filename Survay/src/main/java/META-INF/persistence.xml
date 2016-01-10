@@ -15,7 +15,11 @@
         <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@srv-oracle03:1521:olimp"/>
         <property name="javax.persistence.jdbc.user" value="petit"/>
         <property name="javax.persistence.jdbc.password" value="asu"/>
-        <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>  -->        
+        <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>  -->
+        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
+        <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+        <property name="hibernate.connection.charSet" value="UTF-8"/>        
     </properties>
 		
 	</persistence-unit>
