@@ -903,7 +903,7 @@ $(document).ready(function()
   <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>
+<!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  -->
 </body>
 </html>
