@@ -25,39 +25,6 @@
 
 
 <script type="text/javascript">
-// ловим нажите на отблекс логотипа
-function shine()
-{
-	$(".mask a").css("background-position", "10px 0");
-	$(".mask a").css({transition: 'all 8s'});
-	
-	//setTimeout("$('.mask a').removeAttr('style');",11000);
-	setTimeout("$('.mask a').css('background-position','');$('.mask a').css({transition: ''});",11000);
-	
-}
-
-function doAjax() {
-	
-	var inputText = $("#input_str").val(); 
-	
-	$.ajax({
-		url : 'getCharNum',
-		type: 'GET',
-		dataType: 'json',
-		contentType: 'application/json',
-	    mimeType: 'application/json',
-		data : ({
-			text: inputText
-		}),
-		success: function (data) {	
-			
-			var result = '"'+data.text+'", '+data.count+' characters';
-			$("#result_text").text(result);
-		}
-	});
-} 
-
-
 $(document).ready(function()
 { 
 	$(this).click(function(){ shine(); });
@@ -75,20 +42,6 @@ $(document).ready(function()
 	$( "#dateBeginStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneStac" ).datepicker({dateFormat:'dd.mm.yy'});
-		
-	   // кнопка отмена (при отмене на модальном окне анкеты)
-	   $("#cancelOneClinic,.close").click(function()
-		{
-		   var $form = $('#form1') 
-		      $('select', $form).each(function() {
-		        $(this).val($(this).prop('defaultSelected'));
-		      });	
-
-		   $("input[name='dataRespN']").val('');
-		   $(".errorOneClinic").css('display','none');
-		   $("#id").val('');
-		   
-		});
 
 });
 </script>
@@ -899,11 +852,12 @@ $(document).ready(function()
   Name: <input type="text" name="freeHelp"/>
   <button>Add</button>
   </form>  -->  
-  
+  <!-- <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' />  -->
   <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
 <!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  -->
+<script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
+<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> -->
 </body>
 </html>
