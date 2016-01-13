@@ -106,13 +106,25 @@ $(document).ready(function()
 			                <li class="dropdown">
 			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i>&nbsp;&nbsp;Отчеты <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#">Action</a></li>
-			                        <li><a href="#">Another action</a></li>
-			                        <li><a href="#">Something else here</a></li>
+			                        
+	              					 <li class="dropdown-submenu">
+						              <a href="#">Отчеты первого уровня</a>
+						              <ul class="dropdown-menu">
+						                <li><a href="#" id="idicAvalibelOne">Индикатор доступности и качества медицинской помощи</a></li>
+						                <li><a href="#">Инфографика</a></li>
+						              </ul>
+						            </li>	
+	              						
 			                        <li class="divider"></li>
-			                        <li><a href="#">Separated link</a></li>
-			                        <li class="divider"></li>
-			                        <li><a href="#">One more separated link</a></li>
+			                        
+			                        <li class="dropdown-submenu">
+						              <a href="#">Отчеты второго уровня</a>
+						              <ul class="dropdown-menu">
+						                <li><a href="#" id="idicInfoTwo">Индикатор информированности застрахованных о своих правах в системе ОМС</a></li>
+						                <li><a href="#">Инфографика</a></li>
+						              </ul>
+						            </li>
+			                        
 			                    </ul>
 			                </li>
 			            </ul>
