@@ -40,10 +40,7 @@ public class OneClinic {
 	  { 
 		    
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
-			// добовляем запись в базу
-			System.out.println("ЕЕУЫЕ"+survay);
 		    personSvc.add(survay);
-		    // вытаскиваем из базы 
 		    List<SurvayClinic> list = personSvc.getAll(survay.getPolzovatel());
 		    for (int i = 0; i < list.size(); i++)
 		    {

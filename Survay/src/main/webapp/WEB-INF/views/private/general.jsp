@@ -14,10 +14,14 @@
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/1.11.2/themes/smoothness/jquery-ui.css">
 
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/1.11.2/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
+<script src="/survay/resources/js/jquery.validate.js"></script>
+
+
+
 
 <sec:authentication var="principal" property="principal" />
 
@@ -45,9 +49,21 @@ $(document).ready(function()
 
 });
 </script>
+<script>
+$(document).ready(function() {
+	// only for demo purposes
+	$.validator.setDefaults({
+		submitHandler: function() {
+			onepartreports();
+		}
+	});
+	
+$("#formOneReport").validate();
+});
+</script>
+
 </head>
 <body>
-<!-- <div><img src="${pageContext.request.contextPath}/resources/image/logo.png"  style="width:40%;height:50%;margin-left:50px;margin-top:15px;"></div> --> 
 <div class="mask pseudo"><a href="#" style="margin-top:20px;margin-left:50px;margin-bottom:0px;"><img src="${pageContext.request.contextPath}/resources/image/logo.png"/></a></div>
 <svg height="0">
   <!-- THE mask -->
@@ -110,7 +126,8 @@ $(document).ready(function()
 	              					 <li class="dropdown-submenu">
 						              <a href="#">Отчеты первого уровня</a>
 						              <ul class="dropdown-menu">
-						                <li><a href="#" id="idicAvalibelOne">Индикатор доступности и качества медицинской помощи</a></li>
+						                <li><a href="#"  data-toggle="modal" data-target="#myModal777">Индикатор доступности и качества медицинской помощи</a></li>
+						                <li class="divider"></li>
 						                <li><a href="#">Инфографика</a></li>
 						              </ul>
 						            </li>	
@@ -120,7 +137,10 @@ $(document).ready(function()
 			                        <li class="dropdown-submenu">
 						              <a href="#">Отчеты второго уровня</a>
 						              <ul class="dropdown-menu">
+						                <li><a href="#" id="idicAvalibelTwo">Индикатор доступности и качества медицинской помощи</a></li>
+						                <li class="divider"></li>
 						                <li><a href="#" id="idicInfoTwo">Индикатор информированности застрахованных о своих правах в системе ОМС</a></li>
+						                <li class="divider"></li>
 						                <li><a href="#">Инфографика</a></li>
 						              </ul>
 						            </li>
@@ -157,6 +177,59 @@ $(document).ready(function()
 			    </div>
 			    <!-- /.container-fluid -->
 			</nav>
+			
+<!-- BLOCK MODAL WINDOWS FROM MENU -->
+          		<div class="modal fade" id="myModal777" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Отчет первого уроня</h3>
+									<p>Индикатор доступности и качества медицинской помощи</p>
+
+								</div>
+								<div class="modal-body">
+										<form class="cmxform" id="formOneReport" action="firstPartReport" method="">
+										<table cellspacing='15'>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите квартал:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="oneFirstKv" name="kv[]" required minlength="1"> Первый квартал&nbsp;
+												<input type="checkbox" id="oneSecondKv"  name="kv[]"> Второй квартал&nbsp;
+												<input type="checkbox" id="oneTreeKv"  name="kv[]"> Третий квартал&nbsp;
+												<input type="checkbox" id="oneFourKv" name="kv[]"> Четвертый квартал
+											</td>
+										</tr>
+										<tr><td><label for="kv[]" class="error" style="display: none; color:red;">Пожалуйста выберите хотя бы один квартал</label></td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Виберите СМО(ТФОМС):</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="oneTFOMS" value="onetfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="oneSimaz" value="onesimaz" name="org[]"> СимазМед&nbsp;
+												<input type="checkbox" id="oneIngos" value="oneingos" name="org[]"> Ингосстрах&nbsp;
+												<input type="checkbox" id="oneRosno" value="onerosno" name="org[]"> РОСНО
+											</td>
+										</tr>
+										<tr><td><label for="org[]" class="error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
+										<tr>
+										<td><button type="submit" value="Submit" class="btn btn-primary">Скачать отчет</button></td>
+										</tr>
+										</table>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" id="closereportonepart" data-dismiss="modal">Закрыть окно</button>
+								</div>
+							</div>
+						</div>
+					</div>
+<!-- CAST BLOCK MODAL WINDOWS FROM MENU -->
 
 <div id="dim">
 			<div class="msgbox">
@@ -265,7 +338,7 @@ $(document).ready(function()
 									<p>Добавление анкеты  амбулаторно-поликлинической помощи</p>
 
 								</div>
-					<div class="cmxform" id="form1" >			
+					<div  id="form1" >			
 								<div class="modal-body">
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
@@ -865,9 +938,10 @@ $(document).ready(function()
   <button>Add</button>
   </form>  -->  
   <!-- <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' />  -->
-  <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/reports.js"></script>  
 <!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
 <script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> -->

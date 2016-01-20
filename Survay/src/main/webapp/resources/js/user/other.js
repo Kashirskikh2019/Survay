@@ -51,3 +51,24 @@
 	   	setTimeout("$('.mask a').css('background-position','');$('.mask a').css({transition: ''});",11000);
 	   	
 	   }
+	   
+   /*
+    * Метод проверяет на заполненость всей формы ОТЧЕТА ПЕРВОГО УРОВНЯ ИНДИКАТОР ДОСТУПНОСТИ КАЧЕСТВА
+    */
+	   /*   function validateOneReportAvalible()
+   {
+	   
+   	if(	($("#oneFirstKv").val()||
+   	   !$("#oneSecondKv").val()||
+   	   !$("#oneTreeKv").val()||
+   	   !$("#oneFourKv").val()||
+   	   
+   	   
+   	   !$("#oneTFOMS").val()||
+   	   !$("#oneSimaz").val()||
+   	   !$("#oneIngos").val()||
+   	   !$("#oneRosno").val() return true;
+   	
+   		else return false;
+   }	   
+*/
