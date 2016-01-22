@@ -46,6 +46,9 @@ $(document).ready(function()
 	$( "#dateBeginStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneStac" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	$( "#dateBeginOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
 
 });
 </script>
@@ -187,26 +190,25 @@ $("#formOneReport").validate();
 									<button type="button btn-primary" class="close"
 										data-dismiss="modal" aria-hidden="true">&times;</button>
 									<h3 class="modal-title">Отчет первого уроня</h3>
-									<p>Индикатор доступности и качества медицинской помощи</p>
+									<p>Индикатор доступности и качества медицинской помощи</p><br>
+									Количество респондентов которых требуется опросить выводится относительно квартала в выбранном периоде дат. 
 
 								</div>
 								<div class="modal-body">
 										<form class="cmxform" id="formOneReport" action="firstPartReport" method="">
 										<table cellspacing='15'>
 										<tr>
-											<td style="text-decoration: underline;"><h4>Выберите квартал:</h4></td>
+											<td style="text-decoration: underline;"><h4>Выберите дату:</h4></td>
 										</tr>
 										<tr>
 											<td>
-												<input type="checkbox" id="oneFirstKv" name="kv[]" required minlength="1"> Первый квартал&nbsp;
-												<input type="checkbox" id="oneSecondKv"  name="kv[]"> Второй квартал&nbsp;
-												<input type="checkbox" id="oneTreeKv"  name="kv[]"> Третий квартал&nbsp;
-												<input type="checkbox" id="oneFourKv" name="kv[]"> Четвертый квартал
+											<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginOneReport"  name="datebeginonereport" placeholder="">&nbsp;&nbsp;
+											<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndOneReport"  name="dateendonereport" placeholder="">
 											</td>
 										</tr>
-										<tr><td><label for="kv[]" class="error" style="display: none; color:red;">Пожалуйста выберите хотя бы один квартал</label></td></tr>
+										<tr><td>&nbsp;</td></tr>
 										<tr>
-											<td style="text-decoration: underline;"><h4>Виберите СМО(ТФОМС):</h4></td>
+											<td style="text-decoration: underline;"><h4>Выберите СМО(ТФОМС):</h4></td>
 										</tr>
 										<tr>
 											<td>

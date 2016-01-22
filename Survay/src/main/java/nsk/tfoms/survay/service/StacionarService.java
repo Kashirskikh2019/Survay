@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
 
 import org.springframework.stereotype.Service;
@@ -50,4 +51,34 @@ public class StacionarService {
 	    .getResultList();
 	    return result;
 	  }
+	  
+	  
+	  /*
+	   * block querys for reports дата ограничение на возраст и пол
+	   */
+
+	  @Transactional
+	  public List<SurvayStacionar> getReportLess(String d1, String d2,String userp,String sex,Integer age) {
+	    List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE p.polzovatelonestac=:userp AND p.sexStac=:sex AND p.ageStac<='"+age+"' AND (p.dataInputStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
+	    .setParameter("d1", d1)  
+	    .setParameter("d2", d2)  
+	    .setParameter("userp", userp)
+	    .setParameter("sex", sex)
+	    //.setParameter("age", age)
+	    .getResultList();
+	    return result;
+	  }
+	  
+	  @Transactional
+	  public List<SurvayStacionar> getReportMore(String d1, String d2,String userp,String sex,int age) {
+		  List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE p.polzovatelonestac=:userp AND p.sexStac=:sex AND p.ageStac>='"+age+"' AND (p.dataInputStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
+	    .setParameter("d1", d1)  
+	    .setParameter("d2", d2)  
+	    .setParameter("userp", userp)
+	    .setParameter("sex", sex)
+	    //.setParameter("age", age)
+	    .getResultList();
+	    return result;
+	  }
+
 }

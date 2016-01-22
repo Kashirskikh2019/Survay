@@ -239,6 +239,9 @@ public class SurvayClinic implements Serializable {
 	public void setMo(String mo) {
 		this.mo = mo;
 	}
+	
+	
+	
 
 	@Override
 	public String toString() {
@@ -286,5 +289,27 @@ public class SurvayClinic implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	/*
+	 * Method considers counts of answers on certain mask  
+	 */
+	 public int getCount()
+		{
+	    	int col = 0;
+	    	
+	    	if(getClinicDoctor().equals("Удовлетворен(а)") || getClinicDoctor().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getDiagnosticTests().equals("Удовлетворен(а)") || getDiagnosticTests().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getEquipment().equals("Удовлетворен(а)") || getEquipment().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getFreeHelp().equals("Удовлетворен(а)") || getFreeHelp().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getLaboratoryResearch().equals("Удовлетворен(а)") || getLaboratoryResearch().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getMedicalSpecialists().equals("Удовлетворен(а)") || getMedicalSpecialists().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getRepairs().equals("Удовлетворен(а)") || getRepairs().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getSeeADoctor().equals("Удовлетворен(а)") || getSeeADoctor().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getTherapist().equals("Удовлетворен(а)") || getTherapist().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getWaitingTime().equals("Удовлетворен(а)") || getWaitingTime().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	if(getWaitingTime2().equals("Удовлетворен(а)") || getWaitingTime2().equals("Скорее удовлетворен(а), чем не удовлетворен(а)")) col = col +1 ;
+	    	
+	    	return col;
+		}
 
 }

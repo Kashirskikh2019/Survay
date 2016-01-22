@@ -6,15 +6,14 @@ function onepartreports() {
 	
 	var search = {}
 	
-	search["onefirstkv"] = $("#oneFirstKv").is(':checked')
-	search["onesecondkv"] = $("#oneSecondKv").is(':checked')
-	search["onetreekv"] = $("#oneTreeKv").is(':checked')
-	search["onefourkv"] =$("#oneFourKv").is(':checked')
+	search["datestart"] = $("input[name='datebeginonereport']").val();
+	search["dateend"] = $("input[name='dateendonereport']").val();
 	search["onefoms"] = $("#oneTFOMS").is(':checked')
 	search["onesimaz"] = $("#oneSimaz").is(':checked')
 	search["oneingos"] = $("#oneIngos").is(':checked')
 	search["onerosno"] = $("#oneRosno").is(':checked')
 	
+	console.log($("input[name='datebeginonereport']").val()+'   '+$("input[name='dateendonereport']").val());
 	$.ajax({
 		url : 'firstPartReport',
 		type: 'Post',

@@ -25,7 +25,7 @@
 		
 			<user-service>
 				 <user name="admin" password="admin"  authorities="ROLE_ADMIN" />
-				 <user name="hamitov" password="zxc234" authorities="ROLE_TFOMS" />
+				 <user name="tfoms" password="zxc234" authorities="ROLE_TFOMS" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

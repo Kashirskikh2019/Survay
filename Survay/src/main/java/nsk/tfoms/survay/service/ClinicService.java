@@ -49,4 +49,32 @@ public class ClinicService {
 	  
 	  if (p.getId() == null) {this.em.persist(p);} else {this.em.merge(p);}
   }
+  
+  /*
+   * block querys for reports дата ограничение на возраст и пол
+   */
+
+  @Transactional
+  public List<SurvayClinic> getReportLess(String d1, String d2,String userp,String sex,Integer age) {
+    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.polzovatel =:userp AND p.sex=:sex AND p.age<='"+age+"' AND (p.dataInput BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinic.class)
+    .setParameter("d1", d1)  
+    .setParameter("d2", d2)  
+    .setParameter("userp", userp)
+    .setParameter("sex", sex)
+    //.setParameter("age", age)
+    .getResultList();
+    return result;
+  }
+  
+  @Transactional
+  public List<SurvayClinic> getReportMore(String d1, String d2,String userp,String sex,int age) {
+    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.polzovatel =:userp AND p.sex=:sex AND p.age>='"+age+"' AND (p.dataInput BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinic.class)
+    .setParameter("d1", d1)  
+    .setParameter("d2", d2)  
+    .setParameter("userp", userp)
+    .setParameter("sex", sex)
+    //.setParameter("age", age)
+    .getResultList();
+    return result;
+  }
 }

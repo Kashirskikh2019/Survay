@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +28,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import nsk.tfoms.survay.entity.SurvayClinic;
+import nsk.tfoms.survay.entity.SurvayDaystacionar;
+import nsk.tfoms.survay.entity.SurvayStacionar;
 import nsk.tfoms.survay.pojo.ParamOnePart;
+import nsk.tfoms.survay.service.ClinicService;
+import nsk.tfoms.survay.service.DayStacionarService;
+import nsk.tfoms.survay.service.StacionarService;
+import nsk.tfoms.survay.util.TimesAndDate;
 import nsk.tfoms.survay.util.Util;
+import nsk.tfoms.survay.util.report.Reports;
 
 
 
@@ -35,6 +45,10 @@ import nsk.tfoms.survay.util.Util;
 public class AllController
 {
 	@Autowired private ServletContext servletContext;
+	
+	@Autowired private DayStacionarService daystacionarservice;
+	@Autowired private StacionarService stacionarservice;
+	@Autowired private ClinicService personSvc;
 	
     private static final int BUFFER_SIZE = 4096;
     
@@ -58,16 +72,117 @@ public class AllController
      * Method for handling file download request from client
      */
     @RequestMapping(value = "/firstPartReport",method = RequestMethod.POST)
-    public void doDownload(HttpServletRequest request,HttpServletResponse response,
+    public @ResponseBody nsk.tfoms.survay.util.JsonResponse doDownload(HttpServletRequest request,HttpServletResponse response,
     		@RequestBody ParamOnePart paramonepart) throws IOException {
     	
-    	 
-
+    	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+       
+    	List<List<SurvayClinic>> forOneOrgClinic = null;
+    	List<List<SurvayDaystacionar>> forOneOrgDayStac = null;
+    	List<List<SurvayStacionar>> forOneOrgStac = null;
     	
-    	
+    	if(! parseorg(paramonepart).equals("bad"))
+    	{
+    		System.out.println("===================Clinic================================");
+		    List<SurvayClinic> list1 = personSvc.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59);
+		    List<SurvayClinic> list2 = personSvc.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54);
+		    List<SurvayClinic> list3 = personSvc.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60);
+		    List<SurvayClinic> list4 = personSvc.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55);
 
-      
-        
+		    forOneOrgClinic = new ArrayList<List<SurvayClinic>>();
+		    forOneOrgClinic.add(list1);
+		    forOneOrgClinic.add(list2);
+		    forOneOrgClinic.add(list3);
+		    forOneOrgClinic.add(list4);
+
+		    System.out.println("=============================DayStacionar===============================");
+		    List<SurvayDaystacionar> list5 = daystacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59);
+		    List<SurvayDaystacionar> list6 = daystacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54);
+		    List<SurvayDaystacionar> list7 = daystacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60);
+		    List<SurvayDaystacionar> list8 = daystacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55);
+		    
+		    forOneOrgDayStac = new ArrayList<List<SurvayDaystacionar>>();
+		    forOneOrgDayStac.add(list5);
+		    forOneOrgDayStac.add(list6);
+		    forOneOrgDayStac.add(list7);
+		    forOneOrgDayStac.add(list8);
+		    
+		    
+		    System.out.println("=========================================Stacionar==========================");
+		    List<SurvayStacionar> list9 = stacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59);
+		    List<SurvayStacionar> list10 = stacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54);
+		    List<SurvayStacionar> list11 = stacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60);
+		    List<SurvayStacionar> list12 = stacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55);
+
+		    forOneOrgStac = new ArrayList<List<SurvayStacionar>>();
+		    forOneOrgStac.add(list9);
+		    forOneOrgStac.add(list10);
+		    forOneOrgStac.add(list11);
+		    forOneOrgStac.add(list12);
+		    
+		    new Reports().loadToExcelResalt(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request);
+    	}
+	    
+    	
+    	if(paramonepart.getOneingos().equals("true")){
+    		
+    	}
+	    
+	    res.setStatus("SUCCESS");
+	    res.setResult(new String("Тест"));
+
+		return res; 
         
     }
+    
+    
+    /*
+     * Method being search only once organizacion and pass resalt to return
+     * 1 - tfoms
+     * 2 - ingos
+     * 3 - simaz
+     * 4 - rosno  
+     */
+    private String parseorg(ParamOnePart paramonepart)
+    {
+        int i = 0;	
+        int j = 0;
+    	if(paramonepart.getOnefoms().equals("true")){	i=i+1;	j = 1;}
+    	if(paramonepart.getOneingos().equals("true")){	i=i+1;	j = 2;}
+    	if(paramonepart.getOnesimaz().equals("true")){	i=i+1;	j = 3;}
+    	if(paramonepart.getOnerosno().equals("true")){	i=i+1;	j = 4;}
+    	
+    	if(i == 1 && j == 1){ return "tfoms"; }
+    	if(i == 1 && j == 2){ return "ingos"; }
+    	if(i == 1 && j == 3){ return "simaz"; }
+    	if(i == 1 && j == 4){ return "rosno"; }
+    	
+    	return "bad";
+    }
+    
+    
+    private void  count(List<Object> list)
+    {
+    	for(int i = 0; i<list.size();i++)
+    	{
+    		Object t = list.get(0);
+    		
+    	}
+    	
+       
+    }
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

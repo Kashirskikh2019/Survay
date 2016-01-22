@@ -1,13 +1,14 @@
 package nsk.tfoms.survay.pojo;
 
-
+import javax.validation.constraints.Pattern;
 
 public class ParamOnePart {
 	
-	private String onefirstkv;
-	private String onesecondkv;
-	private String onetreekv;
-	private String onefourkv;
+	
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
+	private String datestart;
+	@Pattern(regexp = "(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}")
+	private String dateend;
 	
 	private String onefoms;
 	private String onesimaz;
@@ -15,30 +16,8 @@ public class ParamOnePart {
 	private String onerosno;
 	
 	
-	public String getOnefirstkv() {
-		return onefirstkv;
-	}
-	public void setOnefirstkv(String onefirstkv) {
-		this.onefirstkv = onefirstkv;
-	}
-	public String getOnesecondkv() {
-		return onesecondkv;
-	}
-	public void setOnesecondkv(String onesecondkv) {
-		this.onesecondkv = onesecondkv;
-	}
-	public String getOnetreekv() {
-		return onetreekv;
-	}
-	public void setOnetreekv(String onetreekv) {
-		this.onetreekv = onetreekv;
-	}
-	public String getOnefourkv() {
-		return onefourkv;
-	}
-	public void setOnefourkv(String onefourkv) {
-		this.onefourkv = onefourkv;
-	}
+	
+	
 	public String getOnefoms() {
 		return onefoms;
 	}
@@ -60,20 +39,29 @@ public class ParamOnePart {
 	public String getOnerosno() {
 		return onerosno;
 	}
+	
+	public String getDatestart() {
+		return datestart;
+	}
+	public void setDatestart(String datestart) {
+		this.datestart = datestart;
+	}
+	public String getDateend() {
+		return dateend;
+	}
+	public void setDateend(String dateend) {
+		this.dateend = dateend;
+	}
 	public void setOnerosno(String onerosno) {
 		this.onerosno = onerosno;
 	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ParamOnePart [onefirstkv=");
-		builder.append(onefirstkv);
-		builder.append(", onesecondkv=");
-		builder.append(onesecondkv);
-		builder.append(", onetreekv=");
-		builder.append(onetreekv);
-		builder.append(", onefourkv=");
-		builder.append(onefourkv);
+		builder.append("ParamOnePart [datestart=");
+		builder.append(datestart);
+		builder.append(", dateend=");
+		builder.append(dateend);
 		builder.append(", onefoms=");
 		builder.append(onefoms);
 		builder.append(", onesimaz=");
@@ -85,5 +73,4 @@ public class ParamOnePart {
 		builder.append("]");
 		return builder.toString();
 	}
-
 }
