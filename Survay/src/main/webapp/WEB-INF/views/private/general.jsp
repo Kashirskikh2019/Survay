@@ -35,6 +35,27 @@ $(document).ready(function()
 	var user = '${principal.username}';
 	console.log('log '+ user);
 	
+	if(user == 'smo_simaz')
+	{
+		$("#oneTFOMS").attr("disabled", true);
+		$("#oneIngos").attr("disabled", true);
+		$("#oneRosno").attr("disabled", true);
+	}
+	
+	if(user == 'smo_rosno')
+	{
+		$("#oneTFOMS").attr("disabled", true);
+		$("#oneIngos").attr("disabled", true);
+		$("#oneSimaz").attr("disabled", true);
+	}
+	
+	if(user == 'smo_ingos')
+	{
+		$("#oneTFOMS").attr("disabled", true);
+		$("#oneRosno").attr("disabled", true);
+		$("#oneSimaz").attr("disabled", true);
+	}
+	
 	$( "#dateBegin" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneClinic" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEnd" ).datepicker({dateFormat:'dd.mm.yy'});
@@ -54,10 +75,9 @@ $(document).ready(function()
 </script>
 <script>
 $(document).ready(function() {
-	// only for demo purposes
-	$.validator.setDefaults({
+		$.validator.setDefaults({
 		submitHandler: function() {
-			onepartreports();
+			onepartreports('btnsf');
 		}
 	});
 	
@@ -212,7 +232,7 @@ $("#formOneReport").validate();
 										</tr>
 										<tr>
 											<td>
-												<input type="checkbox" id="oneTFOMS" value="onetfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="oneTFOMS"  value="onetfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
 												<input type="checkbox" id="oneSimaz" value="onesimaz" name="org[]"> СимазМед&nbsp;
 												<input type="checkbox" id="oneIngos" value="oneingos" name="org[]"> Ингосстрах&nbsp;
 												<input type="checkbox" id="oneRosno" value="onerosno" name="org[]"> РОСНО
@@ -220,10 +240,11 @@ $("#formOneReport").validate();
 										</tr>
 										<tr><td><label for="org[]" class="error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
 										<tr>
-										<td><button type="submit" value="Submit" class="btn btn-primary">Скачать отчет</button></td>
+										<td><button type="submit" value="Submit" id="btnsf"  class="btn btn-primary">Скачать отчет</button></td>
 										</tr>
 										</table>
 									</form>
+									
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-primary" id="closereportonepart" data-dismiss="modal">Закрыть окно</button>

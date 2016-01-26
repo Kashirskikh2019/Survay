@@ -7,10 +7,10 @@
 
 	<http auto-config="true">
 	
-		<intercept-url pattern="/" access="ROLE_ADMIN,ROLE_TFOMS" />
-		<intercept-url pattern="/general" access="ROLE_ADMIN,ROLE_TFOMS" />
-		<intercept-url pattern="/general/*" access="ROLE_ADMIN,ROLE_TFOMS" />
-		<intercept-url pattern="/general*" access="ROLE_ADMIN,ROLE_TFOMS" />
+		<intercept-url pattern="/" access="ROLE_SMO,ROLE_TFOMS" />
+		<intercept-url pattern="/general" access="ROLE_SMO,ROLE_TFOMS" />
+		<intercept-url pattern="/general/*" access="ROLE_SMO,ROLE_TFOMS" />
+		<intercept-url pattern="/general*" access="ROLE_SMO,ROLE_TFOMS" />
 		
 		<form-login login-page="/login" default-target-url="/general" authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />
@@ -24,7 +24,7 @@
 		<authentication-provider>
 		
 			<user-service>
-				 <user name="admin" password="admin"  authorities="ROLE_ADMIN" />
+				 <user name="smo_simaz" password="uyt765"  authorities="ROLE_SMO" />
 				 <user name="tfoms" password="zxc234" authorities="ROLE_TFOMS" />
 			</user-service>
 		</authentication-provider>

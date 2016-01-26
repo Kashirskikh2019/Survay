@@ -52,9 +52,7 @@ public class AllController
 	
     private static final int BUFFER_SIZE = 4096;
     
-   
-             
-    private String filePath = "/downloads/SpringProject.zip";
+    
 	@RequestMapping(value = "/general",method = RequestMethod.GET)
 	  public String listAll(Model model){
 		File mo = new File( servletContext.getRealPath("/WEB-INF/mo.txt"));
@@ -64,6 +62,55 @@ public class AllController
 		model.addAttribute("listage", Util.getMo(age.getPath()));
 		
 	    return "private/general";
+	}
+	
+	
+	@RequestMapping(value = "/download",method = RequestMethod.GET)
+	public void doDownload(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+     
+		String filePath  = "/downloads/"+request.getSession().getAttribute("filename");
+		// get absolute path of the application
+		ServletContext context = request.getServletContext();
+		String appPath = context.getRealPath("");
+
+		// construct the complete absolute path of the file
+		String fullPath = appPath + filePath;		
+		File downloadFile = new File(fullPath);
+		FileInputStream inputStream = new FileInputStream(downloadFile);
+		
+		String mimeType = context.getMimeType(fullPath);
+		if (mimeType == null) {
+			// set to binary type if MIME mapping not found
+			mimeType = "application/octet-stream";
+		}
+
+		// set content attributes for the response
+		response.setContentType(mimeType);
+		response.setContentLength((int) downloadFile.length());
+
+		// set headers for the response
+		String headerKey = "Content-Disposition";
+		String headerValue = String.format("attachment; filename=\"%s\"",
+				downloadFile.getName());
+		response.setHeader(headerKey, headerValue);
+
+		// get output stream of the response
+		OutputStream outStream = response.getOutputStream();
+
+		byte[] buffer = new byte[BUFFER_SIZE];
+		int bytesRead = -1;
+
+		// write bytes read from the input stream into the output stream
+		while ((bytesRead = inputStream.read(buffer)) != -1) {
+			outStream.write(buffer, 0, bytesRead);
+		}
+		
+		inputStream.close();
+		outStream.close();
+		
+		new File(fullPath).delete();
+     
 	}
 	 
 	
@@ -120,16 +167,18 @@ public class AllController
 		    forOneOrgStac.add(list11);
 		    forOneOrgStac.add(list12);
 		    
-		    new Reports().loadToExcelResalt(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request);
+		    new Reports().loadToExcelResalt(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart));
+    	}
+    	else
+    	{
+    		// реализация для выделенных несколькох checkbox'ов  тфомс ингос
     	}
 	    
     	
-    	if(paramonepart.getOneingos().equals("true")){
-    		
-    	}
+    	
 	    
 	    res.setStatus("SUCCESS");
-	    res.setResult(new String("Тест"));
+	    res.setResult(new String("Ok"));
 
 		return res; 
         

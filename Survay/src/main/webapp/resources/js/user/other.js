@@ -25,6 +25,21 @@
 		   $("#idoneStac").val('');
 		   
 		});
+		
+		// кнопка закрыть окно (окно отчетов певого уровня)
+		   $("#closereportonepart,.close").click(function()
+			{
+			   $( "#oneTFOMS" ).prop( "checked", false );
+			   $( "#oneSimaz" ).prop( "checked", false );
+			   $( "#oneIngos" ).prop( "checked", false );
+			   $( "#oneRosno" ).prop( "checked", false );
+			   $("#btnsf").attr("disabled", false);
+			     
+			   $("input[name='datebeginonereport']").val('');
+			   $("input[name='dateendonereport']").val('');
+			   
+			   
+			});
 	   
 	   // кнопка отмена (при отмене на модальном окне анкеты)
 	   $("#cancelOneClinic,.close").click(function()

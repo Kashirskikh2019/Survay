@@ -2,7 +2,7 @@
  * Метод отправляет данные на сервер с формы отчетов первого уровня 
  * 
  */
-function onepartreports() {
+function onepartreports(buttonId) {
 	
 	var search = {}
 	
@@ -13,6 +13,9 @@ function onepartreports() {
 	search["oneingos"] = $("#oneIngos").is(':checked')
 	search["onerosno"] = $("#oneRosno").is(':checked')
 	
+	var obj = document.getElementById(buttonId);
+	if (obj) {obj.disabled = true;} 
+	
 	console.log($("input[name='datebeginonereport']").val()+'   '+$("input[name='dateendonereport']").val());
 	$.ajax({
 		url : 'firstPartReport',
@@ -21,12 +24,23 @@ function onepartreports() {
 		data : JSON.stringify(search),
 		contentType: 'application/json',
 	    mimeType: 'application/json',
-							success: function(data) {
-            							//window.location.href = '${pageContext.request.contextPath}/download/'+ data;
-            							console.log("success");	      
-							    },  
+							success: function(data)
+							{
+								
+								document.location.href = '/survay/download'
+								$("input[name='datebeginonereport']").val('');
+								$("input[name='dateendonereport']").val('');
+								
+								$( "#oneTFOMS" ).prop( "checked", false );
+								$( "#oneSimaz" ).prop( "checked", false );
+								$( "#oneIngos" ).prop( "checked", false );
+								$( "#oneRosno" ).prop( "checked", false );
+								
+								obj.disabled = false;
+						    },
+						  
 							    error: function(e){  
-							      alert('Error: ' + e.data); 
+							      alert('Произошла ошибка обновите станицу'); 
 							     
 							    }		    
 	});
