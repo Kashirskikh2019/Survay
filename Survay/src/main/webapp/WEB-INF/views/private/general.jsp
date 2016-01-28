@@ -71,17 +71,19 @@ $(document).ready(function()
 	$( "#dateBeginOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
 
+	$( "#dateBeginOneReportlg" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndOneReportlg" ).datepicker({dateFormat:'dd.mm.yy'});
 });
 </script>
 <script>
 $(document).ready(function() {
-		$.validator.setDefaults({
-		submitHandler: function() {
-			onepartreports('btnsf');
-		}
-	});
 	
-$("#formOneReport").validate();
+$("#formOneReport").validate({
+   	submitHandler: function() {
+		onepartreports('btnsf');
+	  }
+	});
+
 });
 </script>
 
@@ -150,6 +152,7 @@ $("#formOneReport").validate();
 						              <a href="#">Отчеты первого уровня</a>
 						              <ul class="dropdown-menu">
 						                <li><a href="#"  data-toggle="modal" data-target="#myModal777">Индикатор доступности и качества медицинской помощи</a></li>
+						                <li><a href="#"  data-toggle="modal" data-target="#myModal888">Сформировать отчет</a></li>
 						                <li class="divider"></li>
 						                <li><a href="#">Инфографика</a></li>
 						              </ul>
@@ -214,7 +217,7 @@ $("#formOneReport").validate();
 									Количество респондентов которых требуется опросить выводится относительно квартала в выбранном периоде дат. 
 
 								</div>
-								<div class="modal-body">
+								<div class="modal-body" style="background: rgb(247, 246, 241);">
 										<form class="cmxform" id="formOneReport" action="firstPartReport" method="">
 										<table cellspacing='15'>
 										<tr>
@@ -222,11 +225,38 @@ $("#formOneReport").validate();
 										</tr>
 										<tr>
 											<td>
-											<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginOneReport"  name="datebeginonereport" placeholder="">&nbsp;&nbsp;
-											<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndOneReport"  name="dateendonereport" placeholder="">
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateBeginOneReport"  name="datebeginonereport" placeholder="" title="Укажите дату начала отчета">&nbsp;
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateEndOneReport"  name="dateendonereport" placeholder="" title="Укажите дату окончания отчета">
 											</td>
 										</tr>
-										<tr><td>&nbsp;</td></tr>
+										<tr><td><label class="error" style="display: none; color:red;"></label></td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите ЛПУ:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<select class="form-control2 required" id="lpuFormOneRerort" style="width: 350px" id="" title="Введите лечебное учреждение">
+											        <option value=""></option>
+											        <option>Все</option>
+											        <c:forEach var="ls" items="${listmo}">
+											        <option>${ls.value}</option>
+											        </c:forEach>
+											    </select>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите категорию ответа:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="ansFormOnePart1"  value="" name="ans[]" required minlength="1"> Удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart2" value="" name="ans[]"> Скорее удовлетворен(а), чем не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart3" value="" name="ans[]"> Скорее не удовлетворен(а), чем удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart4" value="" name="ans[]"> Не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart5" value="" name="ans[]"> Затрудняюсь ответить&nbsp;
+											</td>
+										</tr>
+										<tr><td><label for="ans[]" class="error" id="ans-error" style="display: none; color:red;">Пожалуйста выберите хотя бы один вариант ответа</label></td></tr>
 										<tr>
 											<td style="text-decoration: underline;"><h4>Выберите СМО(ТФОМС):</h4></td>
 										</tr>
@@ -238,7 +268,8 @@ $("#formOneReport").validate();
 												<input type="checkbox" id="oneRosno" value="onerosno" name="org[]"> РОСНО
 											</td>
 										</tr>
-										<tr><td><label for="org[]" class="error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
+										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
+										<tr><td>&nbsp;</td></tr>
 										<tr>
 										<td><button type="submit" value="Submit" id="btnsf"  class="btn btn-primary">Скачать отчет</button></td>
 										</tr>
@@ -253,7 +284,6 @@ $("#formOneReport").validate();
 						</div>
 					</div>
 <!-- CAST BLOCK MODAL WINDOWS FROM MENU -->
-
 <div id="dim">
 			<div class="msgbox">
 				<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->

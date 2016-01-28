@@ -58,26 +58,33 @@ public class DayStacionarService {
 	   */
 
 	  @Transactional
-	  public List<SurvayDaystacionar> getReportLess(String d1, String d2,String userp,String sex,Integer age) {
-	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE p.polzovateldaystacionar=:userp AND p.sexDaystac=:sex AND p.ageDaystac<='"+age+"' AND (p.dataInputDaystac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayDaystacionar.class)
+	  public List<SurvayDaystacionar> getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
+		  String agefor = "p.ageDaystac<='"+age+"'";;
+		  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.ageDaystac>='"+age+"'";		}
+		  
+		  String paste="p.moDayStac=:lpu";
+		  // enter ALL we will passing in query NOT "ALL"(p.mo!=:lpu) because in db no records with  name 'ALL' => so we get all records 
+		  if(lpu.equals("Все"))	{	paste="p.moDayStac!=:lpu";	}
+		  
+		  String []mas = userp.split("!");
+		  String name="(";
+		  if(mas.length == 1){	userp = mas[0]; name = "p.polzovateldaystacionar =:userp";}
+		  if(mas.length > 1){
+			  for (int i = 0; i < mas.length-1; i++) {
+				  name = name + "p.polzovateldaystacionar ='"+mas[i]+"' or ";
+			  }
+			  userp = mas[mas.length-1]; name = name + "p.polzovateldaystacionar =:userp)";
+		  }
+		  
+	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE "+name+" and "+paste+" AND p.sexDaystac=:sex AND "+agefor+" AND (p.dataInputDaystac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayDaystacionar.class)
 	    .setParameter("d1", d1)  
 	    .setParameter("d2", d2)  
 	    .setParameter("userp", userp)
+	    .setParameter("lpu", lpu)
 	    .setParameter("sex", sex)
 	    //.setParameter("age", age)
 	    .getResultList();
 	    return result;
 	  }
-	  
-	  @Transactional
-	  public List<SurvayDaystacionar> getReportMore(String d1, String d2,String userp,String sex,int age) {
-	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE p.polzovateldaystacionar =:userp AND p.sexDaystac=:sex AND p.ageDaystac>='"+age+"' AND (p.dataInputDaystac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayDaystacionar.class)
-	    .setParameter("d1", d1)  
-	    .setParameter("d2", d2)  
-	    .setParameter("userp", userp)
-	    .setParameter("sex", sex)
-	    //.setParameter("age", age)
-	    .getResultList();
-	    return result;
-	  }
+
 }

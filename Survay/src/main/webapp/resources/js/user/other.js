@@ -33,10 +33,27 @@
 			   $( "#oneSimaz" ).prop( "checked", false );
 			   $( "#oneIngos" ).prop( "checked", false );
 			   $( "#oneRosno" ).prop( "checked", false );
+			   
+			   $( "#ansFormOnePart1" ).prop( "checked", false );
+			   $( "#ansFormOnePart2" ).prop( "checked", false );
+			   $( "#ansFormOnePart3" ).prop( "checked", false );
+			   $( "#ansFormOnePart4" ).prop( "checked", false );
+			   $( "#ansFormOnePart5" ).prop( "checked", false );
+			   
 			   $("#btnsf").attr("disabled", false);
 			     
 			   $("input[name='datebeginonereport']").val('');
 			   $("input[name='dateendonereport']").val('');
+			   
+			   $( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
+			   
+			   
+			   $('#dateBeginOneReport-error').hide();
+			   $('#dateEndOneReport-error').hide();
+			   $('#lpuFormOneRerort-error').hide();
+			   $('#ans-error').hide();
+			   $('#org-error').hide();
+			  
 			   
 			   
 			});

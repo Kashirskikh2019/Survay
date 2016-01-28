@@ -128,14 +128,14 @@ public class AllController
     	List<List<SurvayDaystacionar>> forOneOrgDayStac = null;
     	List<List<SurvayStacionar>> forOneOrgStac = null;
     	
-    	if(! parseorg(paramonepart).equals("bad"))
+    	if(! parseorg(paramonepart).equals(""))
     	{
     		System.out.println("===================Clinic================================");
-		    List<SurvayClinic> list1 = personSvc.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59);
-		    List<SurvayClinic> list2 = personSvc.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54);
-		    List<SurvayClinic> list3 = personSvc.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60);
-		    List<SurvayClinic> list4 = personSvc.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55);
-
+		    List<SurvayClinic> list1 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<SurvayClinic> list2 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<SurvayClinic> list3 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<SurvayClinic> list4 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+		    
 		    forOneOrgClinic = new ArrayList<List<SurvayClinic>>();
 		    forOneOrgClinic.add(list1);
 		    forOneOrgClinic.add(list2);
@@ -143,12 +143,17 @@ public class AllController
 		    forOneOrgClinic.add(list4);
 
 		    System.out.println("=============================DayStacionar===============================");
-		    List<SurvayDaystacionar> list5 = daystacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59);
-		    List<SurvayDaystacionar> list6 = daystacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54);
-		    List<SurvayDaystacionar> list7 = daystacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60);
-		    List<SurvayDaystacionar> list8 = daystacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55);
+		    List<SurvayDaystacionar> list5 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<SurvayDaystacionar> list6 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<SurvayDaystacionar> list7 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<SurvayDaystacionar> list8 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
 		    
-		    forOneOrgDayStac = new ArrayList<List<SurvayDaystacionar>>();
+		    System.out.println("@@@ "+list5+" "+list5.size());
+		    System.out.println("@@@ "+list6+" "+list6.size());
+		    System.out.println("@@@ "+list7+" "+list7.size());
+		    System.out.println("@@@ "+list8+" "+list8.size());
+		    
+		    /*forOneOrgDayStac = new ArrayList<List<SurvayDaystacionar>>();
 		    forOneOrgDayStac.add(list5);
 		    forOneOrgDayStac.add(list6);
 		    forOneOrgDayStac.add(list7);
@@ -168,6 +173,7 @@ public class AllController
 		    forOneOrgStac.add(list12);
 		    
 		    new Reports().loadToExcelResalt(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart));
+		    */
     	}
     	else
     	{
@@ -185,6 +191,11 @@ public class AllController
     }
     
     
+    
+    
+    
+    
+    
     /*
      * Method being search only once organizacion and pass resalt to return
      * 1 - tfoms
@@ -196,17 +207,25 @@ public class AllController
     {
         int i = 0;	
         int j = 0;
-    	if(paramonepart.getOnefoms().equals("true")){	i=i+1;	j = 1;}
-    	if(paramonepart.getOneingos().equals("true")){	i=i+1;	j = 2;}
-    	if(paramonepart.getOnesimaz().equals("true")){	i=i+1;	j = 3;}
-    	if(paramonepart.getOnerosno().equals("true")){	i=i+1;	j = 4;}
+        String orgs="";
+    	if(paramonepart.getOnefoms().equals("true")){	i=i+1;	j = 1; orgs =orgs+"tfoms!"; }
+    	if(paramonepart.getOneingos().equals("true")){	i=i+1;	j = 2; orgs =orgs+"smo_ingos!";}
+    	if(paramonepart.getOnesimaz().equals("true")){	i=i+1;	j = 3; orgs =orgs+"smo_simaz!";}
+    	if(paramonepart.getOnerosno().equals("true")){	i=i+1;	j = 4; orgs =orgs+"smo_rosno!";}
     	
-    	if(i == 1 && j == 1){ return "tfoms"; }
+    	/*if(i == 1 && j == 1){ return "tfoms"; }
     	if(i == 1 && j == 2){ return "ingos"; }
     	if(i == 1 && j == 3){ return "simaz"; }
     	if(i == 1 && j == 4){ return "rosno"; }
     	
-    	return "bad";
+    	String []mas = orgs.split("!");
+    	for (int k = 0; k < mas.length; k++) {
+			System.out.println(mas[k]);
+		}
+    	*/
+    	
+    	
+    	return orgs;
     }
     
     

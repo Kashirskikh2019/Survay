@@ -20,6 +20,7 @@ $.extend($.fn, {
 
 		// if nothing is selected, return nothing; can't chain anyway
 		if ( !this.length ) {
+			console.log('test');
 			if ( options && options.debug && window.console ) {
 				console.warn( "Nothing selected, can't validate, returning nothing." );
 			}
