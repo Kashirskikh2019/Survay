@@ -118,9 +118,9 @@ $("#formOneReport").validate({
 			        <!-- Collect the nav links, forms, and other content for toggling -->
 			        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			            <ul class="nav navbar-nav">
-			            <li><a href="#"><i class="fa fa-warning faa-flash animated-hover"></i>&nbsp;&nbsp;Выборка</a></li>
+			            <li><a href="#" class="menufonts"><i class="fa fa-warning faa-flash animated-hover"></i>&nbsp;&nbsp;Выборка</a></li>
 			                <li class="dropdown">
-			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list-alt "></i>&nbsp;&nbsp;Анкеты первого уровня <span class="caret"></span></a>
+			                    <a href="#" class="dropdown-toggle menufonts" data-toggle="dropdown"><i class="fa fa-list-alt "></i>&nbsp;&nbsp;Анкеты первого уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
 			                        <li><a href="#" id="one_ambul_pol" onclick="alloneclinic('${principal.username}')"><i class="fa fa-ambulance"></i>&nbsp;&nbsp;Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
@@ -132,7 +132,7 @@ $("#formOneReport").validate({
 			                </li>
 			                
 			                <li class="dropdown">
-			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-align-right"></i>&nbsp;&nbsp;Анкеты второго уровня <span class="caret"></span></a>
+			                    <a href="#" class="dropdown-toggle menufonts" data-toggle="dropdown"><i class="fa fa-align-right"></i>&nbsp;&nbsp;Анкеты второго уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
 			                        <li><a href="#">Action</a></li>
 			                        <li><a href="#">Another action</a></li>
@@ -145,16 +145,13 @@ $("#formOneReport").validate({
 			                </li>
 			                
 			                <li class="dropdown">
-			                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i>&nbsp;&nbsp;Отчеты <span class="caret"></span></a>
+			                    <a href="#" class="dropdown-toggle menufonts" data-toggle="dropdown"><i class="fa fa-book"></i>&nbsp;&nbsp;Отчеты <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
 			                        
 	              					 <li class="dropdown-submenu">
 						              <a href="#">Отчеты первого уровня</a>
 						              <ul class="dropdown-menu">
 						                <li><a href="#"  data-toggle="modal" data-target="#myModal777">Индикатор доступности и качества медицинской помощи</a></li>
-						                <li><a href="#"  data-toggle="modal" data-target="#myModal888">Сформировать отчет</a></li>
-						                <li class="divider"></li>
-						                <li><a href="#">Инфографика</a></li>
 						              </ul>
 						            </li>	
 	              						
@@ -166,8 +163,6 @@ $("#formOneReport").validate({
 						                <li><a href="#" id="idicAvalibelTwo">Индикатор доступности и качества медицинской помощи</a></li>
 						                <li class="divider"></li>
 						                <li><a href="#" id="idicInfoTwo">Индикатор информированности застрахованных о своих правах в системе ОМС</a></li>
-						                <li class="divider"></li>
-						                <li><a href="#">Инфографика</a></li>
 						              </ul>
 						            </li>
 			                        
@@ -217,7 +212,7 @@ $("#formOneReport").validate({
 									Количество респондентов которых требуется опросить выводится относительно квартала в выбранном периоде дат. 
 
 								</div>
-								<div class="modal-body" style="background: rgb(247, 246, 241);">
+								<div class="modal-body backgr">
 										<form class="cmxform" id="formOneReport" action="firstPartReport" method="">
 										<table cellspacing='15'>
 										<tr>
@@ -392,7 +387,7 @@ $("#formOneReport").validate({
 
 								</div>
 					<div  id="form1" >			
-								<div class="modal-body">
+								<div class="modal-body backgr" >
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="mo" title="Введите лечебное учреждение">
@@ -410,7 +405,7 @@ $("#formOneReport").validate({
 								    </div><br><br>
 								    								
 									<p>1.	Оцените уровень вашей  удовлетворенности следующими характеристиками работы поликлиники:</p>
-									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике</div>
+									<div>1.1 Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="freeHelp" title="Введите качество удовлетворенности бесплатной мед помощи">
 								      	<option value=""></option>
@@ -422,7 +417,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 		 						    
-								    <div>Техническим состоянием, ремонтом помещений:</div>
+								    <div>1.2 Техническим состоянием, ремонтом помещений:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="repairs" title="Введите удовлетворенность техническим состоянием">
 								      	<option value=""></option>
@@ -434,7 +429,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Оснащенностью современным медицинским оборудованием:</div>
+								    <div>1.3 Оснащенностью современным медицинским оборудованием:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="equipment" title="Введите удовлетворенность оснащенностью мед оборудованием">
 								      	<option value=""></option>
@@ -446,7 +441,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Организацией записи на прием к врачу:</div>
+								    <div>1.4 Организацией записи на прием к врачу:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="seeADoctor" title="Введите удовлетворенность организации записи на прием к врачу">
 								      	<option value=""></option>
@@ -458,7 +453,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Временем ожидания приема врача:</div>
+								    <div>1.5 Временем ожидания приема врача:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="waitingTime" title="Введите удовлетворенность временем ожидания">
 								      	<option value=""></option>
@@ -470,7 +465,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Сроками ожидания медицинских услуг после записи:</div>
+								    <div>1.6 Сроками ожидания медицинских услуг после записи:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="waitingTime2" title="Введите удовлетворенность сроками ожидания после записи">
 								      	<option value=""></option>
@@ -483,7 +478,7 @@ $("#formOneReport").validate({
 								    </div><br><br>
 								    
 								    
-								    <div>Доступностью необходимых лабораторных исследований/анализов:</div>
+								    <div>1.7 Доступностью необходимых лабораторных исследований/анализов:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="laboratoryResearch" title="Введите удовлетворенность доступностью необходимыми лабораторными исследованиями или анализами">
 								      	<option value=""></option>
@@ -495,7 +490,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.):</div>
+								    <div>1.8 Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.):</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="diagnosticTests" title="Введите удовлетворенность доступностью диагностическими исследованиями">
 								      	<option value=""></option>
@@ -507,7 +502,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Доступностью мед.помощи терапевтов:</div>
+								    <div>1.9 Доступностью мед.помощи терапевтов:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="therapist" title="Введите удовлетворенность мед помощью терапевтов">
 								      	<option value=""></option>
@@ -519,7 +514,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Доступностью мед.помощи врачей-специалистов:</div>
+								    <div>1.10 Доступностью мед.помощи врачей-специалистов:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="medicalSpecialists" title="Введите удовлетворенность мед помощью врачей-специалистов">
 								      	<option value=""></option>
@@ -531,7 +526,7 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    <div>Работой врачей в поликлинике:</div>
+								    <div>1.11 Работой врачей в поликлинике:</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="clinicDoctor" title="Введите удовлетворенность работой врачей в поликлинике">
 								      	<option value=""></option>
@@ -543,48 +538,55 @@ $("#formOneReport").validate({
 								      </select>
 								    </div><br><br>
 								    
-								    
-									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="ambulance" title="Введите обращения к скорой помощи">
-								      	<option value=""></option>
-								        <option>Да</option>
-								        <option>Нет</option>
-								      </select>
-								    </div><br><br>
-								    
-								    
-								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="qualityAmbulance" title="Введите удовлетворенность качеством скорой помощи">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="ambulance" title="Введите обращения к скорой помощи">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+								    </div>
 								    
 								    
-								    <div><p>4.	Пол респондента:</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="sex"title="Введите пол">
-								      	<option value=""></option>
-								        <option>Мужской</option>
-								        <option>Женский</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="qualityAmbulance" title="Введите удовлетворенность качеством скорой помощи">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
 								    
-								    <div><p>5.	Возраст респондента (лет):</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="age"  title="Введите возраст">
-								      	<option value=""></option>
-								      	<c:forEach var="ag" items="${listage}">
-								        <option>${ag.value}</option>
-								        </c:forEach>
-								      </select>
-								    </div><br><br>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">4.	Пол респондента:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="sex"title="Введите пол">
+									      	<option value=""></option>
+									        <option>Мужской</option>
+									        <option>Женский</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">5.	Возраст респондента (лет):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="age"  title="Введите возраст">
+									      	<option value=""></option>
+									      	<c:forEach var="ag" items="${listage}">
+									        <option>${ag.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
 								</div>
 								<input type="hidden" id="polzovatel" value="${principal.username}"/>
@@ -615,7 +617,7 @@ $("#formOneReport").validate({
 
 								</div>
 					<div  id="form2" >			
-								<div class="modal-body">
+								<div class="modal-body backgr">
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="moDayStac" title="Введите лечебное учреждение">
@@ -800,7 +802,7 @@ $("#formOneReport").validate({
 
 								</div>
 					<div id="form3" >			
-								<div class="modal-body">
+								<div class="modal-body backgr">
 									<div>Укажите медицинское учреждение где проходил опрос</div>
 								    <div class="col-xs-4">
 								      <select class="form-control input-sm" id="moonestac">

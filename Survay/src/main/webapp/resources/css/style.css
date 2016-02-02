@@ -224,3 +224,24 @@ body {
 #dateBeginOneReport-error,#dateEndOneReport-error,#lpuFormOneRerort-error{
 	    color: red;
 }
+
+/*  hover - shine questions in ankets*/
+
+.wrap-hv:hover .hv
+{
+    color: red;
+    text-shadow: 0px 5px 15px; 
+}
+
+.menufonts{
+	font-size: 11px;
+	text-transform: uppercase;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: bold;
+}
+
+.backgr{
+	background: #E9F4FB;
+}
+
+

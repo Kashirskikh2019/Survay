@@ -196,14 +196,14 @@ public class Reports {
          excelRow = sheet.createRow(7);
          excelRow = sheet.getRow(7);
          excelRow.setHeight((short) 400);
-         excelCell = excelRow.createCell(6);
-         excelCell = excelRow.getCell(6);
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
          excelCell.setCellValue("Амбулаторно-поликлиническая помощь");
          sheet.addMergedRegion(new CellRangeAddress(7,7,1,5));
          
          excelRow = sheet.getRow(7);
-         excelCell = excelRow.createCell(1);
-         excelCell = excelRow.getCell(1);
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
          excelCell.setCellValue("Дневной стационар");
          sheet.addMergedRegion(new CellRangeAddress(7,7,6,11));
          
@@ -407,6 +407,145 @@ public class Reports {
              excelCell = excelRow.getCell(5);
              excelCell.setCellValue(countonquestionClinic12(forOneOrgClinic));
          
+         /*
+          * Дневной стационар
+          */
+             
+         // Насколько Вы удовлетворены качеством бесплатной медицинской помощи
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(16);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC1(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Насколько Вы удовлетворены качеством бесплатной медицинской помощи
+    	 excelRow = sheet.getRow(16);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC1summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Техническим состоянием, ремонтом помещений, площадью помещений
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(17);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC2(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Техническим состоянием, ремонтом помещений, площадью помещений
+    	 excelRow = sheet.getRow(17);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC2summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Оснащенностью современным медицинским оборудованием
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(18);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC3(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Оснащенностью современным медицинским оборудованием
+    	 excelRow = sheet.getRow(18);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC3summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Комфортностью больничной палаты и мест пребывания пациентов
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(21);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC4(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Комфортностью больничной палаты и мест пребывания пациентов
+    	 excelRow = sheet.getRow(21);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC4summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Комплексом предоставляемых медицинских услуг
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(22);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC5(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Комплексом предоставляемых медицинских услуг
+    	 excelRow = sheet.getRow(22);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC5summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(23);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC6(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.
+    	 excelRow = sheet.getRow(23);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC6summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Обеспеченностью медикаментами и расходными материалами
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(24);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC7(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Обеспеченностью медикаментами и расходными материалами
+    	 excelRow = sheet.getRow(24);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC7summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // Работой лечащего врача
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(25);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(countonquestionDC8(forOneOrgDayStac.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Работой лечащего врача
+    	 excelRow = sheet.getRow(25);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC8summ(forOneOrgDayStac,paramonepart.getMas()));
+         
+         // количество опрошенных респондентов
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(26);	
+             excelCell = excelRow.createCell(i+6);
+             excelCell = excelRow.getCell(i+6);
+             excelCell.setCellValue(forOneOrgDayStac.get(i).size());
+         }
+         
+         // СУММА количество опрошенных респондентов
+    	 excelRow = sheet.getRow(26);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue(countonquestionDC9(forOneOrgDayStac));
+         
          try {
         	 
         	 String name = "Report "+String.valueOf(Math.random())+".xls";
@@ -445,8 +584,8 @@ public class Reports {
     	ls.add("Насколько Вы удовлетворены качеством бесплатной медицинской помощи");
     	ls.add("Техническим состоянием, ремонтом помещений, площадью помещений");
     	ls.add("Оснащенностью современным медицинским оборудованием");
-    	ls.add("Количество опрошенных респондентов амбл.-поликлин. помощи (кол чел)");
-    	ls.add("Требуется опросить амбл.-поликлин. помощи (кол чел)");
+    	ls.add("Всего количество опрошенных респондентов амбл.-поликлин. помощи (кол чел)");// п
+    	ls.add("Требуется опросить амбл.-поликлин. помощи (кол чел)");// п
     	
     	ls.add("Комфортностью больничной палаты и мест пребывания пациентов");// дс
     	ls.add("Комплексом предоставляемых медицинских услуг");// дс
@@ -454,7 +593,8 @@ public class Reports {
     	ls.add("Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.)");// дс с
     	ls.add("Обеспеченностью медикаментами и расходными материалами");// дс с
     	ls.add("Работой лечащего врача");// дс с
-    	ls.add("ИТОГО");
+    	ls.add("Всего количество опрошенных респондентов дневного стационара (кол чел)");// дс
+    	ls.add("Требуется опросить респондентов из дневного стационара (кол чел)");// дс
     	
     	ls.add("Комфортностью больничной палаты и мест пребывания пациентов"); // c 
     	ls.add("Питание"); // c 
@@ -928,5 +1068,347 @@ public class Reports {
         return p;
     }
 
+    private int countonquestionDC1(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getQualityDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC1summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getQualityDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    
+    private int countonquestionDC2(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getRapairsDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC2summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getRapairsDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC3(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getEquipmentDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC3summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getEquipmentDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC4(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getComfortDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+
+    private int countonquestionDC4summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getComfortDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    
+    private int countonquestionDC5(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getServicesDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC5summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getServicesDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC6(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getLaboratoryDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC6summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getLaboratoryDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC7(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getMedicineDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC7summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getMedicineDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC8(List<SurvayDaystacionar> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+           	 if(forOneOrgDayStac.get(i).getTherapistDaystac().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+
+    private int countonquestionDC8summ(List<List<SurvayDaystacionar>> forOneOrgDayStac,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgDayStac.size();i++)
+            {
+    			for(int k=0;k<forOneOrgDayStac.get(i).size();k++){
+    		
+    				if(forOneOrgDayStac.get(i).get(k).getTherapistDaystac().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionDC9(List<List<SurvayDaystacionar>> forOneOrgDayStac)
+    {
+    	int p =0;
+    	for(int i=0;i<forOneOrgDayStac.size();i++)
+    	{
+    		p =p+ forOneOrgDayStac.get(i).size();
+    	}
+    		
+        return p;
+    }
+
+    
     
 }
