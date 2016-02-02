@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -25,6 +26,13 @@ import org.apache.poi.ss.util.RegionUtil;
 import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
+import nsk.tfoms.survay.pojo.ParamOnePart;
+
+/* How it works
+ * In method loadtoexcelresalt pass query from db...init excel...after pass full path name xls file:  request.getSession().setAttribute("filename", name);
+ * and  redirect on client side to the method downloadexcel
+ * 
+ */
 
 public class Reports {
 
@@ -59,8 +67,11 @@ public class Reports {
 		}
     }
     
+
+    
+    
     @SuppressWarnings("deprecation")
-	public void loadToExcelResalt(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user) throws FileNotFoundException, IOException
+	public void loadToExcelResalt2(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart) throws FileNotFoundException, IOException
     {
     	
     	 String applicationPath = request.getServletContext().getRealPath("");
@@ -76,523 +87,326 @@ public class Reports {
          HSSFRow excelRow = null;
          HSSFCell excelCell = null;
          
-         Font fontstyle = wb.createFont();
-         fontstyle.setFontHeightInPoints((short)10);
-         fontstyle.setFontName("Courier New");
-         fontstyle.setItalic(false);
-         fontstyle.setStrikeout(false);
-         fontstyle.setBold(true);
-         CellStyle styleonerow = wb.createCellStyle();         
-         styleonerow.setWrapText(true);
-         styleonerow.setAlignment(CellStyle.ALIGN_CENTER);
-         styleonerow.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-         styleonerow.setFillForegroundColor(IndexedColors.AQUA.getIndex());
-         styleonerow.setFillPattern(CellStyle.SOLID_FOREGROUND);
-         styleonerow.setFont(fontstyle);
-         
-         fontstyle = wb.createFont();
-         fontstyle.setFontHeightInPoints((short)9);
-         fontstyle.setFontName("Courier New");
-         fontstyle.setItalic(false);
-         fontstyle.setStrikeout(false);
-         fontstyle.setBold(false);
-         CellStyle style = wb.createCellStyle();
-         style.setWrapText(true);
-         style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
-         style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-         style.setAlignment(CellStyle.ALIGN_CENTER);
-         style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-         style.setFont(fontstyle);
-         
-         
-         Font font = wb.createFont();
-         font.setFontHeightInPoints((short)20);
-         font.setFontName("Courier New");
-         font.setItalic(false);
-         font.setStrikeout(false);
-         font.setBold(true);
-         CellStyle styleheader = wb.createCellStyle();
-         styleheader.setWrapText(true);
-         styleheader.setAlignment(CellStyle.ALIGN_CENTER);
-         styleheader.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-         styleheader.setFont(font);
-         
-         Font fontforother = wb.createFont();
-         fontforother.setFontHeightInPoints((short)9);
-         fontforother.setFontName("Courier New");
-         fontforother.setItalic(false);
-         fontforother.setStrikeout(false);
-         fontforother.setBold(false);
-         CellStyle forother = wb.createCellStyle();
-         forother.setWrapText(true);
-         forother.setFont(fontforother);
-         
-         
-         
-         
+         /* 
+          * Date
+          */
+         excelRow = sheet.createRow(0);
+         excelRow = sheet.getRow(0);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Период отчета");
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue(paramonepart.getDatestart());
+         excelCell = excelRow.createCell(2);
+         excelCell = excelRow.getCell(2);
+         excelCell.setCellValue(paramonepart.getDateend());
+         /* 
+          * MO
+          */
+         excelRow = sheet.createRow(1);
+         excelRow = sheet.getRow(1);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Мед огранизация");
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue(paramonepart.getLpu());
+         /* 
+          * Type questions
+          */
          excelRow = sheet.createRow(2);
          excelRow = sheet.getRow(2);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Категории ответов");
+         for(int i=0;i<paramonepart.getMas().size();i++)
+         {
+        	 excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(paramonepart.getMas().get(i));
+         }
+         /* 
+          * Header
+          */
+         excelRow = sheet.createRow(5);
+         excelRow = sheet.getRow(5);		
          excelRow.setHeight((short) 800);
          excelCell = excelRow.createCell(0);
          excelCell = excelRow.getCell(0);
          excelCell.setCellValue("Индикатор доступности и качества медицинской помощи");
-         sheet.addMergedRegion(new CellRangeAddress(2,2,0,4));
-         excelCell.setCellStyle(styleheader);
-         
-         excelRow = sheet.createRow(3);
-         excelRow = sheet.getRow(3);	
+         sheet.addMergedRegion(new CellRangeAddress(5,5,0,4));
+         /* 
+          * Header2
+          */
+         excelRow = sheet.createRow(6);
+         excelRow = sheet.getRow(6);	
          excelRow.setHeight((short) 1000);
          excelCell = excelRow.createCell(0);
          excelCell = excelRow.getCell(0);
-         excelCell.setCellValue("Вид помощи");
-         excelCell.setCellStyle(styleonerow);
+         excelCell.setCellValue("Вопросы");
          
-         excelRow = sheet.getRow(3);			
+         
+         excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
-         excelCell.setCellValue("Количество респондентов которых требуется опросить за N кварталов ( или за N-ый квартал)");
-         excelCell.setCellStyle(styleonerow);
-         
-         excelRow = sheet.getRow(3);			
+         excelCell.setCellValue("Категория респонденты мужчины 18-59лет");
+         excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(2);
          excelCell = excelRow.getCell(2);
-         excelCell.setCellValue("Общее количество опрошенных респондентов");
-         excelCell.setCellStyle(styleonerow);
-         
-         excelRow = sheet.getRow(3);			
+         excelCell.setCellValue("Категория респонденты женщины 18-54 лет");
+         excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(3);
          excelCell = excelRow.getCell(3);
-         excelCell.setCellValue("Доля опрошенных респондентов, в %");
-         excelCell.setCellStyle(styleonerow);
-         
-         
-         excelRow = sheet.getRow(3);			
+         excelCell.setCellValue("Категория респонденты мужчины 60 лет и старше");
+         excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(4);
          excelCell = excelRow.getCell(4);
-         excelCell.setCellValue("Индикатор доступности и качества медицинской помощи в %");
-         excelCell.setCellStyle(styleonerow);
+         excelCell.setCellValue("Категория респонденты женщины 55 лет и старше");
+         excelRow = sheet.getRow(6);	
+         excelCell = excelRow.createCell(5);
+         excelCell = excelRow.getCell(5);
+         excelCell.setCellValue("Итого сумма");
          
-         
-         
-         
-         excelRow = sheet.createRow(4);
-         excelRow = sheet.getRow(4);
-         excelRow.setHeight((short) 400);
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellValue("Амбулаторно-поликлиническая помощь");
-         excelCell.setCellStyle(style);
-         sheet.addMergedRegion(new CellRangeAddress(4,4,0,4));
-         
-         excelRow = sheet.createRow(5);
-         excelRow = sheet.getRow(5);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 18-59лет");
-         
-         excelRow = sheet.createRow(6);
-         excelRow = sheet.getRow(6);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 18-54 лет");
-         
+         excelRow = sheet.getRow(6);	
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue("Категория респонденты мужчины 18-59лет");
+         excelRow = sheet.getRow(6);	
+         excelCell = excelRow.createCell(7);
+         excelCell = excelRow.getCell(7);
+         excelCell.setCellValue("Категория респонденты женщины 18-54 лет");
+         excelRow = sheet.getRow(6);	
+         excelCell = excelRow.createCell(8);
+         excelCell = excelRow.getCell(8);
+         excelCell.setCellValue("Категория респонденты мужчины 60 лет и старше");
+         excelRow = sheet.getRow(6);	
+         excelCell = excelRow.createCell(9);
+         excelCell = excelRow.getCell(9);
+         excelCell.setCellValue("Категория респонденты женщины 55 лет и старше");
+         excelRow = sheet.getRow(6);	
+         excelCell = excelRow.createCell(10);
+         excelCell = excelRow.getCell(10);
+         excelCell.setCellValue("Итого сумма");
+
+
+         /* 
+          * Header3
+          */
          excelRow = sheet.createRow(7);
-         excelRow = sheet.getRow(7);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 60 лет и старше");
-         
-         excelRow = sheet.createRow(8);
-         excelRow = sheet.getRow(8);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 55 лет и старше");
-         
-         excelRow = sheet.createRow(9);
-         excelRow = sheet.getRow(9);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Итого");
-         
-         excelRow = sheet.createRow(10);
-         excelRow = sheet.getRow(10);
+         excelRow = sheet.getRow(7);
          excelRow.setHeight((short) 400);
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellValue("Дневной стационар");   
-         sheet.addMergedRegion(new CellRangeAddress(10,10,0,4));
-         excelCell.setCellStyle(style);
-         
-         
-         /***********************************************************************************************************************************************************/
-         
-         excelRow = sheet.createRow(11);
-         excelRow = sheet.getRow(11);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 18-59лет");
-         
-         excelRow = sheet.createRow(12);
-         excelRow = sheet.getRow(12);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 18-54 лет");
-         
-         excelRow = sheet.createRow(13);
-         excelRow = sheet.getRow(13);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 60 лет и старше");
-         
-         excelRow = sheet.createRow(14);
-         excelRow = sheet.getRow(14);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 55 лет и старше");
-         
-         excelRow = sheet.createRow(15);
-         excelRow = sheet.getRow(15);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Итого");  
-         
-         excelRow = sheet.createRow(16);
-         excelRow = sheet.getRow(16);
-         excelRow.setHeight((short) 400);
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellValue("Стационарная помощь");   
-         sheet.addMergedRegion(new CellRangeAddress(16,16,0,4));
-         excelCell.setCellStyle(style);
-         
-         /***********************************************************************************************************************************************************/
-         
-         excelRow = sheet.createRow(17);
-         excelRow = sheet.getRow(17);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 18-59лет");
-         
-         excelRow = sheet.createRow(18);
-         excelRow = sheet.getRow(18);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 18-54 лет");
-         
-         excelRow = sheet.createRow(19);
-         excelRow = sheet.getRow(19);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 60 лет и старше");
-         
-         excelRow = sheet.createRow(20);
-         excelRow = sheet.getRow(20);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 55 лет и старше");
-         
-         excelRow = sheet.createRow(21);
-         excelRow = sheet.getRow(21);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Итого"); 
-         
-         excelRow = sheet.createRow(22);
-         excelRow = sheet.getRow(22);	
-         excelRow.setHeight((short) 400);
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellValue("Скорая помощь");   
-         sheet.addMergedRegion(new CellRangeAddress(22,22,0,4));
-         excelCell.setCellStyle(style);
-         
-         /***********************************************************************************************************************************************************/
-         
-         excelRow = sheet.createRow(23);
-         excelRow = sheet.getRow(23);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 18-59лет");
-         
-         excelRow = sheet.createRow(24);
-         excelRow = sheet.getRow(24);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 18-54 лет");
-         
-         excelRow = sheet.createRow(25);
-         excelRow = sheet.getRow(25);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов мужчин 60 лет и старше");
-         
-         excelRow = sheet.createRow(26);
-         excelRow = sheet.getRow(26);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Количество респондентов женщин 55 лет и старше");
-         
-         excelRow = sheet.createRow(27);
-         excelRow = sheet.getRow(27);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Итого");
-         
-         excelRow = sheet.createRow(28);
-         excelRow = sheet.getRow(28);			
-         excelCell = excelRow.createCell(0);
-         excelCell = excelRow.getCell(0);
-         excelCell.setCellStyle(forother);
-         excelCell.setCellValue("Общий итог:");
-         
-         /***********************************CLINIC*********************************/
-         
-         excelRow = sheet.getRow(5);
-         excelCell = excelRow.createCell(2);
-         excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(forOneOrgClinic.get(0).size());
-
-         excelRow = sheet.getRow(6);
-         excelCell = excelRow.createCell(2);
-         excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(forOneOrgClinic.get(1).size());
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue("Амбулаторно-поликлиническая помощь");
+         sheet.addMergedRegion(new CellRangeAddress(7,7,1,5));
          
          excelRow = sheet.getRow(7);
-         excelCell = excelRow.createCell(2);
-         excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(forOneOrgClinic.get(2).size());
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue("Дневной стационар");
+         sheet.addMergedRegion(new CellRangeAddress(7,7,6,11));
          
-         excelRow = sheet.getRow(8);
-         excelCell = excelRow.createCell(2);
-         excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(forOneOrgClinic.get(3).size());
-         
-         excelRow = sheet.getRow(9);
-         excelCell = excelRow.createCell(2);
-         excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(forOneOrgClinic.get(3).size()+forOneOrgClinic.get(2).size()+forOneOrgClinic.get(1).size()+forOneOrgClinic.get(0).size());
-         
-         
-         
-         
-         excelRow = sheet.getRow(5);
-         excelCell = excelRow.createCell(3);
-         excelCell = excelRow.getCell(3);
-         double x = ((double)forOneOrgClinic.get(0).size()/1000)*100.0;
-         excelCell.setCellValue(x);
-
-         excelRow = sheet.getRow(6);
-         excelCell = excelRow.createCell(3);
-         excelCell = excelRow.getCell(3);
-         double x2 = ((double)forOneOrgClinic.get(1).size()/1000)*100.0;
-         excelCell.setCellValue(x2);
-         
-         excelRow = sheet.getRow(7);
-         excelCell = excelRow.createCell(3);
-         excelCell = excelRow.getCell(3);
-         double x3 = ((double)forOneOrgClinic.get(2).size()/1000)*100.0;
-         excelCell.setCellValue(x3);
-         
-         excelRow = sheet.getRow(8);
-         excelCell = excelRow.createCell(3);
-         excelCell = excelRow.getCell(3);
-         double x4 = ((double)forOneOrgClinic.get(3).size()/1000)*100.0;
-         excelCell.setCellValue(x4);
-         
-         excelRow = sheet.getRow(9);
-         excelCell = excelRow.createCell(3);
-         excelCell = excelRow.getCell(3);
-         excelCell.setCellValue(x+x2+x3+x4);
-         
-         
+         /* 
+          * Questions
+          */
+         List<String> list = questions();
+         for(int i=0;i<list.size();i++)
+         {
+        	 excelRow = sheet.createRow(i+8);
+             excelRow = sheet.getRow(i+8);			
+             excelCell = excelRow.createCell(0);
+             excelCell = excelRow.getCell(0);
+             excelCell.setCellValue(list.get(i));
+         }
          
          /*
-          * FOR CLINIC
-          *  variable count is a counts assessments. Look method getcount() 
-          *  
-          *  variable countall is a counts all questions (see a quantity in anket for this help) 
+          * Data 
           */
-         double count = 0;
-         double countAll =11.0 ;
+         // ПОЛИКЛИНИКА
          
-         for(int i = 0; i<forOneOrgClinic.get(0).size(); i++)
+         // Организацией записи на прием к врачу
+         for(int i=0; i<4;i++)
          {
-        	 count = count +forOneOrgClinic.get(0).get(i).getCount();
+        	 excelRow = sheet.getRow(8);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic1(forOneOrgClinic.get(i),paramonepart.getMas()));
          }
-         excelRow = sheet.getRow(5);
-         excelCell = excelRow.createCell(4);
-         excelCell = excelRow.getCell(4);
-         double xxx = ((double)count/((double)forOneOrgClinic.get(0).size()*countAll))*100.0;
-         excelCell.setCellValue(xxx);
          
-         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         excelCell = excelRow.createCell(6);
-         excelCell = excelRow.getCell(6);
-         double xxxt = count;
-         excelCell.setCellValue(xxxt);
-         excelCell = excelRow.createCell(7);
-         excelCell = excelRow.getCell(7);
-         excelCell.setCellValue(forOneOrgClinic.get(0).size()*countAll);
+         //  СУММА Организацией записи на прием к врачу
+        	 excelRow = sheet.getRow(8);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic1summ(forOneOrgClinic,paramonepart.getMas()));
          
          
-         count = 0;
-         for(int i = 0; i<forOneOrgClinic.get(1).size(); i++)
+         // Временем ожидания приема врача
+         for(int i=0; i<4;i++)
          {
-        	 count = count +forOneOrgClinic.get(1).get(i).getCount();
+        	 excelRow = sheet.getRow(9);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic2(forOneOrgClinic.get(i),paramonepart.getMas()));
          }
-         excelRow = sheet.getRow(6);
-         excelCell = excelRow.createCell(4);
-         excelCell = excelRow.getCell(4);
-         double xxx2 = ((double)count/((double)forOneOrgClinic.get(1).size()*countAll))*100.0;
-         excelCell.setCellValue(xxx2);
+         
+         // СУММА Временем ожидания приема врача
+        	 excelRow = sheet.getRow(9);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic2summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Сроками ожидания медицинских услуг после записи
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(10);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic3(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Сроками ожидания медицинских услуг после записи
+        	 excelRow = sheet.getRow(10);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic3summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Доступностью необходимых лабораторных исследований/анализов
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(11);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic4(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Доступностью необходимых лабораторных исследований/анализов
+        	 excelRow = sheet.getRow(11);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic4summ(forOneOrgClinic,paramonepart.getMas()));
 
-         //	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         excelCell = excelRow.createCell(6);
-         excelCell = excelRow.getCell(6);
-         double xxxt2 = count;
-         excelCell.setCellValue(xxxt2);
-         excelCell = excelRow.createCell(7);
-         excelCell = excelRow.getCell(7);
-         excelCell.setCellValue(forOneOrgClinic.get(1).size()*countAll);
-         
-         
-         count = 0;
-         for(int i = 0; i<forOneOrgClinic.get(2).size(); i++)
-         {
-        	 count = count +forOneOrgClinic.get(2).get(i).getCount();
-         }
-         excelRow = sheet.getRow(7);
-         excelCell = excelRow.createCell(4);
-         excelCell = excelRow.getCell(4);
-         double xxx3 = ((double)count/((double)forOneOrgClinic.get(2).size()*countAll))*100.0;
-         excelCell.setCellValue(xxx3);
-         
-         //     	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         excelCell = excelRow.createCell(6);
-         excelCell = excelRow.getCell(6);
-         double xxxt3 = count;
-         excelCell.setCellValue(xxxt3);
-         excelCell = excelRow.createCell(7);
-         excelCell = excelRow.getCell(7);
-         excelCell.setCellValue(forOneOrgClinic.get(2).size()*countAll);
-         
-         
-         count = 0;
-         for(int i = 0; i<forOneOrgClinic.get(3).size(); i++)
-         {
-        	 count = count +forOneOrgClinic.get(3).get(i).getCount();
-         }
-         excelRow = sheet.getRow(8);
-         excelCell = excelRow.createCell(4);
-         excelCell = excelRow.getCell(4);
-         double xxx4 = ((double)count/((double)forOneOrgClinic.get(3).size()*countAll))*100.0;
-         excelCell.setCellValue(xxx4);
-         
-         //      	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         excelCell = excelRow.createCell(6);
-         excelCell = excelRow.getCell(6);
-         double xxxt4 = count;
-         excelCell.setCellValue(xxxt4);
-         excelCell = excelRow.createCell(7);
-         excelCell = excelRow.getCell(7);
-         excelCell.setCellValue(forOneOrgClinic.get(3).size()*countAll);
-         
-         excelRow = sheet.getRow(9);
-         excelCell = excelRow.createCell(4);
-         excelCell = excelRow.getCell(4);
-         excelCell.setCellValue(xxx+xxx2+xxx3+xxx4);
-
-        	
-         /******************************************************************************************/			
-  		
-         
-     /*    CellStyle border = wb.createCellStyle();
-         border.setWrapText(false);
-         border.setBorderBottom(CellStyle.BORDER_THIN);
-         border.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-         border.setBorderLeft(CellStyle.BORDER_THIN);
-         border.setLeftBorderColor(IndexedColors.BLACK.getIndex());
-         border.setBorderRight(CellStyle.BORDER_THIN);
-         border.setRightBorderColor(IndexedColors.BLACK.getIndex());
-         border.setBorderTop(CellStyle.BORDER_THIN);
-         border.setTopBorderColor(IndexedColors.BLACK.getIndex()); 
-         
-         for(int i = 3; i <=28  ; i++)
- 		{
- 			excelRow = sheet.getRow(i);	
- 			for(int j = 0 ; j < 4; j++)
- 			{
- 				if(i != 2 ||i != 10 || i != 16 || i != 22){
- 				excelCell = excelRow.getCell(j);
- 	 			excelCell.setCellStyle(border);
- 				}
- 			}
- 			
- 		}	
-         
-     */    
-         HSSFRow row = wb.getSheetAt(0).getRow(2);
- 		for(int colNum = 0; colNum< row.getLastCellNum();colNum++)    wb.getSheetAt(0).autoSizeColumn(colNum);
- 		wb.getSheetAt(0).setColumnWidth(1, 10000);
- 		wb.getSheetAt(0).setColumnWidth(2, 8500);
- 		wb.getSheetAt(0).setColumnWidth(3, 8500);
- 		wb.getSheetAt(0).setColumnWidth(4, 9500);
- 		
- 		CellRangeAddress region =  CellRangeAddress.valueOf("A4:E29");
- 		final short borderMediumDashed = CellStyle.BORDER_THICK;
- 	   RegionUtil.setBorderBottom( borderMediumDashed, region, sheet, wb );
- 	   RegionUtil.setBorderTop( borderMediumDashed,region, sheet, wb );
- 	   RegionUtil.setBorderLeft( borderMediumDashed,region, sheet, wb );
- 	   RegionUtil.setBorderRight( borderMediumDashed,region, sheet, wb );
- 	   	region =  CellRangeAddress.valueOf("A4:E4");
- 	   RegionUtil.setBorderBottom( borderMediumDashed, region, sheet, wb );
- 	   RegionUtil.setBorderTop( borderMediumDashed,region, sheet, wb );
- 	   RegionUtil.setBorderLeft( borderMediumDashed,region, sheet, wb );
- 	   RegionUtil.setBorderRight( borderMediumDashed,region, sheet, wb );
- 	   	region =  CellRangeAddress.valueOf("A5:E5");
-	   RegionUtil.setBorderBottom( borderMediumDashed, region, sheet, wb );
-	   RegionUtil.setBorderTop( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderLeft( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderRight( borderMediumDashed,region, sheet, wb );
-	   	region =  CellRangeAddress.valueOf("A11:E11");
-	   RegionUtil.setBorderBottom( borderMediumDashed, region, sheet, wb );
-	   RegionUtil.setBorderTop( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderLeft( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderRight( borderMediumDashed,region, sheet, wb );
-	   region =  CellRangeAddress.valueOf("A17:E17");
-	   RegionUtil.setBorderBottom( borderMediumDashed, region, sheet, wb );
-	   RegionUtil.setBorderTop( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderLeft( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderRight( borderMediumDashed,region, sheet, wb );
-	   region =  CellRangeAddress.valueOf("A23:E23");
-	   RegionUtil.setBorderBottom( borderMediumDashed, region, sheet, wb );
-	   RegionUtil.setBorderTop( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderLeft( borderMediumDashed,region, sheet, wb );
-	   RegionUtil.setBorderRight( borderMediumDashed,region, sheet, wb );
-
-	   
-	   
  	   
+         // Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.)
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(12);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic5(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.)
+        	 excelRow = sheet.getRow(12);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic5summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Доступностью мед.помощи терапевтов
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(13);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic6(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Доступностью мед.помощи терапевтов
+        	 excelRow = sheet.getRow(13);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic6summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Доступностью мед.помощи врачей-специалистов
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(14);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic7(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Доступностью мед.помощи врачей-специалистов
+        	 excelRow = sheet.getRow(14);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic7summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Работой врачей в поликлинике
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(15);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic8(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         //СУММА Работой врачей в поликлинике
+        	 excelRow = sheet.getRow(15);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic8summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Насколько Вы удовлетворены качеством бесплатной медицинской помощи
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(16);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic9(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Насколько Вы удовлетворены качеством бесплатной медицинской помощи
+        	 excelRow = sheet.getRow(16);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic9summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Техническим состоянием, ремонтом помещений, площадью помещений
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(17);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic10(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Техническим состоянием, ремонтом помещений, площадью помещений
+        	 excelRow = sheet.getRow(17);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic10summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // Оснащенностью современным медицинским оборудованием
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(18);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(countonquestionClinic11(forOneOrgClinic.get(i),paramonepart.getMas()));
+         }
+         
+         // СУММА Оснащенностью современным медицинским оборудованием
+        	 excelRow = sheet.getRow(18);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic11summ(forOneOrgClinic,paramonepart.getMas()));
+         
+         // количество опрошенных респондентов
+         for(int i=0; i<4;i++)
+         {
+        	 excelRow = sheet.getRow(19);	
+             excelCell = excelRow.createCell(i+1);
+             excelCell = excelRow.getCell(i+1);
+             excelCell.setCellValue(forOneOrgClinic.get(i).size());
+         }
+
+         // СУММА количество опрошенных респондентов
+        	 excelRow = sheet.getRow(19);	
+             excelCell = excelRow.createCell(5);
+             excelCell = excelRow.getCell(5);
+             excelCell.setCellValue(countonquestionClinic12(forOneOrgClinic));
+         
          try {
         	 
         	 String name = "Report "+String.valueOf(Math.random())+".xls";
@@ -612,5 +426,507 @@ public class Reports {
         
 
     }
-	
+    
+    
+
+    private List<String> questions()
+    {
+    	List<String> ls = new ArrayList<String>();
+    	
+    	ls.add("Организацией записи на прием к врачу");// п
+    	ls.add("Временем ожидания приема врача");//п
+    	ls.add("Сроками ожидания медицинских услуг после записи");// п
+    	ls.add("Доступностью необходимых лабораторных исследований/анализов");//п
+    	ls.add("Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.)"); // п
+    	ls.add("Доступностью мед.помощи терапевтов"); // п
+    	ls.add("Доступностью мед.помощи врачей-специалистов");// п
+    	ls.add("Работой врачей в поликлинике");// п
+    	
+    	ls.add("Насколько Вы удовлетворены качеством бесплатной медицинской помощи");
+    	ls.add("Техническим состоянием, ремонтом помещений, площадью помещений");
+    	ls.add("Оснащенностью современным медицинским оборудованием");
+    	ls.add("Количество опрошенных респондентов амбл.-поликлин. помощи (кол чел)");
+    	ls.add("Требуется опросить амбл.-поликлин. помощи (кол чел)");
+    	
+    	ls.add("Комфортностью больничной палаты и мест пребывания пациентов");// дс
+    	ls.add("Комплексом предоставляемых медицинских услуг");// дс
+    	
+    	ls.add("Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.)");// дс с
+    	ls.add("Обеспеченностью медикаментами и расходными материалами");// дс с
+    	ls.add("Работой лечащего врача");// дс с
+    	ls.add("ИТОГО");
+    	
+    	ls.add("Комфортностью больничной палаты и мест пребывания пациентов"); // c 
+    	ls.add("Питание"); // c 
+    	ls.add("Сроками ожидания плановой госпитализации"); // c
+    	ls.add("ИТОГО");
+    	
+    	return ls;
+    }
+
+    private int countonquestionClinic1(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getSeeADoctor().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic1summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getSeeADoctor().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic2(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getWaitingTime().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic2summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getWaitingTime().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic3(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getWaitingTime2().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic3summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getWaitingTime2().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+
+    private int countonquestionClinic4(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getLaboratoryResearch().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+
+    private int countonquestionClinic4summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getLaboratoryResearch().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic5(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getDiagnosticTests().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic5summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getDiagnosticTests().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic6(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getTherapist().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic6summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getTherapist().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic7(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getMedicalSpecialists().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic7summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getMedicalSpecialists().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic8(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getClinicDoctor().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic8summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getClinicDoctor().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic9(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getFreeHelp().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+
+    private int countonquestionClinic9summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getFreeHelp().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    
+    private int countonquestionClinic10(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getRepairs().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic10summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getRepairs().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic11(List<SurvayClinic> forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+           	 if(forOneOrgClinic.get(i).getEquipment().equals(var.get(j)))
+    			{
+    				p++;
+    			}
+            }
+    	}
+        
+        return p;
+    }
+    
+    private int countonquestionClinic11summ(List<List<SurvayClinic>>  forOneOrgClinic,List<String> var)
+    {
+    	int p =0;
+    	
+    	for(int j=0; j<var.size();j++)
+    	{
+    		for(int i=0;i<forOneOrgClinic.size();i++)
+            {
+    			for(int k=0;k<forOneOrgClinic.get(i).size();k++){
+    		
+    				if(forOneOrgClinic.get(i).get(k).getEquipment().equals(var.get(j)))
+        			{
+        				p++;
+        			}
+    				
+    			}
+           	 
+            }
+    	}
+        
+        return p;
+    }
+    
+    
+    private int countonquestionClinic12(List<List<SurvayClinic>> forOneOrgClinic)
+    {
+    	int p =0;
+    	for(int i=0;i<forOneOrgClinic.size();i++)
+    	{
+    		p =p+ forOneOrgClinic.get(i).size();
+    	}
+    		
+        return p;
+    }
+
+    
 }

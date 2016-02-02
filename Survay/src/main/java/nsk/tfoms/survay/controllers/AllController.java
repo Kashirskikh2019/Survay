@@ -128,6 +128,7 @@ public class AllController
     	List<List<SurvayDaystacionar>> forOneOrgDayStac = null;
     	List<List<SurvayStacionar>> forOneOrgStac = null;
     	
+    	
     	if(! parseorg(paramonepart).equals(""))
     	{
     		System.out.println("===================Clinic================================");
@@ -148,12 +149,7 @@ public class AllController
 		    List<SurvayDaystacionar> list7 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
 		    List<SurvayDaystacionar> list8 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
 		    
-		    System.out.println("@@@ "+list5+" "+list5.size());
-		    System.out.println("@@@ "+list6+" "+list6.size());
-		    System.out.println("@@@ "+list7+" "+list7.size());
-		    System.out.println("@@@ "+list8+" "+list8.size());
-		    
-		    /*forOneOrgDayStac = new ArrayList<List<SurvayDaystacionar>>();
+		    forOneOrgDayStac = new ArrayList<List<SurvayDaystacionar>>();
 		    forOneOrgDayStac.add(list5);
 		    forOneOrgDayStac.add(list6);
 		    forOneOrgDayStac.add(list7);
@@ -161,10 +157,10 @@ public class AllController
 		    
 		    
 		    System.out.println("=========================================Stacionar==========================");
-		    List<SurvayStacionar> list9 = stacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59);
-		    List<SurvayStacionar> list10 = stacionarservice.getReportLess(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54);
-		    List<SurvayStacionar> list11 = stacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60);
-		    List<SurvayStacionar> list12 = stacionarservice.getReportMore(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55);
+		    List<SurvayStacionar> list9 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<SurvayStacionar> list10 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<SurvayStacionar> list11 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<SurvayStacionar> list12 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
 
 		    forOneOrgStac = new ArrayList<List<SurvayStacionar>>();
 		    forOneOrgStac.add(list9);
@@ -172,8 +168,8 @@ public class AllController
 		    forOneOrgStac.add(list11);
 		    forOneOrgStac.add(list12);
 		    
-		    new Reports().loadToExcelResalt(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart));
-		    */
+		    new Reports().loadToExcelResalt2(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart),paramonepart);
+		    
     	}
     	else
     	{

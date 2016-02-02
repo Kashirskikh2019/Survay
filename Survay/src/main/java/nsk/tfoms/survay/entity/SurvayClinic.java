@@ -290,10 +290,12 @@ public class SurvayClinic implements Serializable {
 		return builder.toString();
 	}
 	
+	
+	
 	/*
 	 * Method considers counts of answers on certain mask  
 	 */
-	 public int getCount()
+	/* public int getCount()
 		{
 	    	int col = 0;
 	    	
@@ -311,5 +313,5 @@ public class SurvayClinic implements Serializable {
 	    	
 	    	return col;
 		}
-
+*/
 }

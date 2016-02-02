@@ -56,25 +56,31 @@ public class StacionarService {
 	  /*
 	   * block querys for reports дата ограничение на возраст и пол
 	   */
-
-	  @Transactional
-	  public List<SurvayStacionar> getReportLess(String d1, String d2,String userp,String sex,Integer age) {
-	    List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE p.polzovatelonestac=:userp AND p.sexStac=:sex AND p.ageStac<='"+age+"' AND (p.dataInputStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
-	    .setParameter("d1", d1)  
-	    .setParameter("d2", d2)  
-	    .setParameter("userp", userp)
-	    .setParameter("sex", sex)
-	    //.setParameter("age", age)
-	    .getResultList();
-	    return result;
-	  }
 	  
 	  @Transactional
-	  public List<SurvayStacionar> getReportMore(String d1, String d2,String userp,String sex,int age) {
-		  List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE p.polzovatelonestac=:userp AND p.sexStac=:sex AND p.ageStac>='"+age+"' AND (p.dataInputStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
+	  public List<SurvayStacionar> getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
+		  String agefor = "p.ageStac<='"+age+"'";;
+		  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.ageStac>='"+age+"'";		}
+		  
+		  String paste="p.moonestac=:lpu";
+		  // enter ALL we will passing in query NOT "ALL"(p.mo!=:lpu) because in db no records with  name 'ALL' => so we get all records 
+		  if(lpu.equals("Все"))	{	paste="p.moonestac!=:lpu";	}
+		  
+		  String []mas = userp.split("!");
+		  String name="(";
+		  if(mas.length == 1){	userp = mas[0]; name = "p.polzovatelonestac =:userp";}
+		  if(mas.length > 1){
+			  for (int i = 0; i < mas.length-1; i++) {
+				  name = name + "p.polzovatelonestac ='"+mas[i]+"' or ";
+			  }
+			  userp = mas[mas.length-1]; name = name + "p.polzovatelonestac =:userp)";
+		  }
+		  
+	    List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE "+name+" and "+paste+" AND p.sexStac=:sex AND "+agefor+" AND (p.dataInputStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
 	    .setParameter("d1", d1)  
 	    .setParameter("d2", d2)  
 	    .setParameter("userp", userp)
+	    .setParameter("lpu", lpu)
 	    .setParameter("sex", sex)
 	    //.setParameter("age", age)
 	    .getResultList();

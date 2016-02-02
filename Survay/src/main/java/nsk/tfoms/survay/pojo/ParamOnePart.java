@@ -1,5 +1,8 @@
 package nsk.tfoms.survay.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.Pattern;
 
 public class ParamOnePart {
@@ -21,9 +24,7 @@ public class ParamOnePart {
 	private String ans4;
 	private String ans5;
 	
-	
-	
-	
+	private List<String> mas;
 	
 	
 	public String getOnefoms() {
@@ -100,6 +101,20 @@ public class ParamOnePart {
 	public void setAns5(String ans5) {
 		this.ans5 = ans5;
 	}
+	
+	public List<String> getMas() {
+		mas = new ArrayList<String>();
+		if(getAns1().equals("true")){mas.add("Удовлетворен(а)");}
+		if(getAns2().equals("true")){mas.add("Скорее удовлетворен(а), чем не удовлетворен(а)");}
+		if(getAns3().equals("true")){mas.add("Скорее не удовлетворен(а), чем удовлетворен(а)");}
+		if(getAns4().equals("true")){mas.add("Не удовлетворен(а)");}
+		if(getAns5().equals("true")){mas.add("Затрудняюсь ответить");}
+		return mas;
+	}
+	public void setMas(List<String> mas) {
+		this.mas = mas;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -127,6 +142,8 @@ public class ParamOnePart {
 		builder.append(ans4);
 		builder.append(", ans5=");
 		builder.append(ans5);
+		builder.append(", mas=");
+		builder.append(mas);
 		builder.append("]");
 		return builder.toString();
 	}

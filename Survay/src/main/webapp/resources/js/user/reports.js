@@ -14,7 +14,7 @@ function onepartreports(buttonId) {
 	search["ans1"] = $("#ansFormOnePart1").is(':checked')
 	search["ans2"] = $("#ansFormOnePart2").is(':checked')
 	search["ans3"] = $("#ansFormOnePart3").is(':checked')
-	search["ans4"] = $("#ansFormOnePar4").is(':checked')
+	search["ans4"] = $("#ansFormOnePart4").is(':checked')
 	search["ans5"] = $("#ansFormOnePart5").is(':checked')
 	
 	
@@ -37,8 +37,8 @@ function onepartreports(buttonId) {
 							success: function(data)
 							{
 								// pass to controller
-								//document.location.href = '/survay/download'
-								// 	
+								document.location.href = '/survay/download'
+								 	
 								$("input[name='datebeginonereport']").val('');
 								$("input[name='dateendonereport']").val('');
 								
