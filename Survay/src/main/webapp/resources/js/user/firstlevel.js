@@ -64,6 +64,9 @@ function oneclinic(varr) {
 						search["waitingTime"] = $("#waitingTime").val();
 						search["waitingTime2"] = $("#waitingTime2").val();
 						
+						$("input[name='namedateBegin']").val('');
+						$("input[name='namedateEnd']").val('');
+						
 						search["polzovatel"] = $("#polzovatel").val();
 						/*
 						 * После того как была нажато редактирование и вылезло модальное с данными по редактированию ловим
@@ -312,6 +315,9 @@ function allonedaystacionar(varr) {
 function onedaystacionar(varr) {
 	
 	if(	validateOneDayStacionar()){  $(".errorOneClinic").css('display','block');	}else{
+		
+						$("input[name='namedateEndDayStacionar']").val('');
+						$("input[name='namedateBeginDayStacionar']").val('');	
 	
 						var search = {}
 						
@@ -507,6 +513,9 @@ function onestacionar(varr) {
 	
 	if(	validateOneStacionar()){  $(".errorOneClinic").css('display','block');	}else{
 	
+						$("input[name='namedateBeginStacionar']").val('');
+						$("input[name='namedateEndStacionar']").val('');	
+		
 						var search = {}
 						
 						search["moonestac"] = $("#moonestac").val();
