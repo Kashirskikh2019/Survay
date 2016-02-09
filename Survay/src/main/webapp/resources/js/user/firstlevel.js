@@ -1,10 +1,14 @@
+		//var x =10,y=50,z=20,v=15;
+		var opt; 
+
 /*
  * Метод обрабатывает нажатие Анкеты первого уровня -> АП помощь
  * 
  */
 function alloneclinic(varr) {
 	
-	    
+			
+			    
 	
 	$.ajax({
 		url : 'oneclinic',
@@ -26,13 +30,100 @@ function alloneclinic(varr) {
 		    	  $('#records_table').animate({opacity: 1}, 4000 );
 		    	 
 		      }else{
-	//records_table	    	  trHTML += '<tr><td>' + item.rank + '</td><td>' + item.content + '</td><td>' + item.UID + '</td></tr>';
 		      }	      
 		    },  
 		    error: function(e){  
-		      alert('Error: ' + e);  
+		      alert('Произошла ошибка. Обновите страницу. ' + e);  
 		    }
 	});
+	
+	
+	$.ajax({
+		url : 'firstchartpieclinic',
+		type: 'get',
+		dataType: 'json',
+		data : ({ test : varr}),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+	    success: function(response){
+ 
+		      if(response.status == "SUCCESS"){
+		    	  
+		    	 var x = response.result[0];
+		    	 var y = response.result[1];
+	    	     var z = response.result[2];
+		    	 var v = response.result[3];
+		    	 
+    	 	opt = {
+				      tooltip: {
+				          trigger: 'item',
+				          formatter: "{a} <br/>{b} : {c} ({d}%)"
+				      },
+				      legend: {
+				          x: 'center',
+				          y: 'left',
+				          data: ['М 18-59лет', 'Ж 18-54лет', 'М > 60лет', 'Ж > 55лет']
+				      },
+				      toolbox: {
+				          show: true,
+				          feature: {
+				              magicType: {
+				                  show: true,
+				                  type: ['pie', 'funnel']
+				              },
+				              restore: {
+				                  show: true
+				              },
+				              saveAsImage: {
+				                  show: true
+				              }
+				          }
+				      },
+				      calculable: true,
+				      series: [
+				          {
+				              name: 'Количество опрошенных',
+				              type: 'pie',
+				              radius: [13, 70],
+				              center: ['50%', 100],
+				              roseType: 'area',
+				              x: '50%', // for funnel
+				              max: 40, // for funnel
+				              sort: 'ascending', // for funnel
+				              data: [
+				                  {
+				                      value: x,
+				                      name: 'М 18-59лет'
+				                  },
+				                  {
+				                      value: y,
+				                      name: 'Ж 18-54лет'
+				                  },
+				                  {
+				                      value: z,
+				                      name: 'М >60лет'
+				                  },
+				                  {
+				                      value: v,
+				                      name: 'Ж >55лет'
+				                  }
+				          ]
+				      }
+				  ]
+		}           
+		    	 
+		    	var myChart = echarts.init(document.getElementById('echart_pie2'), theme);
+	            myChart.setOption(opt); 
+		    	 
+		    	 
+		      }else{
+		      }	      
+		    },  
+		    error: function(e){  
+		      alert('Произошла ошибка. Обновите страницу. ' + e);  
+		    }
+	});
+	
 }
 
 /*
@@ -298,6 +389,93 @@ function allonedaystacionar(varr) {
 		    	  $('#records_tableOneDayStacionar').animate({opacity: 0}, 0 );
 		    	  $('#records_tableOneDayStacionar').animate({opacity: 1}, 3000 );
 		    	 
+		      }else{
+		      }	      
+		    },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }
+	});
+	
+	$.ajax({
+		url : 'firstchartpiedaystac',
+		type: 'get',
+		dataType: 'json',
+		data : ({ test : varr}),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+	    success: function(response){
+ 
+		      if(response.status == "SUCCESS"){
+		    	  	
+		    	  	 var x = response.result[0];
+			    	 var y = response.result[1];
+		    	     var z = response.result[2];
+			    	 var v = response.result[3];
+			    	 
+	    	 	opt = {
+					      tooltip: {
+					          trigger: 'item',
+					          formatter: "{a} <br/>{b} : {c} ({d}%)"
+					      },
+					      legend: {
+					          x: 'center',
+					          y: 'left',
+					          data: ['М 18-59лет', 'Ж 18-54лет', 'М > 60лет', 'Ж > 55лет']
+					      },
+					      toolbox: {
+					          show: true,
+					          feature: {
+					              magicType: {
+					                  show: true,
+					                  type: ['pie', 'funnel']
+					              },
+					              restore: {
+					                  show: true
+					              },
+					              saveAsImage: {
+					                  show: true
+					              }
+					          }
+					      },
+					      calculable: true,
+					      series: [
+					          {
+					              name: 'Количество опрошенных',
+					              type: 'pie',
+					              radius: [13, 70],
+					              center: ['50%', 100],
+					              roseType: 'area',
+					              x: '50%', // for funnel
+					              max: 40, // for funnel
+					              sort: 'ascending', // for funnel
+					              data: [
+					                  {
+					                      value: x,
+					                      name: 'М 18-59лет'
+					                  },
+					                  {
+					                      value: y,
+					                      name: 'Ж 18-54лет'
+					                  },
+					                  {
+					                      value: z,
+					                      name: 'М >60лет'
+					                  },
+					                  {
+					                      value: v,
+					                      name: 'Ж >55лет'
+					                  }
+					          ]
+					      }
+					  ]
+			}           
+			    	 
+			    	var myChart = echarts.init(document.getElementById('echart_pie2'), theme);
+		            myChart.setOption(opt);
+		    	  
+		    	  
+		    	  
 		      }else{
 		      }	      
 		    },  
@@ -606,6 +784,91 @@ function allonestacionar(varr) {
 		    	  $('#records_tableOneStacionar').animate({opacity: 0}, 0 );
 		    	  $('#records_tableOneStacionar').animate({opacity: 1}, 3000 );
 		    	 
+		      }else{
+		      }	      
+		    },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }
+	});
+	
+	$.ajax({
+		url : 'firstchartpiestac',
+		type: 'get',
+		dataType: 'json',
+		data : ({ test : varr}),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+	    success: function(response){
+ 
+		      if(response.status == "SUCCESS"){
+		    	  
+		    	  	var x = response.result[0];
+			    	 var y = response.result[1];
+		    	     var z = response.result[2];
+			    	 var v = response.result[3];
+			    	 
+	    	 	opt = {
+					      tooltip: {
+					          trigger: 'item',
+					          formatter: "{a} <br/>{b} : {c} ({d}%)"
+					      },
+					      legend: {
+					          x: 'center',
+					          y: 'left',
+					          data: ['М 18-59лет', 'Ж 18-54лет', 'М > 60лет', 'Ж > 55лет']
+					      },
+					      toolbox: {
+					          show: true,
+					          feature: {
+					              magicType: {
+					                  show: true,
+					                  type: ['pie', 'funnel']
+					              },
+					              restore: {
+					                  show: true
+					              },
+					              saveAsImage: {
+					                  show: true
+					              }
+					          }
+					      },
+					      calculable: true,
+					      series: [
+					          {
+					              name: 'Количество опрошенных',
+					              type: 'pie',
+					              radius: [13, 70],
+					              center: ['50%', 100],
+					              roseType: 'area',
+					              x: '50%', // for funnel
+					              max: 40, // for funnel
+					              sort: 'ascending', // for funnel
+					              data: [
+					                  {
+					                      value: x,
+					                      name: 'М 18-59лет'
+					                  },
+					                  {
+					                      value: y,
+					                      name: 'Ж 18-54лет'
+					                  },
+					                  {
+					                      value: z,
+					                      name: 'М >60лет'
+					                  },
+					                  {
+					                      value: v,
+					                      name: 'Ж >55лет'
+					                  }
+					          ]
+					      }
+					  ]
+			}           
+			    	 
+			    	var myChart = echarts.init(document.getElementById('echart_pie2'), theme);
+		            myChart.setOption(opt);
+
 		      }else{
 		      }	      
 		    },  

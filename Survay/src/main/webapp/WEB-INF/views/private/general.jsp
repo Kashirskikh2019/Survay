@@ -7,10 +7,10 @@
 <head>
 <meta charset="utf-8">
 <title>Главная</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tableoneLevel.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/shine.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/1.11.2/themes/smoothness/jquery-ui.css">
 
@@ -19,6 +19,10 @@
 <script src="${pageContext.request.contextPath}/resources/js/1.11.2/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script src="/survay/resources/js/jquery.validate.js"></script>
+
+<!-- echart -->
+    <script src="${pageContext.request.contextPath}/resources/js/echarts-all.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/green.js"></script>
 
 
 
@@ -31,6 +35,8 @@
 <script type="text/javascript">
 $(document).ready(function()
 { 
+	
+	
 	$(this).click(function(){ shine(); });
 	var user = '${principal.username}';
 	console.log('log '+ user);
@@ -89,7 +95,8 @@ $("#formOneReport").validate({
 
 </head>
 <body>
-<div class="mask pseudo"><a href="#" style="margin-top:20px;margin-left:50px;margin-bottom:0px;"><img src="${pageContext.request.contextPath}/resources/image/logo.png"/></a></div>
+<div class="mask pseudo" ><a href="#" style="margin-top:20px;margin-left:50px;margin-bottom:0px;"><img src="${pageContext.request.contextPath}/resources/image/logo.png"/></a></div>
+<div class="mask_pseudo2" id="echart_pie2" ></div>
 <svg height="0">
   <!-- THE mask -->
   <mask id="mask-firefox">
@@ -134,8 +141,8 @@ $("#formOneReport").validate({
 			                <li class="dropdown">
 			                    <a href="#" class="dropdown-toggle menufonts" data-toggle="dropdown"><i class="fa fa-align-right"></i>&nbsp;&nbsp;Анкеты второго уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#">Action</a></li>
-			                        <li><a href="#">Another action</a></li>
+			                        <li><a href="#" id="su">Action</a></li>
+			                        <li><a href="#" id="su2">Another action</a></li>
 			                        <li><a href="#">Something else here</a></li>
 			                        <li class="divider"></li>
 			                        <li><a href="#">Separated link</a></li>
@@ -855,173 +862,203 @@ $("#formOneReport").validate({
 								</div>
 					<div id="form3" >			
 								<div class="modal-body backgr">
-									<div>Укажите медицинское учреждение где проходил опрос</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="moonestac">
-								        <option value=""></option>
-								        <c:forEach var="ls" items="${listmo}">
-								        <option>${ls.value}</option>
-								        </c:forEach>
-								      </select>
-								    </div><br><br>
+									<div  class="wrap-hv">
+										<div><p class="hv">Укажите медицинское учреждение где проходил опрос</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="moonestac">
+									        <option value=""></option>
+									        <c:forEach var="ls" items="${listmo}">
+									        <option>${ls.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
 								    
-								    <div>Укажите дату проведения опроса в данном мед учреждении</div>
-								    <div class="col-xs-4">
-								      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStac" name="dataonestac" placeholder="">
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
+									    <div class="col-xs-4">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStac" name="dataonestac" placeholder="">
+									    </div><br><br>
+								   </div> 
 								    								
 									<p>1.	Оцените уровень  вашей удовлетворенности следующими характеристиками работы стационара:</p>
-									<div>Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="qualityStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+									<div  class="wrap-hv">
+										<div><p class="hv">Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="qualityStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
 		 						    
-								    <div>Техническим состоянием, ремонтом помещений, площадью помещений:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="rapairsStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Техническим состоянием, ремонтом помещений, площадью помещений:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="rapairsStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
-								    <div>Комфортностью больничной палаты и мест пребывания пациентов:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="comfortStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Комфортностью больничной палаты и мест пребывания пациентов:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="comfortStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
-								    <div>Питанием:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="foodStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Питанием:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="foodStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
-								    <div>Оснащенностью современным мед. оборудованием:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="equipmentStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Оснащенностью современным мед. оборудованием:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="equipmentStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
-								    <div>Обеспеченностью медикаментами и расходными материалами:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="medicineStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
-								    
-								    
-								    <div>Сроками ожидания плановой госпитализации:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="termsStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
-								    
-								    <div>Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.):</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="laboratoryStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
-								    
-								    <div>Работой лечащего врача:</div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="therapistStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
-								    
-									<div><p>2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="ambulanceStac">
-								      	<option value=""></option>
-								        <option>Да</option>
-								        <option>Нет</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Обеспеченностью медикаментами и расходными материалами:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="medicineStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
 								    
 								    
-								    <div><p>3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="qualityAmbulanceStac">
-								      	<option value=""></option>
-								        <option>Удовлетворен(а)</option>
-								        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
-								        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
-								        <option>Не удовлетворен(а)</option>
-								        <option>Затрудняюсь ответить</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">Сроками ожидания плановой госпитализации:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="termsStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="laboratoryStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">Работой лечащего врача:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="therapistStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+									<div  class="wrap-hv">
+										<div><p class="hv">2.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться куслугам скорой медицинской помощи?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="ambulanceStac">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>    
 								    
 								    
-								    <div><p>4.	Пол респондента:</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="sexStac">
-								      	<option value=""></option>
-								        <option>Мужской</option>
-								        <option>Женский</option>
-								      </select>
-								    </div><br><br>
+								    <div  class="wrap-hv">
+										<div><p class="hv">3.	На сколько вы удовлетворены качеством оказанной вам скорой медицинскойпомощи?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="qualityAmbulanceStac">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
 								    
-								    <div><p>5.	Возраст респондента (лет):</p></div>
-								    <div class="col-xs-4">
-								      <select class="form-control input-sm" id="ageStac">
-								      	<option value=""></option>
-								      	<c:forEach var="ag" items="${listage}">
-								        <option>${ag.value}</option>
-								        </c:forEach>
-								      </select>
-								    </div><br><br>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">4.	Пол респондента:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="sexStac">
+									      	<option value=""></option>
+									        <option>Мужской</option>
+									        <option>Женский</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">5.	Возраст респондента (лет):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="ageStac">
+									      	<option value=""></option>
+									      	<c:forEach var="ag" items="${listage}">
+									        <option>${ag.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									 </div>   
 								    
 								</div>
 								<input type="hidden" id="polzovatelonestac" value="${principal.username}"/>
@@ -1044,11 +1081,15 @@ $("#formOneReport").validate({
   Name: <input type="text" name="freeHelp"/>
   <button>Add</button>
   </form>  -->  
+  <script type="text/javascript">
+
+  </script>
   <!-- <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' />  -->
 <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/reports.js"></script>  
+<script src="${pageContext.request.contextPath}/resources/js/user/test.js"></script>
 <!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
 <script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> -->

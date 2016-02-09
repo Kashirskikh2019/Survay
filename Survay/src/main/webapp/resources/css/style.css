@@ -116,12 +116,22 @@ body {
 
 .conteinerHeader
 {
-	margin-top: 15px;
-	padding-top:3px;
+	margin-top: 10px;
+	padding-top:20px;
 	padding-left:50px;
 	padding-right:50px;
-} 
+}
+ 
+.mask_pseudo2{
+	float:right;
+	width:400px;
+	height:170px;
+   margin-right: 50px;
+}
 
+.mask{
+	float:left;
+}
 /* КОНЕЦ БЛОК МЕНЮ */
 
 /* сплывающее окно анкет первого уровня */
@@ -249,4 +259,9 @@ body {
 }
 .modal-content{
 	font-family: cursive;	
+}
+
+
+.modal-footer {
+    border-top: 2px solid #000000;
 }

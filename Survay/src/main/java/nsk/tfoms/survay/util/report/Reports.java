@@ -17,9 +17,13 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.PrintSetup;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.RegionUtil;
 
@@ -126,112 +130,186 @@ public class Reports {
              excelCell = excelRow.getCell(i+1);
              excelCell.setCellValue(paramonepart.getMas().get(i));
          }
+         
+         /*
+          * style
+          */
+         
+         CellStyle style;
+         Font titleFont = wb.createFont();
+         titleFont.setFontHeightInPoints((short)25);
+         titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+         style = wb.createCellStyle();
+         style.setAlignment(CellStyle.ALIGN_CENTER);
+         style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+         style.setFont(titleFont);
+         
+         CellStyle style3;
+         Font titleFont3 = wb.createFont();
+         titleFont3.setBoldweight(Font.BOLDWEIGHT_BOLD);
+         style3 = wb.createCellStyle();
+         style3.setAlignment(CellStyle.ALIGN_CENTER);
+         style3.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+         style3.setFont(titleFont3);
+         
+         CellStyle style2;
+         Font titleFont2 = wb.createFont();
+         titleFont2.setFontHeightInPoints((short)10);
+         titleFont2.setColor(IndexedColors.DARK_BLUE.getIndex());
+         style2 = wb.createCellStyle();
+         style2.setWrapText(true);
+         style2.setAlignment(CellStyle.ALIGN_CENTER);
+         style2.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+         style2.setFont(titleFont2);
+         
          /* 
           * Header
           */
+         sheet.setColumnWidth(0, 24000);
+         sheet.setColumnWidth(1, 5000);
+         sheet.setColumnWidth(2, 5000);
+         sheet.setColumnWidth(3, 5000);
+         sheet.setColumnWidth(4, 5000);
+         sheet.setColumnWidth(6, 5000);
+         sheet.setColumnWidth(7, 5000);
+         sheet.setColumnWidth(8, 5000);
+         sheet.setColumnWidth(9, 5000);
+         sheet.setColumnWidth(11, 5000);
+         sheet.setColumnWidth(12, 5000);
+         sheet.setColumnWidth(13, 5000);
+         sheet.setColumnWidth(14, 5000);
+         
+         
          excelRow = sheet.createRow(5);
          excelRow = sheet.getRow(5);		
          excelRow.setHeight((short) 800);
          excelCell = excelRow.createCell(0);
          excelCell = excelRow.getCell(0);
          excelCell.setCellValue("Индикатор доступности и качества медицинской помощи");
-         sheet.addMergedRegion(new CellRangeAddress(5,5,0,4));
+         excelCell.setCellStyle(style);
+         sheet.addMergedRegion(new CellRangeAddress(5,5,0,15));
+         
          /* 
           * Header2
           */
+         
          excelRow = sheet.createRow(6);
          excelRow = sheet.getRow(6);	
          excelRow.setHeight((short) 1000);
          excelCell = excelRow.createCell(0);
          excelCell = excelRow.getCell(0);
          excelCell.setCellValue("Вопросы");
+         titleFont.setFontHeightInPoints((short)15);
+         excelCell.setCellStyle(style);
+         sheet.addMergedRegion(new CellRangeAddress(6, 7, 0, 0));
          
+         style2.setAlignment(CellStyle.ALIGN_CENTER);
+         style2.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
          
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
          excelCell.setCellValue("Категория респонденты мужчины 18-59лет");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(2);
          excelCell = excelRow.getCell(2);
          excelCell.setCellValue("Категория респонденты женщины 18-54 лет");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(3);
          excelCell = excelRow.getCell(3);
          excelCell.setCellValue("Категория респонденты мужчины 60 лет и старше");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(4);
          excelCell = excelRow.getCell(4);
          excelCell.setCellValue("Категория респонденты женщины 55 лет и старше");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(5);
          excelCell = excelRow.getCell(5);
          excelCell.setCellValue("Итого сумма");
+         excelCell.setCellStyle(style2);
          
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(6);
          excelCell = excelRow.getCell(6);
          excelCell.setCellValue("Категория респонденты мужчины 18-59лет");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(7);
          excelCell = excelRow.getCell(7);
          excelCell.setCellValue("Категория респонденты женщины 18-54 лет");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(8);
          excelCell = excelRow.getCell(8);
          excelCell.setCellValue("Категория респонденты мужчины 60 лет и старше");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(9);
          excelCell = excelRow.getCell(9);
          excelCell.setCellValue("Категория респонденты женщины 55 лет и старше");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(10);
          excelCell = excelRow.getCell(10);
          excelCell.setCellValue("Итого сумма");
+         excelCell.setCellStyle(style2);
          
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(11);
          excelCell = excelRow.getCell(11);
          excelCell.setCellValue("Категория респонденты мужчины 18-59лет");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(12);
          excelCell = excelRow.getCell(12);
          excelCell.setCellValue("Категория респонденты женщины 18-54 лет");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(13);
          excelCell = excelRow.getCell(13);
          excelCell.setCellValue("Категория респонденты мужчины 60 лет и старше");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(14);
          excelCell = excelRow.getCell(14);
          excelCell.setCellValue("Категория респонденты женщины 55 лет и старше");
+         excelCell.setCellStyle(style2);
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(15);
          excelCell = excelRow.getCell(15);
          excelCell.setCellValue("Итого сумма");
+         excelCell.setCellStyle(style2);
 
 
          /* 
           * Header3
           */
+         
          excelRow = sheet.createRow(7);
          excelRow = sheet.getRow(7);
          excelRow.setHeight((short) 400);
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
          excelCell.setCellValue("Амбулаторно-поликлиническая помощь");
+         excelCell.setCellStyle(style3);
          sheet.addMergedRegion(new CellRangeAddress(7,7,1,5));
          
          excelRow = sheet.getRow(7);
          excelCell = excelRow.createCell(6);
          excelCell = excelRow.getCell(6);
          excelCell.setCellValue("Дневной стационар");
+         excelCell.setCellStyle(style3);
          sheet.addMergedRegion(new CellRangeAddress(7,7,6,10));
          
          excelRow = sheet.getRow(7);
          excelCell = excelRow.createCell(11);
          excelCell = excelRow.getCell(11);
          excelCell.setCellValue("Стационарная помощь");
+         excelCell.setCellStyle(style3);
          sheet.addMergedRegion(new CellRangeAddress(7,7,11,15));
          
          /* 

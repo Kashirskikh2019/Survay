@@ -8,6 +8,8 @@
 		   			if ($('#dim').is(':visible'))
     	    		{
 		   				$("#dim").fadeOut();
+		   				$('.mask_pseudo2').css('opacity',0.01);
+		   				
     	    		}
 		   			else
 		   			{
@@ -19,6 +21,9 @@
 	    	            $('#dim').height(heightGet-300);
 	    	            $('#fgf').height(heightGet-460);
 	    	            setTimeout("$('#dim').fadeIn();",500);
+	    	            
+	    	            $('.mask_pseudo2').css('opacity',1);
+	    	            
 		   			}
   	     		 	
                });
@@ -29,6 +34,7 @@
 		   			if ($('#dim2').is(':visible'))
     	    		{
 		   				$("#dim2").fadeOut();
+		   				$('.mask_pseudo2').css('opacity',0.01);
     	    		}
 		   			else
 		   			{
@@ -40,6 +46,9 @@
 	    	            $('#dim2').height(heightGet-300);
 	    	            $('#tableOneDayStacionar').height(heightGet-460);
 	    	            setTimeout("$('#dim2').fadeIn();",500);
+	    	            
+	    	            $('.mask_pseudo2').css('opacity',1);
+	    	            
 		   			}
   	     		 	
                });
@@ -50,6 +59,7 @@
 		   			if ($('#dim3').is(':visible'))
     	    		{
 		   				$("#dim3").fadeOut();
+		   				$('.mask_pseudo2').css('opacity',0.01);
     	    		}
 		   			else
 		   			{
@@ -63,5 +73,9 @@
 	    	            $('#dim3').height(heightGet-300);
 	    	            $('#tableOneStacionar').height(heightGet-460);
 	    	            setTimeout("$('#dim3').fadeIn();",500);
+	    	            
+	    	            $('.mask_pseudo2').css('opacity',1);
+	    	            var myChart = echarts.init(document.getElementById('echart_pie2'), theme);
+	    	            myChart.setOption(opt);
 		   			}
                });

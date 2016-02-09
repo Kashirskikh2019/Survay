@@ -2,6 +2,7 @@ package nsk.tfoms.survay.controllers;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -64,6 +65,45 @@ public class OneClinic {
 			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
+
+			return res;
+	  }
+	  
+	  
+	/**
+     * Method for chart pie on header site
+     */
+    @RequestMapping(value = "/firstchartpieclinic",method = RequestMethod.GET)
+    public @ResponseBody nsk.tfoms.survay.util.JsonResponse chartpie(@RequestParam String test) throws ParseException
+	  { 
+			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+		    // вытаскиваем из базы 
+		    List<SurvayClinic> list = personSvc.getAll(test);
+		    List<Integer> ls = new ArrayList<Integer>();
+		    
+		    int m=0,sh=0,m2=0,sh2=0;
+		    for (int i = 0; i < list.size(); i++)
+		    {
+		    	if(Integer.valueOf(list.get(i).getAge())<=59 && list.get(i).getSex().equals("Мужской"))
+		    	{
+		    		m++;
+		    	}
+		    	if(Integer.valueOf(list.get(i).getAge())<=54 && list.get(i).getSex().equals("Женский"))
+		    	{
+		    		sh++;
+		    	}
+		    	if(Integer.valueOf(list.get(i).getAge())>=60 && list.get(i).getSex().equals("Мужской"))
+		    	{
+		    		m2++;
+		    	}
+		    	if(Integer.valueOf(list.get(i).getAge())>=55 && list.get(i).getSex().equals("Женский"))
+		    	{
+		    		sh2++;
+		    	}
+			}
+		    ls.add(m);ls.add(sh);ls.add(m2);ls.add(sh2);
+		    res.setStatus("SUCCESS");
+		    res.setResult(ls);
 
 			return res;
 	  }
