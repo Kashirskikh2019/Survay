@@ -884,7 +884,7 @@ $("#formOneReport").validate({
 								    								
 									<p>1.	Оцените уровень  вашей удовлетворенности следующими характеристиками работы стационара:</p>
 									<div  class="wrap-hv">
-										<div><p class="hv">Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</p></div>
+										<div><p class="hv">1.1 Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="qualityStac">
 									      	<option value=""></option>
@@ -898,7 +898,7 @@ $("#formOneReport").validate({
 									</div>    
 		 						    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Техническим состоянием, ремонтом помещений, площадью помещений:</p></div>
+										<div><p class="hv">1.2 Техническим состоянием, ремонтом помещений, площадью помещений:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="rapairsStac">
 									      	<option value=""></option>
@@ -912,7 +912,7 @@ $("#formOneReport").validate({
 									</div>    
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Комфортностью больничной палаты и мест пребывания пациентов:</p></div>
+										<div><p class="hv">1.3 Комфортностью больничной палаты и мест пребывания пациентов:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="comfortStac">
 									      	<option value=""></option>
@@ -926,7 +926,7 @@ $("#formOneReport").validate({
 									</div>    
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Питанием:</p></div>
+										<div><p class="hv">1.4 Питанием:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="foodStac">
 									      	<option value=""></option>
@@ -940,7 +940,7 @@ $("#formOneReport").validate({
 									</div>    
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Оснащенностью современным мед. оборудованием:</p></div>
+										<div><p class="hv">1.5 Оснащенностью современным мед. оборудованием:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="equipmentStac">
 									      	<option value=""></option>
@@ -954,7 +954,7 @@ $("#formOneReport").validate({
 									</div>    
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Обеспеченностью медикаментами и расходными материалами:</p></div>
+										<div><p class="hv">1.6 Обеспеченностью медикаментами и расходными материалами:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="medicineStac">
 									      	<option value=""></option>
@@ -969,7 +969,7 @@ $("#formOneReport").validate({
 								    
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Сроками ожидания плановой госпитализации:</p></div>
+										<div><p class="hv">1.7 Сроками ожидания плановой госпитализации:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="termsStac">
 									      	<option value=""></option>
@@ -983,7 +983,7 @@ $("#formOneReport").validate({
 									 </div>   
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.):</p></div>
+										<div><p class="hv">1.8 Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.):</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="laboratoryStac">
 									      	<option value=""></option>
@@ -997,7 +997,7 @@ $("#formOneReport").validate({
 									 </div>   
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">Работой лечащего врача:</p></div>
+										<div><p class="hv">1.9 Работой лечащего врача:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="therapistStac">
 									      	<option value=""></option>
