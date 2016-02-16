@@ -82,6 +82,45 @@ public class OneStacionar {
 
 				return res;
 		  }
+	    
+	    /**
+	     * Method for chart pie on header site between
+	     */
+	    @RequestMapping(value = "/firstchartpiestacbetween",method = RequestMethod.GET)
+	    public @ResponseBody nsk.tfoms.survay.util.JsonResponse chartpiebetween(@RequestParam String datebegin,String dateend,String userp) throws ParseException
+		  {
+		    	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+			    // вытаскиваем из базы 
+			    List<SurvayStacionar> list = stacionarService.getAllbetween(datebegin, dateend,userp);
+	    	
+			    List<Integer> ls = new ArrayList<Integer>();
+			    
+			    int m=0,sh=0,m2=0,sh2=0;
+			    for (int i = 0; i < list.size(); i++)
+			    {
+			    	if(Integer.valueOf(list.get(i).getAgeStac())<=59 && list.get(i).getSexStac().equals("Мужской"))
+			    	{
+			    		m++;
+			    	}
+			    	if(Integer.valueOf(list.get(i).getAgeStac())<=54 && list.get(i).getSexStac().equals("Женский"))
+			    	{
+			    		sh++;
+			    	}
+			    	if(Integer.valueOf(list.get(i).getAgeStac())>=60 && list.get(i).getSexStac().equals("Мужской"))
+			    	{
+			    		m2++;
+			    	}
+			    	if(Integer.valueOf(list.get(i).getAgeStac())>=55 && list.get(i).getSexStac().equals("Женский"))
+			    	{
+			    		sh2++;
+			    	}
+				}
+			    ls.add(m);ls.add(sh);ls.add(m2);ls.add(sh2);
+			    res.setStatus("SUCCESS");
+			    res.setResult(ls);
+
+				return res;
+		  }
 	  
 	  @RequestMapping(value = "/addonestac", method = RequestMethod.POST)
 	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestBody @Valid SurvayStacionar survaystacionar) throws ParseException

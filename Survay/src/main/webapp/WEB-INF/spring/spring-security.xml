@@ -24,7 +24,9 @@
 		<authentication-provider>
 		
 			<user-service>
-				 <user name="smo_simaz" password="uyt765"  authorities="ROLE_SMO" />
+				 <user name="smo_simaz" password="uyt765" authorities="ROLE_SMO" />
+				<user name="smo_rosno" password="wer456" authorities="ROLE_SMO" />
+				<user name="smo_ingos" password="rty579" authorities="ROLE_SMO" />
 				 <user name="tfoms" password="zxc234" authorities="ROLE_TFOMS" />
 			</user-service>
 		</authentication-provider>

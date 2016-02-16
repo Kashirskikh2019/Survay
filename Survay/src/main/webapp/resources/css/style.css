@@ -116,10 +116,12 @@ body {
 
 .conteinerHeader
 {
-	margin-top: 170px;
+	//margin-top: 170px;
 	padding-top:20px;
 	padding-left:50px;
 	padding-right:50px;
+	posicion:fixed;
+	top:200px;
 }
  
 .mask_pseudo2{

@@ -95,8 +95,8 @@ $("#formOneReport").validate({
 
 </head>
 <body>
-<div class="mask pseudo" ><a href="#" style="margin-top:20px;margin-left:50px;margin-bottom:0px;"><img src="${pageContext.request.contextPath}/resources/image/logo.png"/></a></div>
-<div class="mask_pseudo2" id="echart_pie2" ></div>
+<div class="mask pseudo" style="position: static;"><a href="#" style="margin-top:20px;margin-left:50px;margin-bottom:0px;"><img src="${pageContext.request.contextPath}/resources/image/logo.png"/></a></div>
+<div class="mask_pseudo2" id="echart_pie2" style="position: static;"></div>
 <svg height="0">
   <!-- THE mask -->
   <mask id="mask-firefox">
@@ -109,7 +109,7 @@ $("#formOneReport").validate({
     <feComposite in2="SourceAlpha" operator="in" />
   </filter>
 </svg>
-<div class="conteinerHeader">
+<div class="conteinerHeader" style="position: absolute; width:1350px;">
 					 <nav class="navbar navbar-default navbar-inverse" role="navigation">
 			    <div class="container-fluid">
 			        <!-- Brand and toggle get grouped for better mobile display -->
@@ -1094,4 +1094,5 @@ $("#formOneReport").validate({
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
 <script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> -->
 </body>
+
 </html>
