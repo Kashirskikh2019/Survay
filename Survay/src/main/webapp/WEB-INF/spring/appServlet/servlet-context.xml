@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/mvc
     	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 		
+	
 	  <mvc:annotation-driven/>
   
   <context:component-scan base-package="nsk.tfoms.survay.controllers" />
@@ -51,8 +52,8 @@
   <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory"/>
   </bean>
- 
- 
+  
+       
   
   <!-- Enable @Transactional annotation -->
   <tx:annotation-driven/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
 	<entity>
-		<entity-name>nsk.tfoms.survay.entity.SurvayClinic</entity-name>
+		<entity-name>nsk.tfoms.survay.entity.SurvayDaystacionar</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>468</entity-height>
-		<entity-X-Coordinate>70</entity-X-Coordinate>
+		<entity-height>408</entity-height>
+		<entity-X-Coordinate>240</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
@@ -11,10 +11,10 @@
 	</entity>
 
 	<entity>
-		<entity-name>nsk.tfoms.survay.entity.SurvayDaystacionar</entity-name>
+		<entity-name>nsk.tfoms.survay.entity.SurvayClinic</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>408</entity-height>
-		<entity-X-Coordinate>240</entity-X-Coordinate>
+		<entity-height>468</entity-height>
+		<entity-X-Coordinate>70</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
@@ -27,6 +27,28 @@
 		<entity-height>428</entity-height>
 		<entity-X-Coordinate>400</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSecondlevel</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>286</entity-height>
+		<entity-X-Coordinate>50</entity-X-Coordinate>
+		<entity-Y-Coordinate>520</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec1</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>146</entity-height>
+		<entity-X-Coordinate>1080</entity-X-Coordinate>
+		<entity-Y-Coordinate>420</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>

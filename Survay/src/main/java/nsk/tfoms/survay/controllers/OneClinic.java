@@ -59,13 +59,14 @@ public class OneClinic {
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 		    // вытаскиваем из базы 
 		    List<SurvayClinic> list = personSvc.getAll(test);
+		    System.out.println("list "+ list );
 		    for (int i = 0; i < list.size(); i++)
 		    {
 		    	list.get(i).setDataResp(	TimesAndDate.parseDate(list.get(i).getDataResp())	);
 			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
-
+		    
 			return res;
 	  }
 	  

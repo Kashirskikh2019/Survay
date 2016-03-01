@@ -709,6 +709,16 @@ function oneLevel() {
 	$('#myModal1 .modal-title').text('Добавить анкету первого уровня');
 	$('#myModal2 .modal-title').text('Добавить анкету первого уровня');
 }
+
+/*
+ * Метод обновляет запись в модальном окне второго уровня
+ */
+function levelsecond() {
+	$('#formClinicSecondLevel .modal-title').text('Добавить анкету второго уровня');
+	//$('#myModal1 .modal-title').text('Добавить анкету второго уровня');
+	//$('#myModal2 .modal-title').text('Добавить анкету второго уровня');
+}
+
 /*
  * Метод заполняет модальное окно первого уровня данными по id записи 
  */

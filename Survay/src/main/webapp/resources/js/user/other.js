@@ -72,6 +72,20 @@
 		   
 		});
 	   
+	   // кнопка отмена (при отмене на модальном окне анкеты второго уровня поликлиника)
+	   $("#cancelSecondClinic").click(function()
+		{
+		   var $form = $('#formClinicSecondLevel') 
+		      $('select', $form).each(function() {
+		        $(this).val($(this).prop('defaultSelected'));
+		      });	
+
+		   $("input[name='dataRespNSecondLevel']").val('');
+		   $(".errorSecondClinic").css('display','none');
+		   $("#idClinicSecondLevel").val('');
+		   
+		});
+	   
 	   
 	// ловим нажите на отблекс логотипа
 	   function shine()

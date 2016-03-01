@@ -65,14 +65,28 @@ $(document).ready(function()
 	$( "#dateBegin" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneClinic" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEnd" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	$( "#dateBeginsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#datePartSecondClinic" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
 
 	$( "#dateBeginDayStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndDayStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneDayStac" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	$( "#dateBeginDayStacionarsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndDayStacionarsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#datePartOneDayStacsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
 
 	$( "#dateBeginStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndStacionar" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#datePartOneStac" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	$( "#dateBeginStacionarsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndStacionarsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#datePartOneStacsecondlevel" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	// for reports
 	
 	$( "#dateBeginOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
@@ -141,13 +155,11 @@ $("#formOneReport").validate({
 			                <li class="dropdown">
 			                    <a href="#" class="dropdown-toggle menufonts" data-toggle="dropdown"><i class="fa fa-align-right"></i>&nbsp;&nbsp;Анкеты второго уровня <span class="caret"></span></a>
 			                    <ul class="dropdown-menu" role="menu">
-			                        <li><a href="#" id="su">Action</a></li>
-			                        <li><a href="#" id="su2">Another action</a></li>
-			                        <li><a href="#">Something else here</a></li>
+			                        <li><a href="#" id="one_ambul_polsecondlevel" onclick="alloneclinicsecondlevel('${principal.username}')"><i class="fa fa-ambulance"></i>&nbsp;&nbsp;Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#">Separated link</a></li>
+			                        <li><a href="#" id="one_daysecondlevel" /*onclick="allonedaystacionarsecondlevel('${principal.username}')"*/><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#">One more separated link</a></li>
+			                        <li><a href="#" id="one_stacsecondlevel" /*onclick="allonestacionarsecondlevel('${principal.username}')"*/><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
 			                    </ul>
 			                </li>
 			                
@@ -285,6 +297,10 @@ $("#formOneReport").validate({
 						</div>
 					</div>
 <!-- CAST BLOCK MODAL WINDOWS FROM MENU -->
+
+
+
+
 <div id="dim">
 			<div class="msgbox">
 				<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->
@@ -313,6 +329,39 @@ $("#formOneReport").validate({
 			</div><br><br>
 <div id="fgf" style="overflow-y: scroll; height:100px; margin-top:35px;">			
 			<table id="records_table" class="table table-striped" style="margin:0px auto; width:85%;"></table>
+</div>	
+
+        
+</div>
+
+<div id="dimsecondlevel">
+			<div class="msgbox">
+				<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->
+				<div class="msgboxp">
+					<h4 id="shadow_oneclinic">Анкета второго уровня амбулаторно-поликлинической помощи</h4>
+				</div>
+			</div>
+			
+			<div  style="position: absolute; left:35%;">
+			<TABLE>
+				<TR> 
+					<TD style="padding-right:15px;">
+						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginsecondlevel" name="namedateBeginsecondlevel" placeholder="">
+					</TD>
+					<td style="padding-right:15px;">
+     					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndsecondlevel" name="namedateEndsecondlevel" placeholder="">
+     				</td>
+     				<td style="padding-right:15px;">
+     					<button class="btn btn-success" id="getqueryoneclinic" /*onclick="oneclinicbetween('${principal.username}')"*/>Выбрать</button>
+     				</td>
+     				<td>
+     					<button class="btn btn-success" id="addOneClinicsecondlevel" data-toggle="modal" data-target="#myModalClinicSecondLevel" onclick="levelsecond()">Добавить запись</button>
+     				</td>
+     			</TR>
+     		</TABLE>
+			</div><br><br>
+<div id="fgfsecondlevel" style="overflow-y: scroll; height:100px; margin-top:35px;">			
+			<table id="records_tablesecondlevel" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 </div>	
 
         
@@ -348,7 +397,41 @@ $("#formOneReport").validate({
 			<table id="records_tableOneDayStacionar" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 </div>	
 			
-		</div>		
+		</div>
+		
+<div id="dim2secondlevel">
+	<div class="msgbox2">
+		<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->
+		<div class="msgboxp2">
+			<h4 id="shadow_oneclinic2">Анкета второго уровня дневного стационара</h4>
+		</div>
+	</div>
+	
+	<div  style="position: absolute; left:35%;">
+	<TABLE>
+		<TR> 
+			<TD style="padding-right:15px;">
+				<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginDayStacionarsecondlevel" name="namedateBeginDayStacionarsecondlevel" placeholder="">
+			</TD>
+			<td style="padding-right:15px;">
+   					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndDayStacionarsecondlevel" name="namedateEndDayStacionarsecondlevel" placeholder="">
+   				</td>
+   				<td style="padding-right:15px;">
+   					<button class="btn btn-success"  /*onclick="onedaystacbetween('${principal.username}')"*/>Выбрать</button>
+   				</td>
+   				<td>
+   					<button class="btn btn-success" id="addOneDayStacionarsecondlevel" data-toggle="modal" data-target="#myModal1secondlevel" /*onclick="oneLevel()"*/>Добавить запись</button>
+     				</td>
+     			</TR>
+     		</TABLE>
+			</div>
+			<br><br>
+<div id="tableOneDayStacionarsecondlevel" style="overflow-y: scroll; height:100px; margin-top:35px;">			
+	<table id="records_tableOneDayStacionarsecondlevel" class="table table-striped" style="margin:0px auto; width:85%;"></table>
+</div>	
+			
+</div>
+				
 <div id="dim3">
 			<div class="msgbox3">
 				<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->
@@ -378,7 +461,41 @@ $("#formOneReport").validate({
 <div id="tableOneStacionar" style="overflow-y: scroll; height:100px; margin-top:35px;">			
 			<table id="records_tableOneStacionar" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 		</div>		
-</div> <!-- <div class="conteinerHeader"> -->
+</div> 
+
+<div id="dim3secondlevel">
+			<div class="msgbox3">
+				<!-- 	<a class="close" href="#" ><img src="close.jpg"/></a>  -->
+				<div class="msgboxp3">
+					<h4 id="shadow_oneclinic3">Анкета второго уровня стационарной помощи</h4>
+				</div>
+			</div>
+			<div  style="position: absolute; left:35%;">
+			<TABLE>
+				<TR> 
+					<TD style="padding-right:15px;">
+						<input  class="form-control"  aria-describedby="sizing-addon3" id="dateBeginStacionarsecondlevel" name="namedateBeginStacionarsecondlevel" placeholder="">
+					</TD>
+					<td style="padding-right:15px;">
+     					<input  class="form-control"  aria-describedby="sizing-addon3" id="dateEndStacionarsecondlevel" name="namedateEndStacionarsecondlevel" placeholder="">
+     				</td>
+     				<td style="padding-right:15px;">
+     					<button class="btn btn-success"  /*onclick="onestacbetween('${principal.username}')"*/>Выбрать</button>
+     				</td>
+     				<td>
+     					<button class="btn btn-success" id="addOneStacionarsecondlevel" data-toggle="modal" data-target="#myModal2secondlevel" /*onclick="oneLevel()"*/>Добавить запись</button>
+     				</td>
+     			</TR>
+     		</TABLE>
+			</div>
+			<br><br>
+<div id="tableOneStacionarsecondlevel" style="overflow-y: scroll; height:100px; margin-top:35px;">			
+			<table id="records_tableOneStacionarsecondlevel" class="table table-striped" style="margin:0px auto; width:85%;"></table>
+		</div>		
+</div>
+
+
+<!-- <div class="conteinerHeader"> -->
 
 <!-- Добавить запись (модальное окно первого уровня АПУ) -->
 					<div class="modal  fade" id="myModal" role="dialog"
@@ -626,6 +743,117 @@ $("#formOneReport").validate({
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button>
 									<button  class="btn btn-success"  onclick='oneclinic("${principal.username}")'>Добавить анкету</button>
+								</div>
+							</div>
+						</div>
+					</div>
+		</div>		
+<!-- конец Добавить запись (модальное окно) -->
+
+<!-- Добавить запись (модальное окно второго уровня АПУ) -->
+					<div class="modal  fade" id="myModalClinicSecondLevel" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+								<!-- 	<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>  -->
+									<h3 class="modal-title">Добавить анкету второго уровня</h3>
+									<p>Добавление анкеты  амбулаторно-поликлинической помощи</p>
+
+								</div>
+					<div  id="formClinicSecondLevel" >			
+								<div class="modal-body backgr" >
+									<div  class="wrap-hv">
+											<div><p class="hv">Укажите медицинское учреждение где проходил опрос</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="moSecondLevel" title="Введите лечебное учреждение">
+										        <option value=""></option>
+										        <c:forEach var="ls" items="${listmo}">
+										        <option>${ls.value}</option>
+										        </c:forEach>
+										      </select>
+										    </div><br><br>
+									</div>	    
+								    
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
+									    <div class="col-xs-4">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartSecondClinic" name="dataRespNSecondLevel" placeholder="">
+									    </div><br><br>
+									</div>    
+								    								
+									<div  class="wrap-hv">
+										<div><p class="hv">1.	Как часто Вы посещаете поликлинику: (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="visitClinicSecondLevel">
+									      	<option value=""></option>
+									        <option>Один раз в несколько лет</option>
+									        <option>Один - два раза в год</option>
+									        <option>В среднем раз в месяц</option>
+									        <option>Два - четыре раза в месяц</option>
+									        <option>Два - три раза в неделю или чаше</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+		 						    
+								    <div  class="wrap-hv">
+										<div><p class="hv">2.	Почему Вы посещаете именно эту поликлинику?: (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="visitOptionSecondLvel" >
+									      	<option value=""></option>
+									        <option>Близко расположена к дому</option>
+									        <option>Здесь чисто и уютно, приятно находиться</option>
+									        <option>Здесь работают хорошие специалисты</option>
+									        <option>Большой спектр медицинских услуг</option>
+									        <option>Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее</option>
+									        <option>Другое(напишиете)...</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									 <div  class="wrap-hv">
+										<div><p class="hv">3.	Представьте, что Вам предложили поменять поликлинику. Вы бы сделали это? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="replacementClinicSecondLevel" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>     
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">	Пол респондента:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="sexSecondLevelClinic" title="Введите пол">
+									      	<option value=""></option>
+									        <option>Мужской</option>
+									        <option>Женский</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">	Возраст респондента (лет):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="SecondLevelClinic"  title="Введите возраст">
+									      	<option value=""></option>
+									      	<c:forEach var="ag" items="${listage}">
+									        <option>${ag.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									</div>    
+								    
+								<input type="hidden" id="polzovatelClinicSecondLevel" value="${principal.username}"/>
+								<input type="hidden" id="idClinicSecondLevel" value=""/>
+								
+								<div class="modal-footer"><div class="errorSecondClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+							 	<button type="button" id="cancelSecondClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button> 
+								<button  class="btn btn-success"  onclick='secondclinic("${principal.username}")'>Добавить анкету</button> 
 								</div>
 							</div>
 						</div>
@@ -1086,10 +1314,11 @@ $("#formOneReport").validate({
   </script>
   <!-- <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' />  -->
 <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/secondlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/pressbtnsecondlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/reports.js"></script>  
-<script src="${pageContext.request.contextPath}/resources/js/user/test.js"></script>
 <!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
 <script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> -->

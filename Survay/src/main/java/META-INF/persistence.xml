@@ -5,6 +5,8 @@
 		<class>nsk.tfoms.survay.entity.SurvayClinic</class>
 		<class>nsk.tfoms.survay.entity.SurvayDaystacionar</class>
 		<class>nsk.tfoms.survay.entity.SurvayStacionar</class>
+		<class>nsk.tfoms.survay.entity.SurvayClinicSecondlevel</class>
+		<class>nsk.tfoms.survay.entity.SurvayClinicSec1</class>
 		
 		<properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
