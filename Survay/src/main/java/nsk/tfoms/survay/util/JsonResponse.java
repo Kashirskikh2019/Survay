@@ -15,5 +15,15 @@ public class JsonResponse {
 	public void setResult(Object result) {
 		this.result = result;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("JsonResponse [status=");
+		builder.append(status);
+		builder.append(", result=");
+		builder.append(result);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }
