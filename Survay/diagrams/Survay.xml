@@ -22,11 +22,44 @@
 	</entity>
 
 	<entity>
+		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec25</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>386</entity-height>
+		<entity-X-Coordinate>600</entity-X-Coordinate>
+		<entity-Y-Coordinate>1010</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec2</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>546</entity-height>
+		<entity-X-Coordinate>250</entity-X-Coordinate>
+		<entity-Y-Coordinate>940</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.QuestionManyClinic</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>266</entity-height>
+		<entity-X-Coordinate>260</entity-X-Coordinate>
+		<entity-Y-Coordinate>520</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
 		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec1</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>426</entity-height>
-		<entity-X-Coordinate>420</entity-X-Coordinate>
-		<entity-Y-Coordinate>500</entity-Y-Coordinate>
+		<entity-X-Coordinate>560</entity-X-Coordinate>
+		<entity-Y-Coordinate>570</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -49,39 +82,6 @@
 		<entity-height>428</entity-height>
 		<entity-X-Coordinate>400</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec25</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>386</entity-height>
-		<entity-X-Coordinate>600</entity-X-Coordinate>
-		<entity-Y-Coordinate>1010</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec2</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>546</entity-height>
-		<entity-X-Coordinate>250</entity-X-Coordinate>
-		<entity-Y-Coordinate>1120</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>nsk.tfoms.survay.entity.QuestionManyClinic</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>146</entity-height>
-		<entity-X-Coordinate>260</entity-X-Coordinate>
-		<entity-Y-Coordinate>520</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>

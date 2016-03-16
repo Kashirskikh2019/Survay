@@ -798,21 +798,24 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									 </div>   
 		 						    
-								    <div  class="wrap-hv">
+								    <div  class="wrap-hv" style="height: 180px;">
 										<div><p class="hv">2.	Почему Вы посещаете именно эту поликлинику?: (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="visitOptionSecondLvel" >
-									      	<option value=""></option>
-									        <option>Близко расположена к дому</option>
-									        <option>Здесь чисто и уютно, приятно находиться</option>
-									        <option>Здесь работают хорошие специалисты</option>
-									        <option>Большой спектр медицинских услуг</option>
-									        <option>Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее</option>
-									        <option>Другое(напишиете)...</option>
-									      </select>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question2_1_clinic"  value="Близко расположена к дому" > Близко расположена к дому&nbsp;<br>
+												<input type="checkbox" id="question2_2_clinic" value="Здесь чисто и уютно, приятно находиться" > Здесь чисто и уютно, приятно находиться&nbsp;<br>
+												<input type="checkbox" id="question2_3_clinic" value="Здесь работают хорошие специалисты" > Здесь работают хорошие специалисты&nbsp;<br>
+												<input type="checkbox" id="question2_4_clinic" value="Большой спектр медицинских услуг" > Большой спектр медицинских услуг&nbsp;<br>
+												<input type="checkbox" id="question2_5_clinic" value="Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее" > Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" id="question2_6_clinic" > 
+											</td>
+										  </tr>
+										  </table>
 									    </div><br><br>
 									</div>
-									
+									<br>
 									 <div  class="wrap-hv">
 										<div><p class="hv">3.	Представьте, что Вам предложили поменять поликлинику. Вы бы сделали это? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -824,6 +827,703 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>     
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">4.	Представьте, что вы не прикреплены ни к одной из поликлиник. Вы бы выбрали вашу поликлинику? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question4" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div> 
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">5.	Удобен ли для вас график работы врачей и служб поликлиники? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question5" >
+									      	<option value=""></option>
+									        <option>Да, полностью удобен</option>
+									        <option>По большей части удобен</option>
+									        <option>Скорее не удобен</option>
+									        <option>Совершенно не удобен</option>
+									      </select>
+									    </div><br><br>
+									</div>       
+									<br>
+									<div  class="wrap-hv" style="height: 245px;">
+										<div><p class="hv">6.1.	Каким образом  в вашей поликлинике можно взять талон/записаться на прием к участковому терапевту</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question6_1_1_clinic"  value="В регистратуре" > В регистратуре&nbsp;<br>
+												<input type="checkbox" id="question6_1_2_clinic" value="По телефону" >По телефону&nbsp;<br>
+												<input type="checkbox" id="question6_1_3_clinic" value="Через Интернет (портал госуслуг)" > Через Интернет (портал госуслуг)&nbsp;<br>
+												<input type="checkbox" id="question6_1_4_clinic" value="Через информационные терминалы в поликлинике" > Через информационные терминалы в поликлинике&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" id="question6_1_5_clinic"> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									<br>
+									<div  class="wrap-hv" style="height: 245px;">
+										<div><p class="hv">6.2.	Каким образом  в вашей поликлинике можно взять талон/записаться на прием к узкому специалисту</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question6_2_1_clinic"  value="В регистратуре" > В регистратуре&nbsp;<br>
+												<input type="checkbox" id="question6_2_2_clinic" value="По телефону" >По телефону&nbsp;<br>
+												<input type="checkbox" id="question6_2_3_clinic" value="Через Интернет (портал госуслуг)" > Через Интернет (портал госуслуг)&nbsp;<br>
+												<input type="checkbox" id="question6_2_4_clinic" value="Через информационные терминалы в поликлинике" > Через информационные терминалы в поликлинике&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" id="question6_2_5_clinic"> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">7.	Можно ли в вашей поликлинике получить по телефону справочную информацию о предоставляемых медицинских услугах, работе специалистов и т.д. (одинответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question7" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">8.1.	Всегда ли в своей поликлинике вы можете своевременно получить медицинскую помощь: Участкового терапевта (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question8_1" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>       
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">8.2.	Всегда ли в своей поликлинике вы можете своевременно получить медицинскую помощь: Врача-специалиста (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question8_2" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">9.1.	При последнем посещении через какой период времени после записи вы смогли попасть на прием к участковому терапевту (одни ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question9_1" >
+									      	<option value=""></option>
+									        <option>В тот же день</option>
+									        <option>На следующий день</option>
+									        <option>В течение 2 - 7 дней</option>
+									        <option>Более чем через неделю</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">9.2.	При последнем посещении через какой период времени после записи вы смогли попасть на прием к врачу-специалисту (одни ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question9_2" >
+									      	<option value=""></option>
+									        <option>В тот же день</option>
+									        <option>На следующий день</option>
+									        <option>В течение 2 - 7 дней</option>
+									        <option>Более чем через неделю</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">10.	Возникали ли у вас проблемы с вызовом врача на дом? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Мне не приходилось вызывать врача на дом</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">11.	Сколько в среднем вам приходится ожидать приема врача в очереди перед кабинетом? (одни ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question11" >
+									      	<option value=""></option>
+									        <option>До 5 минут</option>
+									        <option>10 - 15 минут</option>
+									        <option>15 - 30 минут</option>
+									        <option>Более 30 минут</option>
+									        <option>Более 1 часа</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<div  class="wrap-hv">
+										<div><p class="hv">12.	Насколько вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question12_clinic" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">13.	Приходилось ли вам сталкиваться с проблемами при получении направления в другие медицинские организации для консультации, дополнительного обследования? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question13" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Мне не приходилось получать подобное направление</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">14.	Как вы считаете, достаточно ли внимания уделяют врачи вашей поликлиники профилактике заболеваний? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question14" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь, ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">15.	Приходилось ли вам проходить в своей поликлинике диспансеризацию? (одинответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">16.	Когда вы проходили диспансеризацию последний раз? (напишите)</p></div>
+									    <div class="col-xs-4">
+									      <input type="text" id="question16" >
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">17.	Что вы можете сказать о своем последнем опыте прохождения диспансеризации? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question17" >
+									      	<option value=""></option>
+									        <option>Диспансеризацию прошел(ла) быстро, т.к. все было хорошо организовано</option>
+									        <option>Диспансеризацию прошел(ла) быстро, т.к. врачи были недостаточновнимательны и относились ко всему формально</option>
+									        <option>Диспансеризация заняла много времени, т.к. приходилось подолгу ждатьприема врачей</option>
+									        <option>Другое (напишите)</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">18.	Как  вы считаете, учитывают ли врачи ваше мнение, назначая вам лечение?(один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question18" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">19.	Если у вас возникают вопросы по поводу назначенных вам медицинских Препаратов, процедур, анализов, обследований и т.п., всегда ли врачи разъясняют необходимость назначений? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question19" >
+									      	<option value=""></option>
+									        <option>Да, всегда</option>
+									        <option>Чаще да, чем нет</option>
+									        <option>Чаще нет, чем да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.1.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Техническим состоянием, ремонтом помещений (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_1_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.2.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Организацией мест ожидания приема перед кабинетами (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_2_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.3.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Чистотой, санитарно-гигиеническими условиями (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_3_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.4.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Оснащенностью современным медицинским оборудованием (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_4_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.5.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Организацией работы регистратуры (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_5_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.6.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Организацией записи на прием к врачу (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_6_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.7.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Временем ожидания приема врача (перед кабинетом) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_7_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.8.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Сроками ожидания медицинских услуг после записи (перед кабинетом) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_8_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.9.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью необходимых лабораторных исследований/анализов (перед кабинетом) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_9_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.10.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.) (перед кабинетом) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_10_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.11.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью мед.помощи терапевта (перед кабинетом) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_11_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.12.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью мед.помощи врачей-специалистов (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_12_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.13.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Квалификацией врачей (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_13_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.14.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Отношением врачей и медсестер к пациентам (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_14_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.15.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Работой врачей в поликлинике (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_15_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.16.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Комплексом предоставляемых медицинских услуг (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_16_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									<br>
+									 <div  class="wrap-hv">
+										<div><p class="hv">20.17.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Результатами лечения, обследования, реабилитации (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question20_17_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">21.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться к услугам скорой медицинской помощи? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question21" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">22.	Насколько вы удовлетворены качеством оказанной вам скорой медицинской помощи? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question22_clinic" >
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем нет</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">23.	Знаете ли вы свои права как застрахованного в системе обязательного медицинского страхования? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <select class="form-control input-sm" id="question23" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Не в полной мере</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									
+								 	<div  class="wrap-hv" style="height: 245px;">
+										<div><p class="hv">24.	Из каких источников вы узнали о своих правах? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question24_1_clinic"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
+												<input type="checkbox" id="question24_2_clinic" value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
+												<input type="checkbox" id="question24_3_clinic" value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
+												<input type="checkbox" id="question24_4_clinic" value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
+												<input type="checkbox" id="question24_5_clinic" value="Из средств массовой информации" > Из средств массовой информации&nbsp;<br>
+												<input type="checkbox" id="question24_6_clinic" value="Из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > Из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
+												<input type="checkbox" id="question24_7_clinic" value="Из сети Интернет" > Из сети Интернет&nbsp;<br>
+												<input type="checkbox" id="question24_8_clinic" value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
+												<input type="checkbox" id="question24_9_clinic" value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" id="question24_10_clinic" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.1	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Выбор мед организации</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_1_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>     
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.2	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Выбор страховой компании</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_2_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>     
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.3	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Выбор врача (с учетом его согласия)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_3_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.4	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Получение полной информации о состоянии собственного здоровья</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_4_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>          
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.5	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Сохранение в тайне информации о состоянии своего здоровья, факте обращения за мед.помощью</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_5_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>          
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.6	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Отказ от медицинского вмешательства</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_6_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.7	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Получение бесплатных лекарств при обращении за скорой и стационарной помощью</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_7_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.8	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Получение бесплатной мед.помощи как в поликлинике, так и на дому</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_8_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.9	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Получение бесплатной восстановительной помощи и реабилитации</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_9_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.10	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Получение бесплатной мед.помощи за пределами региона, в котором Вы проживаете</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_10_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.11	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Защиту своих прав в случае их нарушения</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_11_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 215px;">
+										<div><p class="hv">26.	Если вы считаете, что ваши права в системе ОМС нарушены, куда выпредпочитаете обратиться за помощью? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question26_1_clinic"  value="Администрация медицинской организации" > Администрация медицинской организации&nbsp;<br>
+												<input type="checkbox" id="question26_2_clinic" value="Страховая компания, выдавшая полис ОМС" > Страховая компания, выдавшая полис ОМС&nbsp;<br>
+												<input type="checkbox" id="question26_3_clinic" value="Фонд обязательного медицинского страхования" > Фонд обязательного медицинского страхования&nbsp;<br>
+												<input type="checkbox" id="question26_4_clinic" value="Органы управления здравоохранением" > Органы управления здравоохранением&nbsp;<br>
+												<input type="checkbox" id="question26_5_clinic" value="Гражданский суд" > Гражданский суд&nbsp;<br>
+												<input type="checkbox" id="question26_6_clinic" value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" id="question26_7_clinic" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
 									
 									<div  class="wrap-hv">
 										<div><p class="hv">	Пол респондента:</p></div>
@@ -853,7 +1553,7 @@ $("#formOneReport").validate({
 								
 								<div class="modal-footer"><div class="errorSecondClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 							 	<button type="button" id="cancelSecondClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button> 
-								<button  class="btn btn-success"  onclick='secondclinic("${principal.username}")'>Добавить анкету</button> 
+								<button  class="btn btn-success"  onclick='secondlevelclinic("${principal.username}")'>Добавить анкету</button> 
 								</div>
 							</div>
 						</div>

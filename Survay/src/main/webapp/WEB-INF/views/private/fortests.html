@@ -1,0 +1,135 @@
+<!-- Добавить запись (модальное окно второго уровня АПУ) -->
+					<div class="modal  fade" id="myModalClinicSecondLevel" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+								<!-- 	<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>  -->
+									<h3 class="modal-title">Добавить анкету второго уровня</h3>
+									<p>Добавление анкеты  амбулаторно-поликлинической помощи</p>
+
+								</div>
+					<div  id="formClinicSecondLevel" >			
+								<div class="modal-body backgr" >
+									<div  class="wrap-hv">
+											<div><p class="hv">Укажите медицинское учреждение где проходил опрос</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="moSecondLevel" title="Введите лечебное учреждение">
+										        <option value=""></option>
+										        <c:forEach var="ls" items="${listmo}">
+										        <option>${ls.value}</option>
+										        </c:forEach>
+										      </select>
+										    </div><br><br>
+									</div>	    
+								    
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
+									    <div class="col-xs-4">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartSecondClinic" name="dataRespNSecondLevel" placeholder="">
+									    </div><br><br>
+									</div>    
+								    								
+									<div  class="wrap-hv">
+										<div><p class="hv">1.	Как часто Вы посещаете поликлинику: (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="visitClinicSecondLevel">
+									      	<option value=""></option>
+									        <option>Один раз в несколько лет</option>
+									        <option>Один - два раза в год</option>
+									        <option>В среднем раз в месяц</option>
+									        <option>Два - четыре раза в месяц</option>
+									        <option>Два - три раза в неделю или чаше</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+		 						    
+								    <div  class="wrap-hv">
+										<div><p class="hv">2.	Почему Вы посещаете именно эту поликлинику?: (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question2_clinic" >
+									      	<option value=""></option>
+									        <option>Близко расположена к дому</option>
+									        <option>Здесь чисто и уютно, приятно находиться</option>
+									        <option>Здесь работают хорошие специалисты</option>
+									        <option>Большой спектр медицинских услуг</option>
+									        <option>Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее</option>
+									        <option>Другое(напишиете)...</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									 <div  class="wrap-hv">
+										<div><p class="hv">3.	Представьте, что Вам предложили поменять поликлинику. Вы бы сделали это? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="replacementClinicSecondLevel" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>     
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">12.	Насколько вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question12_clinic" >
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">25.	Знаете ли вы, что системе обязательного медицинского страхования вы имеете право на: Выбор мед организации</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_1_clinic" >
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>     
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">	Пол респондента:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="sexSecondLevelClinic" title="Введите пол">
+									      	<option value=""></option>
+									        <option>Мужской</option>
+									        <option>Женский</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">	Возраст респондента (лет):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="SecondLevelClinic"  title="Введите возраст">
+									      	<option value=""></option>
+									      	<c:forEach var="ag" items="${listage}">
+									        <option>${ag.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									</div>    
+								    
+								<input type="hidden" id="polzovatelClinicSecondLevel" value="${principal.username}"/>
+								<input type="hidden" id="idClinicSecondLevel" value=""/>
+								
+								<div class="modal-footer"><div class="errorSecondClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+							 	<button type="button" id="cancelSecondClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button> 
+								<button  class="btn btn-success"  onclick='secondclinic("${principal.username}")'>Добавить анкету</button> 
+								</div>
+							</div>
+						</div>
+					</div>
+		</div>		
+<!-- конец Добавить запись (модальное окно) -->
