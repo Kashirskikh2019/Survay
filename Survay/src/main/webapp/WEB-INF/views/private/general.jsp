@@ -800,7 +800,7 @@ $("#formOneReport").validate({
 		 						    
 								    <div  class="wrap-hv" style="height: 180px;">
 										<div><p class="hv">2.	Почему Вы посещаете именно эту поликлинику?: (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquest2" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -809,13 +809,13 @@ $("#formOneReport").validate({
 												<input type="checkbox" id="question2_3_clinic" value="Здесь работают хорошие специалисты" > Здесь работают хорошие специалисты&nbsp;<br>
 												<input type="checkbox" id="question2_4_clinic" value="Большой спектр медицинских услуг" > Большой спектр медицинских услуг&nbsp;<br>
 												<input type="checkbox" id="question2_5_clinic" value="Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее" > Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее&nbsp;<br>
-												Другое(напишиете)...&nbsp;<input type="text" id="question2_6_clinic" > 
+												Другое(напишиете)...&nbsp;<input type="text" class="length" id="question2_6_clinic" > 
 											</td>
 										  </tr>
 										  </table>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">3.	Представьте, что Вам предложили поменять поликлинику. Вы бы сделали это? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -827,7 +827,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>     
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">4.	Представьте, что вы не прикреплены ни к одной из поликлиник. Вы бы выбрали вашу поликлинику? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -839,7 +839,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div> 
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">5.	Удобен ли для вас график работы врачей и служб поликлиники? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -852,41 +852,41 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>       
-									<br>
-									<div  class="wrap-hv" style="height: 245px;">
+									
+									<div  class="wrap-hv" style="height: 170px;">
 										<div><p class="hv">6.1.	Каким образом  в вашей поликлинике можно взять талон/записаться на прием к участковому терапевту</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquest6_1" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
 												<input type="checkbox" id="question6_1_1_clinic"  value="В регистратуре" > В регистратуре&nbsp;<br>
 												<input type="checkbox" id="question6_1_2_clinic" value="По телефону" >По телефону&nbsp;<br>
-												<input type="checkbox" id="question6_1_3_clinic" value="Через Интернет (портал госуслуг)" > Через Интернет (портал госуслуг)&nbsp;<br>
+												<input type="checkbox" id="question6_1_3_clinic" value="Через интернет (портал госуслуг)" > Через интернет (портал госуслуг)&nbsp;<br>
 												<input type="checkbox" id="question6_1_4_clinic" value="Через информационные терминалы в поликлинике" > Через информационные терминалы в поликлинике&nbsp;<br>
-												Другое(напишиете)...&nbsp;<input type="text" id="question6_1_5_clinic"> 
+												Другое(напишиете)...&nbsp;<input type="text" class="length" id="question6_1_5_clinic"> 
 											</td>
 										  </tr>
 										  </table>
 									    </div><br><br>
 									</div>
-									<br>
-									<div  class="wrap-hv" style="height: 245px;">
+									
+									<div  class="wrap-hv" style="height: 170px;">
 										<div><p class="hv">6.2.	Каким образом  в вашей поликлинике можно взять талон/записаться на прием к узкому специалисту</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquest6_2" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
 												<input type="checkbox" id="question6_2_1_clinic"  value="В регистратуре" > В регистратуре&nbsp;<br>
 												<input type="checkbox" id="question6_2_2_clinic" value="По телефону" >По телефону&nbsp;<br>
-												<input type="checkbox" id="question6_2_3_clinic" value="Через Интернет (портал госуслуг)" > Через Интернет (портал госуслуг)&nbsp;<br>
+												<input type="checkbox" id="question6_2_3_clinic" value="Через интернет (портал госуслуг)" > Через интернет (портал госуслуг)&nbsp;<br>
 												<input type="checkbox" id="question6_2_4_clinic" value="Через информационные терминалы в поликлинике" > Через информационные терминалы в поликлинике&nbsp;<br>
-												Другое(напишиете)...&nbsp;<input type="text" id="question6_2_5_clinic"> 
+												Другое(напишиете)...&nbsp;<input type="text" class="length" id="question6_2_5_clinic"> 
 											</td>
 										  </tr>
 										  </table>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">7.	Можно ли в вашей поликлинике получить по телефону справочную информацию о предоставляемых медицинских услугах, работе специалистов и т.д. (одинответ)</p></div>
 									    <div class="col-xs-4">
@@ -898,7 +898,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">8.1.	Всегда ли в своей поликлинике вы можете своевременно получить медицинскую помощь: Участкового терапевта (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -909,7 +909,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>       
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">8.2.	Всегда ли в своей поликлинике вы можете своевременно получить медицинскую помощь: Врача-специалиста (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -920,7 +920,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">9.1.	При последнем посещении через какой период времени после записи вы смогли попасть на прием к участковому терапевту (одни ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -933,7 +933,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">9.2.	При последнем посещении через какой период времени после записи вы смогли попасть на прием к врачу-специалисту (одни ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -946,7 +946,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">10.	Возникали ли у вас проблемы с вызовом врача на дом? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -958,7 +958,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">11.	Сколько в среднем вам приходится ожидать приема врача в очереди перед кабинетом? (одни ответ)</p></div>
 									    <div class="col-xs-4">
@@ -983,7 +983,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">13.	Приходилось ли вам сталкиваться с проблемами при получении направления в другие медицинские организации для консультации, дополнительного обследования? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -995,7 +995,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">14.	Как вы считаете, достаточно ли внимания уделяют врачи вашей поликлиники профилактике заболеваний? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -1007,26 +1007,26 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">15.	Приходилось ли вам проходить в своей поликлинике диспансеризацию? (одинответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="question15" >
+									      <select class="form-control input-sm" id="question15" onclick="testclic()">
 									      	<option value=""></option>
 									        <option>Да</option>
-									        <option>Нет</option>
+									        <option>Нет (к вопросу 18)</option>
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
-									 <div  class="wrap-hv">
+									
+									 <div  class="wrap-hv del15">
 										<div><p class="hv">16.	Когда вы проходили диспансеризацию последний раз? (напишите)</p></div>
 									    <div class="col-xs-4">
-									      <input type="text" id="question16" >
+									      <input type="text" style="width:500px;" id="question16" >
 									    </div><br><br>
 									</div>
-									<br>
-									 <div  class="wrap-hv">
+									
+									 <div  class="wrap-hv del15">
 										<div><p class="hv">17.	Что вы можете сказать о своем последнем опыте прохождения диспансеризации? (один ответ)</p></div>
 									    <div class="col-xs-4">
 									    <select class="form-control input-sm" id="question17" >
@@ -1038,7 +1038,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">18.	Как  вы считаете, учитывают ли врачи ваше мнение, назначая вам лечение?(один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -1050,7 +1050,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">19.	Если у вас возникают вопросы по поводу назначенных вам медицинских Препаратов, процедур, анализов, обследований и т.п., всегда ли врачи разъясняют необходимость назначений? (один ответ)</p></div>
 									    <div class="col-xs-4">
@@ -1064,7 +1064,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.1.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Техническим состоянием, ремонтом помещений (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1078,7 +1078,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.2.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Организацией мест ожидания приема перед кабинетами (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1092,7 +1092,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.3.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Чистотой, санитарно-гигиеническими условиями (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1106,7 +1106,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.4.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Оснащенностью современным медицинским оборудованием (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1120,7 +1120,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.5.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Организацией работы регистратуры (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1134,7 +1134,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.6.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Организацией записи на прием к врачу (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1148,7 +1148,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.7.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Временем ожидания приема врача (перед кабинетом) (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1162,7 +1162,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.8.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Сроками ожидания медицинских услуг после записи (перед кабинетом) (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1176,7 +1176,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.9.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью необходимых лабораторных исследований/анализов (перед кабинетом) (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1190,7 +1190,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.10.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью диагностических исследований (ЭКГ, УЗИ и т.д.) (перед кабинетом) (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1204,7 +1204,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.11.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью мед.помощи терапевта (перед кабинетом) (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1218,7 +1218,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.12.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Доступностью мед.помощи врачей-специалистов (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1232,7 +1232,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.13.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Квалификацией врачей (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1246,7 +1246,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.14.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Отношением врачей и медсестер к пациентам (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1260,7 +1260,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.15.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Работой врачей в поликлинике (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1274,7 +1274,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.16.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Комплексом предоставляемых медицинских услуг (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1288,7 +1288,7 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>
-									<br>
+									
 									 <div  class="wrap-hv">
 										<div><p class="hv">20.17.	Оцените уровень вашей удовлетворенности следующими характеристиками работы поликлиники: Результатами лечения, обследования, реабилитации (один ответ по каждой строке)</p></div>
 									    <div class="col-xs-4">
@@ -1306,15 +1306,15 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">21.	Приходилось ли вам лично (для себя) за последние 3 месяца обращаться к услугам скорой медицинской помощи? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									    <select class="form-control input-sm" id="question21" >
+									    <select class="form-control input-sm" id="question21" onclick="testclic()">
 									      	<option value=""></option>
 									        <option>Да</option>
-									        <option>Нет</option>
+									        <option>Нет (к вопросу 23)</option>
 									      </select>
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv">
+									<div  class="wrap-hv del21">
 										<div><p class="hv">22.	Насколько вы удовлетворены качеством оказанной вам скорой медицинской помощи? (один ответ)</p></div>
 									    <div class="col-xs-4">
 									    <select class="form-control input-sm" id="question22_clinic" >
@@ -1341,9 +1341,9 @@ $("#formOneReport").validate({
 									</div>
 									
 									
-								 	<div  class="wrap-hv" style="height: 245px;">
+								 	<div  class="wrap-hv" style="height: 265px;">
 										<div><p class="hv">24.	Из каких источников вы узнали о своих правах? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquest24" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -1351,12 +1351,12 @@ $("#formOneReport").validate({
 												<input type="checkbox" id="question24_2_clinic" value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
 												<input type="checkbox" id="question24_3_clinic" value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
 												<input type="checkbox" id="question24_4_clinic" value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
-												<input type="checkbox" id="question24_5_clinic" value="Из средств массовой информации" > Из средств массовой информации&nbsp;<br>
-												<input type="checkbox" id="question24_6_clinic" value="Из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > Из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
-												<input type="checkbox" id="question24_7_clinic" value="Из сети Интернет" > Из сети Интернет&nbsp;<br>
+												<input type="checkbox" id="question24_5_clinic" value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
+												<input type="checkbox" id="question24_6_clinic" value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
+												<input type="checkbox" id="question24_7_clinic" value="из сети интернет" > из сети интернет&nbsp;<br>
 												<input type="checkbox" id="question24_8_clinic" value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
 												<input type="checkbox" id="question24_9_clinic" value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
-												Другое(напишиете)...&nbsp;<input type="text" id="question24_10_clinic" > 
+												Другое(напишиете)...&nbsp;<input type="text" class="length" id="question24_10_clinic" > 
 											</td>
 										  </tr>
 										  </table>
@@ -1508,7 +1508,7 @@ $("#formOneReport").validate({
 									
 									<div  class="wrap-hv" style="height: 215px;">
 										<div><p class="hv">26.	Если вы считаете, что ваши права в системе ОМС нарушены, куда выпредпочитаете обратиться за помощью? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquest26" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -1518,7 +1518,7 @@ $("#formOneReport").validate({
 												<input type="checkbox" id="question26_4_clinic" value="Органы управления здравоохранением" > Органы управления здравоохранением&nbsp;<br>
 												<input type="checkbox" id="question26_5_clinic" value="Гражданский суд" > Гражданский суд&nbsp;<br>
 												<input type="checkbox" id="question26_6_clinic" value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
-												Другое(напишиете)...&nbsp;<input type="text" id="question26_7_clinic" > 
+												Другое(напишиете)...&nbsp;<input type="text" class="length" id="question26_7_clinic" > 
 											</td>
 										  </tr>
 										  </table>
@@ -1526,7 +1526,174 @@ $("#formOneReport").validate({
 									</div>
 									
 									<div  class="wrap-hv">
-										<div><p class="hv">	Пол респондента:</p></div>
+										<div><p class="hv">27	Пользовались ли вы правом выбора/смены лечащего врача? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question27" onclick="testclic()" >
+									      	<option value=""></option>
+									        <option>Да (к вопросу 29)</option>
+									        <option>Хотел(а), но не смог(ла) (к вопросу 28)</option>
+									        <option>Нет, не было необходимости (к вопросу 30)</option>
+									        <option>Нет, не знал(а), что это возможно</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  id="quest28"class="wrap-hv del29" style="height: 180px;" onclick="testclic()">
+										<div><p class="hv">28.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquest28" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question28_1_clinic"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
+												<input type="checkbox" id="question28_2_clinic" value="Решил(а), что пытаться бесполезно" > Решил(а), что пытаться бесполезно&nbsp;<br>
+												<input type="checkbox" id="question28_3_clinic" value="Побоялся(лась) огласки" > Побоялся(лась) огласки&nbsp;<br>
+												<input type="checkbox" id="question28_4_clinic" value="Не хотел(а) портить отношения с врачом" > Не хотел(а) портить отношения с врачом&nbsp;<br>
+												Мне отказали (напишите причину)...&nbsp;<input class="length" type="text" id="question28_5_clinic" ><br>
+									<!-- 			Другое(напишиете)...&nbsp;<input type="text" class="length" style="margin-top:10px;" id="question28_6_clinic" >  --> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv del30" style="height: 245px;" onclick="testclic()">
+										<div><p class="hv">29.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquest29" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question29_1_clinic"  value="Врачом оказана некачественная медицинская помощь" > Врачом оказана некачественная медицинская помощь&nbsp;<br>
+												<input type="checkbox" id="question29_2_clinic" value="Врачом разглашена конфиденциальная информация о состоянии здоровья" > Врачом разглашена конфиденциальная информация о состоянии здоровья&nbsp;<br>
+												<input type="checkbox" id="question29_3_clinic" value="Врачом не были назначены необходимые диагностические процедуры" > Врачом не были назначены необходимые диагностические процедуры&nbsp;<br>
+												<input type="checkbox" id="question29_4_clinic" value="Врачом не было назначено необходимое лечение" > Врачом не было назначено необходимое лечение&nbsp;<br>
+												<input type="checkbox" id="question29_5_clinic" value="Врач не дал направление на обследование в другую медицинскую организацию" > Врач не дал направление на обследование в другую медицинскую организацию&nbsp;<br>
+												<input type="checkbox" id="question29_6_clinic" value="Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно" > Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно&nbsp;<br>
+												<input type="checkbox" id="question29_7_clinic" value="Врач вел себя грубо, безразлично, невежливо" > Врач вел себя грубо, безразлично, невежливо&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" class="length"  id="question29_8_clinic" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">30.	Пользовались ли вы правом выбора/смены поликлиники? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question30" onclick="testclic()" >
+									      	<option value=""></option>
+									        <option>Да (к вопросу 32)</option>
+									        <option>Хотел(а), но не смог(ла) (к вопросу 31)</option>
+									        <option>Нет, не было необходимости (к вопросу 33)</option>
+									        <option>Нет, не знал(а), что это возможно</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv del31" style="height: 140px;" id="quest31" onclick="testclic()">
+										<div><p class="hv">31.	Что вам помешало поменять поликлинику? (возможно несколько вариантовответа)</p></div>
+									    <div class="col-xs-4 validquest31" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question31_1_clinic"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
+												<input type="checkbox" id="question31_2_clinic" value="Решил(а), что пытаться бесполезно" > Решил(а), что пытаться бесполезно&nbsp;<br>
+												Мне отказали (напишите причину)...&nbsp;<input type="text"  class="length" id="question31_3_clinic" ><br>
+									<!-- 			Другое(напишиете)...&nbsp;<input type="text"  class="length" style="margin-top:10px;" id="question31_4_clinic" >  --> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hvm del32" style="height: 200px;" >
+										<div><p class="hv">32.	Почему вы поменяли поликлинику? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquest32" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="question32_1_clinic"  value="в связи с переездом на новое место жительства" > в связи с переездом на новое место жительства&nbsp;<br>
+												<input type="checkbox" id="question32_2_clinic" value="из-за неудобного режима работы" > из-за неудобного режима работы&nbsp;<br>
+												<input type="checkbox" id="question32_3_clinic" value="из-за плохих санитарно-гигиенических условий" > из-за плохих санитарно-гигиенических условий&nbsp;<br>
+												<input type="checkbox" id="question32_4_clinic" value="в  связи  с  недостаточным  спектром  медицинских  услуг  (анализы, узи, флюорография, рентген и т.д.)" > в  связи  с  недостаточным  спектром  медицинских  услуг  (анализы, узи, флюорография, рентген и т.д.)&nbsp;<br>
+												<input type="checkbox" id="question32_5_clinic" value="из-за недостаточно квалифицированного медицинского персонала" > из-за недостаточно квалифицированного медицинского персонала&nbsp;<br>
+												Другое(напишиете)...&nbsp;<input type="text" class="length" id="question32_6_clinic" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">33.	Пациент, застрахованный по ОМС, имеет право получать бесплатную медицинскую помощь на всей территории РФ, в том числе за пределами постоянного места жительства. Приходилось ли вам пользоваться этим правом?(один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question33"  onclick="testclic()">
+									      	<option value=""></option>
+									        <option>Да, я получал(а) бесплатную медицинскую помощь на других территориях РФ по полису ОМС (к вопросу 35)</option>
+									        <option>Пытался(лась), но  мне  было отказано в бесплатной медицинской помощи на другой территории РФ</option>
+									        <option>Нет, не приходилось (к вопросу 35)</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv del34">
+										<div><p class="hv">34.	Почему вам отказали? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question34" >
+									      	<option value=""></option>
+									        <option>В  медицинской  организации, которой  я хотел(а) лечиться, слишком много прикрепленного населения</option>
+									        <option>Из-за отсутствия местной регистрации</option>
+									        <option>Другое (напишите)</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									
+									<div  class="wrap-hv ">
+										<div><p class="hv">35.	За последний год приходилось ли вам использовать личные денежные средства при обследовании и лечении в поликлинике? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question35" onclick="testclic()">
+									      	<option value=""></option>
+									        <option>Не приходилось (к вопросу 37)</option>
+									        <option>иногда, с заключением договора на оказание платных медицинских услуг</option>
+									        <option>иногда, но без договора на оказание платных медицинских услуг</option>
+									        <option>Очень часто, с заключением договора на оказание платных медицинскихуслуг</option>
+									        <option>Очень часто,но без договора на оказание платных медицинских услуг</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv del36">
+										<div><p class="hv">36.	Какую сумму вы потратили? (напишите)</p></div>
+									    <div class="col-xs-8">
+									    	&nbsp;<input style="width: 500px " type="text" id="question36" >
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">37.	Случалось ли вам когда-нибудь благодарить медицинских работников замедицинскую помощь?(один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question37" onclick="testclic()">
+									      	<option value=""></option>
+									        <option>Да, это происходит довольно часто</option>
+									        <option>Да, иногда случается</option>
+									        <option>Нет, никогда не приходилось к (вопросу 39)</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv del38">
+										<div><p class="hv">38.	Кто выступал инициатором такой "благодарности"?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question38" >
+									      	<option value=""></option>
+									        <option>Я сам(а)</option>
+									        <option>Медицинский работник</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">39.	Пол респондента:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="sexSecondLevelClinic" title="Введите пол">
 									      	<option value=""></option>
@@ -1537,9 +1704,9 @@ $("#formOneReport").validate({
 									 </div>   
 								    
 								    <div  class="wrap-hv">
-										<div><p class="hv">	Возраст респондента (лет):</p></div>
+										<div><p class="hv">40.	Возраст респондента (лет):</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="SecondLevelClinic"  title="Введите возраст">
+									      <select class="form-control input-sm" id="ageSecondLevelClinic"  title="Введите возраст">
 									      	<option value=""></option>
 									      	<c:forEach var="ag" items="${listage}">
 									        <option>${ag.value}</option>
@@ -1547,13 +1714,63 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									</div>    
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">41.	Ваше образование:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question41" title="Введите пол">
+									      	<option value=""></option>
+									        <option>Неполное среднее</option>
+									        <option>Среднее</option>
+									        <option>Среднее специальное</option>
+									        <option>Неполное высшее</option>
+									        <option>Высшее, в т.ч. ученая степень</option>
+									      </select>
+									    </div><br><br>
+									 </div> 
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">42.	Ваше социальное положение</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question42" >
+									      	<option value=""></option>
+									        <option>Предприниматель</option>
+									        <option>Руководитель</option>
+									        <option>Служащий</option>
+									        <option>ИТР, специалист</option>
+									        <option>Научный работник, преподаватель, учитель</option>
+									        <option>Рабочий</option>
+									        <option>Пенсионер</option>
+									        <option>Домохозяйка</option>
+									        <option>Учащийся</option>
+									        <option>Безработный</option>
+									        <option>Другое (напишите)</option>
+									      </select>
+									    </div><br><br>
+									 </div> 
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">43.	Каков среднемесячный доход вашей семьи на одного человека?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question43">
+									      	<option value=""></option>
+									        <option>Менее 10000 рублей</option>
+									        <option>10 - 15000 рублей</option>
+									        <option>15 - 20000 рублей</option>
+									        <option>20 - 25000 рублей</option>
+									        <option>25 - 30000 рублей</option>
+									        <option>Свыше 30000 рублей</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div> 
 								    
 								<input type="hidden" id="polzovatelClinicSecondLevel" value="${principal.username}"/>
 								<input type="hidden" id="idClinicSecondLevel" value=""/>
 								
 								<div class="modal-footer"><div class="errorSecondClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 							 	<button type="button" id="cancelSecondClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button> 
-								<button  class="btn btn-success"  onclick='secondlevelclinic("${principal.username}")'>Добавить анкету</button> 
+								<button  class="btn btn-success renamebtn"  onclick='secondlevelclinic("${principal.username}")'>Добавить анкету</button> 
 								</div>
 							</div>
 						</div>

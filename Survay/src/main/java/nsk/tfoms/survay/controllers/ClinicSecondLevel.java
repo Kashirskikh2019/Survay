@@ -28,10 +28,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import nsk.tfoms.survay.entity.QuestionManyClinic;
+import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayClinicSec1;
 import nsk.tfoms.survay.entity.SurvayClinicSec2;
 import nsk.tfoms.survay.entity.SurvayClinicSec25;
@@ -39,6 +41,7 @@ import nsk.tfoms.survay.entity.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.pojo.Sender;
 import nsk.tfoms.survay.pojo.WrapMany;
 import nsk.tfoms.survay.service.ClinicServiceSecondLevel;
+import nsk.tfoms.survay.util.TimesAndDate;
 
 /*
  * Контроллер обрабатывает все что связано с анкетой первого уровня АПУ
@@ -61,12 +64,11 @@ public class ClinicSecondLevel {
 	  { 
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 			List<SurvayClinicSecondlevel> list  =	personSvc.getAll(test);
-			
 		 
 		    for (int i = 0; i < list.size(); i++)
 		    {
 		    	//list.get(i).setDataRespSecondlevel(	TimesAndDate.parseDate(list.get(i).getDataRespSecondlevel())	);
-		    	list.get(i).setReplacementClinicSecondlevelsurvayClinicSec1(list.get(i).getSurvayClinicSec1().getReplacementClinicSecondlevel());
+		    	//list.get(i).setReplacementClinicSecondlevelsurvayClinicSec1(list.get(i).getSurvayClinicSec1().getReplacementClinicSecondlevel());
 		    	//list.get(i).setSurvayClinicSec1(null);
 			}
 
@@ -77,27 +79,7 @@ public class ClinicSecondLevel {
 			return res;
 	  }
 	  
-	  @RequestMapping(value = "/addsecondclinictest", method = RequestMethod.GET)
-	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save() throws ParseException
-	  { 
-		  
-		  
-		    nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
-		  /*  personSvc.addTest();
-		    List<SurvayClinicSecondlevel> list = personSvc.getAll("tfoms");
-		    for (int i = 0; i < list.size(); i++)
-		    {
-		    	//list.get(i).setDataRespSecondlevel(	TimesAndDate.parseDate(list.get(i).getDataRespSecondlevel())	);
-		    	//list.get(i).setReplacementClinicSecondlevelsurvayClinicSec1(list.get(i).getSurvayClinicSec1().getReplacementClinicSecondlevel());
-		    	//list.get(i).setSurvayClinicSec1(null);
-			}
-		    res.setStatus("SUCCESS");
-		    res.setResult(list);
-
-		    System.out.println("list2 " +list);
-		    */
-			return res;
-	  }
+	
 	  
 	  
 	  
@@ -121,25 +103,30 @@ public class ClinicSecondLevel {
 		      // 3. Convert received JSON to Article
 		      Sender sender = mapper.readValue(fg2, Sender.class);
 		      
-		      System.out.println("test - "+ fg2);
-		      System.out.println("test2 - "+ sender);
-		      System.out.println("test3 - "+ sender.getSurvay1());
-		      System.out.println("test3 - "+ sender.getSurvay5());
-		      
-		      
-		      personSvc.addTest(sender);
+		      if(sender.getSurvay1().getId() == null) personSvc.create(sender);
+		      else personSvc.edit(sender,request);
 			
-		  // personSvc.add(survay1);
-		    List<SurvayClinicSecondlevel> list = new ArrayList<SurvayClinicSecondlevel>();//personSvc.getAll(survay.getPolzovatelSecondlevel());
-		    /*for (int i = 0; i < list.size(); i++)
-		    {
-		    	list.get(i).setDataRespSecondlevel(	TimesAndDate.parseDate(list.get(i).getDataRespSecondlevel())	);
-			}*/
+		    List<SurvayClinicSecondlevel> list = personSvc.getAll(sender.getSurvay1().getPolzovatelSecondlevel());
 		    
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
 
 		    
+			return res;
+	  }
+	  
+	  
+	  @RequestMapping(value = "/secondcliniceditid", method = RequestMethod.GET)
+	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse editOnId(@RequestParam String id,String user) throws ParseException
+	  { 
+		  int idInt = Integer.valueOf(id);
+		  
+			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+		    // вытаскиваем из базы 
+		    List<SurvayClinicSecondlevel> list = personSvc.getOnId(idInt, user);
+		    
+		    res.setStatus("SUCCESS");
+		    res.setResult(list);
 			return res;
 	  }
 	

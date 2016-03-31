@@ -1,4 +1,31 @@
-// кнопка отмена (при отмене на модальном окне анкеты)
+// кнопка отмена (при отмене на модальном окне поликлиника второй уровень)
+
+	   $("#cancelSecondClinic").click(function()
+		{
+		   // зачищаем селекты
+		   var $form = $('#formClinicSecondLevel') 
+		      $('select', $form).each(function() {
+		       //$(this).prop('defaultSelected');
+		    	  $(this).val('');
+		      });	
+		   // 	зачищаем чекбоксы
+		   $('#formClinicSecondLevel input:checkbox').each(function(){
+				 $(this).prop('checked', false);
+		   })
+		   // 	зачищаем ипут текст			   
+		   $('#formClinicSecondLevel input:text').each(function(){
+				 
+				 $(this).val('');
+		   })   
+		   
+		   //$("input[name='dataRespDS']").val('');
+		   $(".errorSecondClinic").css('display','none');
+		   $("#idClinicSecondLevel").val('');
+		   
+		});
+
+
+// кнопка отмена (при отмене на модальном окне анкеты) 
 	   $("#cancelOneDayStacionar,.close").click(function()
 		{
 		   var $form = $('#form2') 
@@ -118,3 +145,15 @@
    		else return false;
    }	   
 */
+	   
+	   /*
+	    * Метод обновляет запись в модальном окне второго уровня
+	    */
+	   function levelsecond() {
+	   	$('#myModalClinicSecondLevel .modal-title').text('Добавить анкету второго уровня');
+	   	$('.renamebtn').text('Добавить анкету');
+	   	//$('#myModal1 .modal-title').text('Добавить анкету второго уровня');
+	   	//$('#myModal2 .modal-title').text('Добавить анкету второго уровня');
+	   }
+	   
+	   

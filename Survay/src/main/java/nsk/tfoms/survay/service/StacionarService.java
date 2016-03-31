@@ -76,7 +76,7 @@ public class StacionarService {
 			  userp = mas[mas.length-1]; name = name + "p.polzovatelonestac =:userp)";
 		  }
 		  
-	    List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE "+name+" and "+paste+" AND p.sexStac=:sex AND "+agefor+" AND (p.dataInputStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
+	    List<SurvayStacionar> result = em.createQuery("SELECT p FROM SurvayStacionar p WHERE "+name+" and "+paste+" AND p.sexStac=:sex AND "+agefor+" AND (p.dataRespStac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayStacionar.class)
 	    .setParameter("d1", d1)  
 	    .setParameter("d2", d2)  
 	    .setParameter("userp", userp)

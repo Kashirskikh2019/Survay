@@ -132,7 +132,7 @@ public class AllController
     	
     	if(! parseorg(paramonepart).equals(""))
     	{
-    		System.out.println("===================Clinic================================");
+    		//===================Clinic================================
 		    List<SurvayClinic> list1 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
 		    List<SurvayClinic> list2 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
 		    List<SurvayClinic> list3 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
@@ -143,8 +143,9 @@ public class AllController
 		    forOneOrgClinic.add(list2);
 		    forOneOrgClinic.add(list3);
 		    forOneOrgClinic.add(list4);
+		    
 
-		    System.out.println("=============================DayStacionar===============================");
+		    //=============================DayStacionar===============================
 		    List<SurvayDaystacionar> list5 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
 		    List<SurvayDaystacionar> list6 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
 		    List<SurvayDaystacionar> list7 = daystacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
@@ -157,7 +158,7 @@ public class AllController
 		    forOneOrgDayStac.add(list8);
 		    
 		    
-		    System.out.println("=========================================Stacionar==========================");
+		    //=========================================Stacionar==========================
 		    List<SurvayStacionar> list9 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
 		    List<SurvayStacionar> list10 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
 		    List<SurvayStacionar> list11 = stacionarservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
@@ -194,7 +195,7 @@ public class AllController
     
     
     /*
-     * Method being search only once organizacion and pass resalt to return
+     * Method being search  organizacion and pass resalt to return
      * 1 - tfoms
      * 2 - ingos
      * 3 - simaz
@@ -210,16 +211,7 @@ public class AllController
     	if(paramonepart.getOnesimaz().equals("true")){	i=i+1;	j = 3; orgs =orgs+"smo_simaz!";}
     	if(paramonepart.getOnerosno().equals("true")){	i=i+1;	j = 4; orgs =orgs+"smo_rosno!";}
     	
-    	/*if(i == 1 && j == 1){ return "tfoms"; }
-    	if(i == 1 && j == 2){ return "ingos"; }
-    	if(i == 1 && j == 3){ return "simaz"; }
-    	if(i == 1 && j == 4){ return "rosno"; }
     	
-    	String []mas = orgs.split("!");
-    	for (int k = 0; k < mas.length; k++) {
-			System.out.println(mas[k]);
-		}
-    	*/
     	
     	
     	return orgs;

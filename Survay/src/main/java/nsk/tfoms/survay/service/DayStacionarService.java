@@ -76,7 +76,7 @@ public class DayStacionarService {
 			  userp = mas[mas.length-1]; name = name + "p.polzovateldaystacionar =:userp)";
 		  }
 		  
-	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE "+name+" and "+paste+" AND p.sexDaystac=:sex AND "+agefor+" AND (p.dataInputDaystac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayDaystacionar.class)
+	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE "+name+" and "+paste+" AND p.sexDaystac=:sex AND "+agefor+" AND (p.dataRespDaystac BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayDaystacionar.class)
 	    .setParameter("d1", d1)  
 	    .setParameter("d2", d2)  
 	    .setParameter("userp", userp)

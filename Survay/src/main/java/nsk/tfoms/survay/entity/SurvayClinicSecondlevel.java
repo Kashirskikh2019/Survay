@@ -4,10 +4,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 
@@ -113,23 +113,23 @@ public class SurvayClinicSecondlevel implements Serializable {
 
 	//bi-directional one-to-one association to SurvayClinicSec1
 	@OneToOne(mappedBy="survayClinicSecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonIgnore
+	//@JsonIgnore
 	private SurvayClinicSec1 survayClinicSec1;
 	
 	@OneToOne(mappedBy="survayClinicSecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonIgnore
+	//@JsonIgnore
 	private SurvayClinicSec25 survayClinicSec25;
 	
 	@OneToOne(mappedBy="survayClinicSecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonIgnore
+	//@JsonIgnore
 	private SurvayClinicSec2 survayClinicSec2;
 
 	public SurvayClinicSecondlevel() {
 	}
 
 
-	@Transient 
-	private String replacementClinicSecondlevelsurvayClinicSec1;
+	//@Transient 
+	//private String replacementClinicSecondlevelsurvayClinicSec1;
 	
 
 	
@@ -203,14 +203,14 @@ public class SurvayClinicSecondlevel implements Serializable {
 	}
 
 	
-	public String getReplacementClinicSecondlevelsurvayClinicSec1() {
+	/*public String getReplacementClinicSecondlevelsurvayClinicSec1() {
 		return replacementClinicSecondlevelsurvayClinicSec1;
 	}
 
 	public void setReplacementClinicSecondlevelsurvayClinicSec1(String replacementClinicSecondlevelsurvayClinicSec1) {
 		this.replacementClinicSecondlevelsurvayClinicSec1 = replacementClinicSecondlevelsurvayClinicSec1;
 	}
-
+	 */
 	public Integer getId() {
 		return id;
 	}
@@ -390,74 +390,5 @@ public class SurvayClinicSecondlevel implements Serializable {
 		this.many = many;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("SurvayClinicSecondlevel [id=");
-		builder.append(id);
-		builder.append(", many=");
-		builder.append(many);
-		builder.append(", ageSecondlevel=");
-		builder.append(ageSecondlevel);
-		builder.append(", dataInputSecondlevel=");
-		builder.append(dataInputSecondlevel);
-		builder.append(", dataRespSecondlevel=");
-		builder.append(dataRespSecondlevel);
-		builder.append(", moSecondlevel=");
-		builder.append(moSecondlevel);
-		builder.append(", polzovatelSecondlevel=");
-		builder.append(polzovatelSecondlevel);
-		builder.append(", sexSecondlevel=");
-		builder.append(sexSecondlevel);
-		builder.append(", visitClinicSecondlevel=");
-		builder.append(visitClinicSecondlevel);
-		builder.append(", question5=");
-		builder.append(question5);
-		builder.append(", question9_1=");
-		builder.append(question9_1);
-		builder.append(", question9_2=");
-		builder.append(question9_2);
-		builder.append(", question11=");
-		builder.append(question11);
-		builder.append(", question16=");
-		builder.append(question16);
-		builder.append(", question17=");
-		builder.append(question17);
-		builder.append(", question19=");
-		builder.append(question19);
-		builder.append(", question27=");
-		builder.append(question27);
-		builder.append(", question30=");
-		builder.append(question30);
-		builder.append(", question33=");
-		builder.append(question33);
-		builder.append(", question34=");
-		builder.append(question34);
-		builder.append(", question35=");
-		builder.append(question35);
-		builder.append(", question36=");
-		builder.append(question36);
-		builder.append(", question37=");
-		builder.append(question37);
-		builder.append(", question38=");
-		builder.append(question38);
-		builder.append(", question41=");
-		builder.append(question41);
-		builder.append(", question42=");
-		builder.append(question42);
-		builder.append(", question43=");
-		builder.append(question43);
-		//builder.append(", survayClinicSec1=");
-		//builder.append(survayClinicSec1);
-		//builder.append(", survayClinicSec25=");
-		//builder.append(survayClinicSec25);
-		//builder.append(", survayClinicSec2=");
-		//builder.append(survayClinicSec2);
-		builder.append(", replacementClinicSecondlevelsurvayClinicSec1=");
-		builder.append(replacementClinicSecondlevelsurvayClinicSec1);
-		builder.append("]");
-		return builder.toString();
-	}
-	
 
 }

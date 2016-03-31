@@ -7,7 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +20,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFRegionUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -205,6 +209,7 @@ public class Reports {
          
          style2.setAlignment(CellStyle.ALIGN_CENTER);
          style2.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+         
          
          excelRow = sheet.getRow(6);	
          excelCell = excelRow.createCell(1);
@@ -805,6 +810,253 @@ public class Reports {
          excelCell = excelRow.getCell(15);
          excelCell.setCellValue(countonquestionStac10(forOneOrgStac));
 
+         
+         sheet = wb.createSheet("ŒÔÓ¯ÂÌÌ˚Â Àœ”");
+         
+         Set<String> hSetOneOrgClinic = new HashSet<String>();
+         Set<String> hSetOneDayStac = new HashSet<String>();
+         Set<String> hSetOneStac = new HashSet<String>();
+         
+         CellRangeAddress adr;
+         
+         //========================================================¬“Œ–Œ… À»—“ 'Œœ–Œÿ≈ÕÕ€≈ Àœ”'=========================================================================================
+         
+         for (int i = 0; i < forOneOrgClinic.size(); i++)
+         {
+        	 for (int j = 0; j < forOneOrgClinic.get(i).size(); j++)
+        	 {
+        		 hSetOneOrgClinic.add(forOneOrgClinic.get(i).get(j).getMo()+"!"+forOneOrgClinic.get(i).get(j).getPolzovatel());
+    		 }
+         }
+         
+         
+         excelRow = sheet.createRow(0);
+         excelRow = sheet.getRow(0);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("¿œ”");
+         style2.setAlignment(CellStyle.ALIGN_CENTER);
+         excelCell.setCellStyle(style2);
+         sheet.addMergedRegion(new CellRangeAddress(0,0,0,1));
+         adr = new CellRangeAddress(0, 0, 0, 1);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         
+         excelRow = sheet.createRow(1);
+         excelRow = sheet.getRow(1);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Àœ”");
+         
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue("Œ„‡ÌËÁ‡ˆËˇ");
+         
+         adr = new CellRangeAddress(1, 1, 0, 0);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         adr = new CellRangeAddress(1, 1, 1, 1);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         
+         
+         int i = 2;
+         for (String str : hSetOneOrgClinic) {
+        	 
+        	 excelRow = sheet.createRow(i);
+             excelRow = sheet.getRow(i);		
+             excelCell = excelRow.createCell(0);
+             excelCell = excelRow.getCell(0);
+             String []mas = str.split("!");
+             excelCell.setCellValue(mas[0]);
+             
+             adr = new CellRangeAddress(0, i, 0, 0);
+             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+             
+             
+             excelCell = excelRow.createCell(1);
+             excelCell = excelRow.getCell(1);
+             excelCell.setCellValue(mas[1]);
+             
+             adr = new CellRangeAddress(0, i, 1, 1);
+             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+             
+             i++;
+         }
+         
+         
+         //============================================ƒÕ≈¬ÕŒ… —“¿÷»ŒÕ¿– À»—“ 'Œœ–Œÿ≈ÕÕ€≈ Àœ”'============================================
+         
+         for (int ii = 0; ii < forOneOrgDayStac.size(); ii++)
+         {
+        	 for (int j = 0; j < forOneOrgDayStac.get(ii).size(); j++)
+        	 {
+        		 hSetOneDayStac.add(forOneOrgDayStac.get(ii).get(j).getMoDayStac()+"!"+forOneOrgDayStac.get(ii).get(j).getPolzovateldaystacionar());
+    		 }
+         }
+         
+         excelRow = sheet.createRow(i+1);
+         excelRow = sheet.getRow(i+1);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("ƒ—");
+         style2.setAlignment(CellStyle.ALIGN_CENTER);
+         excelCell.setCellStyle(style2);
+         sheet.addMergedRegion(new CellRangeAddress(i+1,i+1,0,1));
+         adr = new CellRangeAddress(i+1, i+1, 0, 1);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         
+         excelRow = sheet.createRow(i+2);
+         excelRow = sheet.getRow(i+2);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Àœ”");
+         
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue("Œ„‡ÌËÁ‡ˆËˇ");
+         
+         adr = new CellRangeAddress(i+2, i+2, 0, 0);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         adr = new CellRangeAddress(i+2, i+2, 1, 1);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         i = i+3;
+		 for (String str : hSetOneDayStac) {
+		        	 
+		        	 excelRow = sheet.createRow(i);
+		             excelRow = sheet.getRow(i);		
+		             excelCell = excelRow.createCell(0);
+		             excelCell = excelRow.getCell(0);
+		             String []mas = str.split("!");
+		             excelCell.setCellValue(mas[0]);
+		             
+		             adr = new CellRangeAddress(0, i, 0, 0);
+		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             
+		             
+		             excelCell = excelRow.createCell(1);
+		             excelCell = excelRow.getCell(1);
+		             excelCell.setCellValue(mas[1]);
+		             
+		             adr = new CellRangeAddress(0, i, 1, 1);
+		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             
+		             i++;
+	         }
+        
+         
+         //============================================—“¿÷»ŒÕ¿– À»—“ 'Œœ–Œÿ≈ÕÕ€≈ Àœ”'============================================
+		 
+		 for (int ii = 0; ii < forOneOrgStac.size(); ii++)
+         {
+        	 for (int j = 0; j < forOneOrgStac.get(ii).size(); j++)
+        	 {
+        		 hSetOneStac.add(forOneOrgStac.get(ii).get(j).getMoonestac()+"!"+forOneOrgStac.get(ii).get(j).getPolzovatelonestac());
+    		 }
+         }
+		 
+		 excelRow = sheet.createRow(i+1);
+         excelRow = sheet.getRow(i+1);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("—");
+         style2.setAlignment(CellStyle.ALIGN_CENTER);
+         excelCell.setCellStyle(style2);
+         sheet.addMergedRegion(new CellRangeAddress(i+1,i+1,0,1));
+         adr = new CellRangeAddress(i+1, i+1, 0, 1);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         
+         excelRow = sheet.createRow(i+2);
+         excelRow = sheet.getRow(i+2);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Àœ”");
+         
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue("Œ„‡ÌËÁ‡ˆËˇ");
+         
+         adr = new CellRangeAddress(i+2, i+2, 0, 0);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         adr = new CellRangeAddress(i+2, i+2, 1, 1);
+         HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+         HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+         
+         i = i+3;
+		 for (String str : hSetOneDayStac) {
+		        	 
+		        	 excelRow = sheet.createRow(i);
+		             excelRow = sheet.getRow(i);		
+		             excelCell = excelRow.createCell(0);
+		             excelCell = excelRow.getCell(0);
+		             String []mas = str.split("!");
+		             excelCell.setCellValue(mas[0]);
+		             
+		             adr = new CellRangeAddress(0, i, 0, 0);
+		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             
+		             
+		             excelCell = excelRow.createCell(1);
+		             excelCell = excelRow.getCell(1);
+		             excelCell.setCellValue(mas[1]);
+		             
+		             adr = new CellRangeAddress(0, i, 1, 1);
+		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             
+		             i++;
+	         }
+         
+         sheet.autoSizeColumn(0);
+         sheet.autoSizeColumn(1);
          
          try {
         	 

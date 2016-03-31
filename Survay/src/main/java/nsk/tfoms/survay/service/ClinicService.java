@@ -44,6 +44,7 @@ public class ClinicService {
     .getResultList();
     return result;
   }
+  
   @Transactional
   public void add(SurvayClinic p) {
 	  
@@ -56,7 +57,7 @@ public class ClinicService {
 
   @Transactional
   public List<SurvayClinic> getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
-	  String agefor = "p.age<='"+age+"'";;
+	  String agefor = "p.age<='"+age+"'";
 	  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.age>='"+age+"'";		}
 	  
 	  String paste="p.mo=:lpu";
@@ -73,7 +74,7 @@ public class ClinicService {
 		  userp = mas[mas.length-1]; name = name + "p.polzovatel =:userp)";
 	  }
 	  
-    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE "+name+" and "+paste+" AND p.sex=:sex AND "+agefor+" AND (p.dataInput BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinic.class)
+    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE "+name+" and "+paste+" AND p.sex=:sex AND "+agefor+" AND (p.dataResp BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinic.class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
     .setParameter("userp", userp)

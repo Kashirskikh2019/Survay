@@ -267,3 +267,7 @@ body {
 .modal-footer {
     border-top: 2px solid #000000;
 }
+
+.length{
+	width: 500px;
+}
