@@ -51,7 +51,7 @@ public class DayStacionarSecondlevel implements Serializable {
 	private String visitClinicSecondleveldaystacionar;
 	
 	@Column(name="QuestionDS1",length=500)
-	private String QuestionDS1;
+	private String questionDS1;
 	
 	@Column(name="QuestionDS2",length=500)
 	private String QuestionDS2;
@@ -172,11 +172,11 @@ public class DayStacionarSecondlevel implements Serializable {
 	}
 
 	public String getQuestionDS1() {
-		return QuestionDS1;
+		return questionDS1;
 	}
 
 	public void setQuestionDS1(String questionDS1) {
-		QuestionDS1 = questionDS1;
+		this.questionDS1 = questionDS1;
 	}
 
 	public String getQuestionDS2() {

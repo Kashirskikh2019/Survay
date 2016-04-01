@@ -778,3 +778,69 @@ function secondcliniceditid( varr,varr2) {
 	});
 }
 
+/*
+*
+*   АНКЕТА ВТОРОГО УРОВНЯ ДНЕВНОЙ СТАЦИОНАР
+*
+*
+*
+*/
+
+function secondlevelds(varr) {
+	
+	
+	//if(	validateSecondClinic()){  $(".errorSecondClinic").css('display','block');	}else{}
+	
+						var general = {}
+						var sec1 = {}
+						var sec2 = {}
+						var question25 = {}
+						var question15 = {}
+						//var many = {}
+						
+						general["moSecondleveldaystacionar"] = $("#moSecondleveldaystacionar").val();
+						general["dataRespSecondleveldaystacionar"] = $("input[name='dataRespDSSL']").val();
+						general["questionDS1"] = $("#questionDS1").val();
+						
+						sec2["question7sec2"] = $("#question7sec2").val();
+						sec1["question8sec1"] = $("#question8sec1").val();
+						question15["question15_1_clinic"] = $("#question15_1_clinic").val();
+						question25["question25_1"] = $("#question25_1").val();
+						
+						
+						
+						general["polzSecondleveldaystacionar"] = $("#polzSecondleveldaystacionar").val();
+						
+						// после нажатия добавить -> зачищаются периоды для кнопки выбрать
+						//$("input[name='namedateBeginsecondlevel']").val('');
+						//$("input[name='namedateEndsecondlevel']").val('');
+						
+						/*
+						 * После того как была нажато редактирование и вылезло модальное с данными по редактированию ловим
+						 * id этой записи. Если же была нажата просто кнопка "добавить запись" то if не отрабатывает и новая
+						 * запись улетает с null id там он генериться тк запись новая.
+						 * 
+						 * Обрати внимание после отработки этого ajax поле input #id зануляется
+						 * иначе при добавлении новой записи этот айдишник постоянно будет и соответственно не добавляться будет а 
+						 * редактироваться по этому id
+						 */
+						if($("#idDSSL").val()){ 	general["id"] = parseInt($("#idDSSL").val());}
+						
+						//$('#cancelSecondClinic').trigger('click');
+						//+ отрабатывает метод в other.js
+						
+						var sender = ({ survay1:general, survay2:sec1,survay3:sec2,survay4:question15,survay5:question25}); 
+						
+				
+						$.post('adddssl',JSON.stringify(sender),function(response)
+    	      	                {
+								    	  
+								      
+    	      	                	console.log('test OK');
+        	      	            },'json')
+        	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
+					
+						
+	}	
+
+

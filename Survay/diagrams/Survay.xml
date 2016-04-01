@@ -2,20 +2,9 @@
 	<entity>
 		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSecondlevel</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>706</entity-height>
+		<entity-height>686</entity-height>
 		<entity-X-Coordinate>50</entity-X-Coordinate>
 		<entity-Y-Coordinate>520</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>nsk.tfoms.survay.entity.SurvayDaystacionar</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>408</entity-height>
-		<entity-X-Coordinate>240</entity-X-Coordinate>
-		<entity-Y-Coordinate>20</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -33,11 +22,11 @@
 	</entity>
 
 	<entity>
-		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec2</entity-name>
+		<entity-name>nsk.tfoms.survay.entity.SurvayDaystacionar</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>546</entity-height>
-		<entity-X-Coordinate>250</entity-X-Coordinate>
-		<entity-Y-Coordinate>940</entity-Y-Coordinate>
+		<entity-height>408</entity-height>
+		<entity-X-Coordinate>240</entity-X-Coordinate>
+		<entity-Y-Coordinate>20</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -46,9 +35,20 @@
 	<entity>
 		<entity-name>nsk.tfoms.survay.entity.QuestionManyClinic</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>266</entity-height>
+		<entity-height>306</entity-height>
 		<entity-X-Coordinate>260</entity-X-Coordinate>
 		<entity-Y-Coordinate>520</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.SurvayClinicSec2</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>546</entity-height>
+		<entity-X-Coordinate>250</entity-X-Coordinate>
+		<entity-Y-Coordinate>940</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -82,6 +82,72 @@
 		<entity-height>428</entity-height>
 		<entity-X-Coordinate>400</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.secondlevelDayStacionar.DayStacionarSecondlevel</entity-name>
+		<entity-width>191</entity-width>
+		<entity-height>666</entity-height>
+		<entity-X-Coordinate>50</entity-X-Coordinate>
+		<entity-Y-Coordinate>1550</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.secondlevelDayStacionar.QuestionManyDayStacionar</entity-name>
+		<entity-width>191</entity-width>
+		<entity-height>266</entity-height>
+		<entity-X-Coordinate>340</entity-X-Coordinate>
+		<entity-Y-Coordinate>1550</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec15</entity-name>
+		<entity-width>226</entity-width>
+		<entity-height>386</entity-height>
+		<entity-X-Coordinate>875</entity-X-Coordinate>
+		<entity-Y-Coordinate>1540</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec2</entity-name>
+		<entity-width>248</entity-width>
+		<entity-height>486</entity-height>
+		<entity-X-Coordinate>312</entity-X-Coordinate>
+		<entity-Y-Coordinate>2020</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec25</entity-name>
+		<entity-width>241</entity-width>
+		<entity-height>266</entity-height>
+		<entity-X-Coordinate>890</entity-X-Coordinate>
+		<entity-Y-Coordinate>2060</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>nsk.tfoms.survay.entity.secondlevelDayStacionar.SurvayClinicDayStacionarSec1</entity-name>
+		<entity-width>211</entity-width>
+		<entity-height>226</entity-height>
+		<entity-X-Coordinate>1170</entity-X-Coordinate>
+		<entity-Y-Coordinate>1932</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>

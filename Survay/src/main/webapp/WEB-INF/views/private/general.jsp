@@ -483,7 +483,7 @@ $("#formOneReport").validate({
      					<button class="btn btn-success"  /*onclick="onestacbetween('${principal.username}')"*/>Выбрать</button>
      				</td>
      				<td>
-     					<button class="btn btn-success" id="addOneStacionarsecondlevel" data-toggle="modal" data-target="#myModal2secondlevel" /*onclick="oneLevel()"*/>Добавить запись</button>
+     					<button class="btn btn-success" id="addStacionarsecondlevel" data-toggle="modal" data-target="#myModal2secondlevel" /*onclick="oneLevel()"*/>Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
@@ -1775,8 +1775,131 @@ $("#formOneReport").validate({
 							</div>
 						</div>
 					</div>
-		</div>		
+		</div>	
+		</div>	
 <!-- конец Добавить запись (модальное окно) -->
+
+<!-- Добавить запись (модальное окно второго уровня ДС) -->
+
+					
+					<div class="modal fade" id="myModal1secondlevel" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+<!--  									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>-->
+									<h3 class="modal-title">Добавить анкету второго уровня</h3>
+									<p>Добавление анкеты  дневного стационара</p>
+
+								</div>
+					<div  id="formDSSL" >			
+								<div class="modal-body backgr">
+									<div  class="wrap-hv">
+										<div><p class="hv">Укажите медицинское учреждение где проходил опрос</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="moSecondleveldaystacionar" title="Введите лечебное учреждение">
+									        <option value=""></option>
+									        <c:forEach var="ls" items="${listmo}">
+									        <option>${ls.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+								    </div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
+									    <div class="col-xs-4">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneDayStacsecondlevel" name="dataRespDSSL" placeholder="">
+									    </div><br><br>
+									</div>    
+								    								
+									<div  class="wrap-hv">
+										<div><p class="hv">1. По какой причине вы госпитализированы в дневной стационар? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS1">
+									      	<option value=""></option>
+									        <option>Лечение</option>
+									        <option>Обследование</option>
+									        <option>Реабилитация</option>
+									        <option>Другое (напишите) </option>
+									      </select>
+									    </div><br><br>
+									</div>    
+		 						    
+								    <div  class="wrap-hv">
+										<div><p class="hv">7. Насколько  вы  удовлетворены  качеством медицинской помощи, получаемой в дневном стационаре? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question7sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
+									    
+								    <div  class="wrap-hv">
+										<div><p class="hv">8. Как вы считаете, учитывал ли лечащий врач ваше мнение, назначая лечение? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question8sec1">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет	</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+								    </div>
+								    
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">15.1	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Выбор медицинской организации (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_1_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">25.1	При последнем лечении/обследовании в дневном стационаре приходилось ли вам использовать личные денежные средства на: Приобретение лекарственных средств и изделий медицинского назначения (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_1">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
+								    
+								    
+								    
+								   
+								    
+								</div>
+								<input type="hidden" id="polzSecondleveldaystacionar" value="${principal.username}"/>
+								<input type="hidden" id="idDSSL" value=""/>
+								
+								<div class="modal-footer">
+								<div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+								<button type="button" id="" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button  class="btn btn-success"  onclick='secondlevelds("${principal.username}")'>Добавить анкету</button>
+								</div>
+							</div>
+						</div>
+					</div>
+		</div>	
+				
+<!-- конец Добавить запись (модальное окно) -->
+
 
 
 <!-- Добавить запись (модальное окно первого уровня дневного стационара) -->
