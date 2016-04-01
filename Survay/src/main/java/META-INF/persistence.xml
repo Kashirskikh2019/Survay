@@ -12,6 +12,13 @@
 		<class>nsk.tfoms.survay.entity.SurvayClinicSec2</class>
 		<class>nsk.tfoms.survay.entity.QuestionManyClinic</class>
 		
+		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.DayStacionarSecondlevel</class>
+		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.QuestionManyDayStacionar</class>
+		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SurvayClinicDayStacionarSec1</class>
+		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec2</class>
+		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec15</class>
+		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec25</class>	
+		
 		<properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
         <property name="hibernate.hbm2ddl.auto" value="update"/>
