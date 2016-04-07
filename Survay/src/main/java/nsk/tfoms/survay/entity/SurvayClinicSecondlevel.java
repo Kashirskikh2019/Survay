@@ -52,8 +52,6 @@ public class SurvayClinicSecondlevel implements Serializable {
 
 	@Column(name="VISIT_CLINIC_SECONDLEVEL",length=50)
 	private String visitClinicSecondlevel;
-
-	
 	
 	@Column(name="question5_clinic",length=50)
 	private String question5;

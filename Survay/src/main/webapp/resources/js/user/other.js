@@ -1,6 +1,43 @@
-// кнопка отмена (при отмене на модальном окне поликлиника второй уровень)
+		// выпадающей input в вопросе на условие напишите другое
+	   $("#questionDS1").click(function()
+		{
+		    	  if($(this).val() == 'Другое (напишите)')
+		    	  {
+		    		  //$('#questionDS1dr').css('display', 'block');
+		    		  $('#questionDS1dr').fadeIn();
+		    	  }
+		    	  else{
+		    		  $('#questionDS1dr').val(''); $('#questionDS1dr').fadeOut();}
+		   
+		});
+	   
+	   // выпадающей input в вопросе на условие напишите другое
+	   $("#questionDS2").click(function()
+		{
+		    	  if($(this).val() == 'Другое (напишите)')
+		    	  {
+		    		  $('#questionDS2dr').fadeIn();
+		    	  }
+		    	  else{
+		    		  $('#questionDS2dr').val(''); $('#questionDS2dr').fadeOut();}
+		   
+		});
+	   
+		// выпадающей input в вопросе на условие напишите другое
+	   $("#questionDS3").click(function()
+		{
+		    	  if($(this).val() == 'Другое (напишите)')
+		    	  {
+		    		  $('#questionDS3dr').fadeIn();
+		    	  }
+		    	  else{
+		    		  $('#questionDS3dr').val(''); $('#questionDS3dr').fadeOut();}
+		   
+		});
 
-	   $("#cancelSecondClinic").click(function()
+	   // кнопка отмена (при отмене на модальном окне поликлиника второй уровень)
+
+	   $("#cancelCSL").click(function()
 		{
 		   // зачищаем селекты
 		   var $form = $('#formClinicSecondLevel') 
@@ -18,14 +55,42 @@
 				 $(this).val('');
 		   })   
 		   
-		   //$("input[name='dataRespDS']").val('');
+		   $("input[name='dataRespNSecondLevel']").val('');
 		   $(".errorSecondClinic").css('display','none');
 		   $("#idClinicSecondLevel").val('');
 		   
 		});
 
+	   
+	   // кнопка отмена (при отмене на модальном окне ДС второй уровень)
 
-// кнопка отмена (при отмене на модальном окне анкеты) 
+	   $("#cancelDSSL").click(function()
+		{
+		   // зачищаем селекты
+		   var $form = $('#formDSSL') 
+		      $('select', $form).each(function() {
+		    	  $(this).val('');
+		      });	
+		   // 	зачищаем чекбоксы
+		   $('#formDSSL input:checkbox').each(function(){
+				 $(this).prop('checked', false);
+		   })
+		   // 	зачищаем ипут текст			   
+		   $('#formDSSL input:text').each(function(){
+				 
+				 $(this).val('');
+		   })
+		   
+		   $('#questionDS1dr').fadeOut();
+		   
+		   $("input[name='dataRespDSSL']").val('');
+		   $(".errorOneClinic").css('display','none');
+		   $("#idDSSL").val('');
+		   
+		});
+
+
+	   // кнопка отмена (при отмене на модальном окне анкеты) 
 	   $("#cancelOneDayStacionar,.close").click(function()
 		{
 		   var $form = $('#form2') 
@@ -39,7 +104,7 @@
 		   
 		});
 	   
-	// кнопка отмена (при отмене на модальном окне анкеты)
+	   // кнопка отмена (при отмене на модальном окне анкеты)
 	   $("#cancelOneStac,.close").click(function()
 		{
 		   var $form = $('#form3') 
@@ -53,7 +118,7 @@
 		   
 		});
 		
-		// кнопка закрыть окно (окно отчетов певого уровня)
+			// кнопка закрыть окно (окно отчетов певого уровня)
 		   $("#closereportonepart,.close").click(function()
 			{
 			   $( "#oneTFOMS" ).prop( "checked", false );
@@ -99,19 +164,7 @@
 		   
 		});
 	   
-	   // кнопка отмена (при отмене на модальном окне анкеты второго уровня поликлиника)
-	   $("#cancelSecondClinic").click(function()
-		{
-		   var $form = $('#formClinicSecondLevel') 
-		      $('select', $form).each(function() {
-		        $(this).val($(this).prop('defaultSelected'));
-		      });	
 
-		   $("input[name='dataRespNSecondLevel']").val('');
-		   $(".errorSecondClinic").css('display','none');
-		   $("#idClinicSecondLevel").val('');
-		   
-		});
 	   
 	   
 	// ловим нажите на отблекс логотипа
@@ -148,12 +201,28 @@
 	   
 	   /*
 	    * Метод обновляет запись в модальном окне второго уровня
+	    * с режима редактирования в режим добавления
 	    */
 	   function levelsecond() {
 	   	$('#myModalClinicSecondLevel .modal-title').text('Добавить анкету второго уровня');
 	   	$('.renamebtn').text('Добавить анкету');
 	   	//$('#myModal1 .modal-title').text('Добавить анкету второго уровня');
 	   	//$('#myModal2 .modal-title').text('Добавить анкету второго уровня');
+	   }
+	   
+	   /*
+	    * Метод обновляет запись в модальном окне второго уровня ДС
+	    * с режима редактирования в режим добавления
+	    */
+	   function levelseconddssl() {
+		   
+	   	$('#myModal1secondlevel .modal-title').text('Добавить анкету второго уровня');
+	   	$('.modal-header p').text('Добавление анкеты дневного стационара');
+    	$('.renamebtndssl').text('Добавить');
+    	$('#questionDS1dr').fadeOut();
+    	$('#questionDS2dr').fadeOut();
+    	$('#questionDS3dr').fadeOut();
+    	
 	   }
 	   
 	   

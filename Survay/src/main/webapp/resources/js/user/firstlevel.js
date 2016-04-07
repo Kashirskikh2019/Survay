@@ -714,6 +714,7 @@ function oneLevel() {
 
 /*
  * Метод заполняет модальное окно первого уровня данными по id записи (редакитирование)
+ * Поликлиника
  */
 function onecliniceditid( varr,varr2) {
 	console.log(varr+'  '+varr2);
@@ -732,23 +733,25 @@ function onecliniceditid( varr,varr2) {
 		    	  $('#addOneClinic').trigger('click');
 		    	  $('#myModal .modal-title').text('Редактирование анкеты первого уровня');
 		    	  
+		    	  
+		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
-		    		  $("#mo option:contains(" + response.result[i].mo +")").attr('selected', true);
-		    		  $("#age option:contains(" + response.result[i].age +")").attr('selected', true);
-		    		  $("#ambulance option:contains(" + response.result[i].ambulance +")").attr('selected', true);
-		    		  $("#clinicDoctor option:contains(" + response.result[i].clinicDoctor +")").attr('selected', true);
-		    		  $("#diagnosticTests option:contains(" + response.result[i].diagnosticTests +")").attr('selected', true);
-		    		  $("#equipment option:contains(" + response.result[i].equipment +")").attr('selected', true);
-		    		  $("#freeHelp option:contains(" + response.result[i].freeHelp +")").attr('selected', true);
-		    		  $("#laboratoryResearch option:contains(" + response.result[i].laboratoryResearch +")").attr('selected', true);
-		    		  $("#medicalSpecialists option:contains(" + response.result[i].medicalSpecialists +")").attr('selected', true);
-		    		  $("#qualityAmbulance option:contains(" + response.result[i].qualityAmbulance +")").attr('selected', true);
-		    		  $("#repairs option:contains(" + response.result[i].repairs +")").attr('selected', true);
-		    		  $("#seeADoctor option:contains(" + response.result[i].seeADoctor +")").attr('selected', true);
-		    		  $("#sex option:contains(" + response.result[i].sex +")").attr('selected', true);
-		    		  $("#therapist option:contains(" + response.result[i].therapist +")").attr('selected', true);
-		    		  $("#waitingTime option:contains(" + response.result[i].waitingTime +")").attr('selected', true);
-		    		  $("#waitingTime2 option:contains(" + response.result[i].waitingTime2 +")").attr('selected', true);
+		    		  $("#mo option:contains(" + response.result[i].mo +")").prop('selected', true);
+		    		  $("#age option:contains(" + response.result[i].age +")").prop('selected', true);
+		    		  $("#ambulance option:contains(" + response.result[i].ambulance +")").prop('selected', true);
+		    		  $("#clinicDoctor option:contains(" + response.result[i].clinicDoctor +")").prop('selected', true);
+		    		  $("#diagnosticTests option:contains(" + response.result[i].diagnosticTests +")").prop('selected', true);
+		    		  $("#equipment option:contains(" + response.result[i].equipment +")").prop('selected', true);
+		    		  $("#freeHelp option:contains(" + response.result[i].freeHelp +")").prop('selected', true);
+		    		  $("#laboratoryResearch option:contains(" + response.result[i].laboratoryResearch +")").prop('selected', true);
+		    		  $("#medicalSpecialists option:contains(" + response.result[i].medicalSpecialists +")").prop('selected', true);
+		    		  $("#qualityAmbulance option:contains(" + response.result[i].qualityAmbulance +")").prop('selected', true);
+		    		  $("#repairs option:contains(" + response.result[i].repairs +")").prop('selected', true);
+		    		  $("#seeADoctor option:contains(" + response.result[i].seeADoctor +")").prop('selected', true);
+		    		  $("#sex option:contains(" + response.result[i].sex +")").prop('selected', true);
+		    		  $("#therapist option:contains(" + response.result[i].therapist +")").prop('selected', true);
+		    		  $("#waitingTime option:contains(" + response.result[i].waitingTime +")").prop('selected', true);
+		    		  $("#waitingTime2 option:contains(" + response.result[i].waitingTime2 +")").prop('selected', true);
 		    		  
 		    		  $("#id").val(response.result[i].id);
 					  $("input[name='dataRespN']").val(response.result[i].dataResp);
@@ -958,20 +961,20 @@ function onedaystacid( varr,varr2) {
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
 		    		  
-		    		  $("#moDayStac option:contains(" + response.result[i].moDayStac +")").attr('selected', true);
+		    		  $("#moDayStac option:contains(" + response.result[i].moDayStac +")").prop('selected', true);
 		    		  $("input[name='dataRespDS']").val(response.result[i].dataRespDaystac);
-					  $("#qualityDaystac option:contains(" + response.result[i].qualityDaystac +")").attr('selected', true);
-					  $("#rapairsDaystac option:contains(" + response.result[i].rapairsDaystac +")").attr('selected', true);
-					  $("#comfortDaystac option:contains(" + response.result[i].comfortDaystac +")").attr('selected', true);
-					  $("#servicesDaystac option:contains(" + response.result[i].servicesDaystac +")").attr('selected', true);
-					  $("#equipmentDaystac option:contains(" + response.result[i].equipmentDaystac +")").attr('selected', true);
-					  $("#medicineDaystac option:contains(" + response.result[i].medicineDaystac +")").attr('selected', true);
-					  $("#laboratoryDaystac option:contains(" + response.result[i].laboratoryDaystac +")").attr('selected', true);
-					  $("#therapistDaystac option:contains(" + response.result[i].therapistDaystac +")").attr('selected', true);
-					  $("#ambulanceDaystac option:contains(" + response.result[i].ambulanceDaystac +")").attr('selected', true);
-					  $("#qualityAmbulanceDaystac option:contains(" + response.result[i].qualityAmbulanceDaystac +")").attr('selected', true);
-					  $("#sexDaystac option:contains(" + response.result[i].sexDaystac +")").attr('selected', true);
-					  $("#ageDaystac option:contains(" + response.result[i].ageDaystac +")").attr('selected', true);
+					  $("#qualityDaystac option:contains(" + response.result[i].qualityDaystac +")").prop('selected', true);
+					  $("#rapairsDaystac option:contains(" + response.result[i].rapairsDaystac +")").prop('selected', true);
+					  $("#comfortDaystac option:contains(" + response.result[i].comfortDaystac +")").prop('selected', true);
+					  $("#servicesDaystac option:contains(" + response.result[i].servicesDaystac +")").prop('selected', true);
+					  $("#equipmentDaystac option:contains(" + response.result[i].equipmentDaystac +")").prop('selected', true);
+					  $("#medicineDaystac option:contains(" + response.result[i].medicineDaystac +")").prop('selected', true);
+					  $("#laboratoryDaystac option:contains(" + response.result[i].laboratoryDaystac +")").prop('selected', true);
+					  $("#therapistDaystac option:contains(" + response.result[i].therapistDaystac +")").prop('selected', true);
+					  $("#ambulanceDaystac option:contains(" + response.result[i].ambulanceDaystac +")").prop('selected', true);
+					  $("#qualityAmbulanceDaystac option:contains(" + response.result[i].qualityAmbulanceDaystac +")").prop('selected', true);
+					  $("#sexDaystac option:contains(" + response.result[i].sexDaystac +")").prop('selected', true);
+					  $("#ageDaystac option:contains(" + response.result[i].ageDaystac +")").prop('selected', true);
 		    		  
 					  $("#idoneDayStac").val(response.result[i].id);
 					  
@@ -1197,21 +1200,21 @@ function onestacid( varr,varr2) {
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
 		    		  
-		    		    $("#moonestac option:contains(" + response.result[i].moonestac +")").attr('selected', true);
+		    		    $("#moonestac option:contains(" + response.result[i].moonestac +")").prop('selected', true);
 						$("input[name='dataonestac']").val(response.result[i].dataRespStac);
-						$("#qualityStac option:contains(" + response.result[i].qualityStac +")").attr('selected', true);
-						$("#rapairsStac option:contains(" + response.result[i].rapairsStac +")").attr('selected', true);
-						$("#comfortStac option:contains(" + response.result[i].comfortStac +")").attr('selected', true);
-						$("#foodStac option:contains(" + response.result[i].foodStac +")").attr('selected', true);
-						$("#equipmentStac option:contains(" + response.result[i].equipmentStac +")").attr('selected', true);
-						$("#medicineStac option:contains(" + response.result[i].medicineStac +")").attr('selected', true);
-						$("#termsStac option:contains(" + response.result[i].termsStac +")").attr('selected', true);
-						$("#laboratoryStac option:contains(" + response.result[i].laboratoryStac +")").attr('selected', true);
-						$("#therapistStac option:contains(" + response.result[i].therapistStac +")").attr('selected', true);
-						$("#ambulanceStac option:contains(" + response.result[i].ambulanceStac +")").attr('selected', true);
-						$("#qualityAmbulanceStac option:contains(" + response.result[i].qualityAmbulanceStac +")").attr('selected', true);
-						$("#sexStac option:contains(" + response.result[i].sexStac +")").attr('selected', true);
-						$("#ageStac option:contains(" + response.result[i].ageStac +")").attr('selected', true);
+						$("#qualityStac option:contains(" + response.result[i].qualityStac +")").prop('selected', true);
+						$("#rapairsStac option:contains(" + response.result[i].rapairsStac +")").prop('selected', true);
+						$("#comfortStac option:contains(" + response.result[i].comfortStac +")").prop('selected', true);
+						$("#foodStac option:contains(" + response.result[i].foodStac +")").prop('selected', true);
+						$("#equipmentStac option:contains(" + response.result[i].equipmentStac +")").prop('selected', true);
+						$("#medicineStac option:contains(" + response.result[i].medicineStac +")").prop('selected', true);
+						$("#termsStac option:contains(" + response.result[i].termsStac +")").prop('selected', true);
+						$("#laboratoryStac option:contains(" + response.result[i].laboratoryStac +")").prop('selected', true);
+						$("#therapistStac option:contains(" + response.result[i].therapistStac +")").prop('selected', true);
+						$("#ambulanceStac option:contains(" + response.result[i].ambulanceStac +")").prop('selected', true);
+						$("#qualityAmbulanceStac option:contains(" + response.result[i].qualityAmbulanceStac +")").prop('selected', true);
+						$("#sexStac option:contains(" + response.result[i].sexStac +")").prop('selected', true);
+						$("#ageStac option:contains(" + response.result[i].ageStac +")").prop('selected', true);
 						
 						$("#idoneStac").val(response.result[i].id);
 		    	  }

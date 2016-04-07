@@ -28,7 +28,7 @@ public class ClinicService {
   
   @Transactional
   public List<SurvayClinic> getAllbetween(String d1, String d2,String userp) {
-    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.polzovatel =:userp AND p.dataInput BETWEEN :d1 AND :d2 ORDER BY p.id DESC", SurvayClinic.class)
+    List<SurvayClinic> result = em.createQuery("SELECT p FROM SurvayClinic p WHERE p.polzovatel =:userp AND p.dataResp BETWEEN :d1 AND :d2 ORDER BY p.id DESC", SurvayClinic.class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
     .setParameter("userp", userp)

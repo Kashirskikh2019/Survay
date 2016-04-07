@@ -13,7 +13,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.poi.util.SystemOutLogger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +31,7 @@ public class ClinicServiceSecondLevel {
   private EntityManager em;
   
   @SuppressWarnings("unchecked")
-@Transactional
+  @Transactional
   public List<SurvayClinicSecondlevel> getAll(String userp) {
 	
 	 Query query = em.createQuery("SELECT p FROM SurvayClinicSecondlevel p WHERE p.polzovatelSecondlevel=:userp ORDER BY p.id DESC");
@@ -59,10 +58,6 @@ public class ClinicServiceSecondLevel {
   
   @Transactional
   public void delete(int id) {
-	 // Query query = em.createNativeQuery("DELETE FROM QuestionManyClinic p WHERE p.idQuestionManyClinic = :id");
-	 // query.setParameter("id", id);
-	 // query.executeUpdate();
-	  
 	  QuestionManyClinic questionmanyclinic = em.find(QuestionManyClinic.class, id);
 	  em.remove(questionmanyclinic);
   }
@@ -297,8 +292,6 @@ public class ClinicServiceSecondLevel {
   public void edit(Sender sender,HttpServletRequest request) {
 	  
 	  SurvayClinicSecondlevel survay = sender.getSurvay1();
-	 Set<QuestionManyClinic> set = survay.getQuestion_many();
-	 System.out.println("listtest "+ set);
 	 /*
 	  * Удаляем прежние данные из табдлицы QuestionManyClinic
 	  * а далее в нее заливаем новые (отредактированные) 

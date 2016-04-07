@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 
 
 /**
@@ -24,30 +26,30 @@ public class QuestionManyDayStacionar implements Serializable {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_SURVAY_CLINIC_DSSL", referencedColumnName="GENERAL_ID_DSSL")
-    //@JsonIgnore
+    @JsonIgnore
 	private DayStacionarSecondlevel daystacionarsecondlevel;
 	
 	
 	@Column(name="QuestionDS14",length=500)
-	private String QuestionDS14many;
+	private String questionDS14many;
 	
 	@Column(name="QuestionDS16",length=500)
-	private String QuestionDS16many;
+	private String questionDS16many;
 	
 	@Column(name="QuestionDS18",length=500)
-	private String QuestionDS18many;
+	private String questionDS18many;
 	
 	@Column(name="QuestionDS19",length=500)
-	private String QuestionDS19many;
+	private String questionDS19many;
 	
 	@Column(name="QuestionDS21",length=500)
-	private String QuestionDS21many;
+	private String questionDS21many;
 	
 	@Column(name="QuestionDS22",length=500)
-	private String QuestionDS22many;
+	private String questionDS22many;
 	
 	@Column(name="QuestionDS24",length=500)
-	private String QuestionDS24many;
+	private String questionDS24many;
 
 	public Integer getIdQuestionManydaystacionar() {
 		return idQuestionManydaystacionar;
@@ -66,60 +68,62 @@ public class QuestionManyDayStacionar implements Serializable {
 	}
 
 	public String getQuestionDS14many() {
-		return QuestionDS14many;
+		return questionDS14many;
 	}
 
 	public void setQuestionDS14many(String questionDS14many) {
-		QuestionDS14many = questionDS14many;
+		this.questionDS14many = questionDS14many;
 	}
 
 	public String getQuestionDS16many() {
-		return QuestionDS16many;
+		return questionDS16many;
 	}
 
 	public void setQuestionDS16many(String questionDS16many) {
-		QuestionDS16many = questionDS16many;
+		this.questionDS16many = questionDS16many;
 	}
 
 	public String getQuestionDS18many() {
-		return QuestionDS18many;
+		return questionDS18many;
 	}
 
 	public void setQuestionDS18many(String questionDS18many) {
-		QuestionDS18many = questionDS18many;
+		this.questionDS18many = questionDS18many;
 	}
 
 	public String getQuestionDS19many() {
-		return QuestionDS19many;
+		return questionDS19many;
 	}
 
 	public void setQuestionDS19many(String questionDS19many) {
-		QuestionDS19many = questionDS19many;
+		this.questionDS19many = questionDS19many;
 	}
 
 	public String getQuestionDS21many() {
-		return QuestionDS21many;
+		return questionDS21many;
 	}
 
 	public void setQuestionDS21many(String questionDS21many) {
-		QuestionDS21many = questionDS21many;
+		this.questionDS21many = questionDS21many;
 	}
 
 	public String getQuestionDS22many() {
-		return QuestionDS22many;
+		return questionDS22many;
 	}
 
 	public void setQuestionDS22many(String questionDS22many) {
-		QuestionDS22many = questionDS22many;
+		this.questionDS22many = questionDS22many;
 	}
 
 	public String getQuestionDS24many() {
-		return QuestionDS24many;
+		return questionDS24many;
 	}
 
 	public void setQuestionDS24many(String questionDS24many) {
-		QuestionDS24many = questionDS24many;
+		this.questionDS24many = questionDS24many;
 	}
+
+	
 
 
 

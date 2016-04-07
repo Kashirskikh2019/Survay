@@ -157,7 +157,7 @@ $("#formOneReport").validate({
 			                    <ul class="dropdown-menu" role="menu">
 			                        <li><a href="#" id="one_ambul_polsecondlevel" onclick="alloneclinicsecondlevel('${principal.username}')"><i class="fa fa-ambulance"></i>&nbsp;&nbsp;Амбул-полик помощь</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#" id="one_daysecondlevel" /*onclick="allonedaystacionarsecondlevel('${principal.username}')"*/><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
+			                        <li><a href="#" id="one_daysecondlevel" onclick="alldssl('${principal.username}')"><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
 			                        <li class="divider"></li>
 			                        <li><a href="#" id="one_stacsecondlevel" /*onclick="allonestacionarsecondlevel('${principal.username}')"*/><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
 			                    </ul>
@@ -420,14 +420,14 @@ $("#formOneReport").validate({
    					<button class="btn btn-success"  /*onclick="onedaystacbetween('${principal.username}')"*/>Выбрать</button>
    				</td>
    				<td>
-   					<button class="btn btn-success" id="addOneDayStacionarsecondlevel" data-toggle="modal" data-target="#myModal1secondlevel" /*onclick="oneLevel()"*/>Добавить запись</button>
+   					<button class="btn btn-success" id="addOneDayStacionarsecondlevel" data-toggle="modal" data-target="#myModal1secondlevel" onclick="levelseconddssl()">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
 			</div>
 			<br><br>
-<div id="tableOneDayStacionarsecondlevel" style="overflow-y: scroll; height:100px; margin-top:35px;">			
-	<table id="records_tableOneDayStacionarsecondlevel" class="table table-striped" style="margin:0px auto; width:85%;"></table>
+<div id="tableDSSL" style="overflow-y: scroll; height:100px; margin-top:35px;">			
+	<table id="records_tableDSSL" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 </div>	
 			
 </div>
@@ -1769,7 +1769,7 @@ $("#formOneReport").validate({
 								<input type="hidden" id="idClinicSecondLevel" value=""/>
 								
 								<div class="modal-footer"><div class="errorSecondClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
-							 	<button type="button" id="cancelSecondClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button> 
+							 	<button type="button" id="cancelCSL" class="btn btn-primary" data-dismiss="modal">Отмена</button> 
 								<button  class="btn btn-success renamebtn"  onclick='secondlevelclinic("${principal.username}")'>Добавить анкету</button> 
 								</div>
 							</div>
@@ -1814,20 +1814,106 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>    
 								    								
-									<div  class="wrap-hv">
+									<div  class="wrap-hv" >
 										<div><p class="hv">1. По какой причине вы госпитализированы в дневной стационар? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionDS1">
-									      	<option value=""></option>
-									        <option>Лечение</option>
-									        <option>Обследование</option>
-									        <option>Реабилитация</option>
-									        <option>Другое (напишите) </option>
-									      </select>
+									    <table class="optdrtable">
+									    <tr>
+									        <td>
+											    <select class="form-control input-sm optdrselect" id="questionDS1">
+											      	<option value=""></option>
+											        <option>Лечение</option>
+											        <option>Обследование</option>
+											        <option>Реабилитация</option>
+											        <option>Другое (напишите)</option>
+											      </select> &nbsp;
+									      		<input type="text" class="optdrinput" id="questionDS1dr"> 
+											 </td>
+										</tr>
+										</table>	      
+									    </div><br><br>
+									</div> 
+									
+									<div  class="wrap-hv" >
+										<div><p class="hv">2. В каком дневном стационаре вы проходите лечение? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <table class="optdrtable">
+									    <tr>
+									        <td>
+											    <select class="form-control input-sm optdrselect" id="questionDS2">
+											      	<option value=""></option>
+											        <option>Терапевтическом</option>
+											        <option>Гинекологическом</option>
+											        <option>Хирургическом</option>
+											        <option>Восстановительного лечения</option>
+											        <option>Другое (напишите)</option>
+											      </select> &nbsp;
+									      		<input type="text" class="optdrinput" id="questionDS2dr"> 
+											 </td>
+										</tr>
+										</table>	      
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" >
+										<div><p class="hv">3. На базе какой медицинской организации находится ваш дневной стационар?(один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <table class="optdrtable">
+									    <tr>
+									        <td>
+											    <select class="form-control input-sm optdrselect" id="questionDS3">
+											      	<option value=""></option>
+											        <option>Поликлиники</option>
+											        <option>Стационара (больницы)</option>
+											        <option>Другое (напишите)</option>
+											      </select> &nbsp;
+									      		<input type="text" class="optdrinput" id="questionDS3dr"> 
+											 </td>
+										</tr>
+										</table>	      
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 80px;">
+										<div><p class="hv">4. Сколько времени вы ожидали места в дневном стационаре? (один ответ)</p></div>
+									    <div class="col-xs-4">
+											    <select class="form-control input-sm" id="questionDS4">
+											      	<option value=""></option>
+											        <option>Сутки</option>
+											        <option>До 1-ой недели</option>
+											        <option>До 2-х недель</option>
+											        <option>До 3-х недель</option>
+											        <option>Месяц и более</option>
+											      </select> &nbsp;
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 80px;">
+										<div><p class="hv">5. Как  часто  вы  лечились  в  дневном  стационаре за последний год? (одинответ)</p></div>
+									    <div class="col-xs-4">
+											    <select class="form-control input-sm" id="questionDS5">
+											      	<option value=""></option>
+											        <option>1 раз</option>
+											        <option>2 раза</option>
+											        <option>3 раза</option>
+											        <option>Более 3 раз</option>
+											      </select> &nbsp;
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 100px;">
+										<div><p class="hv">6. Если бы вам предложили выбор между лечением в дневном стационаре и госпитализацией в стационар, что бы вы выбрали? (один ответ)</p></div>
+									    <div class="col-xs-4">
+											    <select class="form-control input-sm" id="questionDS6">
+											      	<option value=""></option>
+											        <option>Лечение в дневном стационаре</option>
+											        <option>Госпитализацию в стационар</option>
+											        <option>Затрудняюсь ответить</option>
+											      </select> &nbsp;
 									    </div><br><br>
 									</div>    
 		 						    
-								    <div  class="wrap-hv">
+								    <div  class="wrap-hv" style="height: 80px;">
 										<div><p class="hv">7. Насколько  вы  удовлетворены  качеством медицинской помощи, получаемой в дневном стационаре? (один ответ)</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="question7sec2">
@@ -1853,6 +1939,275 @@ $("#formOneReport").validate({
 									    </div><br><br>
 								    </div>
 								    
+								    <div  class="wrap-hv" style="height: 100px;">
+										<div><p class="hv">9. Если у вас возникали вопросы по поводу назначенных вам медицинских препаратов, процедур, анализов, обследований, всегда ли лечащий врач разъяснял необходимость назначений? (один ответ)</p></div>
+									    <div class="col-xs-4">
+											    <select class="form-control input-sm" id="questionDS9">
+											      	<option value=""></option>
+											        <option>Да, всегда</option>
+											        <option>Чаще да, чем нет</option>
+											        <option>Чаще нет, чем да</option>
+											        <option>Нет</option>
+											        <option>Затрудняюсь ответить</option>
+											      </select> &nbsp;
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.1  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Техническим состоянием, ремонтом помещений, площадью помещений (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_1sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.2  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Комфортностью мест пребывания пациентов (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_2sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+								    <div  class="wrap-hv">
+										<div><p class="hv">10.3  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Чистотой, санитарно-гигиеническими условиями (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_3sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">10.4  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Комплексом предоставляемых медицинских услуг (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_4sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">10.5  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Оснащенностью современным медицинским оборудованием (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_5sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">10.6  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Оснащенностью медикаментами и расходными материалами (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_6sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.7  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Обеспеченностью врачами (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_7sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.8  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Обеспеченностью средним и младшим медперсоналом (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_8sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.9  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Квалификацией врачей (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_9sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.10  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Отношением врачей к пациентам (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_10sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.11  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Отношением медсестер к пациентам (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_11sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.12  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Отношением Работой вспомогательных служб (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_12sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.13  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Результатами лечения, обследования, реабилитации (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_13sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.14  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Работой лечащего врача (лаборатория, рентген-кабинет, физиотерапевтический кабинет и т.д.) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_14sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">11. Приходилось  ли вам лично (для себя) за последние 3 месяца обращаться к услугам скорой медицинской помощи? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question11sec1">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет к (вопросу 13)</option>
+									      </select>
+									    </div><br><br>
+								    </div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">12  Насколько вы удовлетворены качеством оказанной вам скорой медицинской помощи? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question12sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">13. Знаете ли вы свои права как застрахованного в системе обязательного медицинского страхования? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question13sec1">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Не в полной мере</option>
+									      </select>
+									    </div><br><br>
+								    </div>
+								    
+								    <div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">14.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS14many_1"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_2"  value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_3"  value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_4"  value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_5"  value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_6"  value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_7"  value="из сети интернет" > из сети интернет&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_8"  value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_9"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Из других источников (напишите)...&nbsp;<input type="text" class="length" id="questionDS14many_10" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+								    
 								    
 								    <div  class="wrap-hv">
 										<div><p class="hv">15.1	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Выбор медицинской организации (один ответ по каждой строке)</p></div>
@@ -1865,7 +2220,281 @@ $("#formOneReport").validate({
 									        <option>Затрудняюсь ответить</option>
 									      </select>
 									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.2	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Выбор страховой компании (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_2_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
 									</div>    
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.3	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Выбор врача (с учетом его согласия) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_3_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.4	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Получение полной информации о состоянии собственного здоровья (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_4_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.5	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Сохранение в тайне информации о состоянии своего здоровья, факте обращения за медицинской помощью (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_5_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.6	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Отказ от медицинского вмешательства (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_6_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.7	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Получение бесплатных лекарств при обращении за скорой и стационарной помощью (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_7_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.8	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Получение бесплатной мед.помощи как в поликлинике, так и на дому (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_8_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.9	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Получение бесплатной восстановительной помощи и реабилитации (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_9_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.10	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Получение бесплатной мед.помощи за пределами региона, в котором Вы проживаете (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_10_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">15.11	Знаете ли вы, что в системе обязательного медицинского страхования вы имеете право на: Защиту своих прав в случае их нарушения (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question15_11_clinic">
+									      	<option value=""></option>
+									        <option>Знаю</option>
+									        <option>Что-то слышал(а)</option>
+									        <option>Не знаю</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">16.	Если вы считаете, что ваши права в  системе ОМС нарушены, куда вы предпочитаете обратиться за помощью? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS16many_1"  value="Администрация медицинской организации" > Администрация медицинской организации&nbsp;<br>
+												<input type="checkbox" id="questionDS16many_2"  value="Страховая компания, выдавшая полис ОМС" > Страховая компания, выдавшая полис ОМС&nbsp;<br>
+												<input type="checkbox" id="questionDS16many_3"  value="Фонд обязательного медицинского страхования" > Фонд обязательного медицинского страхования&nbsp;<br>
+												<input type="checkbox" id="questionDS16many_4"  value="Органы управления здравоохранением" > Органы управления здравоохранением&nbsp;<br>
+												<input type="checkbox" id="questionDS16many_5"  value="Гражданский суд" > Гражданский суд&nbsp;<br>
+												<input type="checkbox" id="questionDS16many_6"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Другое  (напишите)...&nbsp;<input type="text" class="length" id="questionDS16many_7" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">17. Пользовались ли вы правом выбора/смены лечащего врача? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS17">
+									      	<option value=""></option>
+									        <option>Да (к вопросу 19)</option>
+									        <option>Хотел(а), но не смог(ла) (к вопросу 18)</option>
+									        <option>Нет, не было необходимости (к вопросу 20)</option>
+									        <option>Нет, не знал(а), что это возможно</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">18.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS18many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
+												<input type="checkbox" id="questionDS18many_2"  value="Решил(а), что пытаться бесполезно" > Решил(а), что пытаться бесполезно&nbsp;<br>
+												<input type="checkbox" id="questionDS18many_3"  value="Побоялся(лась) огласки" > Побоялся(лась) огласки&nbsp;<br>
+												<input type="checkbox" id="questionDS18many_4"  value="Не хотел(а) портить отношения с врачом" > Не хотел(а) портить отношения с врачом&nbsp;<br>
+												 Другое  (напишите)&nbsp;<input type="text" class="length" id="questionDS18many_5" > 
+												<!-- Другое  (напишите)&nbsp;<input type="text" class="length" id="questionDS18many_6" > --> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">19.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS19many_1"  value="Врачом оказана некачественная медицинская помощь" > Врачом оказана некачественная медицинская помощь&nbsp;<br>
+												<input type="checkbox" id="questionDS19many_2"  value="Врачом разглашена конфиденциальная информация о состоянии здоровья" > Врачом разглашена конфиденциальная информация о состоянии здоровья&nbsp;<br>
+												<input type="checkbox" id="questionDS19many_3"  value="Врачом не были назначены необходимые диагностические процедуры" > Врачом не были назначены необходимые диагностические процедуры&nbsp;<br>
+												<input type="checkbox" id="questionDS19many_4"  value="Врачом не было назначено необходимое лечение" > Врачом не было назначено необходимое лечение&nbsp;<br>
+												<input type="checkbox" id="questionDS19many_5"  value="Врач не дал направление на обследование в другую медицинскую организацию" > Врач не дал направление на обследование в другую медицинскую организацию&nbsp;<br>
+												<input type="checkbox" id="questionDS19many_6"  value="Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно" > Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно&nbsp;<br>
+												<input type="checkbox" id="questionDS19many_7"  value="Врач вел себя грубо, безразлично, невежливо" > Врач вел себя грубо, безразлично, невежливо&nbsp;<br>
+												Другое  (напишите)&nbsp;<input type="text" class="length" id="questionDS19many_8" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">20. Пользовались  ли вы правом выбора/смены медицинской организации? (одинответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS20">
+									      	<option value=""></option>
+									        <option>Да (к вопросу 22)</option>
+									        <option>Хотел(а), но не смог(ла) (к вопросу 21)</option>
+									        <option>Нет, не было необходимости (к вопросу 23)</option>
+									        <option>Нет, не знал(а), что это возможно</option>
+									      </select>
+									    </div><br><br>
+									</div>
+								    
+								    <div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">21.	Что вам помешало поменять медицинскую организацию? (возможно нескольковариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS21many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
+												<input type="checkbox" id="questionDS21many_2"  value="Решил(а), что пытаться бесполезно" > Решил(а), что пытаться бесполезно&nbsp;<br>
+												Мне отказали (напишите причину)&nbsp;<input type="text" class="length" id="questionDS21many_3" >
+												<!-- Другое  (напишите)&nbsp;<input type="text" class="length" id="questionDS21many_4" > --> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+								    
+								    <div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">22.	Почему вы поменяли медицинскую организацию? (возможно  нескольковариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS22many_1"  value="В связи с переездом на новое место жительства" > В связи с переездом на новое место жительства&nbsp;<br>
+												<input type="checkbox" id="questionDS22many_2"  value="из-за неудобного режима работы" > из-за неудобного режима работы&nbsp;<br>
+												<input type="checkbox" id="questionDS22many_3"  value="из-за плохих санитарно-гигиенических условий" > Из-за плохих санитарно-гигиенических условий&nbsp;<br>
+												<input type="checkbox" id="questionDS22many_4"  value="В связи с недостаточным спектром медицинских услуг (анализы, узи, ФЛГ, рентген и др)" > В связи с недостаточным спектром медицинских услуг (анализы, узи, ФЛГ, рентген и др)&nbsp;<br>
+												<input type="checkbox" id="questionDS22many_5"  value="из-за недостаточно квалифицированного медицинского персонала" > из-за недостаточно квалифицированного медицинского персонала&nbsp;<br>
+												Другое  (напишите)&nbsp;<input type="text" class="length" id="questionDS22many_6" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">23. Пациент, застрахованный по ОМС, имеет право получать бесплатную медицинскую помощь на всей территории РФ, в том числе за пределами постоянного места жительства. Приходилось ли вам пользоваться этим правом?(один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS23">
+									      	<option value=""></option>
+									        <option>Да, я получал(а) бесплатную медицинскую помощь на других территориях РФпо полису ОМС (к вопросу 25)</option>
+									        <option>Пытался(лась), но мне было отказано в бесплатной медицинской помощи надругой территории РФ</option>
+									        <option>Нет, не приходилось (к вопросу 25)</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">24.	Почему вам отказали? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS24many_1"  value="В медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения" > В медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения&nbsp;<br>
+												<input type="checkbox" id="questionDS24many_2"  value="из-за отсутствия местной регистрации" > из-за отсутствия местной регистрации&nbsp;<br>
+												Другое  (напишите)&nbsp;<input type="text" class="length" id="questionDS24many_3" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
 								    
 								    <div  class="wrap-hv">
 										<div><p class="hv">25.1	При последнем лечении/обследовании в дневном стационаре приходилось ли вам использовать личные денежные средства на: Приобретение лекарственных средств и изделий медицинского назначения (один ответ по каждой строке)</p></div>
@@ -1879,10 +2508,167 @@ $("#formOneReport").validate({
 									      </select>
 									    </div><br><br>
 									 </div>   
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">25.2	При последнем лечении/обследовании в дневном стационаре приходилось ли вам использовать личные денежные средства на: Диагностическое обследование (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_2">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									 </div>
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">25.3	При последнем лечении/обследовании в дневном стационаре приходилось ли вам использовать личные денежные средства на: Услуги медсестер, санитарок (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_3">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									 </div>
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">25.4	При последнем лечении/обследовании в дневном стационаре приходилось ли вам использовать личные денежные средства на: Медицинские манипуляции/операции (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question25_4">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									 </div>   
 								    
+								    <div  class="wrap-hv" style="height: 110px;">
+										<div><p class="hv">25.5	При последнем лечении/обследовании в дневном стационаре приходилось ли вам использовать личные денежные средства на: Другое (напишите) (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <table>
+									      <tr>
+											<td>
+												&nbsp;<input type="text" class="length" id="question25_5" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									 </div>   
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">26.	Какую сумму вы потратили? (напишите)</p></div>
+									    <div class="col-xs-4">
+									      <table>
+									      <tr>
+											<td>
+												&nbsp;<input type="text" class="length" id="questionDS26" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									 </div>   
 								    
+									   <div  class="wrap-hv">
+											<div><p class="hv">27.	Случалось ли вам когда-нибудь благодарить медицинских работников замедицинскую помощь? (один ответ)</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="questionDS27">
+										      	<option value=""></option>
+										        <option>Да, это происходит довольно часто</option>
+										        <option>Да, иногда случается</option>
+										        <option>Нет, никогда не приходилось (к вопросу 39)</option>
+										      </select>
+										    </div><br><br>
+										 </div> 
+										 
+										 <div  class="wrap-hv">
+											<div><p class="hv">28.	Кто выступал инициатором такой "благодарности"?</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="questionDS28">
+										      	<option value=""></option>
+										        <option>Я сам(а)</option>
+										        <option>Медицинский работник</option>
+										      </select>
+										    </div><br><br>
+										 </div>  
 								    
-								   
+								    	<div  class="wrap-hv">
+											<div><p class="hv">29.	Укажите пол</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="sexSecondleveldaystacionar">
+										      	<option value=""></option>
+										        <option>Мужской</option>
+										        <option>Женский</option>
+										      </select>
+										    </div><br><br>
+										 </div>
+										 
+										 <div  class="wrap-hv">
+										<div><p class="hv">30.	Возраст респондента (лет):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="ageSecondleveldaystacionar">
+									      	<option value=""></option>
+									      	<c:forEach var="ag" items="${listage}">
+									        <option>${ag.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">31.	Ваше образование:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS31" title="Введите пол">
+									      	<option value=""></option>
+									        <option>Неполное среднее</option>
+									        <option>Среднее</option>
+									        <option>Среднее специальное</option>
+									        <option>Неполное высшее</option>
+									        <option>Высшее, в т.ч. ученая степень</option>
+									      </select>
+									    </div><br><br>
+									 </div> 
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">32.	Ваше социальное положение</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS32" >
+									      	<option value=""></option>
+									        <option>Предприниматель</option>
+									        <option>Руководитель</option>
+									        <option>Служащий</option>
+									        <option>ИТР, специалист</option>
+									        <option>Научный работник, преподаватель, учитель</option>
+									        <option>Рабочий</option>
+									        <option>Пенсионер</option>
+									        <option>Домохозяйка</option>
+									        <option>Учащийся</option>
+									        <option>Безработный</option>
+									        <option>Другое (напишите)</option>
+									      </select>
+									    </div><br><br>
+									 </div> 
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">33.	Каков среднемесячный доход вашей семьи на одного человека?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionDS33">
+									      	<option value=""></option>
+									        <option>Менее 10000 рублей</option>
+									        <option>10 - 15000 рублей</option>
+									        <option>15 - 20000 рублей</option>
+									        <option>20 - 25000 рублей</option>
+									        <option>25 - 30000 рублей</option>
+									        <option>Свыше 30000 рублей</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>
 								    
 								</div>
 								<input type="hidden" id="polzSecondleveldaystacionar" value="${principal.username}"/>
@@ -1890,8 +2676,8 @@ $("#formOneReport").validate({
 								
 								<div class="modal-footer">
 								<div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
-								<button type="button" id="" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success"  onclick='secondlevelds("${principal.username}")'>Добавить анкету</button>
+								<button type="button" id="cancelDSSL" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button  class="btn btn-success renamebtndssl"  onclick='secondlevelds("${principal.username}")'>Добавить анкету</button>
 								</div>
 							</div>
 						</div>
@@ -2152,7 +2938,7 @@ $("#formOneReport").validate({
 								    								
 									<p>1.	Оцените уровень  вашей удовлетворенности следующими характеристиками работы стационара:</p>
 									<div  class="wrap-hv">
-										<div><p class="hv">1.1 Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в дневном стационаре</p></div>
+										<div><p class="hv">1.1 Насколько Вы удовлетворены качеством бесплатной медицинской помощи, получаемой в  стационаре</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="qualityStac">
 									      	<option value=""></option>

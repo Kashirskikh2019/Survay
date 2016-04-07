@@ -44,7 +44,7 @@
 		    	        
 		    	        $('#dim2secondlevel').width(widthGet-20);
 	    	            $('#dim2secondlevel').height(heightGet-300);
-	    	            $('#tableOneDayStacionarsecondlevel').height(heightGet-460);
+	    	            $('#tableDSSL').height(heightGet-460);
 	    	            setTimeout("$('#dim2secondlevel').fadeIn();",500);
 	    	            
 	    	            $('.mask_pseudo2').css('opacity',1);

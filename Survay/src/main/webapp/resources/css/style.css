@@ -271,3 +271,22 @@ body {
 .length{
 	width: 500px;
 }
+
+.optdrselect{
+	
+	width: 33%;
+	margin:0px;
+	float:left;
+}
+
+.optdrinput{
+	float: right;
+	width: 65%;
+	padding-top: 3px;
+    padding-bottom: 3px; 	
+    display: none;
+}
+
+.optdrtable{
+	width: 300%;
+}

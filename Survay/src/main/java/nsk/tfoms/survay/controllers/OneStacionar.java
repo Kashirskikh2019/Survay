@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
 import nsk.tfoms.survay.service.StacionarService;
 import nsk.tfoms.survay.util.TimesAndDate;
@@ -152,7 +151,6 @@ public class OneStacionar {
 		    List<SurvayStacionar> list = stacionarService.getOnId(idBD, user);
 		    list.get(0).setDataRespStac(	TimesAndDate.parseDate(list.get(0).getDataRespStac())	);
 		    res.setStatus("SUCCESS");
-		    System.out.println("Edit by id "+list);
 		    res.setResult(list);
 			return res;
 	  }

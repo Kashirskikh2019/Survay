@@ -363,7 +363,7 @@ function secondlevelclinic(varr) {
 						 */
 						if($("#idClinicSecondLevel").val()){ 	general["id"] = parseInt($("#idClinicSecondLevel").val());}
 						
-						$('#cancelSecondClinic').trigger('click');
+						$('#cancelCSL').trigger('click');
 						//+ отрабатывает метод в other.js
 						
 						var sender = ({ survay1:general, survay2:sec1,survay3:sec2,survay4:question25,survay5:many}); 
@@ -796,18 +796,120 @@ function secondlevelds(varr) {
 						var sec2 = {}
 						var question25 = {}
 						var question15 = {}
-						//var many = {}
+						var many = {}
 						
 						general["moSecondleveldaystacionar"] = $("#moSecondleveldaystacionar").val();
 						general["dataRespSecondleveldaystacionar"] = $("input[name='dataRespDSSL']").val();
-						general["questionDS1"] = $("#questionDS1").val();
-						
+						if($.trim($('#questionDS1dr').val())){	general["questionDS1"] = $.trim($('#questionDS1dr').val())}else{	general["questionDS1"] = $("#questionDS1").val();	}
+						if($.trim($('#questionDS2dr').val())){	general["questionDS2"] = $.trim($('#questionDS2dr').val())}else{	general["questionDS2"] = $("#questionDS2").val();	}
+						if($.trim($('#questionDS3dr').val())){	general["questionDS3"] = $.trim($('#questionDS3dr').val())}else{	general["questionDS3"] = $("#questionDS3").val();	}
+						general["questionDS4"] = $("#questionDS4").val();
+						general["questionDS5"] = $("#questionDS5").val();
+						general["questionDS6"] = $("#questionDS6").val();
 						sec2["question7sec2"] = $("#question7sec2").val();
 						sec1["question8sec1"] = $("#question8sec1").val();
+						general["questionDS9"] = $("#questionDS9").val();
+						sec2["question10_1sec2"] = $("#question10_1sec2").val();
+						sec2["question10_2sec2"] = $("#question10_2sec2").val();
+						sec2["question10_3sec2"] = $("#question10_3sec2").val();
+						sec2["question10_4sec2"] = $("#question10_4sec2").val();
+						sec2["question10_5sec2"] = $("#question10_5sec2").val();
+						sec2["question10_6sec2"] = $("#question10_6sec2").val();
+						sec2["question10_7sec2"] = $("#question10_7sec2").val();
+						sec2["question10_8sec2"] = $("#question10_8sec2").val();
+						sec2["question10_9sec2"] = $("#question10_9sec2").val();
+						sec2["question10_10sec2"] = $("#question10_10sec2").val();
+						sec2["question10_11sec2"] = $("#question10_11sec2").val();
+						sec2["question10_12sec2"] = $("#question10_12sec2").val();
+						sec2["question10_13sec2"] = $("#question10_13sec2").val();
+						sec2["question10_14sec2"] = $("#question10_14sec2").val();
+						sec1["question11sec1"] = $("#question11sec1").val();
+						sec2["question12sec2"] = $("#question12sec2").val();
+						sec1["question13sec1"] = $("#question13sec1").val();
+						
+						if($("#questionDS14many_1").is(':checked')){ many["questionDS14many_1"] = $("#questionDS14many_1").val();} else{ many["questionDS14many_1"] = "пусто";	}
+						if($("#questionDS14many_2").is(':checked')){ many["questionDS14many_2"] = $("#questionDS14many_2").val();} else{ many["questionDS14many_2"] = "пусто";	}
+						if($("#questionDS14many_3").is(':checked')){ many["questionDS14many_3"] = $("#questionDS14many_3").val();} else{ many["questionDS14many_3"] = "пусто";	}
+						if($("#questionDS14many_4").is(':checked')){ many["questionDS14many_4"] = $("#questionDS14many_4").val();} else{ many["questionDS14many_4"] = "пусто";	}
+						if($("#questionDS14many_5").is(':checked')){ many["questionDS14many_5"] = $("#questionDS14many_5").val();} else{ many["questionDS14many_5"] = "пусто";	}
+						if($("#questionDS14many_6").is(':checked')){ many["questionDS14many_6"] = $("#questionDS14many_6").val();} else{ many["questionDS14many_6"] = "пусто";	}
+						if($("#questionDS14many_7").is(':checked')){ many["questionDS14many_7"] = $("#questionDS14many_7").val();} else{ many["questionDS14many_7"] = "пусто";	}
+						if($("#questionDS14many_8").is(':checked')){ many["questionDS14many_8"] = $("#questionDS14many_8").val();} else{ many["questionDS14many_8"] = "пусто";	}
+						if($("#questionDS14many_9").is(':checked')){ many["questionDS14many_9"] = $("#questionDS14many_9").val();} else{ many["questionDS14many_9"] = "пусто";	}
+						if($("#questionDS14many_10").val() != ''){many["questionDS14many_10"] = $("#questionDS14many_10").val();	}else{ many["questionDS14many_10"] = 'пусто';	}
+						
 						question15["question15_1_clinic"] = $("#question15_1_clinic").val();
+						question15["question15_2_clinic"] = $("#question15_2_clinic").val();
+						question15["question15_3_clinic"] = $("#question15_3_clinic").val();
+						question15["question15_4_clinic"] = $("#question15_4_clinic").val();
+						question15["question15_5_clinic"] = $("#question15_5_clinic").val();
+						question15["question15_6_clinic"] = $("#question15_6_clinic").val();
+						question15["question15_7_clinic"] = $("#question15_7_clinic").val();
+						question15["question15_8_clinic"] = $("#question15_8_clinic").val();
+						question15["question15_9_clinic"] = $("#question15_9_clinic").val();
+						question15["question15_10_clinic"] = $("#question15_10_clinic").val();
+						question15["question15_11_clinic"] = $("#question15_11_clinic").val();
+						
+						if($("#questionDS16many_1").is(':checked')){ many["questionDS16many_1"] = $("#questionDS16many_1").val();} else{ many["questionDS16many_1"] = "пусто";	}
+						if($("#questionDS16many_2").is(':checked')){ many["questionDS16many_2"] = $("#questionDS16many_2").val();} else{ many["questionDS16many_2"] = "пусто";	}
+						if($("#questionDS16many_3").is(':checked')){ many["questionDS16many_3"] = $("#questionDS16many_3").val();} else{ many["questionDS16many_3"] = "пусто";	}
+						if($("#questionDS16many_4").is(':checked')){ many["questionDS16many_4"] = $("#questionDS16many_4").val();} else{ many["questionDS16many_4"] = "пусто";	}
+						if($("#questionDS16many_5").is(':checked')){ many["questionDS16many_5"] = $("#questionDS16many_5").val();} else{ many["questionDS16many_5"] = "пусто";	}
+						if($("#questionDS16many_6").is(':checked')){ many["questionDS16many_6"] = $("#questionDS16many_6").val();} else{ many["questionDS16many_6"] = "пусто";	}
+						if($("#questionDS16many_7").val() != ''){many["questionDS16many_7"] = $("#questionDS16many_7").val();	}else{ many["questionDS16many_7"] = 'пусто';	}
+						
+						general["questionDS17"] = $("#questionDS17").val();
+						
+						if($("#questionDS18many_1").is(':checked')){ many["questionDS18many_1"] = $("#questionDS18many_1").val();} else{ many["questionDS18many_1"] = "пусто";	}
+						if($("#questionDS18many_2").is(':checked')){ many["questionDS18many_2"] = $("#questionDS18many_2").val();} else{ many["questionDS18many_2"] = "пусто";	}
+						if($("#questionDS18many_3").is(':checked')){ many["questionDS18many_3"] = $("#questionDS18many_3").val();} else{ many["questionDS18many_3"] = "пусто";	}
+						if($("#questionDS18many_4").is(':checked')){ many["questionDS18many_4"] = $("#questionDS18many_4").val();} else{ many["questionDS18many_4"] = "пусто";	}
+						if($("#questionDS18many_5").val() != ''){many["questionDS18many_5"] = $("#questionDS18many_5").val();	}else{ many["questionDS18many_5"] = 'пусто';	}
+						if($("#questionDS18many_6").val() != ''){many["questionDS18many_6"] = $("#questionDS18many_6").val();	}else{ many["questionDS18many_6"] = 'пусто';	}
+						
+						if($("#questionDS19many_1").is(':checked')){ many["questionDS19many_1"] = $("#questionDS19many_1").val();} else{ many["questionDS19many_1"] = "пусто";	}
+						if($("#questionDS19many_2").is(':checked')){ many["questionDS19many_2"] = $("#questionDS19many_2").val();} else{ many["questionDS19many_2"] = "пусто";	}
+						if($("#questionDS19many_3").is(':checked')){ many["questionDS19many_3"] = $("#questionDS19many_3").val();} else{ many["questionDS19many_3"] = "пусто";	}
+						if($("#questionDS19many_4").is(':checked')){ many["questionDS19many_4"] = $("#questionDS19many_4").val();} else{ many["questionDS19many_4"] = "пусто";	}
+						if($("#questionDS19many_5").is(':checked')){ many["questionDS19many_5"] = $("#questionDS19many_5").val();} else{ many["questionDS19many_5"] = "пусто";	}
+						if($("#questionDS19many_6").is(':checked')){ many["questionDS19many_6"] = $("#questionDS19many_6").val();} else{ many["questionDS19many_6"] = "пусто";	}
+						if($("#questionDS19many_7").is(':checked')){ many["questionDS19many_7"] = $("#questionDS19many_7").val();} else{ many["questionDS19many_7"] = "пусто";	}
+						if($("#questionDS19many_8").val() != ''){many["questionDS19many_8"] = $("#questionDS19many_8").val();	}else{ many["questionDS19many_8"] = 'пусто';	}
+						
+						general["questionDS20"] = $("#questionDS20").val();
+						
+						if($("#questionDS21many_1").is(':checked')){ many["questionDS21many_1"] = $("#questionDS21many_1").val();} else{ many["questionDS21many_1"] = "пусто";	}
+						if($("#questionDS21many_2").is(':checked')){ many["questionDS21many_2"] = $("#questionDS21many_2").val();} else{ many["questionDS21many_2"] = "пусто";	}
+						if($("#questionDS21many_3").val() != ''){many["questionDS21many_3"] = $("#questionDS21many_3").val();	}else{ many["questionDS21many_3"] = 'пусто';	}
+						if($("#questionDS21many_4").val() != ''){many["questionDS21many_4"] = $("#questionDS21many_4").val();	}else{ many["questionDS21many_4"] = 'пусто';	}
+						
+						if($("#questionDS22many_1").is(':checked')){ many["questionDS22many_1"] = $("#questionDS22many_1").val();} else{ many["questionDS22many_1"] = "пусто";	}
+						if($("#questionDS22many_2").is(':checked')){ many["questionDS22many_2"] = $("#questionDS22many_2").val();} else{ many["questionDS22many_2"] = "пусто";	}
+						if($("#questionDS22many_3").is(':checked')){ many["questionDS22many_3"] = $("#questionDS22many_3").val();} else{ many["questionDS22many_3"] = "пусто";	}
+						if($("#questionDS22many_4").is(':checked')){ many["questionDS22many_4"] = $("#questionDS22many_4").val();} else{ many["questionDS22many_4"] = "пусто";	}
+						if($("#questionDS22many_5").is(':checked')){ many["questionDS22many_5"] = $("#questionDS22many_5").val();} else{ many["questionDS22many_5"] = "пусто";	}
+						if($("#questionDS22many_6").val() != ''){many["questionDS22many_6"] = $("#questionDS22many_6").val();	}else{ many["questionDS22many_6"] = 'пусто';	}
+						
+						general["questionDS23"] = $("#questionDS23").val();
+						
+						if($("#questionDS24many_1").is(':checked')){ many["questionDS24many_1"] = $("#questionDS24many_1").val();} else{ many["questionDS24many_1"] = "пусто";	}
+						if($("#questionDS24many_2").is(':checked')){ many["questionDS24many_2"] = $("#questionDS24many_2").val();} else{ many["questionDS24many_2"] = "пусто";	}
+						if($("#questionDS24many_3").val() != ''){many["questionDS24many_3"] = $("#questionDS24many_3").val();	}else{ many["questionDS24many_3"] = 'пусто';	}
+						
 						question25["question25_1"] = $("#question25_1").val();
+						question25["question25_2"] = $("#question25_2").val();
+						question25["question25_3"] = $("#question25_3").val();
+						question25["question25_4"] = $("#question25_4").val();
+						question25["question25_5"] = $("#question25_5").val();
 						
-						
+						general["questionDS26"] = $("#questionDS26").val();
+						general["questionDS27"] = $("#questionDS27").val();
+						general["questionDS28"] = $("#questionDS28").val();
+						general["sexSecondleveldaystacionar"] = $("#sexSecondleveldaystacionar").val();
+						general["ageSecondleveldaystacionar"] = $("#ageSecondleveldaystacionar").val();
+						general["questionDS31"] = $("#questionDS31").val();
+						general["questionDS32"] = $("#questionDS32").val();
+						general["questionDS33"] = $("#questionDS33").val();
 						
 						general["polzSecondleveldaystacionar"] = $("#polzSecondleveldaystacionar").val();
 						
@@ -826,16 +928,26 @@ function secondlevelds(varr) {
 						 */
 						if($("#idDSSL").val()){ 	general["id"] = parseInt($("#idDSSL").val());}
 						
-						//$('#cancelSecondClinic').trigger('click');
+						$('#cancelDSSL').trigger('click');
 						//+ отрабатывает метод в other.js
 						
-						var sender = ({ survay1:general, survay2:sec1,survay3:sec2,survay4:question15,survay5:question25}); 
+						var sender = ({ survay1:general, survay2:sec1,survay3:sec2,survay4:question15,survay5:question25,survay6:many}); 
 						
 				
 						$.post('adddssl',JSON.stringify(sender),function(response)
     	      	                {
-								    	  
-								      
+									$('#records_tableDSSL').animate({opacity: 0.0}, 2000 );
+							    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
+							    	  for(i =0 ; i < response.result.length ; i++){
+							    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
+							    	  }
+							    	  setTimeout ("$('#records_tableDSSL').html('');",2000);
+							    	  setTimeout ("$('#records_tableDSSL').append(userInfo);", 2000);
+							    	  
+							    	  $('#records_tableDSSL').animate({opacity: 1}, 2000 );
+							    	  //  зануляем id input 
+							    	  $("#idDSSL").val('');
+									
     	      	                	console.log('test OK');
         	      	            },'json')
         	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
@@ -844,3 +956,316 @@ function secondlevelds(varr) {
 	}	
 
 
+/*
+ * Метод обрабатывает нажатие Анкеты второго уровня -> ДС помощь
+ * 
+ */
+function alldssl(varr) {
+	
+	$.ajax({
+		url : 'alldssl',
+		type: 'get',
+		dataType: 'json',
+		data : ({ test : varr}),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+	    success: function(response){
+ 
+		      if(response.status == "SUCCESS"){
+		    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
+		    	  for(i =0 ; i < response.result.length ; i++){
+		    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
+		    	  }
+		    	  $('#records_tableDSSL').html(userInfo);
+		    	  $('#records_tableDSSL').animate({opacity: 0}, 0 );
+		    	  $('#records_tableDSSL').animate({opacity: 1}, 4000 );
+		    	 
+		      }else{
+		      }	      
+		    },  
+		    error: function(e){  
+		      alert('Произошла ошибка. Обновите страницу. ' + e);  
+		    }
+	});
+	
+}
+
+
+
+/*
+ * Метод заполняет модальное окно второго уровня данными по id записи (редакитирование)
+ * ДС
+ */
+function dsslid( varr,varr2) {
+	console.log(varr+'  '+varr2);
+	$.ajax({
+		url : 'seconddsid',
+		type: 'get',
+		dataType: 'json',
+		data : ({ user: varr, id: varr2}),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+	    success: function(response)
+	    {
+		      // we have the response 
+		      if(response.status == "SUCCESS")
+		      {
+		    	    /*console.log('test '+JSON.stringify(response));
+		    		  console.log('=======================');
+		    		  console.log('test '+JSON.stringify(response.result[0]));
+		    		  console.log('=======================');
+		    		  console.log('test '+JSON.stringify(response.result[0].survayClinicSec1));
+		    		  console.log('=======================');
+		    		  console.log('test '+JSON.stringify(response.result[0].question_many));
+		    	  */
+		    	  
+		    	    $('#addOneDayStacionarsecondlevel').trigger('click');
+			    	$('#myModal1secondlevel .modal-title').text('Редактирование анкеты первого уровня');
+			    	$('.modal-header p').text('Редактирование анкеты дневного стационара');
+			    	$('.renamebtndssl').text('Редактировать');
+			    	
+			    	for(i =0 ; i < response.result.length ; i++){
+			    		  $("#idDSSL").val(response.result[i].id);
+			    		  $("#moSecondleveldaystacionar option:contains(" + response.result[i].moSecondleveldaystacionar +")").prop('selected', true);
+			    		  $("input[name='dataRespDSSL']").val(response.result[i].dataRespSecondleveldaystacionar);
+			    		  
+			    		  if(response.result[i].questionDS1 != 'Лечение' && response.result[i].questionDS1 != 'Обследование' && response.result[i].questionDS1 != 'Реабилитация' ){
+			    			  $('#questionDS1dr').fadeIn();
+			    			  $('#questionDS1dr').val(response.result[i].questionDS1);
+			    			  $("#questionDS1 option:contains('Другое (напишите)')").prop('selected', true);
+			    		  }else{	$("#questionDS1 option:contains(" + response.result[i].questionDS1 +")").prop('selected', true);	}
+			    		  
+			    		  if(response.result[i].questionDS2 != 'Терапевтическом' && response.result[i].questionDS2 != 'Гинекологическом' && response.result[i].questionDS2 != 'Хирургическом' && response.result[i].questionDS2 != 'Восстановительного лечения' ){
+			    			  $('#questionDS2dr').fadeIn();
+			    			  $('#questionDS2dr').val(response.result[i].questionDS2);
+			    			  $("#questionDS2 option:contains('Другое (напишите)')").prop('selected', true);
+			    		  }else{	$("#questionDS2 option:contains(" + response.result[i].questionDS2 +")").prop('selected', true);	}
+			    		  
+			    		  if(response.result[i].questionDS3 != 'Поликлиники' && response.result[i].questionDS3 != 'Стационара (больницы)'){
+			    			  $('#questionDS3dr').fadeIn();
+			    			  $('#questionDS3dr').val(response.result[i].questionDS3);
+			    			  $("#questionDS3 option:contains('Другое (напишите)')").prop('selected', true);
+			    		  }else{	$("#questionDS3 option:contains(" + response.result[i].questionDS3 +")").prop('selected', true);	}
+			    		  
+			    		  $("#questionDS4 option:contains(" + response.result[i].questionDS4 +")").prop('selected', true);
+			    		  $("#questionDS5 option:contains(" + response.result[i].questionDS5 +")").prop('selected', true);
+			    		  $("#questionDS6 option:contains(" + response.result[i].questionDS6 +")").prop('selected', true);
+			    		  $("#questionDS9 option:contains(" + response.result[i].questionDS9 +")").prop('selected', true);
+			    		  $("#questionDS17 option:contains(" + response.result[i].questionDS17 +")").prop('selected', true);
+			    		  $("#questionDS20 option:contains(" + response.result[i].questionDS20 +")").prop('selected', true);
+			    		  $("#questionDS23 option:contains(" + response.result[i].questionDS23 +")").prop('selected', true);
+			    		  $("#questionDS26").val(response.result[i].questionDS26);
+			    		  $("#questionDS27 option:contains(" + response.result[i].questionDS27 +")").prop('selected', true);
+			    		  $("#questionDS28 option:contains(" + response.result[i].questionDS28 +")").prop('selected', true);
+			    		  $("#questionDS31 option:contains(" + response.result[i].questionDS31 +")").prop('selected', true);
+			    		  $("#questionDS32 option:contains(" + response.result[i].questionDS32 +")").prop('selected', true);
+			    		  $("#questionDS33 option:contains(" + response.result[i].questionDS33 +")").prop('selected', true);
+			    		  $("#sexSecondleveldaystacionar option:contains(" + response.result[i].sexSecondleveldaystacionar +")").prop('selected', true);
+			    		  $("#ageSecondleveldaystacionar option:contains(" + response.result[i].ageSecondleveldaystacionar +")").prop('selected', true);
+			    		  $("#polzSecondleveldaystacionar option:contains(" + response.result[i].polzSecondleveldaystacionar +")").prop('selected', true);
+			    		  
+			    		  $("#question8sec1 option:contains(" + response.result[0].survayclinicdaystacionarSec1.question8sec1 +")").prop('selected', true);
+			    		  $("#question11sec1 option:contains(" + response.result[0].survayclinicdaystacionarSec1.question11sec1 +")").prop('selected', true);
+			    		  $("#question13sec1 option:contains(" + response.result[0].survayclinicdaystacionarSec1.question13sec1 +")").prop('selected', true);
+			    		  
+			    		  $("#question7sec2 option:contains(" + response.result[0].scdsslsec2.question7sec2 +")").prop('selected', true);
+			    		  $("#question10_1sec2 option:contains(" + response.result[0].scdsslsec2.question10_1sec2 +")").prop('selected', true);
+			    		  $("#question10_2sec2 option:contains(" + response.result[0].scdsslsec2.question10_2sec2 +")").prop('selected', true);
+			    		  $("#question10_3sec2 option:contains(" + response.result[0].scdsslsec2.question10_3sec2 +")").prop('selected', true);
+			    		  $("#question10_4sec2 option:contains(" + response.result[0].scdsslsec2.question10_4sec2 +")").prop('selected', true);
+			    		  $("#question10_5sec2 option:contains(" + response.result[0].scdsslsec2.question10_5sec2 +")").prop('selected', true);
+			    		  $("#question10_6sec2 option:contains(" + response.result[0].scdsslsec2.question10_6sec2 +")").prop('selected', true);
+			    		  $("#question10_7sec2 option:contains(" + response.result[0].scdsslsec2.question10_7sec2 +")").prop('selected', true);
+			    		  $("#question10_8sec2 option:contains(" + response.result[0].scdsslsec2.question10_8sec2 +")").prop('selected', true);
+			    		  $("#question10_9sec2 option:contains(" + response.result[0].scdsslsec2.question10_9sec2 +")").prop('selected', true);
+			    		  $("#question10_10sec2 option:contains(" + response.result[0].scdsslsec2.question10_10sec2 +")").prop('selected', true);
+			    		  $("#question10_11sec2 option:contains(" + response.result[0].scdsslsec2.question10_11sec2 +")").prop('selected', true);
+			    		  $("#question10_12sec2 option:contains(" + response.result[0].scdsslsec2.question10_12sec2 +")").prop('selected', true);
+			    		  $("#question10_13sec2 option:contains(" + response.result[0].scdsslsec2.question10_13sec2 +")").prop('selected', true);
+			    		  $("#question10_14sec2 option:contains(" + response.result[0].scdsslsec2.question10_14sec2 +")").prop('selected', true);
+			    		  $("#question12sec2 option:contains(" + response.result[0].scdsslsec2.question12sec2 +")").prop('selected', true);
+			    		  
+			    		  $("#question15_1_clinic option:contains(" + response.result[0].scdsslsec15.question15_1_clinic +")").prop('selected', true);
+			    		  $("#question15_2_clinic option:contains(" + response.result[0].scdsslsec15.question15_2_clinic +")").prop('selected', true);
+			    		  $("#question15_3_clinic option:contains(" + response.result[0].scdsslsec15.question15_3_clinic +")").prop('selected', true);
+			    		  $("#question15_4_clinic option:contains(" + response.result[0].scdsslsec15.question15_4_clinic +")").prop('selected', true);
+			    		  $("#question15_5_clinic option:contains(" + response.result[0].scdsslsec15.question15_5_clinic +")").prop('selected', true);
+			    		  $("#question15_6_clinic option:contains(" + response.result[0].scdsslsec15.question15_6_clinic +")").prop('selected', true);
+			    		  $("#question15_7_clinic option:contains(" + response.result[0].scdsslsec15.question15_7_clinic +")").prop('selected', true);
+			    		  $("#question15_8_clinic option:contains(" + response.result[0].scdsslsec15.question15_8_clinic +")").prop('selected', true);
+			    		  $("#question15_9_clinic option:contains(" + response.result[0].scdsslsec15.question15_9_clinic +")").prop('selected', true);
+			    		  $("#question15_10_clinic option:contains(" + response.result[0].scdsslsec15.question15_10_clinic +")").prop('selected', true);
+			    		  $("#question15_11_clinic option:contains(" + response.result[0].scdsslsec15.question15_11_clinic +")").prop('selected', true);
+			    		  
+			    		  $("#question25_1 option:contains(" + response.result[0].scdsslsec25.question25_1 +")").prop('selected', true);
+			    		  $("#question25_2 option:contains(" + response.result[0].scdsslsec25.question25_2 +")").prop('selected', true);
+			    		  $("#question25_3 option:contains(" + response.result[0].scdsslsec25.question25_3 +")").prop('selected', true);
+			    		  $("#question25_4 option:contains(" + response.result[0].scdsslsec25.question25_4 +")").prop('selected', true);
+			    		  $("#question25_5").val(response.result[0].scdsslsec25.question25_5);
+			    		  
+			    		  for(i =0 ; i < response.result[0].manyDSSL.length ; i++){
+			    		  
+				    		  // вопрос 14
+				    		  if(response.result[0].manyDSSL[i].questionDS14many == 'От медицинских работников') {	$("#questionDS14many_1").prop("checked", true);}
+				    		  else{
+				    			  if(response.result[0].manyDSSL[i].questionDS14many == 'От сотрудников страховой компании') {	$("#questionDS14many_2").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manyDSSL[i].questionDS14many == 'От сотрудников Фонда ОМС') {	$("#questionDS14many_3").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manyDSSL[i].questionDS14many == 'От знакомых/родственников') {	$("#questionDS14many_4").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manyDSSL[i].questionDS14many == 'из средств массовой информации') {	$("#questionDS14many_5").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manyDSSL[i].questionDS14many == 'из информации для населения в медицинских организациях (стенды, брошюры,листовки)') {	$("#questionDS14many_6").prop("checked", true);}
+								    			  else{
+								    				  if(response.result[0].manyDSSL[i].questionDS14many == 'из сети интернет') {	$("#questionDS14many_7").prop("checked", true);}
+									    			  else{
+									    				  if(response.result[0].manyDSSL[i].questionDS14many == 'Я не знаю своих прав') {	$("#questionDS14many_8").prop("checked", true);}
+										    			  else{
+										    				  if(response.result[0].manyDSSL[i].questionDS14many == 'Затрудняюсь ответить') {	$("#questionDS14many_9").prop("checked", true);}
+											    			  else{
+											    				  $("#questionDS14many_10").val(response.result[0].manyDSSL[i].questionDS14many_10);
+											    			  }
+										    			  }
+									    			  }
+								    			  }
+							    			  }
+						    			  }
+					    			  }
+				    			  }
+				    		  }
+				    		  //вопрос 16  
+				    		  if(response.result[0].manyDSSL[i].questionDS16many == 'Администрация медицинской организации') {	$("#questionDS16many_1").prop("checked", true);}
+			    			  else{
+			    				  if(response.result[0].manyDSSL[i].questionDS16many == 'Страховая компания, выдавшая полис ОМС') {	$("#questionDS16many_2").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manyDSSL[i].questionDS16many == 'Фонд обязательного медицинского страхования') {	$("#questionDS16many_3").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manyDSSL[i].questionDS16many == 'Органы управления здравоохранением') {	$("#questionDS16many_4").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manyDSSL[i].questionDS16many == 'Гражданский суд') {	$("#questionDS16many_5").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manyDSSL[i].questionDS16many == 'Затрудняюсь ответить') {	$("#questionDS16many_6").prop("checked", true);}
+								    			  else{
+								    				  $("#questionDS16many_7").val(response.result[0].manyDSSL[i].questionDS16many_7);
+								    			  }
+							    			  }
+						    			  }
+					    			  }
+				    			  }
+			    			  }
+				    		  
+				    		  //вопрос 18
+				    		  if(response.result[0].manyDSSL[i].questionDS18many == 'Не знал(а), куда обратиться') {	$("#questionDS18many_1").prop("checked", true);}
+			    			  else{
+			    				  if(response.result[0].manyDSSL[i].questionDS18many == 'Решил(а), что пытаться бесполезно') {	$("#questionDS18many_2").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manyDSSL[i].questionDS18many == 'Побоялся(лась) огласки') {	$("#questionDS18many_3").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manyDSSL[i].questionDS18many == 'Не хотел(а) портить отношения с врачом') {	$("#questionDS18many_4").prop("checked", true);}
+						    			  else{
+					    				  $("#questionDS18many_5").val(response.result[0].manyDSSL[i].questionDS18many_5);
+						    			  }
+					    			  }
+				    			  }
+			    			  }
+				    		  
+				    		  // вопрос 19
+				    		  if(response.result[0].manyDSSL[i].questionDS19many == 'Врачом оказана некачественная медицинская помощь') {	$("#questionDS19many_1").prop("checked", true);}
+			    			  else{
+			    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врачом разглашена конфиденциальная информация о состоянии здоровья') {	$("#questionDS19many_2").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врачом не были назначены необходимые диагностические процедуры') {	$("#questionDS19many_3").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врачом не было назначено необходимое лечение') {	$("#questionDS19many_4").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врач не дал направление на обследование в другую медицинскую организацию') {	$("#questionDS19many_5").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно') {	$("#questionDS19many_6").prop("checked", true);}
+								    			  else{
+								    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врач вел себя грубо, безразлично, невежливо') {	$("#questionDS19many_7").prop("checked", true);}
+									    			  else{
+									    				  $("#questionDS19many_8").val(response.result[0].manyDSSL[i].questionDS19many_8);
+									    			  }
+								    			  }
+							    			  }
+						    			  }  
+					    			  }
+				    			  }
+			    			  }
+				    		  
+				    		  // вопрос 21
+				    		  if(response.result[0].manyDSSL[i].questionDS21many == 'Не знал(а), куда обратиться') {	$("#questionDS21many_1").prop("checked", true);}
+			    			  else{
+			    				  if(response.result[0].manyDSSL[i].questionDS21many == 'Решил(а), что пытаться бесполезно') {	$("#questionDS21many_2").prop("checked", true);}
+				    			  else{
+				    				  $("#questionDS21many_3").val(response.result[0].manyDSSL[i].questionDS21many_3);
+				    			  }
+			    			  }
+				    		  
+				    		  //вопрос 22
+				    		  if(response.result[0].manyDSSL[i].questionDS22many == 'В связи с переездом на новое место жительства') {	$("#questionDS22many_1").prop("checked", true);}
+			    			  else{
+			    				  if(response.result[0].manyDSSL[i].questionDS22many == 'из-за неудобного режима работы') {	$("#questionDS22many_2").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manyDSSL[i].questionDS22many == 'из-за плохих санитарно-гигиенических условий') {	$("#questionDS22many_3").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manyDSSL[i].questionDS22many == 'В связи с недостаточным спектром медицинских услуг (анализы, УЗИ, ФЛГ, рентген и др)') {	$("#questionDS22many_4").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manyDSSL[i].questionDS22many == 'из-за недостаточно квалифицированного медицинского персонала') {	$("#questionDS22many_5").prop("checked", true);}
+							    			  else{
+							    				  $("#questionDS22many_6").val(response.result[0].manyDSSL[i].questionDS22many_6);
+							    			  }
+						    			  }
+					    			  }
+				    			  }
+			    			  }
+				    		  
+				    		  //вопрос 24
+				    		  if(response.result[0].manyDSSL[i].questionDS24many == 'В медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения') {	$("#questionDS24many_1").prop("checked", true);}
+			    			  else{
+			    				  if(response.result[0].manyDSSL[i].questionDS24many == 'из-за отсутствия местной регистрации') {	$("#questionDS24many_2").prop("checked", true);}
+				    			  else{
+			    				  $("#questionDS24many_3").val(response.result[0].manyDSSL[i].questionDS24many_3);
+				    			  }
+			    			  }
+			    		  }
+			    		  
+							/*
+			    		  
+			    		  $("#question12_clinic option:contains(" + response.result[0].survayClinicSec2.question12_clinic +")").prop('selected', true);
+			    		  $("#ageSecondLevelClinic option:contains(" + response.result[i].ageSecondlevel +")").prop('selected', true);
+			    		  $("#moSecondLevel option:contains(" + response.result[i].moSecondlevel +")").prop('selected', true);
+			    		  $("#sexSecondLevelClinic option:contains(" + response.result[i].sexSecondlevel +")").prop('selected', true);
+			    		  $("#visitClinicSecondLevel option:contains(" + response.result[i].visitClinicSecondlevel +")").prop('selected', true);
+			    		  $("#question5 option:contains(" + response.result[i].question5 +")").prop('selected', true);
+			    		  $("#question9_1 option:contains(" + response.result[i].question9_1 +")").prop('selected', true);
+			    		  $("#question9_2 option:contains(" + response.result[i].question9_2 +")").prop('selected', true);
+			    		  $("#question11 option:contains(" + response.result[i].question11 +")").prop('selected', true);
+			    		  $("#question16").val(response.result[i].question16);
+			    		  $("#question17 option:contains(" + response.result[i].question17 +")").prop('selected', true);
+			    		  $("#question19 option:contains(" + response.result[i].question19 +")").prop('selected', true);
+			    		  $("#question27 option:contains(" + response.result[i].question27 +")").prop('selected', true);
+			    		  $("#question30 option:contains(" + response.result[i].question30 +")").prop('selected', true);
+			    		  $("#question33 option:contains(" + response.result[i].question33 +")").prop('selected', true);
+			    		  $("#question34 option:contains(" + response.result[i].question34 +")").prop('selected', true);
+			    		  $("#question35 option:contains(" + response.result[i].question35 +")").prop('selected', true);
+			    		  $("#question36").val(response.result[i].question36);
+			    		  $("#question37 option:contains(" + response.result[i].question37 +")").prop('selected', true);
+			    		  $("#question38 option:contains(" + response.result[i].question38 +")").prop('selected', true);
+			    		  $("#question41 option:contains(" + response.result[i].question41 +")").prop('selected', true);
+			    		  $("#question42 option:contains(" + response.result[i].question42 +")").prop('selected', true);
+			    		  $("#question43 option:contains(" + response.result[i].question43 +")").prop('selected', true);*/
+			    	  }
+		    	  
+		      }else
+		      {
+		    	 
+		      }	      
+	    },  
+		    error: function(e){  
+		      alert('Error: ' + e);  
+		    }
+	});
+	
+}

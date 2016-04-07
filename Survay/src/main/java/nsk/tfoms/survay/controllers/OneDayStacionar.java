@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.service.DayStacionarService;
 import nsk.tfoms.survay.util.TimesAndDate;
@@ -153,9 +152,8 @@ public class OneDayStacionar {
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 		    // вытаскиваем из базы 
 		    List<SurvayDaystacionar> list = DayStacionarService.getOnId(idBD, user);
-		    list.get(0).setDataInputDaystac(	TimesAndDate.parseDate(list.get(0).getDataRespDaystac())	);
+		    list.get(0).setDataRespDaystac(	TimesAndDate.parseDate(list.get(0).getDataRespDaystac())	);
 		    res.setStatus("SUCCESS");
-		    System.out.println("Edit by id "+list);
 		    res.setResult(list);
 			return res;
 	  }

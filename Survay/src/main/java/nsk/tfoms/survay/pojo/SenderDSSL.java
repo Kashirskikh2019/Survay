@@ -1,10 +1,5 @@
 package nsk.tfoms.survay.pojo;
 
-import nsk.tfoms.survay.entity.QuestionManyClinic;
-import nsk.tfoms.survay.entity.SurvayClinicSec1;
-import nsk.tfoms.survay.entity.SurvayClinicSec2;
-import nsk.tfoms.survay.entity.SurvayClinicSec25;
-import nsk.tfoms.survay.entity.SurvayClinicSecondlevel;
 /*
  * Класс обвертка
  * Данные объекты приходят с клиента. Обвертка раскидывает их по объектам
@@ -23,6 +18,9 @@ public class SenderDSSL {
 	private SCDSSLSec2 survay3;
 	private SCDSSLSec15 survay4;
 	private SCDSSLSec25 survay5;
+	private WrapManyDSSL survay6;
+	
+	
 	public DayStacionarSecondlevel getSurvay1() {
 		return survay1;
 	}
@@ -52,6 +50,12 @@ public class SenderDSSL {
 	}
 	public void setSurvay5(SCDSSLSec25 survay5) {
 		this.survay5 = survay5;
+	}
+	public WrapManyDSSL getSurvay6() {
+		return survay6;
+	}
+	public void setSurvay6(WrapManyDSSL survay6) {
+		this.survay6 = survay6;
 	}
 	
 		

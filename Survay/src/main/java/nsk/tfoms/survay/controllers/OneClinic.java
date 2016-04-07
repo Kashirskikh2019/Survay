@@ -175,7 +175,6 @@ public class OneClinic {
 		    List<SurvayClinic> list = personSvc.getOnId(idBD, user);
 		    list.get(0).setDataResp(	TimesAndDate.parseDate(list.get(0).getDataResp())	);
 		    res.setStatus("SUCCESS");
-		    System.out.println(list);
 		    res.setResult(list);
 			return res;
 	  }

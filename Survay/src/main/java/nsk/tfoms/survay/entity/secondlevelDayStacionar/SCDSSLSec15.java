@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -71,7 +72,7 @@ public class SCDSSLSec15 implements Serializable {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
-	//@JsonIgnore
+	@JsonIgnore
 	public DayStacionarSecondlevel getDaystacionarsecondlevel() {
 		return daystacionarsecondlevel;
 	}

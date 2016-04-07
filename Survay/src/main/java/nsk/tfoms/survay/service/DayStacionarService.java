@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 
 import org.springframework.stereotype.Service;
@@ -44,7 +43,7 @@ public class DayStacionarService {
 	  
 	  @Transactional
 	  public List<SurvayDaystacionar> getAllbetween(String d1, String d2,String userp) {
-	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE p.polzovateldaystacionar =:userp AND p.dataInputDaystac BETWEEN :d1 AND :d2 ORDER BY p.id DESC", SurvayDaystacionar.class)
+	    List<SurvayDaystacionar> result = em.createQuery("SELECT p FROM SurvayDaystacionar p WHERE p.polzovateldaystacionar =:userp AND p.dataRespDaystac BETWEEN :d1 AND :d2 ORDER BY p.id DESC", SurvayDaystacionar.class)
 	    .setParameter("d1", d1)  
 	    .setParameter("d2", d2)  
 	    .setParameter("userp", userp)
