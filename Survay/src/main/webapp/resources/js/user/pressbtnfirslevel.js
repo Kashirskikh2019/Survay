@@ -13,7 +13,12 @@
     	    		}
 		   			else
 		   			{
-		   				if ($('#dim2,#dim3').is(':visible')){	$("#dim2").fadeOut();$("#dim3").fadeOut();	}
+		   				if ($('#dim2,#dim3,#dimsecondlevel,#dim2secondlevel,#dim3secondlevel').is(':visible')){
+		   						$("#dim2").fadeOut();$("#dim3").fadeOut();
+		   						$('#dimsecondlevel').fadeOut();
+		   						$('#dim2secondlevel').fadeOut();
+		   						$('#dim3secondlevel').fadeOut();
+		   					}
 		   				var widthGet = $('.container-fluid').width();
 		    	        var heightGet = $(window).height();
 		    	        
@@ -38,7 +43,12 @@
     	    		}
 		   			else
 		   			{
-		   				if ($('#dim,#dim3').is(':visible')){	$("#dim").fadeOut();$("#dim3").fadeOut();	}
+		   				if ($('#dim,#dim3,#dimsecondlevel,#dim2secondlevel,#dim3secondlevel').is(':visible')){
+		   						$("#dim").fadeOut();$("#dim3").fadeOut();
+		   						$('#dimsecondlevel').fadeOut();
+		   						$('#dim2secondlevel').fadeOut();
+		   						$('#dim3secondlevel').fadeOut();
+		   					}
 		   				var widthGet = $('.container-fluid').width();
 		    	        var heightGet = $(window).height();
 		    	        
@@ -63,7 +73,12 @@
     	    		}
 		   			else
 		   			{
-		   				if ($('#dim2,#dim').is(':visible')){	$("#dim2").fadeOut();$("#dim").fadeOut()	}
+		   				if ($('#dim2,#dim,#dimsecondlevel,#dim2secondlevel,#dim3secondlevel').is(':visible')){
+		   					$("#dim2").fadeOut();$("#dim").fadeOut();
+		   					$('#dimsecondlevel').fadeOut();
+	   						$('#dim2secondlevel').fadeOut();
+	   						$('#dim3secondlevel').fadeOut();
+		   				}
 		   				
 		   				
 		   				var widthGet = $('.container-fluid').width();

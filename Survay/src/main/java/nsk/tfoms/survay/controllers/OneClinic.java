@@ -63,6 +63,7 @@ public class OneClinic {
 		    for (int i = 0; i < list.size(); i++)
 		    {
 		    	list.get(i).setDataResp(	TimesAndDate.parseDate(list.get(i).getDataResp())	);
+		    	list.get(i).setDataInput(	TimesAndDate.parseDate(list.get(i).getDataInput())	);
 			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);

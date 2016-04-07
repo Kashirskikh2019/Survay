@@ -704,10 +704,22 @@ function oneclinicbetween( varr) {
 /*
  * Метод обновляет запись в модальном окне первого уровня
  */
-function oneLevel() {
+function oneLevel1() {
 	$('#myModal .modal-title').text('Добавить анкету первого уровня');
+	$('.modal-header p').text('Добавление анкеты амбулаторно-поликлинической помощи');
+	$('.editonelev').text('Добавить анкету');
+}
+
+function oneLevel2() {
 	$('#myModal1 .modal-title').text('Добавить анкету первого уровня');
+	$('.modal-header p').text('Добавление анкеты дневного стационара');
+	$('.editonelev').text('Добавить анкету');
+}
+
+function oneLevel3() {
 	$('#myModal2 .modal-title').text('Добавить анкету первого уровня');
+	$('.modal-header p').text('Добавление анкеты стационара');
+	$('.editonelev').text('Добавить анкету');
 }
 
 
@@ -732,6 +744,8 @@ function onecliniceditid( varr,varr2) {
 		      {
 		    	  $('#addOneClinic').trigger('click');
 		    	  $('#myModal .modal-title').text('Редактирование анкеты первого уровня');
+		    	  $('.modal-header p').text('Редактирование анкеты амбулаторно-поликлинической помощи');
+		    	  $('.editonelev').text('Редактировать');
 		    	  
 		    	  
 		    	  
@@ -958,6 +972,8 @@ function onedaystacid( varr,varr2) {
 		      {
 		    	  $('#addOneDayStacionar').trigger('click');
 		    	  $('#myModal1 .modal-title').text('Редактирование анкеты первого уровня');
+		    	  $('.modal-header p').text('Редактирование анкеты дневного стационара');
+		    	  $('.editonelev').text('Редактировать');
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
 		    		  
@@ -1179,7 +1195,8 @@ function allonestacionar(varr) {
 }
 
 /*
- * Метод заполняет модальное окно первого уровня  стационара по id  
+ * Метод заполняет модальное окно первого уровня  стационара по id
+ * стационар  
  */
 function onestacid( varr,varr2) {
 	console.log(varr+'  '+varr2);
@@ -1197,6 +1214,8 @@ function onestacid( varr,varr2) {
 		      {
 		    	  $('#addOneStacionar').trigger('click');
 		    	  $('#myModal2 .modal-title').text('Редактирование анкеты первого уровня');
+		    	  $('.modal-header p').text('Редактирование анкеты стационара');
+		    	  $('.editonelev').text('Редактировать');
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
 		    		  

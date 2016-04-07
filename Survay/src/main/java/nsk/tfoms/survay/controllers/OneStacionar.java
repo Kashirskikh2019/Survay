@@ -37,6 +37,7 @@ public class OneStacionar {
 		    for (int i = 0; i < list.size(); i++)
 		    {
 		    	list.get(i).setDataRespStac(	TimesAndDate.parseDate(list.get(i).getDataRespStac())	);
+		    	list.get(i).setDataInputStac(	TimesAndDate.parseDate(list.get(i).getDataInputStac()	));
 			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);

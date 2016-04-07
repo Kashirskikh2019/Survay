@@ -206,8 +206,7 @@
 	   function levelsecond() {
 	   	$('#myModalClinicSecondLevel .modal-title').text('Добавить анкету второго уровня');
 	   	$('.renamebtn').text('Добавить анкету');
-	   	//$('#myModal1 .modal-title').text('Добавить анкету второго уровня');
-	   	//$('#myModal2 .modal-title').text('Добавить анкету второго уровня');
+	   	$('.modal-header p').text('Добавление анкеты амбулаторно-поликлинической помощи');
 	   }
 	   
 	   /*
@@ -216,9 +215,9 @@
 	    */
 	   function levelseconddssl() {
 		   
-	   	$('#myModal1secondlevel .modal-title').text('Добавить анкету второго уровня');
+	   	$('#myModal1secondlevel .modal-title').text('Добавление анкеты второго уровня');
 	   	$('.modal-header p').text('Добавление анкеты дневного стационара');
-    	$('.renamebtndssl').text('Добавить');
+    	$('.renamebtndssl').text('Добавить анкету');
     	$('#questionDS1dr').fadeOut();
     	$('#questionDS2dr').fadeOut();
     	$('#questionDS3dr').fadeOut();

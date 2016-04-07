@@ -322,7 +322,7 @@ $("#formOneReport").validate({
      					<button class="btn btn-success" id="getqueryoneclinic" onclick="oneclinicbetween('${principal.username}')">Выбрать</button>
      				</td>
      				<td>
-     					<button class="btn btn-success" id="addOneClinic" data-toggle="modal" data-target="#myModal" onclick="oneLevel()">Добавить запись</button>
+     					<button class="btn btn-success" id="addOneClinic" data-toggle="modal" data-target="#myModal" onclick="oneLevel1()">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
@@ -387,7 +387,7 @@ $("#formOneReport").validate({
      					<button class="btn btn-success"  onclick="onedaystacbetween('${principal.username}')">Выбрать</button>
      				</td>
      				<td>
-     					<button class="btn btn-success" id="addOneDayStacionar" data-toggle="modal" data-target="#myModal1" onclick="oneLevel()">Добавить запись</button>
+     					<button class="btn btn-success" id="addOneDayStacionar" data-toggle="modal" data-target="#myModal1" onclick="oneLevel2()">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
@@ -452,7 +452,7 @@ $("#formOneReport").validate({
      					<button class="btn btn-success"  onclick="onestacbetween('${principal.username}')">Выбрать</button>
      				</td>
      				<td>
-     					<button class="btn btn-success" id="addOneStacionar" data-toggle="modal" data-target="#myModal2" onclick="oneLevel()">Добавить запись</button>
+     					<button class="btn btn-success" id="addOneStacionar" data-toggle="modal" data-target="#myModal2" onclick="oneLevel3()">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
@@ -742,7 +742,7 @@ $("#formOneReport").validate({
 								
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneClinic" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success"  onclick='oneclinic("${principal.username}")'>Добавить анкету</button>
+									<button  class="btn btn-success editonelev"  onclick='oneclinic("${principal.username}")'>Добавить анкету</button>
 								</div>
 							</div>
 						</div>
@@ -2893,7 +2893,7 @@ $("#formOneReport").validate({
 								
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneDayStacionar" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success"  onclick='onedaystacionar("${principal.username}")'>Добавить анкету</button>
+									<button  class="btn btn-success editonelev"  onclick='onedaystacionar("${principal.username}")'>Добавить анкету</button>
 								</div>
 							</div>
 						</div>
@@ -3120,7 +3120,7 @@ $("#formOneReport").validate({
 								
 								<div class="modal-footer"><div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelOneStac" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success"  onclick='onestacionar("${principal.username}")'>Добавить анкету</button>
+									<button  class="btn btn-success editonelev"  onclick='onestacionar("${principal.username}")'>Добавить анкету</button>
 								</div>
 							</div>
 						</div>

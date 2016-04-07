@@ -525,7 +525,8 @@ function secondcliniceditid( varr,varr2) {
 		    	  */
 		    	  
 		    	  $('#addOneClinicsecondlevel').trigger('click');
-		    	  $('#myModalClinicSecondLevel .modal-title').text('Редактирование анкеты первого уровня');
+		    	  $('#myModalClinicSecondLevel .modal-title').text('Редактирование анкеты второго уровня');
+		    	  $('.modal-header p').text('Редактирование анкеты амбулаторно-поликлинической помощи');
 		    	  $('.renamebtn').text('Редактировать');
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
@@ -1020,7 +1021,7 @@ function dsslid( varr,varr2) {
 		    	  */
 		    	  
 		    	    $('#addOneDayStacionarsecondlevel').trigger('click');
-			    	$('#myModal1secondlevel .modal-title').text('Редактирование анкеты первого уровня');
+			    	$('#myModal1secondlevel .modal-title').text('Редактирование анкеты второго уровня');
 			    	$('.modal-header p').text('Редактирование анкеты дневного стационара');
 			    	$('.renamebtndssl').text('Редактировать');
 			    	

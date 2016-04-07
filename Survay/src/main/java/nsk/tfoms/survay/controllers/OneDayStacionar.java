@@ -37,6 +37,7 @@ public class OneDayStacionar {
 		    for (int i = 0; i < list.size(); i++)
 		    {
 		    	list.get(i).setDataRespDaystac(	TimesAndDate.parseDate(list.get(i).getDataRespDaystac())	);
+		    	list.get(i).setDataInputDaystac(	TimesAndDate.parseDate(list.get(i).getDataInputDaystac())	);
 			}
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
@@ -130,7 +131,6 @@ public class OneDayStacionar {
 		    
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
 			// добовляем запись в базу
-			System.out.println("Model add in db "+survayDaystacionar);
 			DayStacionarService.add(survayDaystacionar);
 		    // вытаскиваем из базы 
 		    List<SurvayDaystacionar> list = DayStacionarService.getAll(survayDaystacionar.getPolzovateldaystacionar());

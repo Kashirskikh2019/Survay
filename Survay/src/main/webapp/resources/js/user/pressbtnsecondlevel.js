@@ -2,7 +2,7 @@
  * Модуль обрабатывает различные комбинации между нажатиями на кнопки в подменю АНКЕТЫ ВТОРОГО УРОВНЯ
  * 
  */
-// Кнопка амбул-полик помощь
+		// Кнопка амбул-полик помощь
 	   $('#one_ambul_polsecondlevel').click(function()
                {  
 		   			if ($('#dimsecondlevel').is(':visible'))
@@ -13,7 +13,13 @@
     	    		}
 		   			else
 		   			{
-		   				if ($('#dim2secondlevel,#dim3secondlevel').is(':visible')){	$("#dim2secondlevel").fadeOut();$("#dim3secondlevel").fadeOut();	}
+		   				if ($('#dim2secondlevel,#dim3secondlevel,#dim,#dim2,#dim3').is(':visible')){
+		   						$("#dim2secondlevel").fadeOut();
+		   						$("#dim3secondlevel").fadeOut();
+		   						$("#dim2").fadeOut();
+		   						$("#dim").fadeOut();
+		   						$("#dim3").fadeOut();
+		   					}
 		   				var widthGet = $('.container-fluid').width();
 		    	        var heightGet = $(window).height();
 		    	        
@@ -38,7 +44,12 @@
     	    		}
 		   			else
 		   			{
-		   				if ($('#dimsecondlevel,#dim3secondlevel').is(':visible')){	$("#dimsecondlevel").fadeOut();$("#dim3secondlevel").fadeOut();	}
+		   				if ($('#dimsecondlevel,#dim3secondlevel,#dim,#dim2,#dim3').is(':visible')){
+		   						$("#dimsecondlevel").fadeOut();$("#dim3secondlevel").fadeOut();
+		   						$("#dim2").fadeOut();
+		   						$("#dim").fadeOut();
+		   						$("#dim3").fadeOut();
+		   					}
 		   				var widthGet = $('.container-fluid').width();
 		    	        var heightGet = $(window).height();
 		    	        
@@ -63,7 +74,13 @@
     	    		}
 		   			else
 		   			{
-		   				if ($('#dim2secondlevel,#dimsecondlevel').is(':visible')){	$("#dim2secondlevel").fadeOut();$("#dimsecondlevel").fadeOut()	}
+		   				if ($('#dim2secondlevel,#dimsecondlevel,#dim,#dim2,#dim3').is(':visible')){
+		   						$("#dim2secondlevel").fadeOut();
+		   						$("#dimsecondlevel").fadeOut();
+		   						$("#dim2").fadeOut();
+		   						$("#dim").fadeOut();
+		   						$("#dim3").fadeOut();
+		   					}
 		   				
 		   				
 		   				var widthGet = $('.container-fluid').width();
