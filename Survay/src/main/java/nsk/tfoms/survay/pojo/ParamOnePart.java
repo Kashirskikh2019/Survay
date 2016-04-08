@@ -3,7 +3,6 @@ package nsk.tfoms.survay.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.Pattern;
 
 public class ParamOnePart {
 	

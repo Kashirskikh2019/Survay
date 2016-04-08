@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -21,20 +20,16 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFRegionUtil;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.PrintSetup;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.ss.util.RegionUtil;
 
 import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
 import nsk.tfoms.survay.pojo.ParamOnePart;
+import nsk.tfoms.survay.pojo.ReportPg1;
 
 /* How it works
  * In method loadtoexcelresalt pass query from db...init excel...after pass full path name xls file:  request.getSession().setAttribute("filename", name);
@@ -78,9 +73,12 @@ public class Reports {
 
     
     
-    @SuppressWarnings("deprecation")
-	public void loadToExcelResalt2(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart) throws FileNotFoundException, IOException
+    public void loadToExcelResalt2(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart) throws FileNotFoundException, IOException
     {
+    	
+    	System.out.println("@@@@ "+forOneOrgClinic);
+    	
+    	
     	
     	 String applicationPath = request.getServletContext().getRealPath("");
          String FilePath = applicationPath + File.separator+"downloads";
@@ -1057,6 +1055,256 @@ public class Reports {
          
          sheet.autoSizeColumn(0);
          sheet.autoSizeColumn(1);
+         
+         // ===================================================Лист 3 Форма ПГ1==============================================================================================
+         sheet = wb.createSheet("форма №ПГ-1");
+         
+         sheet.setColumnWidth(0, 19000);
+         sheet.setColumnWidth(1, 3000);
+         sheet.setColumnWidth(2, 7000);
+         sheet.setColumnWidth(3, 7000);
+         sheet.setColumnWidth(4, 7000);
+         sheet.setColumnWidth(5, 8000);
+         sheet.setColumnWidth(6, 4500);
+         
+         excelRow = sheet.createRow(1);
+         excelRow = sheet.getRow(1);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Период " + paramonepart.getDatestart()+" - "+paramonepart.getDateend());
+         
+         excelRow = sheet.createRow(2);
+         excelRow = sheet.getRow(2);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Организация: "+ user.replace("!", " "));
+         
+         titleFont.setFontHeightInPoints((short)12);
+         titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+         style = wb.createCellStyle();
+         style.setWrapText(true);
+         style.setAlignment(CellStyle.ALIGN_CENTER);
+         style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+         style.setFont(titleFont);
+         
+         excelRow = sheet.createRow(3);
+         excelRow = sheet.getRow(3);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelRow.setHeight((short) 500);
+         excelCell.setCellValue("Удовлетворенность объемом, доступностью и качеством медицинской помощи");
+         sheet.addMergedRegion(new CellRangeAddress(3, 3, 0, 6));
+         excelCell.setCellStyle(style);
+         
+         excelRow = sheet.createRow(5);
+         excelRow = sheet.getRow(5);
+         excelRow.setHeight((short) 1000);
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Результаты социологического опроса");
+         excelCell.setCellStyle(style);
+         
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue("кол-во");
+         excelCell.setCellStyle(style);
+
+         excelCell = excelRow.createCell(2);
+         excelCell = excelRow.getCell(2);
+         excelCell.setCellValue("удовлетворены качеством мед помощи");
+         excelCell.setCellStyle(style);
+         
+         excelCell = excelRow.createCell(3);
+         excelCell = excelRow.getCell(3);
+         excelCell.setCellValue("не удовлетворены качеством мед помощи");
+         excelCell.setCellStyle(style);
+         
+         excelCell = excelRow.createCell(4);
+         excelCell = excelRow.getCell(4);
+         excelCell.setCellValue("больше удовлетворены, чем неудовлетворены");
+         excelCell.setCellStyle(style);
+         
+         excelCell = excelRow.createCell(5);
+         excelCell = excelRow.getCell(5);
+         excelCell.setCellValue("удовлетворены не в полной мере");
+         excelCell.setCellStyle(style);
+         
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue("затруднились ответить");
+         excelCell.setCellStyle(style);
+         
+         excelRow = sheet.createRow(6);
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("Количество опрошенных застрахованных по вопросам КМП, всего, в том числе");
+         
+         ReportPg1 reportpg1 = pg1fromcount(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,paramonepart.getMas());
+         
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));
+         
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(2);
+         excelCell = excelRow.getCell(2);
+         excelCell.setCellValue(reportpg1.getTotalTotalydl());
+         
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(3);
+         excelCell = excelRow.getCell(3);
+         excelCell.setCellValue(reportpg1.getTotalTotalallneydl());
+         
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(4);
+         excelCell = excelRow.getCell(4);
+         excelCell.setCellValue(reportpg1.getTotalTotalyydl());
+         
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(5);
+         excelCell = excelRow.getCell(5);
+         excelCell.setCellValue(reportpg1.getTotalTotalneydl());
+         
+         
+         excelRow = sheet.getRow(6);		
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue(reportpg1.getTotalTotaldificalt());
+         
+         
+         
+         
+         excelRow = sheet.createRow(7);
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("при получении стационарной медицинской помощи");
+         
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue(countonquestionStac10(forOneOrgStac));
+         
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(2);
+         excelCell = excelRow.getCell(2);
+         excelCell.setCellValue(reportpg1.getSctSydl());
+         
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(3);
+         excelCell = excelRow.getCell(3);
+         excelCell.setCellValue(reportpg1.getSctSallneydl());
+         
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(4);
+         excelCell = excelRow.getCell(4);
+         excelCell.setCellValue(reportpg1.getSctSyydl());
+         
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(5);
+         excelCell = excelRow.getCell(5);
+         excelCell.setCellValue(reportpg1.getSctSneydl());
+         
+         
+         excelRow = sheet.getRow(7);		
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue(reportpg1.getSctSdificalt());
+         
+         
+         
+         
+         excelRow = sheet.createRow(8);
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("при получении стационарно-замещающей медицинской помощи");
+         
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue(countonquestionDC9(forOneOrgDayStac));
+         
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(2);
+         excelCell = excelRow.getCell(2);
+         excelCell.setCellValue(reportpg1.getSctDSydl());
+         
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(3);
+         excelCell = excelRow.getCell(3);
+         excelCell.setCellValue(reportpg1.getSctDSallneydl());
+         
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(4);
+         excelCell = excelRow.getCell(4);
+         excelCell.setCellValue(reportpg1.getSctDSyydl());
+         
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(5);
+         excelCell = excelRow.getCell(5);
+         excelCell.setCellValue(reportpg1.getSctDSneydl());
+         
+         
+         excelRow = sheet.getRow(8);		
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue(reportpg1.getSctDSdificalt());
+         
+         
+         
+         
+         excelRow = sheet.createRow(9);
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(0);
+         excelCell = excelRow.getCell(0);
+         excelCell.setCellValue("при получении амбулаторно-поликлинической медицинской помощи");
+         
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(1);
+         excelCell = excelRow.getCell(1);
+         excelCell.setCellValue(countonquestionClinic12(forOneOrgClinic));
+         
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(2);
+         excelCell = excelRow.getCell(2);
+         excelCell.setCellValue(reportpg1.getSctClinicydl());
+         
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(3);
+         excelCell = excelRow.getCell(3);
+         excelCell.setCellValue(reportpg1.getSctClinicallneydl());         
+         
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(4);
+         excelCell = excelRow.getCell(4);
+         excelCell.setCellValue(reportpg1.getSctClinicyydl());
+         
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(5);
+         excelCell = excelRow.getCell(5);
+         excelCell.setCellValue(reportpg1.getSctClinicneydl());
+
+         
+         excelRow = sheet.getRow(9);		
+         excelCell = excelRow.createCell(6);
+         excelCell = excelRow.getCell(6);
+         excelCell.setCellValue(reportpg1.getSctClinicdificalt());
+
+         
+             for (int j = 5; j < 10; j++) {
+            	 for (int j2 = 0; j2 < 7; j2++) {
+            		 adr = new CellRangeAddress(j, 9, j2, 6);
+            		 
+            		 HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+                     HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+                     HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+                     HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+				}
+             }
+             
          
          try {
         	 
@@ -2303,4 +2551,109 @@ public class Reports {
         return p;
     }
     
-    }
+    
+
+	private ReportPg1 pg1fromcount(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac,List<String> var)
+	{
+		ReportPg1 pg1 = new ReportPg1();
+		int totalTotalydl = 0;
+		int totalTotalneydl = 0;
+		int totalTotalyydl = 0;
+		int totalTotalallneydl = 0;
+		int totalTotaldificalt = 0;
+		
+		int sctClinicydl = 0;
+		int sctClinicneydl = 0;
+		int sctClinicyydl = 0;
+		int sctClinicallneydl = 0;
+		int sctClinicdificalt = 0;
+		
+		int sctDSydl = 0;
+		int sctDSneydl = 0;
+		int sctDSyydl = 0;
+		int sctDSallneydl = 0;
+		int sctDSdificalt = 0;
+		
+		int sctSydl = 0;
+		int sctSneydl = 0;
+		int sctSyydl = 0;
+		int sctSallneydl = 0;
+		int sctSdificalt = 0;
+		
+		for (int i = 0; i < forOneOrgClinic.size(); i++) {
+			
+			for (int j = 0; j < forOneOrgClinic.get(i).size(); j++) {
+				if(forOneOrgClinic.get(i).get(j).getFreeHelp().equals("Удовлетворен(а)"))
+				totalTotalydl++;
+				if(forOneOrgClinic.get(i).get(j).getFreeHelp().equals("Скорее не удовлетворен(а), чем удовлетворен(а)"))
+				totalTotalneydl++;	
+				if(forOneOrgClinic.get(i).get(j).getFreeHelp().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					totalTotalyydl++;	
+				if(forOneOrgClinic.get(i).get(j).getFreeHelp().equals("Не удовлетворен(а)"))
+					totalTotalallneydl++;	
+				if(forOneOrgClinic.get(i).get(j).getFreeHelp().equals("Затрудняюсь ответить"))
+					totalTotaldificalt++;
+				
+			}
+			
+		}
+		sctClinicydl = totalTotalydl; pg1.setSctClinicydl(sctClinicydl);
+		sctClinicneydl = totalTotalneydl; pg1.setSctClinicneydl(sctClinicneydl); 
+		sctClinicyydl = totalTotalyydl;	pg1.setSctClinicyydl(sctClinicyydl);
+		sctClinicallneydl = totalTotalallneydl; pg1.setSctClinicallneydl(sctClinicallneydl);
+		sctClinicdificalt = totalTotaldificalt; pg1.setSctClinicdificalt(sctClinicdificalt);
+		
+		for (int i = 0; i < forOneOrgDayStac.size(); i++) {
+			
+			for (int j = 0; j < forOneOrgDayStac.get(i).size(); j++) {
+				if(forOneOrgDayStac.get(i).get(j).getQualityDaystac().equals("Удовлетворен(а)"))
+				totalTotalydl++;
+				if(forOneOrgDayStac.get(i).get(j).getQualityDaystac().equals("Скорее не удовлетворен(а), чем удовлетворен(а)"))
+				totalTotalneydl++;	
+				if(forOneOrgDayStac.get(i).get(j).getQualityDaystac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					totalTotalyydl++;	
+				if(forOneOrgDayStac.get(i).get(j).getQualityDaystac().equals("Не удовлетворен(а)"))
+					totalTotalallneydl++;
+				if(forOneOrgDayStac.get(i).get(j).getQualityDaystac().equals("Затрудняюсь ответить"))
+					totalTotaldificalt++;
+			}
+		}
+		
+		sctDSydl = totalTotalydl - sctClinicydl;	pg1.setSctDSydl(sctDSydl);
+		sctDSneydl = totalTotalneydl - sctClinicneydl;	pg1.setSctDSneydl(sctDSneydl);
+		sctDSyydl = totalTotalyydl - sctClinicyydl;	pg1.setSctDSyydl(sctDSyydl);
+		sctDSallneydl = totalTotalallneydl - sctClinicallneydl;	pg1.setSctDSallneydl(sctDSallneydl);
+		sctDSdificalt = totalTotaldificalt - sctClinicdificalt;	pg1.setSctDSdificalt(sctDSdificalt);
+		
+		
+		for (int i = 0; i < forOneOrgStac.size(); i++) {
+			
+			for (int j = 0; j < forOneOrgStac.get(i).size(); j++) {
+				if(forOneOrgStac.get(i).get(j).getQualityStac().equals("Удовлетворен(а)"))
+				totalTotalydl++;
+				if(forOneOrgStac.get(i).get(j).getQualityStac().equals("Скорее не удовлетворен(а), чем удовлетворен(а)"))
+				totalTotalneydl++;	
+				if(forOneOrgStac.get(i).get(j).getQualityStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					totalTotalyydl++;	
+				if(forOneOrgStac.get(i).get(j).getQualityStac().equals("Не удовлетворен(а)"))
+					totalTotalallneydl++;
+				if(forOneOrgStac.get(i).get(j).getQualityStac().equals("Затрудняюсь ответить"))
+					totalTotaldificalt++;
+			}
+		}
+		
+		sctSydl = totalTotalydl - sctClinicydl - sctDSydl;	pg1.setSctSydl(sctSydl);
+		sctSneydl = totalTotalneydl - sctClinicneydl -sctDSneydl;	pg1.setSctSneydl(sctSneydl);
+		sctSyydl = totalTotalyydl - sctClinicyydl - sctDSyydl;	pg1.setSctSyydl(sctSyydl);
+		sctSallneydl = totalTotalallneydl - sctClinicallneydl - sctDSallneydl;	pg1.setSctSallneydl(sctSallneydl);
+		sctSdificalt = totalTotaldificalt -  sctClinicdificalt -sctDSdificalt;	pg1.setSctSdificalt(sctSdificalt);
+		
+		pg1.setTotalTotalydl(totalTotalydl);
+		pg1.setTotalTotalneydl(totalTotalneydl);
+		pg1.setTotalTotalyydl(totalTotalyydl);
+		pg1.setTotalTotalallneydl(totalTotalallneydl);
+		pg1.setTotalTotaldificalt(totalTotaldificalt);
+		
+		return pg1;
+	}
+}	
