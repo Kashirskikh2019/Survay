@@ -614,7 +614,7 @@ function secondcliniceditid( varr,varr2) {
 		    					  else{
 		    						  if(response.result[0].question_many[i].question2_clinic == 'Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее') {$("#question2_5_clinic").prop("checked", true);}
 		    						  else{
-		    							  $("#question2_6_clinic").val(response.result[0].question_many[i].question2_clinic);
+		    							  if(response.result[0].question_many[i].question2_clinic != null) $("#question2_6_clinic").val(response.result[0].question_many[i].question2_clinic);
 		    						  }
 		    					  }
 		    				  }
@@ -629,7 +629,7 @@ function secondcliniceditid( varr,varr2) {
 		    				  else{
 		    					  if(response.result[0].question_many[i].question6_1_clinic == 'Через информационные терминалы в поликлинике') {	$("#question6_1_4_clinic").prop("checked", true);}
 		    					  else{
-		    						  $("#question6_1_5_clinic").val(response.result[0].question_many[i].question6_1_clinic);
+		    						  if(response.result[0].question_many[i].question6_1_clinic != null) $("#question6_1_5_clinic").val(response.result[0].question_many[i].question6_1_clinic);
 		    					  }
 		    				  }
 		    			  }
@@ -643,7 +643,7 @@ function secondcliniceditid( varr,varr2) {
 		    				  else{
 		    					  if(response.result[0].question_many[i].question6_2_clinic == 'Через информационные терминалы в поликлинике') {	$("#question6_2_4_clinic").prop("checked", true);}
 		    					  else{
-		    						  $("#question6_2_5_clinic").val(response.result[0].question_many[i].question6_2_clinic);  
+		    						  if(response.result[0].question_many[i].question6_2_clinic != null) $("#question6_2_5_clinic").val(response.result[0].question_many[i].question6_2_clinic);  
 		    					  }
 		    				  }
 		    			  }
@@ -667,7 +667,7 @@ function secondcliniceditid( varr,varr2) {
 		    									  else{
 		    										  if(response.result[0].question_many[i].question24_clinic == 'Затрудняюсь ответить') {	$("#question24_9_clinic").prop("checked", true);}
 		    										  else{
-		    											  $("#question24_10_clinic").val(response.result[0].question_many[i].question24_clinic);
+		    											  if(response.result[0].question_many[i].question24_clinic != null)  $("#question24_10_clinic").val(response.result[0].question_many[i].question24_clinic);
 		    										  }
 		    									  }
 		    								  }
@@ -690,7 +690,7 @@ function secondcliniceditid( varr,varr2) {
 		    						  else{
 		    							  if(response.result[0].question_many[i].question26_clinic == 'Затрудняюсь ответить') {	$("#question26_6_clinic").prop("checked", true);}
 		    							  else{
-		    								  $("#question26_7_clinic").val(response.result[0].question_many[i].question26_clinic);
+		    								  if(response.result[0].question_many[i].question26_clinic != null) $("#question26_7_clinic").val(response.result[0].question_many[i].question26_clinic);
 		    							  }
 		    						  }
 		    					  }
@@ -706,7 +706,7 @@ function secondcliniceditid( varr,varr2) {
 		    				  else{
 		    					  if(response.result[0].question_many[i].question28_clinic == 'Не хотел(а) портить отношения с врачом') {	$("#question28_4_clinic").prop("checked", true);}
 		    					  else{
-		    						  $("#question28_5_clinic").val(response.result[0].question_many[i].question28_clinic);
+		    						  if(response.result[0].question_many[i].question28_clinic != null) $("#question28_5_clinic").val(response.result[0].question_many[i].question28_clinic);
 		    					  }
 		    				  }
 		    			  }
@@ -726,7 +726,7 @@ function secondcliniceditid( varr,varr2) {
 		    							  else{
 		    								  if(response.result[0].question_many[i].question29_clinic == 'Врач вел себя грубо, безразлично, невежливо') {	$("#question29_7_clinic").prop("checked", true);}
 		    								  else{
-		    									  $("#question29_8_clinic").val(response.result[0].question_many[i].question29_clinic);
+		    									  if(response.result[0].question_many[i].question29_clinic != null) $("#question29_8_clinic").val(response.result[0].question_many[i].question29_clinic);
 		    								  }
 		    							  }
 		    						  }
@@ -739,7 +739,7 @@ function secondcliniceditid( varr,varr2) {
 		    		  else{
 		    			  if(response.result[0].question_many[i].question31_clinic == 'Решил(а), что пытаться бесполезно') {	$("#question31_2_clinic").prop("checked", true);}
 		    			  else{
-		    				   $("#question31_3_clinic").val(response.result[0].question_many[i].question31_clinic);
+		    				  if(response.result[0].question_many[i].question31_clinic != null)  $("#question31_3_clinic").val(response.result[0].question_many[i].question31_clinic);
 		    			  }
 		    		  }
 		    		  // вопрос 32
@@ -753,7 +753,7 @@ function secondcliniceditid( varr,varr2) {
 		    					  else{
 		    						  if(response.result[0].question_many[i].question32_clinic == 'из-за недостаточно квалифицированного медицинского персонала') {	$("#question32_5_clinic").prop("checked", true);}
 		    						  else{
-		    							  $("#question32_6_clinic").val(response.result[0].question_many[i].question32_clinic);
+		    							  if(response.result[0].question_many[i].question32_clinic != null)  $("#question32_6_clinic").val(response.result[0].question_many[i].question32_clinic);
 		    						  }
 		    					  }
 		    				  }
@@ -762,7 +762,7 @@ function secondcliniceditid( varr,varr2) {
 		    		  
 		    		  
 		    	  }
-		    	 // пробегаемся по модальному окну формы редактирования/заполнения  и делаем не активными вопросы которые пропускаются
+		    	 // пробегаемся по модальному окну формы редактирования/заполнения  и делаем не активными вопросы которые пропускаются. лежит в other.js
 		    	  testclic();
 		    	  
 		    	  if($("#question15").val() == 'Нет (к вопросу 18)') $(".del15").css({'opacity':0.4,'pointer-events':'none'});
@@ -787,10 +787,154 @@ function secondcliniceditid( varr,varr2) {
 *
 */
 
+/*
+ * Метод проверяет на заполненость всей формы второй уровень ДС
+ * метод учитывает если вопрос отключен
+ */
+function validateSecondDS()
+{
+	      
+		  // проверяем селекты	без права выбора 'Другое (напишите)'
+	     var t=0;
+	      var $form = $('#formDSSL') 
+	      $('select', $form).each(function() {
+	    	  if(!$(this).is(':disabled') ){
+	    		  if('questionDS1'!= $(this).attr('id') && 'questionDS2'!= $(this).attr('id') && 'questionDS3'!= $(this).attr('id') && 'questionDS32'!= $(this).attr('id')){
+	    			  
+		    		  // выбираем выбранное
+		    		  if($(this).find('option:selected').text().length == 0){
+			  	        	t++;
+		    		  }  
+	    		  }
+	    		  else
+	    		  {
+	    			  if('questionDS1'=== $(this).attr('id'))
+	    			  {
+	    				  if($('#questionDS1dr').is(':visible')){
+	    					  if($.trim($('#questionDS1dr').val()) == ''){
+			    				  t++;  
+	    					  }
+		    			  }else
+		    			  {
+		    				  if($(this).find('option:selected').text().length == 0){
+					  	        	t++;
+		    				  }  
+		    			  }
+	    			  }
+	    			  
+	    			  if('questionDS2'=== $(this).attr('id'))
+	    			  {
+	    				  if($('#questionDS2dr').is(':visible')){
+	    					  if($.trim($('#questionDS2dr').val()) == ''){
+			    				  t++;  
+	    					  }
+		    			  }else
+		    			  {
+		    				  if($(this).find('option:selected').text().length == 0){
+					  	        	t++;
+		    				  }  
+		    			  }
+	    			  }
+	    			  
+	    			  if('questionDS3'=== $(this).attr('id'))
+	    			  {
+	    				  if($('#questionDS3dr').is(':visible')){
+	    					  if($.trim($('#questionDS3dr').val()) == ''){
+			    				  t++;  
+	    					  }
+		    			  }else
+		    			  {
+		    				  if($(this).find('option:selected').text().length == 0){
+					  	        	t++;
+		    				  }  
+		    			  }
+	    			  }
+	    			  
+	    			  if('questionDS32'=== $(this).attr('id'))
+	    			  {
+	    				  if($('#questionDS32dr').is(':visible')){
+	    					  if($.trim($('#questionDS32dr').val()) == ''){
+			    				  t++;  
+	    					  }
+		    			  }else
+		    			  {
+		    				  if($(this).find('option:selected').text().length == 0){
+					  	        	t++;
+		    				  }  
+		    			  }
+	    			  }
+	    			  
+	    		  }
+	    	  }
+	      });
+	      
+	      //	про чекбоксы 
+	      var d14 = 0;
+		   $('.validquestdssl14 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d14++;}
+		   })
+		   if(d14 == 9){	if($.trim($(".validquestdssl14  input:text").val()) != '') d14=0; }
+		   else{d14 =	0;}
+	      
+	      var d = 0;
+		   $('.validquestdssl16 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d++;}
+		   })
+		   // если все 6 чекбоксов не проставлены
+		   if(d == 6){	if($.trim($(".validquestdssl16  input:text").val()) != '') d=0; }
+		   // если хотя бы один чек бокс проставлен т.е. d будет меньше 5
+		   else{d =	0;}
+		   
+		   var d_18 = 0;
+		   $('.validquestdssl18 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d_18++;}
+		   })
+		   if(d_18 == 4){	if($.trim($(".validquestdssl18  input:text").val()) != '') d_18=0; }
+		   else{d_18 =	0;}
+		   
+		   var d_19 = 0;
+		   $('.validquestdssl19 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d_19++;}
+		   })
+		   if(d_19 == 7){	if($.trim($(".validquestdssl19  input:text").val()) != '') d_19=0; }
+		   else{d_19 =	0;}
+		   
+		   var d_21 = 0;
+		   $('.validquestdssl21 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d_21++;}
+		   })
+		   if(d_21 == 2){	if($.trim($(".validquestdssl21  input:text").val()) != '') d_21=0; }
+		   else{d_21 =	0;}
+		   
+		   var d_22 = 0;
+		   $('.validquestdssl22 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d_22++;}
+		   })
+		   if(d_22 == 5){	if($.trim($(".validquestdssl22  input:text").val()) != '') d_22=0; }
+		   else{d_22 =	0;}
+		   
+		   var d_24 = 0;
+		   $('.validquestdssl24 input:checkbox').each(function(){
+				 if(!$(this).is(':checked')){d_24++;}
+		   })
+		   if(d_24 == 2){	if($.trim($(".validquestdssl24  input:text").val()) != '') d_24=0; }
+		   else{d_24 =	0;}
+		   
+		   var d25_5= 0 ;
+		   if(!$('#question25_5').is(':disabled')){	if($.trim($("#question25_5").val()) == '') d25_5++;	}
+		   
+		   var d26= 0 ;
+		   if(!$('#questionDS26').is(':disabled')){	if($.trim($("#questionDS26").val()) == '') d26++;	}
+		   
+		   
+		  console.log('t '+t+' d14 '+d14+' d16 '+d+' d_18 '+d_18+' d_19 '+d_19+' d_21 '+d_21+' d_22 '+d_22+' d_24 '+d_24+' d25_5 '+d25_5+' d26 '+d26); 
+	      if((t+d+d_18+d_19+d_21+d_22+d_24+d25_5+d26+d14) > 0) return true; else false;	
+}
+
 function secondlevelds(varr) {
 	
 	
-	//if(	validateSecondClinic()){  $(".errorSecondClinic").css('display','block');	}else{}
+	if(validateSecondDS()){  $(".errorDSSL").css('display','block');	}else{
 	
 						var general = {}
 						var sec1 = {}
@@ -909,7 +1053,7 @@ function secondlevelds(varr) {
 						general["sexSecondleveldaystacionar"] = $("#sexSecondleveldaystacionar").val();
 						general["ageSecondleveldaystacionar"] = $("#ageSecondleveldaystacionar").val();
 						general["questionDS31"] = $("#questionDS31").val();
-						general["questionDS32"] = $("#questionDS32").val();
+						if($.trim($('#questionDS32dr').val())){	general["questionDS32"] = $.trim($('#questionDS32dr').val())}else{	general["questionDS32"] = $("#questionDS32").val();	}
 						general["questionDS33"] = $("#questionDS33").val();
 						
 						general["polzSecondleveldaystacionar"] = $("#polzSecondleveldaystacionar").val();
@@ -948,10 +1092,12 @@ function secondlevelds(varr) {
 							    	  $('#records_tableDSSL').animate({opacity: 1}, 2000 );
 							    	  //  зануляем id input 
 							    	  $("#idDSSL").val('');
+							    	  
 									
     	      	                	console.log('test OK');
         	      	            },'json')
         	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
+	}					
 					
 						
 	}	
@@ -1060,6 +1206,20 @@ function dsslid( varr,varr2) {
 			    		  $("#questionDS28 option:contains(" + response.result[i].questionDS28 +")").prop('selected', true);
 			    		  $("#questionDS31 option:contains(" + response.result[i].questionDS31 +")").prop('selected', true);
 			    		  $("#questionDS32 option:contains(" + response.result[i].questionDS32 +")").prop('selected', true);
+			    		  
+			    		  if(response.result[i].questionDS32 != 'Предприниматель' && response.result[i].questionDS32 != 'Руководитель' && response.result[i].questionDS32 != 'Служащий' 
+			    			  && response.result[i].questionDS32 != 'ИТР, специалист' 
+		    				  && response.result[i].questionDS32 != 'Научный работник, преподаватель, учитель'
+	    					  && response.result[i].questionDS32 != 'Рабочий'
+    						  && response.result[i].questionDS32 != 'Пенсионер'
+							  && response.result[i].questionDS32 != 'Домохозяйка'
+							  && response.result[i].questionDS32 != 'Учащийся'
+							  && response.result[i].questionDS32 != 'Безработный'){
+			    			  $('#questionDS32dr').fadeIn();
+			    			  $('#questionDS32dr').val(response.result[i].questionDS32);
+			    			  $("#questionDS32 option:contains('Другое (напишите)')").prop('selected', true);
+			    		  }else{	$("#questionDS32 option:contains(" + response.result[i].questionDS32 +")").prop('selected', true);	}
+			    		  
 			    		  $("#questionDS33 option:contains(" + response.result[i].questionDS33 +")").prop('selected', true);
 			    		  $("#sexSecondleveldaystacionar option:contains(" + response.result[i].sexSecondleveldaystacionar +")").prop('selected', true);
 			    		  $("#ageSecondleveldaystacionar option:contains(" + response.result[i].ageSecondleveldaystacionar +")").prop('selected', true);
@@ -1125,7 +1285,7 @@ function dsslid( varr,varr2) {
 										    			  else{
 										    				  if(response.result[0].manyDSSL[i].questionDS14many == 'Затрудняюсь ответить') {	$("#questionDS14many_9").prop("checked", true);}
 											    			  else{
-											    				  $("#questionDS14many_10").val(response.result[0].manyDSSL[i].questionDS14many_10);
+											    				  if(response.result[0].manyDSSL[i].questionDS14many != null) $("#questionDS14many_10").val(response.result[0].manyDSSL[i].questionDS14many);
 											    			  }
 										    			  }
 									    			  }
@@ -1148,7 +1308,7 @@ function dsslid( varr,varr2) {
 							    			  else{
 							    				  if(response.result[0].manyDSSL[i].questionDS16many == 'Затрудняюсь ответить') {	$("#questionDS16many_6").prop("checked", true);}
 								    			  else{
-								    				  $("#questionDS16many_7").val(response.result[0].manyDSSL[i].questionDS16many_7);
+								    				  if(response.result[0].manyDSSL[i].questionDS16many != null) $("#questionDS16many_7").val(response.result[0].manyDSSL[i].questionDS16many);
 								    			  }
 							    			  }
 						    			  }
@@ -1165,7 +1325,7 @@ function dsslid( varr,varr2) {
 					    			  else{
 					    				  if(response.result[0].manyDSSL[i].questionDS18many == 'Не хотел(а) портить отношения с врачом') {	$("#questionDS18many_4").prop("checked", true);}
 						    			  else{
-					    				  $("#questionDS18many_5").val(response.result[0].manyDSSL[i].questionDS18many_5);
+						    				  if(response.result[0].manyDSSL[i].questionDS18many != null) $("#questionDS18many_5").val(response.result[0].manyDSSL[i].questionDS18many);
 						    			  }
 					    			  }
 				    			  }
@@ -1186,7 +1346,7 @@ function dsslid( varr,varr2) {
 								    			  else{
 								    				  if(response.result[0].manyDSSL[i].questionDS19many == 'Врач вел себя грубо, безразлично, невежливо') {	$("#questionDS19many_7").prop("checked", true);}
 									    			  else{
-									    				  $("#questionDS19many_8").val(response.result[0].manyDSSL[i].questionDS19many_8);
+									    				  if(response.result[0].manyDSSL[i].questionDS19many != null) $("#questionDS19many_8").val(response.result[0].manyDSSL[i].questionDS19many);
 									    			  }
 								    			  }
 							    			  }
@@ -1200,7 +1360,7 @@ function dsslid( varr,varr2) {
 			    			  else{
 			    				  if(response.result[0].manyDSSL[i].questionDS21many == 'Решил(а), что пытаться бесполезно') {	$("#questionDS21many_2").prop("checked", true);}
 				    			  else{
-				    				  $("#questionDS21many_3").val(response.result[0].manyDSSL[i].questionDS21many_3);
+				    				  if(response.result[0].manyDSSL[i].questionDS21many != null) $("#questionDS21many_3").val(response.result[0].manyDSSL[i].questionDS21many);
 				    			  }
 			    			  }
 				    		  
@@ -1215,7 +1375,7 @@ function dsslid( varr,varr2) {
 						    			  else{
 						    				  if(response.result[0].manyDSSL[i].questionDS22many == 'из-за недостаточно квалифицированного медицинского персонала') {	$("#questionDS22many_5").prop("checked", true);}
 							    			  else{
-							    				  $("#questionDS22many_6").val(response.result[0].manyDSSL[i].questionDS22many_6);
+							    				  if(response.result[0].manyDSSL[i].questionDS22many != null) $("#questionDS22many_6").val(response.result[0].manyDSSL[i].questionDS22many);
 							    			  }
 						    			  }
 					    			  }
@@ -1227,36 +1387,12 @@ function dsslid( varr,varr2) {
 			    			  else{
 			    				  if(response.result[0].manyDSSL[i].questionDS24many == 'из-за отсутствия местной регистрации') {	$("#questionDS24many_2").prop("checked", true);}
 				    			  else{
-			    				  $("#questionDS24many_3").val(response.result[0].manyDSSL[i].questionDS24many_3);
+				    				  	if(response.result[0].manyDSSL[i].questionDS24many != null) $("#questionDS24many_3").val(response.result[0].manyDSSL[i].questionDS24many);
 				    			  }
 			    			  }
 			    		  }
 			    		  
-							/*
-			    		  
-			    		  $("#question12_clinic option:contains(" + response.result[0].survayClinicSec2.question12_clinic +")").prop('selected', true);
-			    		  $("#ageSecondLevelClinic option:contains(" + response.result[i].ageSecondlevel +")").prop('selected', true);
-			    		  $("#moSecondLevel option:contains(" + response.result[i].moSecondlevel +")").prop('selected', true);
-			    		  $("#sexSecondLevelClinic option:contains(" + response.result[i].sexSecondlevel +")").prop('selected', true);
-			    		  $("#visitClinicSecondLevel option:contains(" + response.result[i].visitClinicSecondlevel +")").prop('selected', true);
-			    		  $("#question5 option:contains(" + response.result[i].question5 +")").prop('selected', true);
-			    		  $("#question9_1 option:contains(" + response.result[i].question9_1 +")").prop('selected', true);
-			    		  $("#question9_2 option:contains(" + response.result[i].question9_2 +")").prop('selected', true);
-			    		  $("#question11 option:contains(" + response.result[i].question11 +")").prop('selected', true);
-			    		  $("#question16").val(response.result[i].question16);
-			    		  $("#question17 option:contains(" + response.result[i].question17 +")").prop('selected', true);
-			    		  $("#question19 option:contains(" + response.result[i].question19 +")").prop('selected', true);
-			    		  $("#question27 option:contains(" + response.result[i].question27 +")").prop('selected', true);
-			    		  $("#question30 option:contains(" + response.result[i].question30 +")").prop('selected', true);
-			    		  $("#question33 option:contains(" + response.result[i].question33 +")").prop('selected', true);
-			    		  $("#question34 option:contains(" + response.result[i].question34 +")").prop('selected', true);
-			    		  $("#question35 option:contains(" + response.result[i].question35 +")").prop('selected', true);
-			    		  $("#question36").val(response.result[i].question36);
-			    		  $("#question37 option:contains(" + response.result[i].question37 +")").prop('selected', true);
-			    		  $("#question38 option:contains(" + response.result[i].question38 +")").prop('selected', true);
-			    		  $("#question41 option:contains(" + response.result[i].question41 +")").prop('selected', true);
-			    		  $("#question42 option:contains(" + response.result[i].question42 +")").prop('selected', true);
-			    		  $("#question43 option:contains(" + response.result[i].question43 +")").prop('selected', true);*/
+							
 			    	  }
 		    	  
 		      }else
@@ -1268,5 +1404,8 @@ function dsslid( varr,varr2) {
 		      alert('Error: ' + e);  
 		    }
 	});
+	
+	
+
 	
 }

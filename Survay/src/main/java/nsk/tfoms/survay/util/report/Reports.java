@@ -77,10 +77,6 @@ public class Reports {
     public void loadToExcelResalt2(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart) throws FileNotFoundException, IOException
     {
     	
-    	System.out.println("@@@@ "+forOneOrgClinic);
-    	
-    	
-    	
     	 String applicationPath = request.getServletContext().getRealPath("");
          String FilePath = applicationPath + File.separator+"downloads";
          System.out.println(FilePath);
@@ -2976,11 +2972,6 @@ public class Reports {
 				if(forOneOrgStac.get(i).get(j).getEquipmentStac().equals("Удовлетворен(а)"))
 				item8++;
 				if(forOneOrgStac.get(i).get(j).getEquipmentStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
-				item8++;
-				
-				if(forOneOrgStac.get(i).get(j).getLaboratoryStac().equals("Удовлетворен(а)"))
-				item8++;
-				if(forOneOrgStac.get(i).get(j).getLaboratoryStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
 				item8++;
 				
 				if(forOneOrgStac.get(i).get(j).getLaboratoryStac().equals("Удовлетворен(а)"))

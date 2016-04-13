@@ -262,11 +262,11 @@ $("#formOneReport").validate({
 										</tr>
 										<tr>
 											<td>
-												<input type="checkbox" id="ansFormOnePart1"  value="" name="ans[]" required minlength="1"> Удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart2" value="" name="ans[]"> Скорее удовлетворен(а), чем не удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart3" value="" name="ans[]"> Скорее не удовлетворен(а), чем удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart4" value="" name="ans[]"> Не удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart5" value="" name="ans[]"> Затрудняюсь ответить&nbsp;
+												<input type="checkbox" id="ansFormOnePart1"  value="" name="ans[]" required minlength="1" checked> Удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart2" value="" name="ans[]" checked> Скорее удовлетворен(а), чем не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart3" value="" name="ans[]" checked> Скорее не удовлетворен(а), чем удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart4" value="" name="ans[]" checked> Не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart5" value="" name="ans[]" checked> Затрудняюсь ответить&nbsp;
 											</td>
 										</tr>
 										<tr><td><label for="ans[]" class="error" id="ans-error" style="display: none; color:red;">Пожалуйста выберите хотя бы один вариант ответа</label></td></tr>
@@ -2188,7 +2188,7 @@ $("#formOneReport").validate({
 								    
 								    <div  class="wrap-hv" style="height: 260px;" >
 										<div><p class="hv">14.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl14" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2352,9 +2352,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>    
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 210px;" >
 										<div><p class="hv">16.	Если вы считаете, что ваши права в  системе ОМС нарушены, куда вы предпочитаете обратиться за помощью? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl16" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2384,9 +2384,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 150px;" >
 										<div><p class="hv">18.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl18" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2402,9 +2402,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 220px;" >
 										<div><p class="hv">19.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl19" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2435,9 +2435,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 								    
-								    <div  class="wrap-hv" style="height: 260px;" >
+								    <div  class="wrap-hv" style="height: 120px;" >
 										<div><p class="hv">21.	Что вам помешало поменять медицинскую организацию? (возможно нескольковариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl21" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2451,9 +2451,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 								    
-								    <div  class="wrap-hv" style="height: 260px;" >
+								    <div  class="wrap-hv" style="height: 190px;" >
 										<div><p class="hv">22.	Почему вы поменяли медицинскую организацию? (возможно  нескольковариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl22" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2481,9 +2481,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 130px;" >
 										<div><p class="hv">24.	Почему вам отказали? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4" style="width: 800px;">
+									    <div class="col-xs-4 validquestdssl24" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -2561,7 +2561,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									 </div>   
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv" style="height: 90px;">
 										<div><p class="hv">26.	Какую сумму вы потратили? (напишите)</p></div>
 									    <div class="col-xs-4">
 									      <table>
@@ -2637,21 +2637,29 @@ $("#formOneReport").validate({
 									 <div  class="wrap-hv">
 										<div><p class="hv">32.	Ваше социальное положение</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionDS32" >
-									      	<option value=""></option>
-									        <option>Предприниматель</option>
-									        <option>Руководитель</option>
-									        <option>Служащий</option>
-									        <option>ИТР, специалист</option>
-									        <option>Научный работник, преподаватель, учитель</option>
-									        <option>Рабочий</option>
-									        <option>Пенсионер</option>
-									        <option>Домохозяйка</option>
-									        <option>Учащийся</option>
-									        <option>Безработный</option>
-									        <option>Другое (напишите)</option>
-									      </select>
+									    <table class="optdrtable">
+									    <tr>
+									        <td>
+											    <select class="form-control input-sm optdrselect" id="questionDS32">
+											        <option value=""></option>
+											        <option>Предприниматель</option>
+											        <option>Руководитель</option>
+											        <option>Служащий</option>
+											        <option>ИТР, специалист</option>
+											        <option>Научный работник, преподаватель, учитель</option>
+											        <option>Рабочий</option>
+											        <option>Пенсионер</option>
+											        <option>Домохозяйка</option>
+											        <option>Учащийся</option>
+											        <option>Безработный</option>
+											        <option>Другое (напишите)</option>
+											      </select> &nbsp;
+									      		<input type="text" class="optdrinput" id="questionDS32dr"> 
+											 </td>
+										</tr>
+										</table>	      
 									    </div><br><br>
+									    
 									 </div> 
 									 
 									 <div  class="wrap-hv">
@@ -2675,7 +2683,7 @@ $("#formOneReport").validate({
 								<input type="hidden" id="idDSSL" value=""/>
 								
 								<div class="modal-footer">
-								<div class="errorOneClinic" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+								<div class="errorDSSL" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
 								<button type="button" id="cancelDSSL" class="btn btn-primary" data-dismiss="modal">Отмена</button>
 									<button  class="btn btn-success renamebtndssl"  onclick='secondlevelds("${principal.username}")'>Добавить анкету</button>
 								</div>

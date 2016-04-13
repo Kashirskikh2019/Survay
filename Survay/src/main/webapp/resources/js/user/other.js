@@ -34,6 +34,18 @@
 		    		  $('#questionDS3dr').val(''); $('#questionDS3dr').fadeOut();}
 		   
 		});
+	   
+		// выпадающей input в вопросе на условие напишите другое
+	   $("#questionDS32").click(function()
+		{
+		    	  if($(this).val() == 'Другое (напишите)')
+		    	  {
+		    		  $('#questionDS32dr').fadeIn();
+		    	  }
+		    	  else{
+		    		  $('#questionDS32dr').val(''); $('#questionDS32dr').fadeOut();}
+		   
+		});
 
 	   // кнопка отмена (при отмене на модальном окне поликлиника второй уровень)
 
@@ -82,9 +94,11 @@
 		   })
 		   
 		   $('#questionDS1dr').fadeOut();
+		   $('#questionDS2dr').fadeOut();
+	    	$('#questionDS3dr').fadeOut();
 		   
 		   $("input[name='dataRespDSSL']").val('');
-		   $(".errorOneClinic").css('display','none');
+		   $(".errorDSSL").css('display','none');
 		   $("#idDSSL").val('');
 		   
 		});
@@ -221,6 +235,7 @@
     	$('#questionDS1dr').fadeOut();
     	$('#questionDS2dr').fadeOut();
     	$('#questionDS3dr').fadeOut();
+    	$("#errorDSSL").css('display', 'none');
     	
 	   }
 	   

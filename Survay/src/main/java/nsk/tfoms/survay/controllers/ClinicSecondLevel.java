@@ -4,44 +4,24 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
-import nsk.tfoms.survay.entity.QuestionManyClinic;
-import nsk.tfoms.survay.entity.SurvayClinic;
-import nsk.tfoms.survay.entity.SurvayClinicSec1;
-import nsk.tfoms.survay.entity.SurvayClinicSec2;
-import nsk.tfoms.survay.entity.SurvayClinicSec25;
 import nsk.tfoms.survay.entity.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.pojo.Sender;
-import nsk.tfoms.survay.pojo.WrapMany;
 import nsk.tfoms.survay.service.ClinicServiceSecondLevel;
-import nsk.tfoms.survay.util.TimesAndDate;
 
 /*
  * Контроллер обрабатывает все что связано с анкетой первого уровня АПУ
