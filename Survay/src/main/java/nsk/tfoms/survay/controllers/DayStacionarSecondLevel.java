@@ -23,7 +23,7 @@ import nsk.tfoms.survay.pojo.SenderDSSL;
 import nsk.tfoms.survay.service.DayStacionarServiceSecondLevel;
 
 @Controller
-public class OneDayStacionarSecondLevel {
+public class DayStacionarSecondLevel {
 
 	@Autowired DayStacionarServiceSecondLevel personSvcDssl;
 	

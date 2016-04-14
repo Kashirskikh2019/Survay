@@ -159,7 +159,7 @@ $("#formOneReport").validate({
 			                        <li class="divider"></li>
 			                        <li><a href="#" id="one_daysecondlevel" onclick="alldssl('${principal.username}')"><i class="fa fa-medkit"></i>&nbsp;&nbsp;Дневной стационар</a></li>
 			                        <li class="divider"></li>
-			                        <li><a href="#" id="one_stacsecondlevel" /*onclick="allonestacionarsecondlevel('${principal.username}')"*/><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
+			                        <li><a href="#" id="one_stacsecondlevel" onclick="allstacsl('${principal.username}')"><i class="fa fa-stethoscope"></i>&nbsp;&nbsp;Стационар</a></li>
 			                    </ul>
 			                </li>
 			                
@@ -490,7 +490,7 @@ $("#formOneReport").validate({
 			</div>
 			<br><br>
 <div id="tableOneStacionarsecondlevel" style="overflow-y: scroll; height:100px; margin-top:35px;">			
-			<table id="records_tableOneStacionarsecondlevel" class="table table-striped" style="margin:0px auto; width:85%;"></table>
+			<table id="records_tableSSL" class="table table-striped" style="margin:0px auto; width:85%;"></table>
 		</div>		
 </div>
 
@@ -3167,7 +3167,7 @@ $("#formOneReport").validate({
 								    <div  class="wrap-hv">
 										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
 									    <div class="col-xs-4">
-									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStacsecondlevel" name="dataRespDSSL" placeholder="">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStacsecondlevel" name="dataRespSSL" placeholder="">
 									    </div><br><br>
 									</div>    
 								    								

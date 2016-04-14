@@ -1637,8 +1637,48 @@ function dsslid( varr,varr2) {
 		      alert('Error: ' + e);  
 		    }
 	});
-	
-	
+}
+
+/*
+ * 
+ * @@@@@@@@@@@@ ВТОРОЙ УРОВЕНЬ СТАЦИОНАР @@@@@@@@@@@@@@@@@@@
+ * 
+ * 
+ */	
+
+	/*
+	 * Метод обрабатывает нажатие Анкеты второго уровня -> С помощь
+	 * 
+	 */
+	function allstacsl(varr) {
+		
+		$.ajax({
+			url : 'allssl',
+			type: 'get',
+			dataType: 'json',
+			data : ({ test : varr}),
+			contentType: 'application/json',
+		    mimeType: 'application/json',
+		    success: function(response){
+	 
+			      if(response.status == "SUCCESS"){
+			    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
+			    	  for(i =0 ; i < response.result.length ; i++){
+			    		  //userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
+			    	  }
+			    	  $('#records_tableSSL').html(userInfo);
+			    	  $('#records_tableSSL').animate({opacity: 0}, 0 );
+			    	  $('#records_tableSSL').animate({opacity: 1}, 4000 );
+			    	 
+			      }else{
+			      }	      
+			    },  
+			    error: function(e){  
+			      alert('Произошла ошибка. Обновите страницу. ' + e);  
+			    }
+		});
+		
+	}
 
 	
-}
+
