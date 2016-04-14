@@ -2152,7 +2152,7 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">11. Приходилось  ли вам лично (для себя) за последние 3 месяца обращаться к услугам скорой медицинской помощи? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="question11sec1">
+									      <select class="form-control input-sm" id="question11sec1" onclick="dsslvalidlev2()">
 									      	<option value=""></option>
 									        <option>Да</option>
 									        <option>Нет к (вопросу 13)</option>
@@ -2160,7 +2160,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 								    </div>
 								    
-								    <div  class="wrap-hv">
+								    <div  class="wrap-hv deldssl12">
 										<div><p class="hv">12  Насколько вы удовлетворены качеством оказанной вам скорой медицинской помощи? (один ответ)</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="question12sec2">
@@ -2374,7 +2374,7 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">17. Пользовались ли вы правом выбора/смены лечащего врача? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionDS17">
+									      <select class="form-control input-sm" id="questionDS17"  onclick="dsslvalidlev2()">
 									      	<option value=""></option>
 									        <option>Да (к вопросу 19)</option>
 									        <option>Хотел(а), но не смог(ла) (к вопросу 18)</option>
@@ -2384,10 +2384,10 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 150px;" >
+									<div  class="wrap-hv deldssl18" style="height: 150px;" >
 										<div><p class="hv">18.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestdssl18" style="width: 800px;">
-									      <table>
+									      <table onclick="dsslvalidlev2()">
 									      <tr>
 											<td>
 												<input type="checkbox" id="questionDS18many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
@@ -2402,7 +2402,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 220px;" >
+									<div  class="wrap-hv deldssl19" style="height: 220px;">
 										<div><p class="hv">19.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestdssl19" style="width: 800px;">
 									      <table>
@@ -2425,7 +2425,7 @@ $("#formOneReport").validate({
 								    <div  class="wrap-hv">
 										<div><p class="hv">20. Пользовались  ли вы правом выбора/смены медицинской организации? (одинответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionDS20">
+									      <select class="form-control input-sm" id="questionDS20" onclick="dsslvalidlev2()">
 									      	<option value=""></option>
 									        <option>Да (к вопросу 22)</option>
 									        <option>Хотел(а), но не смог(ла) (к вопросу 21)</option>
@@ -2435,10 +2435,10 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 								    
-								    <div  class="wrap-hv" style="height: 120px;" >
+								    <div  class="wrap-hv deldssl21" style="height: 120px;" >
 										<div><p class="hv">21.	Что вам помешало поменять медицинскую организацию? (возможно нескольковариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestdssl21" style="width: 800px;">
-									      <table>
+									      <table onclick="dsslvalidlev2()">
 									      <tr>
 											<td>
 												<input type="checkbox" id="questionDS21many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
@@ -2451,7 +2451,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 								    
-								    <div  class="wrap-hv" style="height: 190px;" >
+								    <div  class="wrap-hv deldssl22" style="height: 190px;" >
 										<div><p class="hv">22.	Почему вы поменяли медицинскую организацию? (возможно  нескольковариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestdssl22" style="width: 800px;">
 									      <table>
@@ -2472,7 +2472,7 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">23. Пациент, застрахованный по ОМС, имеет право получать бесплатную медицинскую помощь на всей территории РФ, в том числе за пределами постоянного места жительства. Приходилось ли вам пользоваться этим правом?(один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionDS23">
+									      <select class="form-control input-sm" id="questionDS23" onclick="dsslvalidlev2()">
 									      	<option value=""></option>
 									        <option>Да, я получал(а) бесплатную медицинскую помощь на других территориях РФпо полису ОМС (к вопросу 25)</option>
 									        <option>Пытался(лась), но мне было отказано в бесплатной медицинской помощи надругой территории РФ</option>
@@ -2481,7 +2481,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 130px;" >
+									<div  class="wrap-hv deldssl24" style="height: 130px;" >
 										<div><p class="hv">24.	Почему вам отказали? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestdssl24" style="width: 800px;">
 									      <table>
@@ -3136,13 +3136,120 @@ $("#formOneReport").validate({
 		</div>		
 <!-- конец Добавить запись (модальное окно) -->
 
+<!-- Добавить запись (модальное окно второго уровня С) -->
 
-  
-<!-- <h1>Add New</h1>
-  <form method="post" action="addClinic">
-  Name: <input type="text" name="freeHelp"/>
-  <button>Add</button>
-  </form>  -->  
+					
+					<div class="modal fade" id="myModal2secondlevel" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+<!--  									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>-->
+									<h3 class="modal-title">Добавить анкету второго уровня</h3>
+									<p>Добавление анкеты  стационарной помощи</p>
+
+								</div>
+					<div  id="formSSL" >			
+								<div class="modal-body backgr">
+									<div  class="wrap-hv">
+										<div><p class="hv">Укажите медицинское учреждение где проходил опрос</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="moSecondlevelstacionar" title="Введите лечебное учреждение">
+									        <option value=""></option>
+									        <c:forEach var="ls" items="${listmo}">
+									        <option>${ls.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+								    </div>
+								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
+									    <div class="col-xs-4">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStacsecondlevel" name="dataRespDSSL" placeholder="">
+									    </div><br><br>
+									</div>    
+								    								
+									<div  class="wrap-hv" >
+										<div><p class="hv">1. По какой причине вы госпитализированы в дневной стационар? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									    <table class="optdrtable">
+									    <tr>
+									        <td>
+											    <select class="form-control input-sm optdrselect" id="questionDS1">
+											      	<option value=""></option>
+											        <option>Лечение</option>
+											        <option>Обследование</option>
+											        <option>Реабилитация</option>
+											        <option>Другое (напишите)</option>
+											      </select> &nbsp;
+									      		<input type="text" class="optdrinput" id="questionDS1dr"> 
+											 </td>
+										</tr>
+										</table>	      
+									    </div><br><br>
+									</div> 
+									
+									
+									
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">10.1  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Техническим состоянием, ремонтом помещений, площадью помещений (один ответ по каждой строке)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question10_1sec2">
+									      	<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>    
+									
+									
+								    
+								    <div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">14.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestdssl14" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionDS14many_1"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_2"  value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_3"  value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_4"  value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_5"  value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_6"  value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_7"  value="из сети интернет" > из сети интернет&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_8"  value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
+												<input type="checkbox" id="questionDS14many_9"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Из других источников (напишите)...&nbsp;<input type="text" class="length" id="questionDS14many_10" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+								    
+								    
+								    
+								    
+								</div>
+								<input type="hidden" id="polzSecondlevelstacionar" value="${principal.username}"/>
+								<input type="hidden" id="idSSL" value=""/>
+								
+								<div class="modal-footer">
+								<div class="errorSSL" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+								<button type="button" id="cancelSSL" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button  class="btn btn-success renamebtnssl"  onclick='secondlevelssl("${principal.username}")'>Добавить анкету</button>
+								</div>
+							</div>
+						</div>
+					</div>
+		</div>	
+				
+<!-- конец Добавить запись (модальное окно) -->  
   <script type="text/javascript">
 
   </script>

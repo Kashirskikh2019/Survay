@@ -1,3 +1,5 @@
+
+
 /*
  * Метод обрабатывает такие моменты в анкете как 'хотел(а), но не смог(а)   к вопросу 31'
  * т.е. блокирует возможность проставить ответ в данном примере на вопрос 30
@@ -56,32 +58,32 @@ function testclic(){
 		$(".del30").css({'opacity':1,'pointer-events':'visible'});
 		}
 
-	 var tt = 0;
-	 $('div#quest28 input:checkbox').each(function(){
-		 
-		 if($(this).is(':checked')){tt ++;}
-	   })
-	 if(tt > 0){
-		 
-		 $('.validquest29 input:checkbox').each(function(){
-			 $(this).prop('disabled', true);
-		 })
-		 $(".validquest29  input:text").prop('disabled', true);
-		 $(".del30").css({'opacity':0.4,'pointer-events':'none'});
-		 }
-	 else{
-		 if($.trim($('div#quest28 input:text').val()) != '') {
+		 var tt = 0;
+		 $('div#quest28 input:checkbox').each(function(){
+			 
+			 if($(this).is(':checked')){tt ++;}
+		   })
+		 if(tt > 0){
 			 
 			 $('.validquest29 input:checkbox').each(function(){
 				 $(this).prop('disabled', true);
 			 })
 			 $(".validquest29  input:text").prop('disabled', true);
-			 
-			$(".del30").css({'opacity':0.4,'pointer-events':'none'});
+			 $(".del30").css({'opacity':0.4,'pointer-events':'none'});
 			 }
-	 }
-	 // зануляем тк буду использовать ниже
-	 tt = 0;
+		 else{
+			 if($.trim($('div#quest28 input:text').val()) != '') {
+				 
+				 $('.validquest29 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 $(".validquest29  input:text").prop('disabled', true);
+				 
+				$(".del30").css({'opacity':0.4,'pointer-events':'none'});
+				 }
+		 }
+		 // зануляем тк буду использовать ниже
+		 tt = 0;
 	 
 	 if($("#question30").val() == 'Да (к вопросу 32)'){
 		 
@@ -382,8 +384,6 @@ function secondlevelclinic(varr) {
 								    	  $('#records_tablesecondlevel').animate({opacity: 1}, 2000 );
 								    	  //  зануляем id input 
 								    	  $("#idClinicSecondLevel").val('');
-								      
-    	      	                	console.log('test OK');
         	      	            },'json')
         	      	          	.error(function(msg) {console.log('test BAD'); $("#idClinicSecondLevel").val('');});
 	}				
@@ -762,7 +762,7 @@ function secondcliniceditid( varr,varr2) {
 		    		  
 		    		  
 		    	  }
-		    	 // пробегаемся по модальному окну формы редактирования/заполнения  и делаем не активными вопросы которые пропускаются. лежит в other.js
+		    	 // пробегаемся по модальному окну формы редактирования/заполнения  и делаем не активными вопросы которые пропускаются. 
 		    	  testclic();
 		    	  
 		    	  if($("#question15").val() == 'Нет (к вопросу 18)') $(".del15").css({'opacity':0.4,'pointer-events':'none'});
@@ -783,9 +783,230 @@ function secondcliniceditid( varr,varr2) {
 *
 *   АНКЕТА ВТОРОГО УРОВНЯ ДНЕВНОЙ СТАЦИОНАР
 *
-*
+*===============================================================================================================================================================================================
 *
 */
+
+/*
+ * Метод обрабатывает такие моменты в анкете как 'хотел(а), но не смог(а)   к вопросу 31'
+ * т.е. блокирует возможность проставить ответ в данном примере на вопрос 30
+ * обрабатывает все вопросы сразу....
+ */
+function dsslvalidlev2(){
+	
+	if($("#question11sec1").val() == 'Нет к (вопросу 13)'){
+		$('#question12sec2').prop('disabled', true);
+		$(".deldssl12").css({'opacity':0.4});
+		}
+	else{ $(".deldssl12").css({'opacity':1}); $('#question12sec2').prop('disabled', false); }
+	
+	if($("#questionDS17").val() == 'Да (к вопросу 19)'){
+		
+		$('.validquestdssl18 input:checkbox').each(function(){
+			 $(this).prop('disabled', true);
+		 })
+		 $(".validquestdssl18  input:text").prop('disabled', true);
+		$(".deldssl18").css({'opacity':0.4});
+	}
+	else{
+			$('.validquestdssl18 input:checkbox').each(function(){
+				 $(this).prop('disabled', false);
+			 })
+			 $(".validquestdssl18  input:text").prop('disabled', false);
+			$(".deldssl18").css({'opacity':1}); 
+			
+			if($("#questionDS17").val() == 'Нет, не было необходимости (к вопросу 20)'){
+				
+				$('.validquestdssl18 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 $(".validquestdssl18  input:text").prop('disabled', true);
+				$(".deldssl18").css({'opacity':0.4});
+				
+				$('.validquestdssl19 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 $(".validquestdssl19  input:text").prop('disabled', true);
+				$(".deldssl19").css({'opacity':0.4});
+			}
+			else{
+					$('.validquestdssl18 input:checkbox').each(function(){
+						 $(this).prop('disabled', false);
+					 })
+					 $(".validquestdssl18  input:text").prop('disabled', false);
+					$(".deldssl18").css({'opacity':1});
+					
+					$('.validquestdssl19 input:checkbox').each(function(){
+						 $(this).prop('disabled', false);
+					 })
+					 $(".validquestdssl19  input:text").prop('disabled', false);
+					$(".deldssl19").css({'opacity':1});
+				}
+		}
+	
+	 var sht = 0;
+	 if(!$('#questionDS18many_1').is(':disabled')){
+		 $('.validquestdssl18 input:checkbox').each(function(){
+			 if($(this).is(':checked')){sht ++;}
+			 if(sht == 0){
+				 if($.trim($('#questionDS18many_5').val()) != '') sht++;
+			 }
+		 })
+		 if(sht > 0){
+			 
+			 $('.validquestdssl19 input:checkbox').each(function(){
+				 $(this).prop('disabled', true);
+			 })
+			 $(".validquestdssl19  input:text").prop('disabled', true);
+			 $(".deldssl19").css({'opacity':0.4});
+			 
+		 }
+	 }
+	 sht = 0;
+	
+	 if($("#questionDS20").val() == 'Да (к вопросу 22)'){
+			
+			$('.validquestdssl21 input:checkbox').each(function(){
+				 $(this).prop('disabled', true);
+			 })
+			 $(".validquestdssl21  input:text").prop('disabled', true);
+			$(".deldssl21").css({'opacity':0.4,'pointer-events':'none'});
+		}
+		else{
+				$('.validquestdssl21 input:checkbox').each(function(){
+					 $(this).prop('disabled', false);
+				 })
+				 $(".validquestdssl21  input:text").prop('disabled', false);
+				$(".deldssl21").css({'opacity':1,'pointer-events':'visible'}); 
+				
+				if($("#questionDS20").val() == 'Нет, не было необходимости (к вопросу 23)'){
+					
+					$('.validquestdssl21 input:checkbox').each(function(){
+						 $(this).prop('disabled', true);
+					 })
+					 $(".validquestdssl21  input:text").prop('disabled', true);
+					$(".deldssl21").css({'opacity':0.4,'pointer-events':'none'});
+					
+					$('.validquestdssl22 input:checkbox').each(function(){
+						 $(this).prop('disabled', true);
+					 })
+					 $(".validquestdssl22  input:text").prop('disabled', true);
+					$(".deldssl22").css({'opacity':0.4,'pointer-events':'none'});
+				}
+				else{
+						$('.validquestdssl21 input:checkbox').each(function(){
+							 $(this).prop('disabled', false);
+						 })
+						 $(".validquestdssl21  input:text").prop('disabled', false);
+						$(".deldssl21").css({'opacity':1,'pointer-events':'visible'});
+						
+						$('.validquestdssl22 input:checkbox').each(function(){
+							 $(this).prop('disabled', false);
+						 })
+						 $(".validquestdssl22  input:text").prop('disabled', false);
+						$(".deldssl22").css({'opacity':1,'pointer-events':'visible'});
+					}
+			}
+	 
+	 
+	 if(!$('#questionDS21many_1').is(':disabled')){
+		 
+		 $('.validquestdssl21 input:checkbox').each(function(){
+			 
+			 if($(this).is(':checked')){sht ++;}
+			 if(sht == 0){
+				 if($.trim($('#questionDS21many_3').val()) != '') sht++;
+			 }
+		 })
+		 if(sht > 0){
+			 
+			 $('.validquestdssl22 input:checkbox').each(function(){
+				 $(this).prop('disabled', true);
+			 })
+			 $(".validquestdssl22  input:text").prop('disabled', true);
+			 $(".deldssl22").css({'opacity':0.4});
+
+		 }
+	 }
+	 
+	 if($("#questionDS23").val() == 'Да, я получал(а) бесплатную медицинскую помощь на других территориях РФпо полису ОМС (к вопросу 25)' ||
+			 $("#questionDS23").val() == 'Нет, не приходилось (к вопросу 25)'){
+			
+			$('.validquestdssl24 input:checkbox').each(function(){
+				 $(this).prop('disabled', true);
+			 })
+			 $(".validquestdssl24  input:text").prop('disabled', true);
+			$(".deldssl24").css({'opacity':0.4,'pointer-events':'none'});
+		}else
+		{
+			$('.validquestdssl24 input:checkbox').each(function(){
+				 $(this).prop('disabled', false);
+			 })
+			 $(".validquestdssl24  input:text").prop('disabled', false);
+			$(".deldssl24").css({'opacity':1,'pointer-events':'visible'});
+		}
+	 
+	
+	}		
+
+// ============================= ХОВЕР =========================================
+$('.deldssl22').hover(function() {
+	if($.trim($('#questionDS21many_3').val()) != '')
+	{
+		$('.validquestdssl22 input:checkbox').each(function(){
+			 $(this).prop('disabled', true);
+		 })
+		 $(".validquestdssl22  input:text").prop('disabled', true);
+		 $(".deldssl22").css({'opacity':0.4});
+	}
+	else
+	{
+		var qwe = 0;
+		$('.validquestdssl21 input:checkbox').each(function(){
+			if($(this).is(':checked')){qwe ++;}
+		 })
+
+		 // т.е. если помимо input text  стоят отметки в чек боксах то ничего...иначе...
+		 if(qwe > 0){}else
+		 {
+			$('.validquestdssl22 input:checkbox').each(function(){
+				 $(this).prop('disabled', false);
+			 })
+			 $(".validquestdssl22  input:text").prop('disabled', false);
+			 $(".deldssl22").css({'opacity':1});
+		 }	 
+	}
+});
+
+$('.deldssl18').hover(function() {
+	if($.trim($('#questionDS18many_5').val()) != '')
+	{
+		$('.validquestdssl19 input:checkbox').each(function(){
+			 $(this).prop('disabled', true);
+		 })
+		 $(".validquestdssl19  input:text").prop('disabled', true);
+		 $(".deldssl19").css({'opacity':0.4});
+	}
+	else
+	{
+		var qwe = 0;
+		$('.validquestdssl18 input:checkbox').each(function(){
+			if($(this).is(':checked')){qwe ++;}
+		 })
+
+		 // т.е. если помимо input text  стоят отметки в чек боксах то ничего...иначе...
+		 if(qwe > 0){}else
+		 {
+			$('.validquestdssl19 input:checkbox').each(function(){
+				 $(this).prop('disabled', false);
+			 })
+			 $(".validquestdssl19  input:text").prop('disabled', false);
+			 $(".deldssl19").css({'opacity':1});
+		 }	 
+	}
+});
+
+// =========================== КОНЕЦ ХОВЕР ============================================
 
 /*
  * Метод проверяет на заполненость всей формы второй уровень ДС
@@ -886,39 +1107,52 @@ function validateSecondDS()
 		   else{d =	0;}
 		   
 		   var d_18 = 0;
-		   $('.validquestdssl18 input:checkbox').each(function(){
-				 if(!$(this).is(':checked')){d_18++;}
-		   })
-		   if(d_18 == 4){	if($.trim($(".validquestdssl18  input:text").val()) != '') d_18=0; }
-		   else{d_18 =	0;}
+			// проверека на disable - исключаем из валидации отключенные вопросы (достаточно проверить хотя бы один чекбокс из вопроса)
+		   if(!$('#questionDS18many_1').is(':disabled')){
+			   $('.validquestdssl18 input:checkbox').each(function(){
+					 if(!$(this).is(':checked')){d_18++;}
+			   })
+			   if(d_18 == 4){	if($.trim($(".validquestdssl18  input:text").val()) != '') d_18=0; }
+			   else{d_18 =	0;}
+		   }
 		   
 		   var d_19 = 0;
-		   $('.validquestdssl19 input:checkbox').each(function(){
-				 if(!$(this).is(':checked')){d_19++;}
-		   })
-		   if(d_19 == 7){	if($.trim($(".validquestdssl19  input:text").val()) != '') d_19=0; }
-		   else{d_19 =	0;}
+		   if(!$('#questionDS19many_1').is(':disabled')){
+			   $('.validquestdssl19 input:checkbox').each(function(){
+					 if(!$(this).is(':checked')){d_19++;}
+			   })
+			   if(d_19 == 7){	if($.trim($(".validquestdssl19  input:text").val()) != '') d_19=0; }
+			   else{d_19 =	0;}
+		   }   
 		   
 		   var d_21 = 0;
-		   $('.validquestdssl21 input:checkbox').each(function(){
-				 if(!$(this).is(':checked')){d_21++;}
-		   })
-		   if(d_21 == 2){	if($.trim($(".validquestdssl21  input:text").val()) != '') d_21=0; }
-		   else{d_21 =	0;}
+		   if(!$('#questionDS21many_1').is(':disabled')){
+			   $('.validquestdssl21 input:checkbox').each(function(){
+					 if(!$(this).is(':checked')){d_21++;}
+			   })
+			   if(d_21 == 2){	if($.trim($(".validquestdssl21  input:text").val()) != '') d_21=0; }
+			   else{d_21 =	0;}
+		   }	   
 		   
 		   var d_22 = 0;
-		   $('.validquestdssl22 input:checkbox').each(function(){
-				 if(!$(this).is(':checked')){d_22++;}
-		   })
-		   if(d_22 == 5){	if($.trim($(".validquestdssl22  input:text").val()) != '') d_22=0; }
-		   else{d_22 =	0;}
+		   if(!$('#questionDS22many_1').is(':disabled')){
+			   if(!$('#questionDS22many_1').is(':disabled')){
+				   $('.validquestdssl22 input:checkbox').each(function(){
+						 if(!$(this).is(':checked')){d_22++;}
+				   })
+				   if(d_22 == 5){	if($.trim($(".validquestdssl22  input:text").val()) != '') d_22=0; }
+				   else{d_22 =	0;}
+			   }   
+		   }
 		   
 		   var d_24 = 0;
-		   $('.validquestdssl24 input:checkbox').each(function(){
-				 if(!$(this).is(':checked')){d_24++;}
-		   })
-		   if(d_24 == 2){	if($.trim($(".validquestdssl24  input:text").val()) != '') d_24=0; }
-		   else{d_24 =	0;}
+		   if(!$('#questionDS24many_1').is(':disabled')){
+			   $('.validquestdssl24 input:checkbox').each(function(){
+					 if(!$(this).is(':checked')){d_24++;}
+			   })
+			   if(d_24 == 2){	if($.trim($(".validquestdssl24  input:text").val()) != '') d_24=0; }
+			   else{d_24 =	0;}
+		   }   
 		   
 		   var d25_5= 0 ;
 		   if(!$('#question25_5').is(':disabled')){	if($.trim($("#question25_5").val()) == '') d25_5++;	}
@@ -1092,9 +1326,6 @@ function secondlevelds(varr) {
 							    	  $('#records_tableDSSL').animate({opacity: 1}, 2000 );
 							    	  //  зануляем id input 
 							    	  $("#idDSSL").val('');
-							    	  
-									
-    	      	                	console.log('test OK');
         	      	            },'json')
         	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
 	}					
@@ -1395,6 +1626,8 @@ function dsslid( varr,varr2) {
 							
 			    	  }
 		    	  
+			    	
+			    		
 		      }else
 		      {
 		    	 
