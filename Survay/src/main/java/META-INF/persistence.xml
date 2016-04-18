@@ -6,18 +6,20 @@
 		<class>nsk.tfoms.survay.entity.SurvayDaystacionar</class>
 		<class>nsk.tfoms.survay.entity.SurvayStacionar</class>
 		
-		<class>nsk.tfoms.survay.entity.SurvayClinicSecondlevel</class>
-		<class>nsk.tfoms.survay.entity.SurvayClinicSec1</class>
-		<class>nsk.tfoms.survay.entity.SurvayClinicSec25</class>
-		<class>nsk.tfoms.survay.entity.SurvayClinicSec2</class>
-		<class>nsk.tfoms.survay.entity.QuestionManyClinic</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec1</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec25</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec2</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Clinic.QuestionManyClinic</class>
 		
-		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.DayStacionarSecondlevel</class>
-		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.QuestionManyDayStacionar</class>
-		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SurvayClinicDayStacionarSec1</class>
-		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec2</class>
-		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec15</class>
-		<class>nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec25</class>	
+		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.QuestionManyDayStacionar</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.SurvayClinicDayStacionarSec1</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec2</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec15</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec25</class>
+		
+		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel</class>	
 		
 		<properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>

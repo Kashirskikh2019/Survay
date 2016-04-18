@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.DayStacionarSecondlevel;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
 import nsk.tfoms.survay.pojo.SenderDSSL;
 import nsk.tfoms.survay.service.DayStacionarServiceSecondLevel;
 

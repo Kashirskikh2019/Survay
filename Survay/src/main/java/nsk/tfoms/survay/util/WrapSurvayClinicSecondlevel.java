@@ -2,7 +2,7 @@ package nsk.tfoms.survay.util;
 
 import java.util.List;
 
-import nsk.tfoms.survay.entity.SurvayClinicSecondlevel;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 
 public class WrapSurvayClinicSecondlevel {
 

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
-import nsk.tfoms.survay.entity.SurvayClinicSecondlevel;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.pojo.Sender;
 import nsk.tfoms.survay.service.ClinicServiceSecondLevel;
 

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import nsk.tfoms.survay.entity.QuestionManyClinic;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.QuestionManyClinic;
 
 public class WrapMany {
 	

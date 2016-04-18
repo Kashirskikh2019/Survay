@@ -1,15 +1,10 @@
 package nsk.tfoms.survay.pojo;
 
-import nsk.tfoms.survay.entity.QuestionManyClinic;
-import nsk.tfoms.survay.entity.SurvayClinicSec1;
-import nsk.tfoms.survay.entity.SurvayClinicSec2;
-import nsk.tfoms.survay.entity.SurvayClinicSec25;
-import nsk.tfoms.survay.entity.SurvayClinicSecondlevel;
-/*
- * Класс обвертка
- * Данные объекты приходят с клиента. Обвертка раскидывает их по объектам
- * Класс WrapMany для вопросовна которые может быть несколько ответов 
- */
+import nsk.tfoms.survay.entity.secondlevel.Clinic.QuestionManyClinic;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec1;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec2;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec25;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 
 public class Sender {
 	

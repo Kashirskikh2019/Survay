@@ -1,4 +1,4 @@
-package nsk.tfoms.survay.entity.secondlevelDayStacionar;
+package nsk.tfoms.survay.entity.secondlevel.DayStacionar;
 
 import java.io.Serializable;
 import javax.persistence.*;

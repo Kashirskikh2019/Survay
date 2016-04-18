@@ -1,4 +1,4 @@
-package nsk.tfoms.survay.entity;
+package nsk.tfoms.survay.entity.secondlevel.Clinic;
 
 import java.io.Serializable;
 

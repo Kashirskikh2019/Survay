@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.DayStacionarSecondlevel;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.QuestionManyDayStacionar;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec15;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec2;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec25;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SurvayClinicDayStacionarSec1;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.QuestionManyDayStacionar;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec15;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec2;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec25;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SurvayClinicDayStacionarSec1;
 import nsk.tfoms.survay.pojo.SenderDSSL;
 import nsk.tfoms.survay.pojo.WrapManyDSSL;
 

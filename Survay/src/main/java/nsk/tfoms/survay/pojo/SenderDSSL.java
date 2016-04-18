@@ -1,15 +1,10 @@
 package nsk.tfoms.survay.pojo;
 
-/*
- * Класс обвертка
- * Данные объекты приходят с клиента. Обвертка раскидывает их по объектам
- * Класс WrapMany для вопросовна которые может быть несколько ответов 
- */
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.DayStacionarSecondlevel;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec15;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec2;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SCDSSLSec25;
-import nsk.tfoms.survay.entity.secondlevelDayStacionar.SurvayClinicDayStacionarSec1;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec15;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec2;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec25;
+import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SurvayClinicDayStacionarSec1;
 
 public class SenderDSSL {
 	
