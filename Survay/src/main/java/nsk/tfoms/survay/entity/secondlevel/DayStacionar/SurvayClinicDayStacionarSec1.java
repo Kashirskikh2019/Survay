@@ -1,14 +1,10 @@
 package nsk.tfoms.survay.entity.secondlevel.DayStacionar;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder.In;
 
-import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 

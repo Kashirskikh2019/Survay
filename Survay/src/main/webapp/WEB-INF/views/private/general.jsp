@@ -3136,7 +3136,7 @@ $("#formOneReport").validate({
 		</div>		
 <!-- конец Добавить запись (модальное окно) -->
 
-<!-- Добавить запись (модальное окно второго уровня С) -->
+<!-- Добавить запись (модальное окно второго уровня Стационар) -->
 
 					
 					<div class="modal fade" id="myModal2secondlevel" role="dialog"
@@ -3155,7 +3155,7 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">Укажите медицинское учреждение где проходил опрос</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="moSecondlevelstacionar" title="Введите лечебное учреждение">
+									      <select class="form-control input-sm" id="moSLS" title="Введите лечебное учреждение">
 									        <option value=""></option>
 									        <c:forEach var="ls" items="${listmo}">
 									        <option>${ls.value}</option>
@@ -3167,37 +3167,34 @@ $("#formOneReport").validate({
 								    <div  class="wrap-hv">
 										<div><p class="hv">Укажите дату проведения опроса в данном мед учреждении</p></div>
 									    <div class="col-xs-4">
-									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStacsecondlevel" name="dataRespSSL" placeholder="">
+									      <input  class="form-control"  aria-describedby="sizing-addon3" id="datePartOneStacsecondlevel" name="dataRespSls" placeholder="">
 									    </div><br><br>
-									</div>    
-								    								
+									</div>
+									
 									<div  class="wrap-hv" >
-										<div><p class="hv">1. По какой причине вы госпитализированы в дневной стационар? (один ответ)</p></div>
+										<div><p class="hv">1. Каким образом вы были госпитализированы в стационар? (один ответ)</p></div>
 									    <div class="col-xs-4">
 									    <table class="optdrtable">
 									    <tr>
 									        <td>
-											    <select class="form-control input-sm optdrselect" id="questionDS1">
+											    <select class="form-control input-sm optdrselect" id="questionS1">
 											      	<option value=""></option>
-											        <option>Лечение</option>
-											        <option>Обследование</option>
-											        <option>Реабилитация</option>
+											        <option>В плановом порядке (по направлению поликлиники)</option>
+											        <option>В срочном порядке (бригадой "скорой помощи")</option>
+											        <option>Пришел(ла) сам(а)</option>
 											        <option>Другое (напишите)</option>
 											      </select> &nbsp;
-									      		<input type="text" class="optdrinput" id="questionDS1dr"> 
+									      		<input type="text" class="optdrinput" id="questionS1dr"> 
 											 </td>
 										</tr>
 										</table>	      
 									    </div><br><br>
-									</div> 
-									
-									
-									
-									
+									</div>
+								    
 									<div  class="wrap-hv">
-										<div><p class="hv">10.1  Оцените уровень вашей удовлетворенности следующими характеристиками работы дневного стационара: Техническим состоянием, ремонтом помещений, площадью помещений (один ответ по каждой строке)</p></div>
+										<div><p class="hv">5.	Насколько вы  удовлетворены  качеством медицинской помощи, получаемой в стационаре? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="question10_1sec2">
+									      <select class="form-control input-sm" id="questionS5sec1">
 									      	<option value=""></option>
 									        <option>Удовлетворен(а)</option>
 									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
@@ -3206,26 +3203,24 @@ $("#formOneReport").validate({
 									        <option>Затрудняюсь ответить</option>
 									      </select>
 									    </div><br><br>
-									</div>    
-									
-									
+									</div>								    
 								    
 								    <div  class="wrap-hv" style="height: 260px;" >
-										<div><p class="hv">14.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
-									    <div class="col-xs-4 validquestdssl14" style="width: 800px;">
+										<div><p class="hv">13.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS13" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
-												<input type="checkbox" id="questionDS14many_1"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_2"  value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_3"  value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_4"  value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_5"  value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_6"  value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_7"  value="из сети интернет" > из сети интернет&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_8"  value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
-												<input type="checkbox" id="questionDS14many_9"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
-												Из других источников (напишите)...&nbsp;<input type="text" class="length" id="questionDS14many_10" > 
+												<input type="checkbox" id="questionS13many_1"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
+												<input type="checkbox" id="questionS13many_2"  value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
+												<input type="checkbox" id="questionS13many_3"  value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
+												<input type="checkbox" id="questionS13many_4"  value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
+												<input type="checkbox" id="questionS13many_5"  value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
+												<input type="checkbox" id="questionS13many_6"  value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
+												<input type="checkbox" id="questionS13many_7"  value="из сети интернет" > из сети интернет&nbsp;<br>
+												<input type="checkbox" id="questionS13many_8"  value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
+												<input type="checkbox" id="questionS13many_9"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Из других источников (напишите)...&nbsp;<input type="text" class="length" id="questionS13many_10" > 
 											</td>
 										  </tr>
 										  </table>
@@ -3236,13 +3231,13 @@ $("#formOneReport").validate({
 								    
 								    
 								</div>
-								<input type="hidden" id="polzSecondlevelstacionar" value="${principal.username}"/>
-								<input type="hidden" id="idSSL" value=""/>
+								<input type="hidden" id="polzSecondlSls" value="${principal.username}"/>
+								<input type="hidden" id="idSLS" value=""/>
 								
 								<div class="modal-footer">
-								<div class="errorSSL" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
-								<button type="button" id="cancelSSL" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-									<button  class="btn btn-success renamebtnssl"  onclick='secondlevelssl("${principal.username}")'>Добавить анкету</button>
+								<div class="errorSLS" style="display:none; margin-bottom: 15px; color:red;"><h4>В анкете все поля обязательны.<br>Заполните все поля.</h4></div> 
+								<button type="button" id="cancelSLS" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+									<button  class="btn btn-success renamebtnssl"  onclick='secondlevelsls("${principal.username}")'>Добавить анкету</button>
 								</div>
 							</div>
 						</div>

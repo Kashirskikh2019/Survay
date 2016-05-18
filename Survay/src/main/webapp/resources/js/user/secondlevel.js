@@ -1681,4 +1681,83 @@ function dsslid( varr,varr2) {
 	}
 
 	
+/*
+ * ВТОРОЙ УРОВЕНЬ - СТАЦИОНАР
+ * Метод добавляет запись в базу данных 
+ */	
+
+	function secondlevelsls(varr) {
+		
+		
+		//if(validateSecondDS()){  $(".errorDSSL").css('display','block');	}else{}
+		
+							var general = {}
+							var sec1 = {}
+							//var sec2 = {}
+							//var question25 = {}
+							//var question15 = {}
+							var many = {}
+							
+							general["moSLS"] = $("#moSLS").val();
+							general["datePartOneStacsecondlevel"] = $("input[name='dataRespSls']").val();
+							if($.trim($('#questionS1dr').val())){	general["questionS1"] = $.trim($('#questionS1dr').val())}else{	general["questionS1"] = $("#questionS1").val();	}
+							sec1["questionS5sec1"] = $("#questionS5sec1").val();
+							
+							if($("#questionS13many_1").is(':checked')){ many["questionS13many_1"] = $("#questionS13many_1").val();} else{ many["questionS13many_1"] = "пусто";	}
+							if($("#questionS13many_2").is(':checked')){ many["questionS13many_2"] = $("#questionS13many_2").val();} else{ many["questionS13many_2"] = "пусто";	}
+							if($("#questionS13many_3").is(':checked')){ many["questionS13many_3"] = $("#questionS13many_3").val();} else{ many["questionS13many_3"] = "пусто";	}
+							if($("#questionS13many_4").is(':checked')){ many["questionS13many_4"] = $("#questionS13many_4").val();} else{ many["questionS13many_4"] = "пусто";	}
+							if($("#questionS13many_5").is(':checked')){ many["questionS13many_5"] = $("#questionS13many_5").val();} else{ many["questionS13many_5"] = "пусто";	}
+							if($("#questionS13many_6").is(':checked')){ many["questionS13many_6"] = $("#questionS13many_6").val();} else{ many["questionS13many_6"] = "пусто";	}
+							if($("#questionS13many_7").is(':checked')){ many["questionS13many_7"] = $("#questionS13many_7").val();} else{ many["questionS13many_7"] = "пусто";	}
+							if($("#questionS13many_8").is(':checked')){ many["questionS13many_8"] = $("#questionS13many_8").val();} else{ many["questionS13many_8"] = "пусто";	}
+							if($("#questionS13many_9").is(':checked')){ many["questionS13many_9"] = $("#questionS13many_9").val();} else{ many["questionS13many_9"] = "пусто";	}
+							if($("#questionS13many_10").val() != ''){many["questionS13many_10"] = $("#questionS13many_10").val();	}else{ many["questionS13many_10"] = 'пусто';	}
+							
+							
+							
+							general["polzSecondlSls"] = $("#polzSecondlSls").val();
+							
+							// после нажатия добавить -> зачищаются периоды для кнопки выбрать
+							//$("input[name='namedateBeginsecondlevel']").val('');
+							//$("input[name='namedateEndsecondlevel']").val('');
+							
+							/*
+							 * После того как была нажато редактирование и вылезло модальное с данными по редактированию ловим
+							 * id этой записи. Если же была нажата просто кнопка "добавить запись" то if не отрабатывает и новая
+							 * запись улетает с null id там он генериться тк запись новая.
+							 * 
+							 * Обрати внимание после отработки этого ajax поле input #id зануляется
+							 * иначе при добавлении новой записи этот айдишник постоянно будет и соответственно не добавляться будет а 
+							 * редактироваться по этому id
+							 */
+							if($("#idSLS").val()){ 	general["id"] = parseInt($("#idSLS").val());}
+							
+							//$('#cancelDSSL').trigger('click');
+							//+ отрабатывает метод в other.js
+							
+							var sender = ({ survay1:general, survay2:sec1,survay3:sec2,survay4:question15,survay5:question25,survay6:many}); 
+							
+					/*
+							$.post('',JSON.stringify(sender),function(response)
+	    	      	                {
+										$('#records_tableDSSL').animate({opacity: 0.0}, 2000 );
+								    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
+								    	  for(i =0 ; i < response.result.length ; i++){
+								    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
+								    	  }
+								    	  setTimeout ("$('#records_tableDSSL').html('');",2000);
+								    	  setTimeout ("$('#records_tableDSSL').append(userInfo);", 2000);
+								    	  
+								    	  $('#records_tableDSSL').animate({opacity: 1}, 2000 );
+								    	  //  зануляем id input 
+								    	  $("#idDSSL").val('');
+	        	      	            },'json')
+	        	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
+	        	      	*/          	
+							
+						
+							
+		}	
+
 

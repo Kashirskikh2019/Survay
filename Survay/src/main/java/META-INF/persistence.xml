@@ -19,7 +19,11 @@
 		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec15</class>
 		<class>nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec25</class>
 		
-		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel</class>	
+		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec1</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.QuestionManyStacionar</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec2</class>
+		<class>nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec3</class>	
 		
 		<properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>

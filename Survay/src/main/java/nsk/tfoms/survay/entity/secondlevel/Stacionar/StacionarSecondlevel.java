@@ -23,11 +23,11 @@ public class StacionarSecondlevel implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="GENERAL_ID_DSSL")
+	@Column(name="GENERAL_ID_SLS")
 	private Integer id;
-	//@OneToMany(mappedBy="daystacionarsecondlevel", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="stacionarsecondlevel", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	//@JsonIgnore
-	//private Set<QuestionManyDayStacionar> manyDSSL;
+	private Set<QuestionManyStacionar> manySSL;
 
 	@Column(name="AGE_SLS")
 	private int ageSls;
@@ -47,31 +47,76 @@ public class StacionarSecondlevel implements Serializable {
 	@Column(name="SEX_SLS")
 	private String sexSls;
 
+	@Column(name="questionS1")
+	private String questionS1;
 	
+	@Column(name="questionS2")
+	private String questionS2;
+	
+	@Column(name="questionS3")
+	private String questionS3;
+	
+	@Column(name="questionS4")
+	private String questionS4;
+	
+	@Column(name="questionS6")
+	private String questionS6;
+	
+	@Column(name="questionS7")
+	private String questionS7;
+	
+	@Column(name="questionS8")
+	private String questionS8;
+	
+	@Column(name="questionS10")
+	private String questionS10;
+	
+	@Column(name="questionS12")
+	private String questionS12;
+	
+	@Column(name="questionS16")
+	private String questionS16;
+	
+	@Column(name="questionS19")
+	private String questionS19;
+	
+	@Column(name="questionS22")
+	private String questionS22;
+	
+	@Column(name="questionS25")
+	private String questionS25;
+	
+	@Column(name="questionS26")
+	private String questionS26;
+	
+	@Column(name="questionS27")
+	private String questionS27;
+	
+	@Column(name="questionS30")
+	private String questionS30;
+	
+	@Column(name="questionS31")
+	private String questionS31;
+	
+	@Column(name="questionS32")
+	private String questionS32;
 	
 	
 	
 
 
 	//bi-directional one-to-one association to SurvayClinicSec1
-//	@OneToOne(mappedBy="daystacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="stacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JsonIgnore
-//	private SurvayClinicDayStacionarSec1 survayclinicdaystacionarSec1;
+	private SCSSLSec1 scsslsec1;
 
-//	@OneToOne(mappedBy="daystacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="stacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JsonIgnore
-//	private SCDSSLSec2 scdsslsec2;
+	private SCSSLSec2 scsslsec2;
 	
-//	@OneToOne(mappedBy="daystacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="stacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JsonIgnore
-	//private SCDSSLSec15 scdsslsec15;
-	
-	//@OneToOne(mappedBy="daystacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//@JsonIgnore
-	//private SCDSSLSec25 scdsslsec25;
-
-	
-	
+	private SCSSLSec3 scsslsec3;
 	
 	
 
