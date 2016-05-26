@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/nsk/tfoms/survay/service/ClinicServiceSecondLevel.java=UTF-8
 encoding//src/main/java/nsk/tfoms/survay/service/DayStacionarServiceSecondLevel.java=UTF-8
+encoding//src/main/java/nsk/tfoms/survay/service/SSLservice.java=UTF-8
 encoding//src/main/webapp/WEB-INF/mo.txt=UTF-8
 encoding//src/main/webapp/resources/res/sql_tabClinic.txt=UTF-8

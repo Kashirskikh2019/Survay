@@ -1699,9 +1699,15 @@ function dsslid( varr,varr2) {
 							var many = {}
 							
 							general["moSLS"] = $("#moSLS").val();
-							general["datePartOneStacsecondlevel"] = $("input[name='dataRespSls']").val();
+							general["dataRespSls"] = $("input[name='dataRespSls']").val();
 							if($.trim($('#questionS1dr').val())){	general["questionS1"] = $.trim($('#questionS1dr').val())}else{	general["questionS1"] = $("#questionS1").val();	}
+							general["questionS2"] = $("#questionS2").val();
+							general["questionS3"] = $("#questionS3").val();
+							general["questionS4"] = $("#questionS4").val();
 							sec1["questionS5sec1"] = $("#questionS5sec1").val();
+							general["questionS6"] = $("#questionS6").val();
+							general["questionS7"] = $("#questionS7").val();
+							general["questionS8"] = $("#questionS8").val();
 							
 							if($("#questionS13many_1").is(':checked')){ many["questionS13many_1"] = $("#questionS13many_1").val();} else{ many["questionS13many_1"] = "пусто";	}
 							if($("#questionS13many_2").is(':checked')){ many["questionS13many_2"] = $("#questionS13many_2").val();} else{ many["questionS13many_2"] = "пусто";	}
@@ -1736,12 +1742,12 @@ function dsslid( varr,varr2) {
 							//$('#cancelDSSL').trigger('click');
 							//+ отрабатывает метод в other.js
 							
-							var sender = ({ survay1:general, survay2:sec1,survay3:sec2,survay4:question15,survay5:question25,survay6:many}); 
+							var sender = ({ survay1:general, survay2:sec1, survay5:many}); 
 							
-					/*
-							$.post('',JSON.stringify(sender),function(response)
+					
+							$.post('addssl',JSON.stringify(sender),function(response)
 	    	      	                {
-										$('#records_tableDSSL').animate({opacity: 0.0}, 2000 );
+										/*$('#records_tableDSSL').animate({opacity: 0.0}, 2000 );
 								    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
 								    	  for(i =0 ; i < response.result.length ; i++){
 								    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
@@ -1751,10 +1757,10 @@ function dsslid( varr,varr2) {
 								    	  
 								    	  $('#records_tableDSSL').animate({opacity: 1}, 2000 );
 								    	  //  зануляем id input 
-								    	  $("#idDSSL").val('');
+								    	  $("#idDSSL").val('');*/
 	        	      	            },'json')
 	        	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
-	        	      	*/          	
+	        	      	          	
 							
 						
 							

@@ -117,6 +117,238 @@ public class StacionarSecondlevel implements Serializable {
 	@OneToOne(mappedBy="stacionarsecondlevel",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JsonIgnore
 	private SCSSLSec3 scsslsec3;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Set<QuestionManyStacionar> getManySSL() {
+		return manySSL;
+	}
+
+	public void setManySSL(Set<QuestionManyStacionar> manySSL) {
+		this.manySSL = manySSL;
+	}
+
+	public int getAgeSls() {
+		return ageSls;
+	}
+
+	public void setAgeSls(int ageSls) {
+		this.ageSls = ageSls;
+	}
+
+	public String getDataInputSls() {
+		return dataInputSls;
+	}
+
+	public void setDataInputSls(String dataInputSls) {
+		this.dataInputSls = dataInputSls;
+	}
+
+	public String getDataRespSls() {
+		return dataRespSls;
+	}
+
+	public void setDataRespSls(String dataRespSls) {
+		this.dataRespSls = dataRespSls;
+	}
+
+	public String getMoSLS() {
+		return moSLS;
+	}
+
+	public void setMoSLS(String moSLS) {
+		this.moSLS = moSLS;
+	}
+
+	public String getPolzSecondlSls() {
+		return polzSecondlSls;
+	}
+
+	public void setPolzSecondlSls(String polzSecondlSls) {
+		this.polzSecondlSls = polzSecondlSls;
+	}
+
+	public String getSexSls() {
+		return sexSls;
+	}
+
+	public void setSexSls(String sexSls) {
+		this.sexSls = sexSls;
+	}
+
+	public String getQuestionS1() {
+		return questionS1;
+	}
+
+	public void setQuestionS1(String questionS1) {
+		this.questionS1 = questionS1;
+	}
+
+	public String getQuestionS2() {
+		return questionS2;
+	}
+
+	public void setQuestionS2(String questionS2) {
+		this.questionS2 = questionS2;
+	}
+
+	public String getQuestionS3() {
+		return questionS3;
+	}
+
+	public void setQuestionS3(String questionS3) {
+		this.questionS3 = questionS3;
+	}
+
+	public String getQuestionS4() {
+		return questionS4;
+	}
+
+	public void setQuestionS4(String questionS4) {
+		this.questionS4 = questionS4;
+	}
+
+	public String getQuestionS6() {
+		return questionS6;
+	}
+
+	public void setQuestionS6(String questionS6) {
+		this.questionS6 = questionS6;
+	}
+
+	public String getQuestionS7() {
+		return questionS7;
+	}
+
+	public void setQuestionS7(String questionS7) {
+		this.questionS7 = questionS7;
+	}
+
+	public String getQuestionS8() {
+		return questionS8;
+	}
+
+	public void setQuestionS8(String questionS8) {
+		this.questionS8 = questionS8;
+	}
+
+	public String getQuestionS10() {
+		return questionS10;
+	}
+
+	public void setQuestionS10(String questionS10) {
+		this.questionS10 = questionS10;
+	}
+
+	public String getQuestionS12() {
+		return questionS12;
+	}
+
+	public void setQuestionS12(String questionS12) {
+		this.questionS12 = questionS12;
+	}
+
+	public String getQuestionS16() {
+		return questionS16;
+	}
+
+	public void setQuestionS16(String questionS16) {
+		this.questionS16 = questionS16;
+	}
+
+	public String getQuestionS19() {
+		return questionS19;
+	}
+
+	public void setQuestionS19(String questionS19) {
+		this.questionS19 = questionS19;
+	}
+
+	public String getQuestionS22() {
+		return questionS22;
+	}
+
+	public void setQuestionS22(String questionS22) {
+		this.questionS22 = questionS22;
+	}
+
+	public String getQuestionS25() {
+		return questionS25;
+	}
+
+	public void setQuestionS25(String questionS25) {
+		this.questionS25 = questionS25;
+	}
+
+	public String getQuestionS26() {
+		return questionS26;
+	}
+
+	public void setQuestionS26(String questionS26) {
+		this.questionS26 = questionS26;
+	}
+
+	public String getQuestionS27() {
+		return questionS27;
+	}
+
+	public void setQuestionS27(String questionS27) {
+		this.questionS27 = questionS27;
+	}
+
+	public String getQuestionS30() {
+		return questionS30;
+	}
+
+	public void setQuestionS30(String questionS30) {
+		this.questionS30 = questionS30;
+	}
+
+	public String getQuestionS31() {
+		return questionS31;
+	}
+
+	public void setQuestionS31(String questionS31) {
+		this.questionS31 = questionS31;
+	}
+
+	public String getQuestionS32() {
+		return questionS32;
+	}
+
+	public void setQuestionS32(String questionS32) {
+		this.questionS32 = questionS32;
+	}
+
+	public SCSSLSec1 getScsslsec1() {
+		return scsslsec1;
+	}
+
+	public void setScsslsec1(SCSSLSec1 scsslsec1) {
+		this.scsslsec1 = scsslsec1;
+	}
+
+	public SCSSLSec2 getScsslsec2() {
+		return scsslsec2;
+	}
+
+	public void setScsslsec2(SCSSLSec2 scsslsec2) {
+		this.scsslsec2 = scsslsec2;
+	}
+
+	public SCSSLSec3 getScsslsec3() {
+		return scsslsec3;
+	}
+
+	public void setScsslsec3(SCSSLSec3 scsslsec3) {
+		this.scsslsec3 = scsslsec3;
+	}
 	
 	
 

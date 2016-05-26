@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
 import nsk.tfoms.survay.pojo.SenderDSSL;
+import nsk.tfoms.survay.pojo.SenderSSL;
 import nsk.tfoms.survay.service.DayStacionarServiceSecondLevel;
+import nsk.tfoms.survay.service.SSLservice;
 
 @Controller
 public class StacionarSecondLevel {
 
-	@Autowired DayStacionarServiceSecondLevel personSvcDssl;
+	@Autowired SSLservice personSvcDssl;
 	
 	@RequestMapping(value = "/allssl", method = RequestMethod.GET)
 	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestParam String test) throws ParseException
@@ -44,9 +46,46 @@ public class StacionarSecondLevel {
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);
 		    
+			return res;
+	  }
+	
+	
+	@RequestMapping(value = "/addssl", method = RequestMethod.POST)
+	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(HttpServletRequest request) throws ParseException, IOException
+	  { 
+		    
+			  nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+
+			  // 1. get received JSON data from request
+		      BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		      String json = "";
+		      if(br != null){ json = br.readLine(); }
+		      br.close();
+		      
+		      String fg = URLEncoder.encode(json, "Cp1251");
+		      String fg2 = URLDecoder.decode(fg, "UTF-8");
+		      
+		      // 2. initiate jackson mapper
+		      ObjectMapper mapper = new ObjectMapper();
+		      // 3. Convert received JSON to Article
+		      SenderSSL sender = mapper.readValue(fg2, SenderSSL.class);
+
+		      System.out.println("@RRRRRRRR@");
+		      
+		      if(sender.getSurvay1().getId() == null) personSvcDssl.create(sender);
+//		      else personSvcDssl.edit(sender,request);
+			
+		    List<DayStacionarSecondlevel> list = new ArrayList<DayStacionarSecondlevel>();//personSvcDssl.getAll(sender.getSurvay1().getPolzSecondleveldaystacionar());
+		    
+		    res.setStatus("SUCCESS");
+		    res.setResult(list);
+
 		    
 			return res;
 	  }
+
+	
+	
 
 	
 		

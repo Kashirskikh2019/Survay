@@ -3190,6 +3190,46 @@ $("#formOneReport").validate({
 										</table>	      
 									    </div><br><br>
 									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">2.	Сколько времени вы ожидали места в стационаре? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS2">
+									      	<option value=""></option>
+									        <option>Сутки</option>
+									        <option>До 1 недели</option>
+									        <option>До 2-х недель</option>
+									        <option>До 3-х недель</option>
+									        <option>Месяц и более</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 100px;">
+										<div><p class="hv">3.	В каком отделении стационара вы проходите лечение?(напишите)</p></div>
+									    <div class="col-xs-4">
+									      <table>
+									      <tr>
+											<td>
+												&nbsp;<input type="text" class="length" id="questionS3" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">4.	Как  часто  вы  лечились в стационаре за последний год? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS4">
+									      	<option value=""></option>
+									        <option>1 раз</option>
+									        <option>2 раза</option>
+									        <option>3 раза</option>
+									        <option>Более 3 раз</option>
+									      </select>
+									    </div><br><br>
+									</div>
 								    
 									<div  class="wrap-hv">
 										<div><p class="hv">5.	Насколько вы  удовлетворены  качеством медицинской помощи, получаемой в стационаре? (один ответ)</p></div>
@@ -3203,7 +3243,43 @@ $("#formOneReport").validate({
 									        <option>Затрудняюсь ответить</option>
 									      </select>
 									    </div><br><br>
-									</div>								    
+									</div>			
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">6.	Как вы считаете, учитывал ли лечащий врач ваше мнение, назначая лечение? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS6">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									</div>			
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">7.	Если у вас возникали вопросы по поводу назначенных вам медицинских препаратов, процедур, анализов, обследований, всегда ли лечащий врач разъяснял необходимость назначений? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS7">
+									      	<option value=""></option>
+									        <option>Да, всегда</option>
+									        <option>Чаще да, чем нет</option>
+									        <option>Чаще нет, чем да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>			
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">8.	За время нахождения в стационаре осматривал ли Вас заведующий отделением?(один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS8">
+									      	<option value=""></option>
+									        <option>Да</option>
+									        <option>Нет</option>
+									      </select>
+									    </div><br><br>
+									</div>					    
 								    
 								    <div  class="wrap-hv" style="height: 260px;" >
 										<div><p class="hv">13.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
