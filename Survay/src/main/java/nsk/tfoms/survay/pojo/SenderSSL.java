@@ -1,12 +1,14 @@
 package nsk.tfoms.survay.pojo;
 
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec1;
+import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec2;
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel;
 
 public class SenderSSL {
 	
 	private StacionarSecondlevel survay1;
 	private SCSSLSec1 survay2;
+	private SCSSLSec2 survay3;
 	private WrapManySSL survay5;
 	
 	
@@ -28,6 +30,12 @@ public class SenderSSL {
 	}
 	public void setSurvay1(StacionarSecondlevel survay1) {
 		this.survay1 = survay1;
+	}
+	public SCSSLSec2 getSurvay3() {
+		return survay3;
+	}
+	public void setSurvay3(SCSSLSec2 survay3) {
+		this.survay3 = survay3;
 	}
 	
 	

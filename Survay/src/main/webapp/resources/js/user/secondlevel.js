@@ -1693,7 +1693,7 @@ function dsslid( varr,varr2) {
 		
 							var general = {}
 							var sec1 = {}
-							//var sec2 = {}
+							var sec2 = {}
 							//var question25 = {}
 							//var question15 = {}
 							var many = {}
@@ -1708,6 +1708,41 @@ function dsslid( varr,varr2) {
 							general["questionS6"] = $("#questionS6").val();
 							general["questionS7"] = $("#questionS7").val();
 							general["questionS8"] = $("#questionS8").val();
+							sec1["questionS9_1sec1"] = $("#questionS9_1sec1").val();
+							sec1["questionS9_2sec1"] = $("#questionS9_2sec1").val();
+							sec1["questionS9_3sec1"] = $("#questionS9_3sec1").val();
+							sec1["questionS9_4sec1"] = $("#questionS9_4sec1").val();
+							sec1["questionS9_5sec1"] = $("#questionS9_5sec1").val();
+							sec1["questionS9_6sec1"] = $("#questionS9_6sec1").val();
+							sec1["questionS9_7sec1"] = $("#questionS9_7sec1").val();
+							sec1["questionS9_8sec1"] = $("#questionS9_8sec1").val();
+							sec1["questionS9_9sec1"] = $("#questionS9_9sec1").val();
+							sec1["questionS9_10sec1"] = $("#questionS9_10sec1").val();
+							sec1["questionS9_11sec1"] = $("#questionS9_11sec1").val();
+							sec1["questionS9_12sec1"] = $("#questionS9_12sec1").val();
+							sec1["questionS9_13sec1"] = $("#questionS9_13sec1").val();
+							sec1["questionS9_14sec1"] = $("#questionS9_14sec1").val();
+							sec1["questionS9_15sec1"] = $("#questionS9_15sec1").val();
+							sec1["questionS9_16sec1"] = $("#questionS9_16sec1").val();
+							sec1["questionS9_17sec1"] = $("#questionS9_17sec1").val();
+							sec1["questionS9_18sec1"] = $("#questionS9_18sec1").val();
+							sec1["questionS9_19sec1"] = $("#questionS9_19sec1").val();
+							general["questionS10"] = $("#questionS10").val();
+							sec1["questionS11sec1"] = $("#questionS11sec1").val();
+							general["questionS12"] = $("#questionS12").val();
+							sec2["question14_1sec2"] = $("#question14_1sec2").val();
+							sec2["question14_2sec2"] = $("#question14_2sec2").val();
+							sec2["question14_3sec2"] = $("#question14_3sec2").val();
+							sec2["question14_4sec2"] = $("#question14_4sec2").val();
+							sec2["question14_5sec2"] = $("#question14_5sec2").val();
+							sec2["question14_6sec2"] = $("#question14_6sec2").val();
+							sec2["question14_7sec2"] = $("#question14_7sec2").val();
+							sec2["question14_8sec2"] = $("#question14_8sec2").val();
+							sec2["question14_9sec2"] = $("#question14_9sec2").val();
+							sec2["question14_10sec2"] = $("#question14_10sec2").val();
+							sec2["question14_11sec2"] = $("#question14_11sec2").val();
+							
+							
 							
 							if($("#questionS13many_1").is(':checked')){ many["questionS13many_1"] = $("#questionS13many_1").val();} else{ many["questionS13many_1"] = "пусто";	}
 							if($("#questionS13many_2").is(':checked')){ many["questionS13many_2"] = $("#questionS13many_2").val();} else{ many["questionS13many_2"] = "пусто";	}
@@ -1742,7 +1777,7 @@ function dsslid( varr,varr2) {
 							//$('#cancelDSSL').trigger('click');
 							//+ отрабатывает метод в other.js
 							
-							var sender = ({ survay1:general, survay2:sec1, survay5:many}); 
+							var sender = ({ survay1:general, survay2:sec1,survay3:sec2, survay5:many}); 
 							
 					
 							$.post('addssl',JSON.stringify(sender),function(response)
