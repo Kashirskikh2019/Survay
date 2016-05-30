@@ -70,7 +70,7 @@ public class StacionarSecondLevel {
 		      // 3. Convert received JSON to Article
 		      SenderSSL sender = mapper.readValue(fg2, SenderSSL.class);
 
-		      System.out.println("@RRRRRRRR@");
+		      System.out.println("@RRRRRRRR@"+ sender);
 		      
 		      if(sender.getSurvay1().getId() == null) personSvcDssl.create(sender);
 //		      else personSvcDssl.edit(sender,request);

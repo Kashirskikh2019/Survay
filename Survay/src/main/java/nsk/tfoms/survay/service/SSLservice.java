@@ -67,6 +67,18 @@ public class SSLservice {
       
       List<String> getwrapQuestion13 = wrap.wrapQuestion13();
       listCount.add(getwrapQuestion13);
+      List<String> getwrapQuestion15 = wrap.wrapQuestion15();
+      listCount.add(getwrapQuestion15);
+      List<String> getwrapQuestion17 = wrap.wrapQuestion17();
+      listCount.add(getwrapQuestion17);
+      List<String> getwrapQuestion18 = wrap.wrapQuestion18();
+      listCount.add(getwrapQuestion18);
+      List<String> getwrapQuestion20 = wrap.wrapQuestion20();
+      listCount.add(getwrapQuestion20);
+      List<String> getwrapQuestion21 = wrap.wrapQuestion21();
+      listCount.add(getwrapQuestion21);
+      List<String> getwrapQuestion23 = wrap.wrapQuestion23();
+      listCount.add(getwrapQuestion23);
 
       
       Comparator<List<String>> comparator = new Comparator<List<String>>() {
@@ -82,18 +94,76 @@ public class SSLservice {
 		{
 	  		temp = new QuestionManyStacionar();
 	  		if(listCount.get(0).get(0).equals("question13")) temp.setQuestionS13many(listCount.get(0).get(i));
+	  		if(listCount.get(0).get(0).equals("question15")) temp.setQuestionS15many(listCount.get(0).get(i));
+	  		if(listCount.get(0).get(0).equals("question17")) temp.setQuestionS17many(listCount.get(0).get(i));
+	  		if(listCount.get(0).get(0).equals("question18")) temp.setQuestionS18many(listCount.get(0).get(i));
+	  		if(listCount.get(0).get(0).equals("question20")) temp.setQuestionS20many(listCount.get(0).get(i));
+	  		if(listCount.get(0).get(0).equals("question21")) temp.setQuestionS21many(listCount.get(0).get(i));
+	  		if(listCount.get(0).get(0).equals("question23")) temp.setQuestionS23many(listCount.get(0).get(i));
 	  		
-	  		/*if(listCount.get(1).size() > i)	{
+	  		if(listCount.get(1).size() > i)	{
     			
     			if(listCount.get(1).get(0).equals("question13"))	temp.setQuestionS13many(listCount.get(1).get(i));
-    			if(listCount.get(1).get(0).equals("question16"))	temp.setQuestionDS16many(listCount.get(1).get(i));
-    			if(listCount.get(1).get(0).equals("question18"))	temp.setQuestionDS18many(listCount.get(1).get(i));
-    			if(listCount.get(1).get(0).equals("question19"))	temp.setQuestionDS19many(listCount.get(1).get(i));
-    			if(listCount.get(1).get(0).equals("question21"))	temp.setQuestionDS21many(listCount.get(1).get(i));
-    			if(listCount.get(1).get(0).equals("question22"))	temp.setQuestionDS22many(listCount.get(1).get(i));
-    			if(listCount.get(1).get(0).equals("question24"))	temp.setQuestionDS24many(listCount.get(1).get(i));
-    		}*/
+    			if(listCount.get(1).get(0).equals("question15"))	temp.setQuestionS15many(listCount.get(1).get(i));
+    			if(listCount.get(1).get(0).equals("question17"))	temp.setQuestionS17many(listCount.get(1).get(i));
+    			if(listCount.get(1).get(0).equals("question18")) 	temp.setQuestionS18many(listCount.get(1).get(i));
+    			if(listCount.get(1).get(0).equals("question20")) 	temp.setQuestionS20many(listCount.get(1).get(i));
+    			if(listCount.get(1).get(0).equals("question21")) 	temp.setQuestionS21many(listCount.get(1).get(i));
+    			if(listCount.get(1).get(0).equals("question23")) 	temp.setQuestionS23many(listCount.get(1).get(i));
+    		}
 	  		
+	  		if(listCount.get(2).size() > i)	{
+    			
+    			if(listCount.get(2).get(0).equals("question13"))	temp.setQuestionS13many(listCount.get(2).get(i));
+    			if(listCount.get(2).get(0).equals("question15"))	temp.setQuestionS15many(listCount.get(2).get(i));
+    			if(listCount.get(2).get(0).equals("question17"))	temp.setQuestionS17many(listCount.get(2).get(i));
+    			if(listCount.get(2).get(0).equals("question18")) 	temp.setQuestionS18many(listCount.get(2).get(i));
+    			if(listCount.get(2).get(0).equals("question20")) 	temp.setQuestionS20many(listCount.get(2).get(i));
+    			if(listCount.get(2).get(0).equals("question21")) 	temp.setQuestionS21many(listCount.get(2).get(i));
+    			if(listCount.get(2).get(0).equals("question23")) 	temp.setQuestionS23many(listCount.get(2).get(i));
+    		}
+	  		
+	  		if(listCount.get(3).size() > i)	{
+    			
+    			if(listCount.get(3).get(0).equals("question13"))	temp.setQuestionS13many(listCount.get(3).get(i));
+    			if(listCount.get(3).get(0).equals("question15"))	temp.setQuestionS15many(listCount.get(3).get(i));
+    			if(listCount.get(3).get(0).equals("question17"))	temp.setQuestionS17many(listCount.get(3).get(i));
+    			if(listCount.get(3).get(0).equals("question18")) 	temp.setQuestionS18many(listCount.get(3).get(i));
+    			if(listCount.get(3).get(0).equals("question20")) 	temp.setQuestionS20many(listCount.get(3).get(i));
+    			if(listCount.get(3).get(0).equals("question21")) 	temp.setQuestionS21many(listCount.get(3).get(i));
+    			if(listCount.get(3).get(0).equals("question23")) 	temp.setQuestionS23many(listCount.get(3).get(i));
+    		}
+	  		
+	  		if(listCount.get(4).size() > i)	{
+    			
+    			if(listCount.get(4).get(0).equals("question13"))	temp.setQuestionS13many(listCount.get(4).get(i));
+    			if(listCount.get(4).get(0).equals("question15"))	temp.setQuestionS15many(listCount.get(4).get(i));
+    			if(listCount.get(4).get(0).equals("question17"))	temp.setQuestionS17many(listCount.get(4).get(i));
+    			if(listCount.get(4).get(0).equals("question18")) 	temp.setQuestionS18many(listCount.get(4).get(i));
+    			if(listCount.get(4).get(0).equals("question20")) 	temp.setQuestionS20many(listCount.get(4).get(i));
+    			if(listCount.get(4).get(0).equals("question21")) 	temp.setQuestionS21many(listCount.get(4).get(i));
+    			if(listCount.get(4).get(0).equals("question23")) 	temp.setQuestionS23many(listCount.get(4).get(i));
+    		}
+	  		if(listCount.get(5).size() > i)	{
+    			
+    			if(listCount.get(5).get(0).equals("question13"))	temp.setQuestionS13many(listCount.get(5).get(i));
+    			if(listCount.get(5).get(0).equals("question15"))	temp.setQuestionS15many(listCount.get(5).get(i));
+    			if(listCount.get(5).get(0).equals("question17"))	temp.setQuestionS17many(listCount.get(5).get(i));
+    			if(listCount.get(5).get(0).equals("question18")) 	temp.setQuestionS18many(listCount.get(5).get(i));
+    			if(listCount.get(5).get(0).equals("question20")) 	temp.setQuestionS20many(listCount.get(5).get(i));
+    			if(listCount.get(5).get(0).equals("question21")) 	temp.setQuestionS21many(listCount.get(5).get(i));
+    			if(listCount.get(5).get(0).equals("question23")) 	temp.setQuestionS23many(listCount.get(5).get(i));
+    		}
+	  		if(listCount.get(6).size() > i)	{
+    			
+    			if(listCount.get(6).get(0).equals("question13"))	temp.setQuestionS13many(listCount.get(6).get(i));
+    			if(listCount.get(6).get(0).equals("question15"))	temp.setQuestionS15many(listCount.get(6).get(i));
+    			if(listCount.get(6).get(0).equals("question17"))	temp.setQuestionS17many(listCount.get(6).get(i));
+    			if(listCount.get(6).get(0).equals("question18")) 	temp.setQuestionS18many(listCount.get(6).get(i));
+    			if(listCount.get(6).get(0).equals("question20")) 	temp.setQuestionS20many(listCount.get(6).get(i));
+    			if(listCount.get(6).get(0).equals("question21")) 	temp.setQuestionS21many(listCount.get(6).get(i));
+    			if(listCount.get(6).get(0).equals("question23")) 	temp.setQuestionS23many(listCount.get(6).get(i));
+    		}
 	  		
 	  		
 	  		ls.add(temp);

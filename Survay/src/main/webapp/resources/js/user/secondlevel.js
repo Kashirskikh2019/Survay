@@ -1730,6 +1730,18 @@ function dsslid( varr,varr2) {
 							general["questionS10"] = $("#questionS10").val();
 							sec1["questionS11sec1"] = $("#questionS11sec1").val();
 							general["questionS12"] = $("#questionS12").val();
+							
+							if($("#questionS13many_1").is(':checked')){ many["questionS13many_1"] = $("#questionS13many_1").val();} else{ many["questionS13many_1"] = "пусто";	}
+							if($("#questionS13many_2").is(':checked')){ many["questionS13many_2"] = $("#questionS13many_2").val();} else{ many["questionS13many_2"] = "пусто";	}
+							if($("#questionS13many_3").is(':checked')){ many["questionS13many_3"] = $("#questionS13many_3").val();} else{ many["questionS13many_3"] = "пусто";	}
+							if($("#questionS13many_4").is(':checked')){ many["questionS13many_4"] = $("#questionS13many_4").val();} else{ many["questionS13many_4"] = "пусто";	}
+							if($("#questionS13many_5").is(':checked')){ many["questionS13many_5"] = $("#questionS13many_5").val();} else{ many["questionS13many_5"] = "пусто";	}
+							if($("#questionS13many_6").is(':checked')){ many["questionS13many_6"] = $("#questionS13many_6").val();} else{ many["questionS13many_6"] = "пусто";	}
+							if($("#questionS13many_7").is(':checked')){ many["questionS13many_7"] = $("#questionS13many_7").val();} else{ many["questionS13many_7"] = "пусто";	}
+							if($("#questionS13many_8").is(':checked')){ many["questionS13many_8"] = $("#questionS13many_8").val();} else{ many["questionS13many_8"] = "пусто";	}
+							if($("#questionS13many_9").is(':checked')){ many["questionS13many_9"] = $("#questionS13many_9").val();} else{ many["questionS13many_9"] = "пусто";	}
+							if($("#questionS13many_10").val() != ''){many["questionS13many_10"] = $("#questionS13many_10").val();	}else{ many["questionS13many_10"] = 'пусто';	}
+							
 							sec2["question14_1sec2"] = $("#question14_1sec2").val();
 							sec2["question14_2sec2"] = $("#question14_2sec2").val();
 							sec2["question14_3sec2"] = $("#question14_3sec2").val();
@@ -1742,18 +1754,54 @@ function dsslid( varr,varr2) {
 							sec2["question14_10sec2"] = $("#question14_10sec2").val();
 							sec2["question14_11sec2"] = $("#question14_11sec2").val();
 							
+							if($("#questionS15many_1").is(':checked')){ many["questionS15many_1"] = $("#questionS15many_1").val();} else{ many["questionS15many_1"] = "пусто";	}
+							if($("#questionS15many_2").is(':checked')){ many["questionS15many_2"] = $("#questionS15many_2").val();} else{ many["questionS15many_2"] = "пусто";	}
+							if($("#questionS15many_3").is(':checked')){ many["questionS15many_3"] = $("#questionS15many_3").val();} else{ many["questionS15many_3"] = "пусто";	}
+							if($("#questionS15many_4").is(':checked')){ many["questionS15many_4"] = $("#questionS15many_4").val();} else{ many["questionS15many_4"] = "пусто";	}
+							if($("#questionS15many_5").is(':checked')){ many["questionS15many_5"] = $("#questionS15many_5").val();} else{ many["questionS15many_5"] = "пусто";	}
+							if($("#questionS15many_6").is(':checked')){ many["questionS15many_6"] = $("#questionS15many_6").val();} else{ many["questionS15many_6"] = "пусто";	}
+							if($("#questionS15many_7").val() != ''){many["questionS15many_7"] = $("#questionS15many_7").val();	}else{ many["questionS15many_7"] = 'пусто';	}
+							
+							general["questionS16"] = $("#questionS16").val();
+							
+							if($("#questionS17many_1").is(':checked')){ many["questionS17many_1"] = $("#questionS17many_1").val();} else{ many["questionS17many_1"] = "пусто";	}
+							if($("#questionS17many_2").is(':checked')){ many["questionS17many_2"] = $("#questionS17many_2").val();} else{ many["questionS17many_2"] = "пусто";	}
+							if($("#questionS17many_3").is(':checked')){ many["questionS17many_3"] = $("#questionS17many_3").val();} else{ many["questionS17many_3"] = "пусто";	}
+							if($("#questionS17many_4").is(':checked')){ many["questionS17many_4"] = $("#questionS17many_4").val();} else{ many["questionS17many_4"] = "пусто";	}
+							if($("#questionS17many_5").val() != ''){many["questionS17many_5"] = $("#questionS17many_5").val();	}else{ many["questionS17many_5"] = 'пусто';	}
+							
+							if($("#questionS18many_1").is(':checked')){ many["questionS18many_1"] = $("#questionS18many_1").val();} else{ many["questionS18many_1"] = "пусто";	}
+							if($("#questionS18many_2").is(':checked')){ many["questionS18many_2"] = $("#questionS18many_2").val();} else{ many["questionS18many_2"] = "пусто";	}
+							if($("#questionS18many_3").is(':checked')){ many["questionS18many_3"] = $("#questionS18many_3").val();} else{ many["questionS18many_3"] = "пусто";	}
+							if($("#questionS18many_4").is(':checked')){ many["questionS18many_4"] = $("#questionS18many_4").val();} else{ many["questionS18many_4"] = "пусто";	}
+							if($("#questionS18many_5").is(':checked')){ many["questionS18many_5"] = $("#questionS18many_5").val();} else{ many["questionS18many_5"] = "пусто";	}
+							if($("#questionS18many_6").is(':checked')){ many["questionS18many_6"] = $("#questionS18many_6").val();} else{ many["questionS18many_6"] = "пусто";	}
+							if($("#questionS18many_7").is(':checked')){ many["questionS18many_7"] = $("#questionS18many_7").val();} else{ many["questionS18many_7"] = "пусто";	}
+							if($("#questionS18many_8").val() != ''){many["questionS18many_8"] = $("#questionS18many_8").val();	}else{ many["questionS18many_8"] = 'пусто';	}
 							
 							
-							if($("#questionS13many_1").is(':checked')){ many["questionS13many_1"] = $("#questionS13many_1").val();} else{ many["questionS13many_1"] = "пусто";	}
-							if($("#questionS13many_2").is(':checked')){ many["questionS13many_2"] = $("#questionS13many_2").val();} else{ many["questionS13many_2"] = "пусто";	}
-							if($("#questionS13many_3").is(':checked')){ many["questionS13many_3"] = $("#questionS13many_3").val();} else{ many["questionS13many_3"] = "пусто";	}
-							if($("#questionS13many_4").is(':checked')){ many["questionS13many_4"] = $("#questionS13many_4").val();} else{ many["questionS13many_4"] = "пусто";	}
-							if($("#questionS13many_5").is(':checked')){ many["questionS13many_5"] = $("#questionS13many_5").val();} else{ many["questionS13many_5"] = "пусто";	}
-							if($("#questionS13many_6").is(':checked')){ many["questionS13many_6"] = $("#questionS13many_6").val();} else{ many["questionS13many_6"] = "пусто";	}
-							if($("#questionS13many_7").is(':checked')){ many["questionS13many_7"] = $("#questionS13many_7").val();} else{ many["questionS13many_7"] = "пусто";	}
-							if($("#questionS13many_8").is(':checked')){ many["questionS13many_8"] = $("#questionS13many_8").val();} else{ many["questionS13many_8"] = "пусто";	}
-							if($("#questionS13many_9").is(':checked')){ many["questionS13many_9"] = $("#questionS13many_9").val();} else{ many["questionS13many_9"] = "пусто";	}
-							if($("#questionS13many_10").val() != ''){many["questionS13many_10"] = $("#questionS13many_10").val();	}else{ many["questionS13many_10"] = 'пусто';	}
+							general["questionS19"] = $("#questionS19").val();
+							
+							if($("#questionS20many_1").is(':checked')){ many["questionS20many_1"] = $("#questionS20many_1").val();} else{ many["questionS20many_1"] = "пусто";	}
+							if($("#questionS20many_2").is(':checked')){ many["questionS20many_2"] = $("#questionS20many_2").val();} else{ many["questionS20many_2"] = "пусто";	}
+							if($("#questionS20many_3").val() != ''){many["questionS20many_3"] = $("#questionS20many_3").val();	}else{ many["questionS20many_3"] = 'пусто';	}
+							
+							if($("#questionS21many_1").is(':checked')){ many["questionS21many_1"] = $("#questionS21many_1").val();} else{ many["questionS21many_1"] = "пусто";	}
+							if($("#questionS21many_2").is(':checked')){ many["questionS21many_2"] = $("#questionS21many_2").val();} else{ many["questionS21many_2"] = "пусто";	}
+							if($("#questionS21many_3").is(':checked')){ many["questionS21many_3"] = $("#questionS21many_3").val();} else{ many["questionS21many_3"] = "пусто";	}
+							if($("#questionS21many_4").is(':checked')){ many["questionS21many_4"] = $("#questionS21many_4").val();} else{ many["questionS21many_4"] = "пусто";	}
+							if($("#questionS21many_5").is(':checked')){ many["questionS21many_5"] = $("#questionS21many_5").val();} else{ many["questionS21many_5"] = "пусто";	}
+							if($("#questionS21many_6").val() != ''){many["questionS21many_6"] = $("#questionS21many_6").val();	}else{ many["questionS21many_6"] = 'пусто';	}
+							
+							general["questionS22"] = $("#questionS22").val();
+							
+							if($("#questionS23many_1").is(':checked')){ many["questionS23many_1"] = $("#questionS23many_1").val();} else{ many["questionS23many_1"] = "пусто";	}
+							if($("#questionS23many_2").is(':checked')){ many["questionS23many_2"] = $("#questionS23many_2").val();} else{ many["questionS23many_2"] = "пусто";	}
+							if($("#questionS23many_3").val() != ''){many["questionS23many_3"] = $("#questionS23many_3").val();	}else{ many["questionS23many_3"] = 'пусто';	}
+							
+							
+							 
+							
 							
 							
 							

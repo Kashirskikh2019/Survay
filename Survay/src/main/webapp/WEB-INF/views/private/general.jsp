@@ -3583,6 +3583,29 @@ $("#formOneReport").validate({
 									        <option>Нет</option>
 									      </select>
 									    </div><br><br>
+									</div>
+									
+									
+								    <div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">13.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS13" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionS13many_1"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
+												<input type="checkbox" id="questionS13many_2"  value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
+												<input type="checkbox" id="questionS13many_3"  value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
+												<input type="checkbox" id="questionS13many_4"  value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
+												<input type="checkbox" id="questionS13many_5"  value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
+												<input type="checkbox" id="questionS13many_6"  value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
+												<input type="checkbox" id="questionS13many_7"  value="из сети интернет" > из сети интернет&nbsp;<br>
+												<input type="checkbox" id="questionS13many_8"  value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
+												<input type="checkbox" id="questionS13many_9"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Из других источников (напишите)...&nbsp;<input type="text" class="length" id="questionS13many_10" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
 									</div>	    
 									
 									<div  class="wrap-hv">
@@ -3726,29 +3749,152 @@ $("#formOneReport").validate({
 									        <option>Затрудняюсь ответить</option>
 									      </select>
 									    </div><br><br>
-									</div>	    	    
-								    
-								    <div  class="wrap-hv" style="height: 260px;" >
-										<div><p class="hv">13.	Из каких источников вы узнали о своих правах? (возможно нескольковариантов ответа)</p></div>
-									    <div class="col-xs-4 validquestS13" style="width: 800px;">
+									</div>	    
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">15.	Если вы считаете, что ваши права в  системе ОМС нарушены, куда вы предпочитаете обратиться за помощью? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS15" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
-												<input type="checkbox" id="questionS13many_1"  value="От медицинских работников" > От медицинских работников&nbsp;<br>
-												<input type="checkbox" id="questionS13many_2"  value="От сотрудников страховой компании" > От сотрудников страховой компании&nbsp;<br>
-												<input type="checkbox" id="questionS13many_3"  value="От сотрудников Фонда ОМС" > От сотрудников Фонда ОМС&nbsp;<br>
-												<input type="checkbox" id="questionS13many_4"  value="От знакомых/родственников" > От знакомых/родственников&nbsp;<br>
-												<input type="checkbox" id="questionS13many_5"  value="из средств массовой информации" > из средств массовой информации&nbsp;<br>
-												<input type="checkbox" id="questionS13many_6"  value="из информации для населения в медицинских организациях (стенды, брошюры,листовки)" > из информации для населения в медицинских организациях (стенды, брошюры,листовки)&nbsp;<br>
-												<input type="checkbox" id="questionS13many_7"  value="из сети интернет" > из сети интернет&nbsp;<br>
-												<input type="checkbox" id="questionS13many_8"  value="Я не знаю своих прав" > Я не знаю своих прав&nbsp;<br>
-												<input type="checkbox" id="questionS13many_9"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
-												Из других источников (напишите)...&nbsp;<input type="text" class="length" id="questionS13many_10" > 
+												<input type="checkbox" id="questionS15many_1"  value="Администрация медицинской организации" > Администрация медицинской организации&nbsp;<br>
+												<input type="checkbox" id="questionS15many_2"  value="Страховая компания, выдавшая полис ОМС" > Страховая компания, выдавшая полис ОМС&nbsp;<br>
+												<input type="checkbox" id="questionS15many_3"  value="Фонд обязательного медицинского страхования" > Фонд обязательного медицинского страхования&nbsp;<br>
+												<input type="checkbox" id="questionS15many_4"  value="Органы управления здравоохранением" > Органы управления здравоохранением&nbsp;<br>
+												<input type="checkbox" id="questionS15many_5"  value="Гражданский суд" > Гражданский суд&nbsp;<br>
+												<input type="checkbox" id="questionS15many_6"  value="Затрудняюсь ответить" > Затрудняюсь ответить&nbsp;<br>
+												Другое напишите (напишите)...&nbsp;<input type="text" class="length" id="questionS15many_7" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>	  
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">16	Пользовались ли вы правом выбора/смены лечащего врача?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS16">
+									      	<option value=""></option>
+									        <option>Да (к вопросу 18)</option>
+									        <option>Хотел(а), но не смог(ла) (к вопросу 17)</option>
+									        <option>Нет, не было необходимости  (к вопросу 19)</option>
+									        <option>Нет, не знал(а), что это возможно</option>
+									      </select>
+									    </div><br><br>
+									</div>	    
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">17.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS17" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionS17many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
+												<input type="checkbox" id="questionS17many_2"  value="Решил(а), что пытаться бесполезно" > Решил(а), что пытаться бесполезно&nbsp;<br>
+												<input type="checkbox" id="questionS17many_3"  value="Побоялся(лась) огласки" > Побоялся(лась) огласки&nbsp;<br>
+												<input type="checkbox" id="questionS17many_4"  value="Не хотел(а) портить отношения с врачом" > Не хотел(а) портить отношения с врачом&nbsp;<br>
+												Мне отказали (напишите причину) &nbsp;<input type="text" class="length" id="questionS17many_5" >
+												<!-- Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS17many_6" > --> 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>	   	    
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">18.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS18" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionS18many_1"  value="Врачом оказана некачественная медицинская помощь" > Врачом оказана некачественная медицинская помощь&nbsp;<br>
+												<input type="checkbox" id="questionS18many_2"  value="Врачом разглашена конфиденциальная информация о состоянии здоровья" > Врачом разглашена конфиденциальная информация о состоянии здоровья&nbsp;<br>
+												<input type="checkbox" id="questionS18many_3"  value="Врачом не были назначены необходимые диагностические процедуры" > Врачом не были назначены необходимые диагностические процедуры&nbsp;<br>
+												<input type="checkbox" id="questionS18many_4"  value="Врачом не было назначено необходимое лечение" > Врачом не было назначено необходимое лечение&nbsp;<br>
+												<input type="checkbox" id="questionS18many_5"  value="Врач не дал направление на обследование в другую медицинскую организацию" > Врач не дал направление на обследование в другую медицинскую организацию&nbsp;<br>
+												<input type="checkbox" id="questionS18many_6"  value="Врач  пытался  получить деньги за те услуги, которые должны быть оказаныбесплатно" > Врач  пытался  получить деньги за те услуги, которые должны быть оказаныбесплатно&nbsp;<br>
+												<input type="checkbox" id="questionS18many_7"  value="Врач вел себя грубо, безразлично, невежливо" > Врач вел себя грубо, безразлично, невежливо&nbsp;<br>
+												Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS18many_8" >
 											</td>
 										  </tr>
 										  </table>
 									    </div><br><br>
 									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">19	Пользовались  ли вы правом выбора/смены медицинской организации? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS19">
+									      	<option value=""></option>
+									        <option>Да (к вопросу 21)</option>
+									        <option>Хотел(а), но не смог(ла) (к вопросу 20)</option>
+									        <option>Нет, не было необходимости  (к вопросу 22)</option>
+									        <option>Нет, не знал(а), что это возможно</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">20.	Что вам помешало поменять медицинскую организацию? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS20" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionS20many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
+												<input type="checkbox" id="questionS20many_2"  value="Решил(а), что пытаться бесполезно" > Решил(а), что пытаться бесполезно&nbsp;<br>
+												Мне отказали (напишите причину либо другое)&nbsp;<input type="text" class="length" id="questionS20many_3" >
+												<!-- Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS20many_4" > -->
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">21.	Почему вы поменяли медицинскую организацию? (возможно  несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS21" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionS21many_1"  value="В связи с переездом на новое место жительства" > В связи с переездом на новое место жительства&nbsp;<br>
+												<input type="checkbox" id="questionS21many_2"  value="Из-за неудобного режима работы" > Из-за неудобного режима работы&nbsp;<br>
+												<input type="checkbox" id="questionS21many_3"  value="Из-за плохих санитарно-гигиенических условий" > Из-за плохих санитарно-гигиенических условий&nbsp;<br>
+												<input type="checkbox" id="questionS21many_4"  value="В связи  с  недостаточным  спектром  медицинских  услуг  (анализы, УЗИ,ФЛГ, рентген и т.п.)" > В связи  с  недостаточным  спектром  медицинских  услуг  (анализы, УЗИ,ФЛГ, рентген и т.п.)&nbsp;<br>
+												<input type="checkbox" id="questionS21many_5"  value="Из-за недостаточно квалифицированного медицинского персонала" > Из-за недостаточно квалифицированного медицинского персонала&nbsp;<br>
+												Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS21many_6" >
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">22	Пациент, застрахованный по ОМС, имеет право получать бесплатную медицинскую помощь на всей территории РФ, в том числе за пределами постоянного места жительства. Приходилось ли вам пользоваться этим правом? (один ответ)</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS22">
+									      	<option value=""></option>
+									        <option>Да, я получал(а) бесплатную медицинскую помощь на других территориях РФ по полису ОМС (к вопросу 24)</option>
+									        <option>Пытался(лась), но мне было отказано в бесплатной медицинской помощи надругой территории РФ</option>
+									        <option>Нет, не приходилось  (к вопросу 24)</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 260px;" >
+										<div><p class="hv">23.	Почему вам отказали? (возможно несколько вариантов ответа)</p></div>
+									    <div class="col-xs-4 validquestS23" style="width: 800px;">
+									      <table>
+									      <tr>
+											<td>
+												<input type="checkbox" id="questionS23many_1"  value="В  медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения" > В  медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения&nbsp;<br>
+												<input type="checkbox" id="questionS23many_2"  value="Из-за отсутствия местной регистрации" > Из-за отсутствия местной регистрации&nbsp;<br>
+												Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS23many_3" >
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									</div>
+								    
 								    
 								    
 								    

@@ -38,6 +38,21 @@ public class SenderSSL {
 		this.survay3 = survay3;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SenderSSL [survay1=");
+		builder.append(survay1);
+		builder.append(", survay2=");
+		builder.append(survay2);
+		builder.append(", survay3=");
+		builder.append(survay3);
+		builder.append(", survay5=");
+		builder.append(survay5);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 			
 
