@@ -3894,10 +3894,189 @@ $("#formOneReport").validate({
 										  </table>
 									    </div><br><br>
 									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">24.1	При последнем лечении/обследовании в стационаре приходилось ли вам использовать личные денежные средства на приобретение лекарственных средств и изделий медицинского назначения?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question24_1sec3">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">24.2	При последнем лечении/обследовании в стационаре приходилось ли вам использовать личные денежные средства на диагностическое обследование?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question24_2sec3">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									</div>
 								    
+								    <div  class="wrap-hv">
+										<div><p class="hv">24.3	При последнем лечении/обследовании в стационаре приходилось ли вам использовать личные денежные средства на услуги медсестер, санитарок?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question24_3sec3">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">24.4	При последнем лечении/обследовании в стационаре приходилось ли вам использовать личные денежные средства на медицинские манипуляции/операции, включая услуги родовспоможения?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question24_4sec3">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">24.5	При последнем лечении/обследовании в стационаре приходилось ли вам использовать личные денежные средства на ...(напишите)?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="question24_5sec3">
+									      	<option value=""></option>
+									        <option>Да, часто</option>
+									        <option>Да, иногда</option>
+									        <option>Нет, не приходилось</option>
+									        <option>Приходилось, с заключением договора о платном медицинском обслуживании</option>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv" style="height: 90px;">
+										<div><p class="hv">25.	Какую сумму вы потратили? (напишите)</p></div>
+									    <div class="col-xs-4">
+									      <table>
+									      <tr>
+											<td>
+												&nbsp;<input type="text" class="length" id="questionS25" > 
+											</td>
+										  </tr>
+										  </table>
+									    </div><br><br>
+									 </div>   
+									 
+									 <div  class="wrap-hv">
+											<div><p class="hv">26.	Случалось ли вам когда-нибудь благодарить медицинских работников замедицинскую помощь? (один ответ)</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="questionS26">
+										      	<option value=""></option>
+										        <option>Да, это происходит довольно часто</option>
+										        <option>Да, иногда случается</option>
+										        <option>Нет, никогда не приходилось (к вопросу 28)</option>
+										      </select>
+										    </div><br><br>
+										 </div> 
+										 
+										 <div  class="wrap-hv">
+											<div><p class="hv">27.	Кто выступал инициатором такой "благодарности"?</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="questionS27">
+										      	<option value=""></option>
+										        <option>Я сам(а)</option>
+										        <option>Медицинский работник</option>
+										      </select>
+										    </div><br><br>
+										 </div>  
 								    
-								    
-								    
+								    	<div  class="wrap-hv">
+											<div><p class="hv">28.	Укажите пол</p></div>
+										    <div class="col-xs-4">
+										      <select class="form-control input-sm" id="sexSls">
+										      	<option value=""></option>
+										        <option>Мужской</option>
+										        <option>Женский</option>
+										      </select>
+										    </div><br><br>
+										 </div>
+										 
+										 <div  class="wrap-hv">
+										<div><p class="hv">29.	Возраст респондента (лет):</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="ageSls">
+									      	<option value=""></option>
+									      	<c:forEach var="ag" items="${listage}">
+									        <option>${ag.value}</option>
+									        </c:forEach>
+									      </select>
+									    </div><br><br>
+									</div>
+									
+									<div  class="wrap-hv">
+										<div><p class="hv">30.	Ваше образование:</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS30">
+									      	<option value=""></option>
+									        <option>Неполное среднее</option>
+									        <option>Среднее</option>
+									        <option>Среднее специальное</option>
+									        <option>Неполное высшее</option>
+									        <option>Высшее, в т.ч. ученая степень</option>
+									      </select>
+									    </div><br><br>
+									 </div> 
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">31.	Ваше социальное положение</p></div>
+									    <div class="col-xs-4">
+									    <table class="optdrtable">
+									    <tr>
+									        <td>
+											    <select class="form-control input-sm optdrselect" id="questionS31">
+											        <option value=""></option>
+											        <option>Предприниматель</option>
+											        <option>Руководитель</option>
+											        <option>Служащий</option>
+											        <option>ИТР, специалист</option>
+											        <option>Научный работник, преподаватель, учитель</option>
+											        <option>Рабочий</option>
+											        <option>Пенсионер</option>
+											        <option>Домохозяйка</option>
+											        <option>Учащийся</option>
+											        <option>Безработный</option>
+											        <option>Другое (напишите)</option>
+											      </select> &nbsp;
+									      		<input type="text" class="optdrinput" id="questionS31dr"> 
+											 </td>
+										</tr>
+										</table>	      
+									    </div><br><br>
+									    
+									 </div> 
+									 
+									 <div  class="wrap-hv">
+										<div><p class="hv">32.	Каков среднемесячный доход вашей семьи на одного человека?</p></div>
+									    <div class="col-xs-4">
+									      <select class="form-control input-sm" id="questionS32">
+									      	<option value=""></option>
+									        <option>Менее 10000 рублей</option>
+									        <option>10 - 15000 рублей</option>
+									        <option>15 - 20000 рублей</option>
+									        <option>20 - 25000 рублей</option>
+									        <option>25 - 30000 рублей</option>
+									        <option>Свыше 30000 рублей</option>
+									        <option>Затрудняюсь ответить</option>
+									      </select>
+									    </div><br><br>
+									 </div>
+
 								    
 								</div>
 								<input type="hidden" id="polzSecondlSls" value="${principal.username}"/>
@@ -3917,16 +4096,17 @@ $("#formOneReport").validate({
   <script type="text/javascript">
 
   </script>
-  <!-- <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' />  -->
+   <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' /> 
 <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/secondlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnsecondlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/user/reports.js"></script>  
-<!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user/reports.js"></script>
+  
+<script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
-<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> -->
+<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> 
 </body>
 
 </html>

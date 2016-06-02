@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
-import nsk.tfoms.survay.pojo.SenderDSSL;
+import nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel;
 import nsk.tfoms.survay.pojo.SenderSSL;
-import nsk.tfoms.survay.service.DayStacionarServiceSecondLevel;
 import nsk.tfoms.survay.service.SSLservice;
 
 @Controller
@@ -34,7 +32,7 @@ public class StacionarSecondLevel {
 	  public @ResponseBody nsk.tfoms.survay.util.JsonResponse save(@RequestParam String test) throws ParseException
 	  { 
 			nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
-			List<DayStacionarSecondlevel> list  = new ArrayList<DayStacionarSecondlevel>();	//personSvcDssl.getAll(test);
+			List<StacionarSecondlevel> list  = personSvcDssl.getAll(test);
 		 
 		    for (int i = 0; i < list.size(); i++)
 		    {
@@ -75,7 +73,7 @@ public class StacionarSecondLevel {
 		      if(sender.getSurvay1().getId() == null) personSvcDssl.create(sender);
 //		      else personSvcDssl.edit(sender,request);
 			
-		    List<DayStacionarSecondlevel> list = new ArrayList<DayStacionarSecondlevel>();//personSvcDssl.getAll(sender.getSurvay1().getPolzSecondleveldaystacionar());
+		    List<StacionarSecondlevel> list = personSvcDssl.getAll(sender.getSurvay1().getPolzSecondlSls());
 		    
 		    res.setStatus("SUCCESS");
 		    res.setResult(list);

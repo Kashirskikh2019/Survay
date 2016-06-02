@@ -24,6 +24,8 @@ import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec25;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SurvayClinicDayStacionarSec1;
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.QuestionManyStacionar;
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec1;
+import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec2;
+import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec3;
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel;
 import nsk.tfoms.survay.pojo.SenderDSSL;
 import nsk.tfoms.survay.pojo.SenderSSL;
@@ -38,9 +40,9 @@ public class SSLservice {
   
   @SuppressWarnings("unchecked")
   @Transactional
-  public List<DayStacionarSecondlevel> getAll(String userp) {
+  public List<StacionarSecondlevel> getAll(String userp) {
 	
-	 Query query = em.createQuery("SELECT p FROM DayStacionarSecondlevel p WHERE p.polzSecondleveldaystacionar=:userp ORDER BY p.id DESC");
+	 Query query = em.createQuery("SELECT p FROM StacionarSecondlevel p WHERE p.polzSecondlSls=:userp ORDER BY p.id DESC");
 	 query.setParameter("userp", userp);
 	 
 	 return query.getResultList();
@@ -54,7 +56,8 @@ public class SSLservice {
   public void create(SenderSSL sender) {
 	  
 	  StacionarSecondlevel survay = sender.getSurvay1();
-	  //SCDSSLSec2 sec2 = sender.getSurvay3();
+	  SCSSLSec2 sec2 = sender.getSurvay3();
+	  SCSSLSec3 sec3 = sender.getSurvay4();
 	  SCSSLSec1 sec1 =  sender.getSurvay2();
 	  //SCDSSLSec15 sec15 = sender.getSurvay4();
 	  //SCDSSLSec25 sec25 = sender.getSurvay5();
@@ -173,11 +176,13 @@ public class SSLservice {
 	        
       
       sec1.setStacionarsecondlevel(survay);
+      sec2.setStacionarsecondlevel(survay);
+      sec3.setStacionarsecondlevel(survay);
       
       survay.setManySSL(ls);
       survay.setScsslsec1(sec1);
-	  
-	  
+	  survay.setScsslsec2(sec2);
+	  survay.setScsslsec3(sec3);
 	  this.em.persist(survay);
 	  
   }

@@ -103,6 +103,35 @@
 		   
 		});
 
+	// кнопка отмена (при отмене на модальном окне С второй уровень)
+
+	   $("#cancelSLS").click(function()
+		{
+		   // зачищаем селекты
+		   var $form = $('#formSSL') 
+		      $('select', $form).each(function() {
+		    	  $(this).val('');
+		      });	
+		   // 	зачищаем чекбоксы
+		   $('#formSSL input:checkbox').each(function(){
+				 $(this).prop('checked', false);
+		   })
+		   // 	зачищаем ипут текст			   
+		   $('#formSSL input:text').each(function(){
+				 
+				 $(this).val('');
+		   })
+		   
+		   //$('#questionDS1dr').fadeOut();
+		   //$('#questionDS2dr').fadeOut();
+	    	//$('#questionDS3dr').fadeOut();
+		   
+		   $("input[name='dataRespSls']").val('');
+		   $(".errorSLS").css('display','none');
+		   $("#idSLS").val('');
+		   
+		});
+	   
 
 	   // кнопка отмена (при отмене на модальном окне анкеты) 
 	   $("#cancelOneDayStacionar,.close").click(function()

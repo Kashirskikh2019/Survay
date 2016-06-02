@@ -1664,7 +1664,7 @@ function dsslid( varr,varr2) {
 			      if(response.status == "SUCCESS"){
 			    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
 			    	  for(i =0 ; i < response.result.length ; i++){
-			    		  //userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
+			    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSLS + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSls + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSls + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSls+ "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSls + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondlSls+ "</a></td></tr>";
 			    	  }
 			    	  $('#records_tableSSL').html(userInfo);
 			    	  $('#records_tableSSL').animate({opacity: 0}, 0 );
@@ -1694,8 +1694,7 @@ function dsslid( varr,varr2) {
 							var general = {}
 							var sec1 = {}
 							var sec2 = {}
-							//var question25 = {}
-							//var question15 = {}
+							var sec3 = {}
 							var many = {}
 							
 							general["moSLS"] = $("#moSLS").val();
@@ -1799,11 +1798,20 @@ function dsslid( varr,varr2) {
 							if($("#questionS23many_2").is(':checked')){ many["questionS23many_2"] = $("#questionS23many_2").val();} else{ many["questionS23many_2"] = "пусто";	}
 							if($("#questionS23many_3").val() != ''){many["questionS23many_3"] = $("#questionS23many_3").val();	}else{ many["questionS23many_3"] = 'пусто';	}
 							
+							sec3["question24_1sec3"] = $("#question24_1sec3").val();
+							sec3["question24_2sec3"] = $("#question24_2sec3").val();
+							sec3["question24_3sec3"] = $("#question24_3sec3").val();
+							sec3["question24_4sec3"] = $("#question24_4sec3").val();
+							sec3["question24_5sec3"] = $("#question24_5sec3").val();
 							
-							 
-							
-							
-							
+							general["questionS25"] = $("#questionS25").val();
+							general["questionS26"] = $("#questionS26").val();
+							general["questionS27"] = $("#questionS27").val();
+							general["sexSls"] = $("#sexSls").val();
+							general["ageSls"] = $("#ageSls").val();
+							general["questionS30"] = $("#questionS30").val();
+							general["questionS31"] = $("#questionS31").val();
+							general["questionS32"] = $("#questionS32").val();
 							
 							general["polzSecondlSls"] = $("#polzSecondlSls").val();
 							
@@ -1822,25 +1830,26 @@ function dsslid( varr,varr2) {
 							 */
 							if($("#idSLS").val()){ 	general["id"] = parseInt($("#idSLS").val());}
 							
-							//$('#cancelDSSL').trigger('click');
-							//+ отрабатывает метод в other.js
+							$('#cancelSLS').trigger('click');
+							// отрабатывает метод в other.js
 							
-							var sender = ({ survay1:general, survay2:sec1,survay3:sec2, survay5:many}); 
+							var sender = ({ survay1:general, survay2:sec1, survay3:sec2,survay4:sec3, survay5:many}); 
 							
 					
 							$.post('addssl',JSON.stringify(sender),function(response)
 	    	      	                {
-										/*$('#records_tableDSSL').animate({opacity: 0.0}, 2000 );
+										
+										$('#records_tableSSL').animate({opacity: 0.0}, 2000 );
 								    	  userInfo = "<tr><th>№</th><th>МО</th><th>Дата опроса</th><th>Дата ввода</th><th>Пол</th><th>Возраст</th><th>Пользователь</th></tr>";
 								    	  for(i =0 ; i < response.result.length ; i++){
-								    		  userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSecondlevel + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSecondleveldaystacionar + "</a></td><td><a href='#' onclick=dsslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondleveldaystacionar + "</a></td></tr>";
+  												userInfo += "<tr><td><span class='mycount'></span></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].moSLS + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  + response.result[i].dataRespSls + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].dataInputSls + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].sexSls+ "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].ageSls + "</a></td><td><a href='#' onclick=sslid('"+varr+"','"+response.result[i].id+"')>"  +response.result[i].polzSecondlSls+ "</a></td></tr>";
 								    	  }
-								    	  setTimeout ("$('#records_tableDSSL').html('');",2000);
-								    	  setTimeout ("$('#records_tableDSSL').append(userInfo);", 2000);
+								    	  setTimeout ("$('#records_tableSSL').html('');",2000);
+								    	  setTimeout ("$('#records_tableSSL').append(userInfo);", 2000);
 								    	  
-								    	  $('#records_tableDSSL').animate({opacity: 1}, 2000 );
+								    	  $('#records_tableSSL').animate({opacity: 1}, 2000 );
 								    	  //  зануляем id input 
-								    	  $("#idDSSL").val('');*/
+								    	  $("#idDSSL").val('');
 	        	      	            },'json')
 	        	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
 	        	      	          	
@@ -1848,5 +1857,15 @@ function dsslid( varr,varr2) {
 						
 							
 		}	
+	
+	
+	/*
+	 * Метод заполняет модальное окно второго уровня данными по id записи (редакитирование)
+	 * СТАЦИОНАР
+	 */
+	function sslid( varr,varr2) {
+		console.log(varr+'  '+varr2);
+		
+	}
 
 

@@ -2,6 +2,7 @@ package nsk.tfoms.survay.pojo;
 
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec1;
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec2;
+import nsk.tfoms.survay.entity.secondlevel.Stacionar.SCSSLSec3;
 import nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel;
 
 public class SenderSSL {
@@ -9,6 +10,7 @@ public class SenderSSL {
 	private StacionarSecondlevel survay1;
 	private SCSSLSec1 survay2;
 	private SCSSLSec2 survay3;
+	private SCSSLSec3 survay4;
 	private WrapManySSL survay5;
 	
 	
@@ -37,7 +39,12 @@ public class SenderSSL {
 	public void setSurvay3(SCSSLSec2 survay3) {
 		this.survay3 = survay3;
 	}
-	
+	public SCSSLSec3 getSurvay4() {
+		return survay4;
+	}
+	public void setSurvay4(SCSSLSec3 survay4) {
+		this.survay4 = survay4;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -47,11 +54,15 @@ public class SenderSSL {
 		builder.append(survay2);
 		builder.append(", survay3=");
 		builder.append(survay3);
+		builder.append(", survay4=");
+		builder.append(survay4);
 		builder.append(", survay5=");
 		builder.append(survay5);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 	
 	
 			
