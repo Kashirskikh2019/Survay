@@ -483,7 +483,7 @@ $("#formOneReport").validate({
      					<button class="btn btn-success"  /*onclick="onestacbetween('${principal.username}')"*/>Выбрать</button>
      				</td>
      				<td>
-     					<button class="btn btn-success" id="addStacionarsecondlevel" data-toggle="modal" data-target="#myModal2secondlevel" /*onclick="oneLevel()"*/>Добавить запись</button>
+     					<button class="btn btn-success" id="addStacionarsecondlevel" data-toggle="modal" data-target="#myModal2secondlevel" onclick="levelsecondssl()">Добавить запись</button>
      				</td>
      			</TR>
      		</TABLE>
@@ -2912,6 +2912,7 @@ $("#formOneReport").validate({
 
 
 <!-- Добавить запись (модальное окно первого уровня Стационар) -->
+
 					<div class="modal fade" id="myModal2" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" >
 						<div class="modal-dialog modal-lg">
@@ -3751,7 +3752,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>	    
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 230px;" >
 										<div><p class="hv">15.	Если вы считаете, что ваши права в  системе ОМС нарушены, куда вы предпочитаете обратиться за помощью? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS15" style="width: 800px;">
 									      <table>
@@ -3770,7 +3771,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>	  
 									
-									<div  class="wrap-hv">
+									<div  class="wrap-hv" style="height: 70px;" >
 										<div><p class="hv">16	Пользовались ли вы правом выбора/смены лечащего врача?</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="questionS16">
@@ -3783,7 +3784,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>	    
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 170px;" >
 										<div><p class="hv">17.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS17" style="width: 800px;">
 									      <table>
@@ -3801,7 +3802,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>	   	    
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 230px;" >
 										<div><p class="hv">18.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS18" style="width: 800px;">
 									      <table>
@@ -3812,7 +3813,7 @@ $("#formOneReport").validate({
 												<input type="checkbox" id="questionS18many_3"  value="Врачом не были назначены необходимые диагностические процедуры" > Врачом не были назначены необходимые диагностические процедуры&nbsp;<br>
 												<input type="checkbox" id="questionS18many_4"  value="Врачом не было назначено необходимое лечение" > Врачом не было назначено необходимое лечение&nbsp;<br>
 												<input type="checkbox" id="questionS18many_5"  value="Врач не дал направление на обследование в другую медицинскую организацию" > Врач не дал направление на обследование в другую медицинскую организацию&nbsp;<br>
-												<input type="checkbox" id="questionS18many_6"  value="Врач  пытался  получить деньги за те услуги, которые должны быть оказаныбесплатно" > Врач  пытался  получить деньги за те услуги, которые должны быть оказаныбесплатно&nbsp;<br>
+												<input type="checkbox" id="questionS18many_6"  value="Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно" > Врач  пытался  получить деньги за те услуги, которые должны быть оказаныбесплатно&nbsp;<br>
 												<input type="checkbox" id="questionS18many_7"  value="Врач вел себя грубо, безразлично, невежливо" > Врач вел себя грубо, безразлично, невежливо&nbsp;<br>
 												Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS18many_8" >
 											</td>
@@ -3834,7 +3835,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 140px;" >
 										<div><p class="hv">20.	Что вам помешало поменять медицинскую организацию? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS20" style="width: 800px;">
 									      <table>
@@ -3850,17 +3851,17 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 200px;" >
 										<div><p class="hv">21.	Почему вы поменяли медицинскую организацию? (возможно  несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS21" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
-												<input type="checkbox" id="questionS21many_1"  value="В связи с переездом на новое место жительства" > В связи с переездом на новое место жительства&nbsp;<br>
-												<input type="checkbox" id="questionS21many_2"  value="Из-за неудобного режима работы" > Из-за неудобного режима работы&nbsp;<br>
-												<input type="checkbox" id="questionS21many_3"  value="Из-за плохих санитарно-гигиенических условий" > Из-за плохих санитарно-гигиенических условий&nbsp;<br>
-												<input type="checkbox" id="questionS21many_4"  value="В связи  с  недостаточным  спектром  медицинских  услуг  (анализы, УЗИ,ФЛГ, рентген и т.п.)" > В связи  с  недостаточным  спектром  медицинских  услуг  (анализы, УЗИ,ФЛГ, рентген и т.п.)&nbsp;<br>
-												<input type="checkbox" id="questionS21many_5"  value="Из-за недостаточно квалифицированного медицинского персонала" > Из-за недостаточно квалифицированного медицинского персонала&nbsp;<br>
+												<input type="checkbox" id="questionS21many_1"  value="В связи с переездом на новое место жительства" >В связи с переездом на новое место жительства&nbsp;<br>
+												<input type="checkbox" id="questionS21many_2"  value="из-за неудобного режима работы" >из-за неудобного режима работы&nbsp;<br>
+												<input type="checkbox" id="questionS21many_3"  value="из-за плохих санитарно-гигиенических условий" >из-за плохих санитарно-гигиенических условий&nbsp;<br>
+												<input type="checkbox" id="questionS21many_4"  value="В связи с недостаточным спектром медицинских услуг (анализы, узи,флг,рентген и т.п.)" > В связи  с  недостаточным  спектром  медицинских  услуг  (анализы, УЗИ,ФЛГ, рентген и т.п.)&nbsp;<br>
+												<input type="checkbox" id="questionS21many_5"  value="из-за недостаточно квалифицированного медицинского персонала" >из-за недостаточно квалифицированного медицинского персонала&nbsp;<br>
 												Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS21many_6" >
 											</td>
 										  </tr>
@@ -3880,14 +3881,14 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 260px;" >
+									<div  class="wrap-hv" style="height: 130px;" >
 										<div><p class="hv">23.	Почему вам отказали? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS23" style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
-												<input type="checkbox" id="questionS23many_1"  value="В  медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения" > В  медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения&nbsp;<br>
-												<input type="checkbox" id="questionS23many_2"  value="Из-за отсутствия местной регистрации" > Из-за отсутствия местной регистрации&nbsp;<br>
+												<input type="checkbox" id="questionS23many_1"  value="В медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения" > В медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения&nbsp;<br>
+												<input type="checkbox" id="questionS23many_2"  value="из-за отсутствия местной регистрации" >из-за отсутствия местной регистрации&nbsp;<br>
 												Другое (напишите)  &nbsp;<input type="text" class="length" id="questionS23many_3" >
 											</td>
 										  </tr>
@@ -4096,7 +4097,7 @@ $("#formOneReport").validate({
   <script type="text/javascript">
 
   </script>
-   <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' /> 
+ <!--    <input onclick='responsiveVoice.speak("К представителям внесистемной оппозиции следует относиться как к предателям и врагам народа, считает Рамзан Кадыров. Своё мнение глава Чечни высказал на встрече с журналистами в Грозном в канун Дня российской печати.","Russian Female");' type='button' value='🔊 Play' /> --> 
 <script src="${pageContext.request.contextPath}/resources/js/user/firstlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/secondlevel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/pressbtnfirslevel.js"></script>
@@ -4104,9 +4105,9 @@ $("#formOneReport").validate({
 <script src="${pageContext.request.contextPath}/resources/js/user/other.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/reports.js"></script>
   
-<script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
+<!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
-<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script>  --> 
 </body>
 
 </html>

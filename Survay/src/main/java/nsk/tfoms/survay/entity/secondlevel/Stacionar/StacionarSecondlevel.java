@@ -349,6 +349,71 @@ public class StacionarSecondlevel implements Serializable {
 	public void setScsslsec3(SCSSLSec3 scsslsec3) {
 		this.scsslsec3 = scsslsec3;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("StacionarSecondlevel [id=");
+		builder.append(id);
+		builder.append(", manySSL=");
+		builder.append(manySSL);
+		builder.append(", ageSls=");
+		builder.append(ageSls);
+		builder.append(", dataInputSls=");
+		builder.append(dataInputSls);
+		builder.append(", dataRespSls=");
+		builder.append(dataRespSls);
+		builder.append(", moSLS=");
+		builder.append(moSLS);
+		builder.append(", polzSecondlSls=");
+		builder.append(polzSecondlSls);
+		builder.append(", sexSls=");
+		builder.append(sexSls);
+		builder.append(", questionS1=");
+		builder.append(questionS1);
+		builder.append(", questionS2=");
+		builder.append(questionS2);
+		builder.append(", questionS3=");
+		builder.append(questionS3);
+		builder.append(", questionS4=");
+		builder.append(questionS4);
+		builder.append(", questionS6=");
+		builder.append(questionS6);
+		builder.append(", questionS7=");
+		builder.append(questionS7);
+		builder.append(", questionS8=");
+		builder.append(questionS8);
+		builder.append(", questionS10=");
+		builder.append(questionS10);
+		builder.append(", questionS12=");
+		builder.append(questionS12);
+		builder.append(", questionS16=");
+		builder.append(questionS16);
+		builder.append(", questionS19=");
+		builder.append(questionS19);
+		builder.append(", questionS22=");
+		builder.append(questionS22);
+		builder.append(", questionS25=");
+		builder.append(questionS25);
+		builder.append(", questionS26=");
+		builder.append(questionS26);
+		builder.append(", questionS27=");
+		builder.append(questionS27);
+		builder.append(", questionS30=");
+		builder.append(questionS30);
+		builder.append(", questionS31=");
+		builder.append(questionS31);
+		builder.append(", questionS32=");
+		builder.append(questionS32);
+		builder.append(", scsslsec1=");
+		builder.append(scsslsec1);
+		builder.append(", scsslsec2=");
+		builder.append(scsslsec2);
+		builder.append(", scsslsec3=");
+		builder.append(scsslsec3);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 	
 

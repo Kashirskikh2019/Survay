@@ -1810,7 +1810,7 @@ function dsslid( varr,varr2) {
 							general["sexSls"] = $("#sexSls").val();
 							general["ageSls"] = $("#ageSls").val();
 							general["questionS30"] = $("#questionS30").val();
-							general["questionS31"] = $("#questionS31").val();
+							if($.trim($('#questionS31dr').val())){	general["questionS31"] = $.trim($('#questionS31dr').val())}else{	general["questionS31"] = $("#questionS31").val();	}
 							general["questionS32"] = $("#questionS32").val();
 							
 							general["polzSecondlSls"] = $("#polzSecondlSls").val();
@@ -1860,11 +1860,257 @@ function dsslid( varr,varr2) {
 	
 	
 	/*
-	 * Метод заполняет модальное окно второго уровня данными по id записи (редакитирование)
+	 * Метод заполняет модальное окно второго уровня данными по id записи (редактирование)
 	 * СТАЦИОНАР
 	 */
 	function sslid( varr,varr2) {
 		console.log(varr+'  '+varr2);
+		
+		$.ajax({
+			url : 'slsid',
+			type: 'get',
+			dataType: 'json',
+			data : ({ user: varr, id: varr2}),
+			contentType: 'application/json',
+		    mimeType: 'application/json',
+		    success: function(response)
+		    {
+		    	
+		    	// we have the response 
+			      if(response.status == "SUCCESS")
+			      {
+			    	  /*		console.log('test '+JSON.stringify(response));
+			    	  		console.log('=======================');
+			    		  console.log('test '+JSON.stringify(response.result[0]));
+			    		  console.log('=======================');
+			    		  console.log('test '+JSON.stringify(response.result[0].survayClinicSec1));
+			    		  console.log('=======================');
+			    		  console.log('test '+JSON.stringify(response.result[0].question_many));
+			    	  */
+			    	    
+			    	    $('#addStacionarsecondlevel').trigger('click');
+				    	$('#myModal2secondlevel .modal-title').text('Редактирование анкеты второго уровня');
+				    	$('.modal-header p').text('Редактирование анкеты стационарной помощи');
+				    	$('.renamebtnssl').text('Редактировать');
+				    	
+				    	for(i =0 ; i < response.result.length ; i++){
+				    		  $("#idSLS").val(response.result[i].id);
+				    		  $("#moSLS option:contains(" + response.result[i].moSLS +")").prop('selected', true);
+				    		  $("input[name='dataRespSls']").val(response.result[i].dataRespSls);
+				    		  
+				    		  if(response.result[i].questionS1 != 'В плановом порядке (по направлению поликлиники)' &&
+				    				  response.result[i].questionS1 != 'В срочном порядке (бригадой "скорой помощи")' &&
+				    				  response.result[i].questionS1 != 'Пришел(ла) сам(а)' ){
+				    			  $('#questionS1dr').fadeIn();
+				    			  $('#questionS1dr').val(response.result[i].questionS1);
+				    			  $("#questionS1 option:contains('Другое (напишите)')").prop('selected', true);
+				    		  }else{	$("#questionS1 option:contains(" + response.result[i].questionS1 +")").prop('selected', true);	}
+				    		  
+				    		  
+				    		  $("#questionS2 option:contains(" + response.result[i].questionS2 +")").prop('selected', true);
+				    		  $("#questionS3").val(response.result[i].questionS3);
+				    		  $("#questionS4 option:contains(" + response.result[i].questionS4 +")").prop('selected', true);
+				    		  $("#questionS5sec1 option:contains(" + response.result[0].scsslsec1.questionS5sec1 +")").prop('selected', true);
+				    		  $("#questionS6 option:contains(" + response.result[i].questionS6 +")").prop('selected', true);
+				    		  $("#questionS7 option:contains(" + response.result[i].questionS7 +")").prop('selected', true);
+				    		  $("#questionS8 option:contains(" + response.result[i].questionS8 +")").prop('selected', true);
+				    		  
+				    		  $("#questionS9_1sec1 option:contains(" + response.result[0].scsslsec1.questionS9_1sec1 +")").prop('selected', true);
+				    		  $("#questionS9_2sec1 option:contains(" + response.result[0].scsslsec1.questionS9_2sec1 +")").prop('selected', true);
+				    		  $("#questionS9_3sec1 option:contains(" + response.result[0].scsslsec1.questionS9_3sec1 +")").prop('selected', true);
+				    		  $("#questionS9_4sec1 option:contains(" + response.result[0].scsslsec1.questionS9_4sec1 +")").prop('selected', true);
+				    		  $("#questionS9_5sec1 option:contains(" + response.result[0].scsslsec1.questionS9_5sec1 +")").prop('selected', true);
+				    		  $("#questionS9_6sec1 option:contains(" + response.result[0].scsslsec1.questionS9_6sec1 +")").prop('selected', true);
+				    		  $("#questionS9_7sec1 option:contains(" + response.result[0].scsslsec1.questionS9_7sec1 +")").prop('selected', true);
+				    		  $("#questionS9_8sec1 option:contains(" + response.result[0].scsslsec1.questionS9_8sec1 +")").prop('selected', true);
+				    		  $("#questionS9_9sec1 option:contains(" + response.result[0].scsslsec1.questionS9_9sec1 +")").prop('selected', true);
+				    		  $("#questionS9_10sec1 option:contains(" + response.result[0].scsslsec1.questionS9_10sec1 +")").prop('selected', true);
+				    		  $("#questionS9_11sec1 option:contains(" + response.result[0].scsslsec1.questionS9_11sec1 +")").prop('selected', true);
+				    		  $("#questionS9_12sec1 option:contains(" + response.result[0].scsslsec1.questionS9_12sec1 +")").prop('selected', true);
+				    		  $("#questionS9_13sec1 option:contains(" + response.result[0].scsslsec1.questionS9_13sec1 +")").prop('selected', true);
+				    		  $("#questionS9_14sec1 option:contains(" + response.result[0].scsslsec1.questionS9_14sec1 +")").prop('selected', true);
+				    		  $("#questionS9_15sec1 option:contains(" + response.result[0].scsslsec1.questionS9_15sec1 +")").prop('selected', true);
+				    		  $("#questionS9_16sec1 option:contains(" + response.result[0].scsslsec1.questionS9_16sec1 +")").prop('selected', true);
+				    		  $("#questionS9_17sec1 option:contains(" + response.result[0].scsslsec1.questionS9_17sec1 +")").prop('selected', true);
+				    		  $("#questionS9_18sec1 option:contains(" + response.result[0].scsslsec1.questionS9_18sec1 +")").prop('selected', true);
+				    		  $("#questionS9_19sec1 option:contains(" + response.result[0].scsslsec1.questionS9_19sec1 +")").prop('selected', true);
+				    		  
+				    		  $("#questionS10 option:contains(" + response.result[i].questionS10 +")").prop('selected', true);
+				    		  $("#questionS12 option:contains(" + response.result[i].questionS12 +")").prop('selected', true);
+				    		  $("#questionS16 option:contains(" + response.result[i].questionS16 +")").prop('selected', true);
+				    		  $("#questionS19 option:contains(" + response.result[i].questionS19 +")").prop('selected', true);
+				    		  $("#questionS22 option:contains(" + response.result[i].questionS22 +")").prop('selected', true);
+				    		  $("#questionS25").val(response.result[i].questionS25);
+				    		  $("#questionS26 option:contains(" + response.result[i].questionS26 +")").prop('selected', true);
+				    		  $("#questionS27 option:contains(" + response.result[i].questionS27 +")").prop('selected', true);
+				    		  $("#questionS30 option:contains(" + response.result[i].questionS30 +")").prop('selected', true);
+				    		  $("#questionS31 option:contains(" + response.result[i].questionS31 +")").prop('selected', true);
+				    		  $("#questionS32 option:contains(" + response.result[i].questionS32 +")").prop('selected', true);
+				    		  
+				    		  $("#questionS11sec1 option:contains(" + response.result[0].scsslsec1.questionS11sec1 +")").prop('selected', true);
+				    		  
+				    		  $("#question14_1sec2 option:contains(" + response.result[0].scsslsec2.question14_1sec2 +")").prop('selected', true);
+				    		  $("#question14_2sec2 option:contains(" + response.result[0].scsslsec2.question14_2sec2 +")").prop('selected', true);
+				    		  $("#question14_3sec2 option:contains(" + response.result[0].scsslsec2.question14_3sec2 +")").prop('selected', true);
+				    		  $("#question14_4sec2 option:contains(" + response.result[0].scsslsec2.question14_4sec2 +")").prop('selected', true);
+				    		  $("#question14_5sec2 option:contains(" + response.result[0].scsslsec2.question14_5sec2 +")").prop('selected', true);
+				    		  $("#question14_6sec2 option:contains(" + response.result[0].scsslsec2.question14_6sec2 +")").prop('selected', true);
+				    		  $("#question14_7sec2 option:contains(" + response.result[0].scsslsec2.question14_7sec2 +")").prop('selected', true);
+				    		  $("#question14_8sec2 option:contains(" + response.result[0].scsslsec2.question14_8sec2 +")").prop('selected', true);
+				    		  $("#question14_9sec2 option:contains(" + response.result[0].scsslsec2.question14_9sec2 +")").prop('selected', true);
+				    		  $("#question14_10sec2 option:contains(" + response.result[0].scsslsec2.question14_10sec2 +")").prop('selected', true);
+				    		  $("#question14_11sec2 option:contains(" + response.result[0].scsslsec2.question14_11sec2 +")").prop('selected', true);
+				    		  
+				    		  
+				    		  $("#question24_1sec3 option:contains(" + response.result[0].scsslsec3.question24_1sec3 +")").prop('selected', true);
+				    		  $("#question24_2sec3 option:contains(" + response.result[0].scsslsec3.question24_2sec3 +")").prop('selected', true);
+				    		  $("#question24_3sec3 option:contains(" + response.result[0].scsslsec3.question24_3sec3 +")").prop('selected', true);
+				    		  $("#question24_4sec3 option:contains(" + response.result[0].scsslsec3.question24_4sec3 +")").prop('selected', true);
+				    		  $("#question24_5sec3 option:contains(" + response.result[0].scsslsec3.question24_5sec3 +")").prop('selected', true);
+				    		  
+				    		  $("#sexSls option:contains(" + response.result[i].sexSls +")").prop('selected', true);
+				    		  $("#ageSls option:contains(" + response.result[i].ageSls +")").prop('selected', true);
+				    		  
+				    		  for(i =0 ; i < response.result[0].manySSL.length ; i++){
+				    			  
+				    			  
+				    			  // вопрос 13
+					    		  if(response.result[0].manySSL[i].questionS13many == 'От медицинских работников') {	$("#questionS13many_1").prop("checked", true);}
+					    		  else{
+					    			  if(response.result[0].manySSL[i].questionS13many == 'От сотрудников страховой компании') {	$("#questionS13many_2").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manySSL[i].questionS13many == 'От сотрудников Фонда ОМС') {	$("#questionS13many_3").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manySSL[i].questionS13many == 'От знакомых/родственников') {	$("#questionS13many_4").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manySSL[i].questionS13many == 'из средств массовой информации') {	$("#questionS13many_5").prop("checked", true);}
+								    			  else{
+								    				  if(response.result[0].manySSL[i].questionS13many == 'из информации для населения в медицинских организациях (стенды, брошюры,листовки)') {	$("#questionS13many_6").prop("checked", true);}
+									    			  else{
+									    				  if(response.result[0].manySSL[i].questionS13many == 'из сети интернет') {	$("#questionS13many_7").prop("checked", true);}
+										    			  else{
+										    				  if(response.result[0].manySSL[i].questionS13many == 'Я не знаю своих прав') {	$("#questionS13many_8").prop("checked", true);}
+											    			  else{
+											    				  if(response.result[0].manySSL[i].questionS13many == 'Затрудняюсь ответить') {	$("#questionS13many_9").prop("checked", true);}
+												    			  else{
+												    				  if(response.result[0].manySSL[i].questionS13many != null) $("#questionS13many_10").val(response.result[0].manySSL[i].questionS13many);
+												    			  }
+											    			  }
+										    			  }
+									    			  }
+								    			  }
+							    			  }
+						    			  }
+					    			  }
+					    		  }
+				    			  
+				    			  // вопрос 15
+					    		  if(response.result[0].manySSL[i].questionS15many == 'Администрация медицинской организации') {	$("#questionS15many_1").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manySSL[i].questionS15many == 'Страховая компания, выдавшая полис ОМС') {	$("#questionS15many_2").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manySSL[i].questionS15many == 'Фонд обязательного медицинского страхования') {	$("#questionS15many_3").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manySSL[i].questionS15many == 'Органы управления здравоохранением') {	$("#questionS15many_4").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manySSL[i].questionS15many == 'Гражданский суд') {	$("#questionS15many_5").prop("checked", true);}
+								    			  else{
+								    				  if(response.result[0].manySSL[i].questionS15many == 'Затрудняюсь ответить') {	$("#questionS15many_6").prop("checked", true);}
+									    			  else{
+									    				  if(response.result[0].manySSL[i].questionS15many != null) $("#questionS15many_7").val(response.result[0].manySSL[i].questionS15many);
+									    			  }
+								    			  }
+							    			  }
+						    			  }
+					    			  }
+				    			  }
+					    		  
+					    		  // вопрос 17
+					    		  if(response.result[0].manySSL[i].questionS17many == 'Не знал(а), куда обратиться') {	$("#questionS17many_1").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manySSL[i].questionS17many == 'Решил(а), что пытаться бесполезно') {	$("#questionS17many_2").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manySSL[i].questionS17many == 'Побоялся(лась) огласки') {	$("#questionS17many_3").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manySSL[i].questionS17many == 'Не хотел(а) портить отношения с врачом') {	$("#questionS17many_4").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manySSL[i].questionS17many != null) $("#questionS17many_5").val(response.result[0].manySSL[i].questionS17many);
+							    			  }
+						    			  }
+					    			  }
+				    			  }
+					    		  
+					    		  // вопрос 18
+					    		  if(response.result[0].manySSL[i].questionS18many == 'Врачом оказана некачественная медицинская помощь') {	$("#questionS18many_1").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manySSL[i].questionS18many == 'Врачом разглашена конфиденциальная информация о состоянии здоровья') {	$("#questionS18many_2").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manySSL[i].questionS18many == 'Врачом не были назначены необходимые диагностические процедуры') {	$("#questionS18many_3").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manySSL[i].questionS18many == 'Врачом не было назначено необходимое лечение') {	$("#questionS18many_4").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manySSL[i].questionS18many == 'Врач не дал направление на обследование в другую медицинскую организацию') {	$("#questionS18many_5").prop("checked", true);}
+								    			  else{
+								    				  if(response.result[0].manySSL[i].questionS18many == 'Врач  пытался  получить деньги за те услуги, которые должны быть оказаны бесплатно') {	$("#questionS18many_6").prop("checked", true);}
+									    			  else{
+									    				  if(response.result[0].manySSL[i].questionS18many == 'Врач вел себя грубо, безразлично, невежливо') {	$("#questionS18many_7").prop("checked", true);}
+										    			  else{
+										    				  if(response.result[0].manySSL[i].questionS18many != null) $("#questionS18many_8").val(response.result[0].manySSL[i].questionS18many);
+										    			  }
+									    			  }
+								    			  }
+							    			  }  
+						    			  }
+					    			  }
+				    			  }
+					    		  
+					    		  // вопрос 20
+					    		  if(response.result[0].manySSL[i].questionS20many == 'Не знал(а), куда обратиться') {	$("#questionS20many_1").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manySSL[i].questionS20many == 'Решил(а), что пытаться бесполезно') {	$("#questionS20many_2").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manySSL[i].questionS20many != null) $("#questionS20many_3").val(response.result[0].manySSL[i].questionS20many);
+					    			  }
+				    			  }
+					    		  
+					    		  // вопрос 21
+					    		  if(response.result[0].manySSL[i].questionS21many == 'В связи с переездом на новое место жительства') {	$("#questionS21many_1").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manySSL[i].questionS21many == 'из-за неудобного режима работы') {	$("#questionS21many_2").prop("checked", true);}
+					    			  else{
+					    				  if(response.result[0].manySSL[i].questionS21many == 'из-за плохих санитарно-гигиенических условий') {	$("#questionS21many_3").prop("checked", true);}
+						    			  else{
+						    				  if(response.result[0].manySSL[i].questionS21many == 'В связи с недостаточным спектром медицинских услуг (анализы, узи,флг,рентген и т.п.)') {	$("#questionS21many_4").prop("checked", true);}
+							    			  else{
+							    				  if(response.result[0].manySSL[i].questionS21many == 'из-за недостаточно квалифицированного медицинского персонала') {	$("#questionS21many_5").prop("checked", true);}
+								    			  else{
+								    				  if(response.result[0].manySSL[i].questionS21many != null) $("#questionS21many_6").val(response.result[0].manySSL[i].questionS21many);
+								    			  }
+							    			  }
+						    			  }
+					    			  }
+				    			  }
+					    		  // вопрос 23
+					    		  if(response.result[0].manySSL[i].questionS23many == 'В медицинской организации, в которой я хотел(а) лечиться, слишком многоприкрепленного населения') {	$("#questionS23many_1").prop("checked", true);}
+				    			  else{
+				    				  if(response.result[0].manySSL[i].questionS23many == 'из-за отсутствия местной регистрации') {	$("#questionS23many_2").prop("checked", true);}
+					    			  else{
+					    				  	if(response.result[0].manySSL[i].questionS23many != null) $("#questionS23many_3").val(response.result[0].manySSL[i].questionS23many);
+					    			  }
+				    			  }
+				    		  }
+				    		  
+				    		  
+				    		  
+				    	}	  
+			      }
+		    	
+		
+			 },  
+			    error: function(e){  
+			      alert('Error: ' + e);  
+			    }
+		});
 		
 	}
 

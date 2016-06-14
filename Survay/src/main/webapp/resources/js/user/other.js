@@ -46,6 +46,30 @@
 		    		  $('#questionDS32dr').val(''); $('#questionDS32dr').fadeOut();}
 		   
 		});
+	   
+		// выпадающей input в вопросе на условие напишите другое
+	   $("#questionS1").click(function()
+		{
+		    	  if($(this).val() == 'Другое (напишите)')
+		    	  {
+		    		  $('#questionS1dr').fadeIn();
+		    	  }
+		    	  else{
+		    		  $('#questionS1dr').val(''); $('#questionS1dr').fadeOut();}
+		   
+		});
+	   
+	   // 	выпадающей input в вопросе на условие напишите другое
+	   $("#questionS31").click(function()
+		{
+		    	  if($(this).val() == 'Другое (напишите)')
+		    	  {
+		    		  $('#questionS31dr').fadeIn();
+		    	  }
+		    	  else{
+		    		  $('#questionS31dr').val(''); $('#questionS31dr').fadeOut();}
+		   
+		});
 
 	   // кнопка отмена (при отмене на модальном окне поликлиника второй уровень)
 
@@ -122,9 +146,8 @@
 				 $(this).val('');
 		   })
 		   
-		   //$('#questionDS1dr').fadeOut();
-		   //$('#questionDS2dr').fadeOut();
-	    	//$('#questionDS3dr').fadeOut();
+		   $('#questionS1dr').fadeOut();
+		   $('#questionS31dr').fadeOut();
 		   
 		   $("input[name='dataRespSls']").val('');
 		   $(".errorSLS").css('display','none');
@@ -265,6 +288,22 @@
     	$('#questionDS2dr').fadeOut();
     	$('#questionDS3dr').fadeOut();
     	$("#errorDSSL").css('display', 'none');
+    	
+	   }
+	   
+	   /*
+	    * Метод обновляет запись в модальном окне второго уровня С
+	    * с режима редактирования в режим добавления
+	    */
+	   function levelsecondssl() {
+		   
+	   	$('#myModal2secondlevel .modal-title').text('Добавление анкеты второго уровня');
+	   	$('.modal-header p').text('Добавление анкеты стационарной помощи');
+    	$('.renamebtnssl').text('Добавить анкету');
+    	
+    	$('#questionS1dr').fadeOut();
+    	$('#questionS31dr').fadeOut();
+    	$("#errorSLS").css('display', 'none');
     	
 	   }
 	   
