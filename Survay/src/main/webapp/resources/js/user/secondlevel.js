@@ -946,6 +946,9 @@ function dsslvalidlev2(){
 			$(".deldssl24").css({'opacity':1,'pointer-events':'visible'});
 		}
 	 
+	 
+	 if($("#questionDS27").val() == 'Нет, никогда не приходилось (к вопросу 29)'){ $(".ssldel28").css({'opacity':0.4,'pointer-events':'none'}); $('#questionDS28').prop('disabled', true); }
+		else{$(".ssldel28").css({'opacity':1,'pointer-events':'visible'}); $('#questionDS28').prop('disabled', false);}
 	
 	}		
 
@@ -1160,9 +1163,12 @@ function validateSecondDS()
 		   var d26= 0 ;
 		   if(!$('#questionDS26').is(':disabled')){	if($.trim($("#questionDS26").val()) == '') d26++;	}
 		   
+		   var d28= 0 ;
+		   if(!$('#questionDS28').is(':disabled')){	if($.trim($("#questionDS28").val()) == '') d28++;	}
 		   
-		  console.log('t '+t+' d14 '+d14+' d16 '+d+' d_18 '+d_18+' d_19 '+d_19+' d_21 '+d_21+' d_22 '+d_22+' d_24 '+d_24+' d25_5 '+d25_5+' d26 '+d26); 
-	      if((t+d+d_18+d_19+d_21+d_22+d_24+d25_5+d26+d14) > 0) return true; else false;	
+		   
+		  console.log('t '+t+' d14 '+d14+' d16 '+d+' d_18 '+d_18+' d_19 '+d_19+' d_21 '+d_21+' d_22 '+d_22+' d_24 '+d_24+' d25_5 '+d25_5+' d26 '+d26+' d28 '+d28); 
+	      if((t+d+d_18+d_19+d_21+d_22+d_24+d25_5+d26+d14+d28) > 0) return true; else false;	
 }
 
 function secondlevelds(varr) {
@@ -1689,7 +1695,7 @@ function dsslid( varr,varr2) {
 	function secondlevelsls(varr) {
 		
 		
-		//if(validateSecondDS()){  $(".errorDSSL").css('display','block');	}else{}
+		if(validateSecondS()){  $(".errorSSL").css('display','block');	}else{
 		
 							var general = {}
 							var sec1 = {}
@@ -1853,7 +1859,7 @@ function dsslid( varr,varr2) {
 	        	      	            },'json')
 	        	      	          	.error(function(msg) {console.log('test BAD'); $("#idDSSL").val('');});
 	        	      	          	
-							
+		}				
 						
 							
 		}	
@@ -2112,6 +2118,153 @@ function dsslid( varr,varr2) {
 			    }
 		});
 		
+	}
+	
+	
+	/*
+	 * Метод обрабатывает такие моменты в анкете второрго уровня СТАЦИОНАР как  к вопросу 31'
+	 * т.е. блокирует вопросы которые нужно перепрыгнуть
+	 */
+	function sslvalidlev(){
+		
+		 if($("#questionS10").val() == 'Нет (к вопросу 12)'){ $(".ssldel11").css({'opacity':0.4,'pointer-events':'none'}); $('#questionS11sec1').prop('disabled', true);}
+			else{$(".ssldel11").css({'opacity':1,'pointer-events':'visible'}); $('#questionS11sec1').prop('disabled', false);}
+		 
+		 
+		 if($("#questionS16").val() == 'Да (к вопросу 18)'){
+				
+				$('.validquestS17 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 $(".validquestS17  input:text").prop('disabled', true);
+				$(".delssl17").css({'opacity':0.4,'pointer-events':'none'});
+				
+				
+				$('.validquestS18 input:checkbox').each(function(){
+					 $(this).prop('disabled', false);
+				 })
+				 $(".validquestS18  input:text").prop('disabled', false);
+				$(".delssl18").css({'opacity':1,'pointer-events':'visible'});
+			}
+			else{
+					$('.validquestS17 input:checkbox').each(function(){
+						 $(this).prop('disabled', false);
+					 })
+					 $(".validquestS17  input:text").prop('disabled', false);
+					$(".delssl17").css({'opacity':1,'pointer-events':'visible'});
+					
+					
+					
+					
+					if($("#questionS16").val() == 'Нет, не было необходимости (к вопросу 19)'){
+						
+						$('.validquestS17 input:checkbox').each(function(){
+							 $(this).prop('disabled', true);
+						 })
+						 $(".validquestS17  input:text").prop('disabled', true);
+						$(".delssl17").css({'opacity':0.4,'pointer-events':'none'});
+						
+						$('.validquestS18 input:checkbox').each(function(){
+							 $(this).prop('disabled', true);
+						 })
+						 $(".validquestS18  input:text").prop('disabled', true);
+						$(".delssl18").css({'opacity':0.4,'pointer-events':'none'});
+					}
+					else{
+							$('.validquestS17 input:checkbox').each(function(){
+								 $(this).prop('disabled', false);
+							 })
+							 $(".validquestS17  input:text").prop('disabled', false);
+							$(".delssl17").css({'opacity':1,'pointer-events':'visible'});
+							
+							$('.validquestS18 input:checkbox').each(function(){
+								 $(this).prop('disabled', false);
+							 })
+							 $(".validquestS18  input:text").prop('disabled', false);
+							$(".delssl18").css({'opacity':1,'pointer-events':'visible'});
+						}
+			}		
+		
+	}
+	
+	/*
+	 * Метод проверяет на заполненость всей формы второй уровень С
+	 * метод учитывает если вопрос отключен
+	 */
+	function validateSecondS()
+	{
+		      
+			  // проверяем селекты	без права выбора 'Другое (напишите)'
+		     var t=0;
+		      var $form = $('#formSSL') 
+		      $('select', $form).each(function() {
+		    	  if(!$(this).is(':disabled') ){
+		    		  if('questionS1'!= $(this).attr('id')  && 'questionS31'!= $(this).attr('id')){
+		    			  
+			    		  // выбираем выбранное
+			    		  if($(this).find('option:selected').text().length == 0){
+				  	        	t++;
+			    		  }  
+		    		  }
+		    		  else
+		    		  {
+		    			  if('questionS1'=== $(this).attr('id'))
+		    			  {
+		    				  if($('#questionS1dr').is(':visible')){
+		    					  if($.trim($('#questionS1dr').val()) == ''){
+				    				  t++;  
+		    					  }
+			    			  }else
+			    			  {
+			    				  if($(this).find('option:selected').text().length == 0){
+						  	        	t++;
+			    				  }  
+			    			  }
+		    			  }
+		    			  
+		    			  
+		    			  if('questionS31'=== $(this).attr('id'))
+		    			  {
+		    				  if($('#questionS31dr').is(':visible')){
+		    					  if($.trim($('#questionS31dr').val()) == ''){
+				    				  t++;  
+		    					  }
+			    			  }else
+			    			  {
+			    				  if($(this).find('option:selected').text().length == 0){
+						  	        	t++;
+			    				  }  
+			    			  }
+		    			  }
+		    			  
+		    		  }
+		    	  }
+		      });
+		      
+		      var d_17 = 0;
+			   if(!$('#questionS17many_1').is(':disabled')){
+				   $('.validquestS17 input:checkbox').each(function(){
+						 if(!$(this).is(':checked')){d_17++;}
+				   })
+				   if(d_17 == 4){	if($.trim($(".validquestS17  input:text").val()) != '') d_17=0; }
+				   else{d_17 =	0;}
+			   }
+			   
+			   var d_18 = 0;
+			   if(!$('#questionS18many_1').is(':disabled')){
+				   $('.validquestS18 input:checkbox').each(function(){
+						 if(!$(this).is(':checked')){d_18++;}
+				   })
+				   if(d_18 == 7){	if($.trim($(".validquestS18  input:text").val()) != '') d_18=0; }
+				   else{d_18 =	0;}
+			   }
+		      
+		      
+		     
+			   
+			   
+			  console.log('t '+t+' d17 '+d_17+' d18 '+d_18); 
+		      if((t+d_17+d_18) > 0) return true; else false;	
 	}
 
 

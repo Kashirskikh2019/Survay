@@ -2577,16 +2577,16 @@ $("#formOneReport").validate({
 									   <div  class="wrap-hv">
 											<div><p class="hv">27.	Случалось ли вам когда-нибудь благодарить медицинских работников замедицинскую помощь? (один ответ)</p></div>
 										    <div class="col-xs-4">
-										      <select class="form-control input-sm" id="questionDS27">
+										      <select class="form-control input-sm" id="questionDS27" onclick="dsslvalidlev2()">
 										      	<option value=""></option>
 										        <option>Да, это происходит довольно часто</option>
 										        <option>Да, иногда случается</option>
-										        <option>Нет, никогда не приходилось (к вопросу 39)</option>
+										        <option>Нет, никогда не приходилось (к вопросу 29)</option>
 										      </select>
 										    </div><br><br>
 										 </div> 
 										 
-										 <div  class="wrap-hv">
+										 <div  class="wrap-hv ssldel28">
 											<div><p class="hv">28.	Кто выступал инициатором такой "благодарности"?</p></div>
 										    <div class="col-xs-4">
 										      <select class="form-control input-sm" id="questionDS28">
@@ -3552,7 +3552,7 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">10.	Приходилось  ли вам лично (для себя) за последние 3 месяца обращаться к услугам скорой медицинской помощи?</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionS10">
+									      <select class="form-control input-sm" id="questionS10" onclick="sslvalidlev()">
 									      	<option value=""></option>
 									        <option>Да</option>
 									        <option>Нет (к вопросу 12)</option>
@@ -3560,7 +3560,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv">
+									<div  class="wrap-hv ssldel11">
 										<div><p class="hv">11.	Насколько вы удовлетворены качеством оказанной вам скорой медицинской помощи?</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="questionS11sec1">
@@ -3774,17 +3774,17 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv" style="height: 70px;" >
 										<div><p class="hv">16	Пользовались ли вы правом выбора/смены лечащего врача?</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionS16">
+									      <select class="form-control input-sm" id="questionS16" onclick="sslvalidlev()">
 									      	<option value=""></option>
 									        <option>Да (к вопросу 18)</option>
 									        <option>Хотел(а), но не смог(ла) (к вопросу 17)</option>
-									        <option>Нет, не было необходимости  (к вопросу 19)</option>
+									        <option>Нет, не было необходимости (к вопросу 19)</option>
 									        <option>Нет, не знал(а), что это возможно</option>
 									      </select>
 									    </div><br><br>
 									</div>	    
 									
-									<div  class="wrap-hv" style="height: 170px;" >
+									<div  class="wrap-hv delssl17" style="height: 170px;" >
 										<div><p class="hv">17.	Что вам помешало сменить врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS17" style="width: 800px;">
 									      <table>
@@ -3802,7 +3802,7 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>	   	    
 									
-									<div  class="wrap-hv" style="height: 230px;" >
+									<div  class="wrap-hv delssl18" style="height: 230px;" >
 										<div><p class="hv">18.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS18" style="width: 800px;">
 									      <table>
@@ -3977,7 +3977,7 @@ $("#formOneReport").validate({
 									 <div  class="wrap-hv">
 											<div><p class="hv">26.	Случалось ли вам когда-нибудь благодарить медицинских работников замедицинскую помощь? (один ответ)</p></div>
 										    <div class="col-xs-4">
-										      <select class="form-control input-sm" id="questionS26">
+										      <select class="form-control input-sm" id="questionS26" onclick="sslvalidlev()">
 										      	<option value=""></option>
 										        <option>Да, это происходит довольно часто</option>
 										        <option>Да, иногда случается</option>
