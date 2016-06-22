@@ -2184,6 +2184,173 @@ function dsslid( varr,varr2) {
 							$(".delssl18").css({'opacity':1,'pointer-events':'visible'});
 						}
 			}		
+		 
+		 var  sht = 0;
+		 if(!$('#questionS18many_1').is(':disabled')){
+			 
+			 $('.validquestS18 input:checkbox').each(function(){
+				 
+				 if($(this).is(':checked')){sht ++;}
+				 if(sht == 0){
+					 if($.trim($('#questionS18many_8').val()) != '') sht++;
+				 }
+			 })
+			 if(sht > 0){
+				 
+				 //$(".validquestS19").css({'opacity':0.4,'pointer-events':'none'});
+				 $(".validquestS19").css({'opacity':0.4});
+				 $('#questionS19').prop('disabled', true);
+
+			 }else{
+				 //$(".validquestS19").css({'opacity':1,'pointer-events':'visible'});
+				 $(".validquestS19").css({'opacity':1});
+				 $('#questionS19').prop('disabled', false);
+			 }
+		 }
+		 
+		 if($("#questionS19").val() == 'Да (к вопросу 21)'){
+				
+				$('.validquestS20 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 $(".validquestS20  input:text").prop('disabled', true);
+				$(".validquestS20").css({'opacity':0.4,'pointer-events':'none'});
+				
+				
+				$('.validquestS21 input:checkbox').each(function(){
+					 $(this).prop('disabled', false);
+				 })
+				 $(".validquestS21  input:text").prop('disabled', false);
+				$(".validquestS21").css({'opacity':1,'pointer-events':'visible'});
+				
+			}
+			else{
+					$('.validquestS20 input:checkbox').each(function(){
+						 $(this).prop('disabled', false);
+					 })
+					 $(".validquestS20  input:text").prop('disabled', false);
+					$(".validquestS20").css({'opacity':1,'pointer-events':'visible'});
+					
+					
+					
+					
+					if($("#questionS19").val() == 'Нет, не было необходимости (к вопросу 22)'){
+						
+						$('.validquestS20 input:checkbox').each(function(){
+					 		$(this).prop('disabled', true);
+				 		})
+				 		$(".validquestS20  input:text").prop('disabled', true);
+						$(".validquestS20").css({'opacity':0.4,'pointer-events':'none'});
+						
+						$('.validquestS21 input:checkbox').each(function(){
+							 $(this).prop('disabled', true);
+						 })
+						 $(".validquestS21  input:text").prop('disabled', true);
+						$(".validquestS21").css({'opacity':0.4,'pointer-events':'none'});
+					}
+					else{
+							$('.validquestS20 input:checkbox').each(function(){
+								 $(this).prop('disabled', false);
+							 })
+							 $(".validquestS20  input:text").prop('disabled', false);
+							$(".validquestS20").css({'opacity':1,'pointer-events':'visible'});
+							
+							$('.validquestS21 input:checkbox').each(function(){
+								 $(this).prop('disabled', false);
+							 })
+							 $(".validquestS21  input:text").prop('disabled', false);
+							$(".validquestS21").css({'opacity':1,'pointer-events':'visible'});
+						}
+			}	
+		 
+		 
+		 
+		 var  sht1 = 0;
+		 if(!$('#questionS20many_1').is(':disabled')){
+			 
+			 $('.validquestS20 input:checkbox').each(function(){
+				 
+				 if($(this).is(':checked')){sht1 ++;}
+				 if(sht1 == 0){
+					 if($.trim($('#questionS20many_3').val()) != '') sht1++;
+				 }
+			 })
+			 if(sht1 > 0){
+				 
+				 $('.validquestS21 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 $(".validquestS21  input:text").prop('disabled', true);
+				$(".validquestS21").css({'opacity':0.4});
+
+			 }else{
+				 $('.validquestS21 input:checkbox').each(function(){
+					 $(this).prop('disabled', false);
+				 })
+				 $(".validquestS21  input:text").prop('disabled', false);
+				$(".validquestS21").css({'opacity':1});
+			 }
+		 }
+		 
+		 
+		 
+		 
+		// ===========================================ХОВЕР============================================= 
+		 $('.validquestS19').hover(function() {
+				if($.trim($('#questionS18many_8').val()) != '')
+				{
+					
+					// $(".validquestS19").css({'opacity':0.4,'pointer-events':'none'});
+					$(".validquestS19").css({'opacity':0.4});
+					 $('#questionS19').prop('disabled', true);
+				}
+				else
+				{
+					var qwe = 0;
+					$('.validquestS18 input:checkbox').each(function(){
+						if($(this).is(':checked')){qwe ++;}
+					 })
+
+					 // т.е. если помимо input text  стоят отметки в чек боксах то ничего...иначе...
+					 if(qwe > 0){}else
+					 {
+						// $(".validquestS19").css({'opacity':1,'pointer-events':'visible'});
+						 $(".validquestS19").css({'opacity':1});
+						 $('#questionS19').prop('disabled', false);
+					 }	 
+				}
+			});
+		 
+		 
+		 $('.validquestS21').hover(function() {
+				if($.trim($('#questionS20many_3').val()) != '')
+				{
+					
+					$('.validquestS21 input:checkbox').each(function(){
+						 $(this).prop('disabled', true);
+					 })
+					 $(".validquestS21  input:text").prop('disabled', true);
+					$(".validquestS21").css({'opacity':0.4});
+				}
+				else
+				{
+					var qe = 0;
+					$('.validquestS20 input:checkbox').each(function(){
+						if($(this).is(':checked')){qe ++;}
+					 })
+
+					 // т.е. если помимо input text  стоят отметки в чек боксах то ничего...иначе...
+					 if(qe > 0){}else
+					 {
+						 $('.validquestS21 input:checkbox').each(function(){
+							 $(this).prop('disabled', false);
+						 })
+						 $(".validquestS21  input:text").prop('disabled', false);
+						$(".validquestS21").css({'opacity':1});
+					 }	 
+				}
+			});
+		 //==============================================================================================
 		
 	}
 	
@@ -2258,13 +2425,31 @@ function dsslid( varr,varr2) {
 				   if(d_18 == 7){	if($.trim($(".validquestS18  input:text").val()) != '') d_18=0; }
 				   else{d_18 =	0;}
 			   }
+			   
+			   var d_20 = 0;
+			   if(!$('#questionS20many_1').is(':disabled')){
+				   $('.validquestS20 input:checkbox').each(function(){
+						 if(!$(this).is(':checked')){d_20++;}
+				   })
+				   if(d_20 == 2){	if($.trim($(".validquestS20  input:text").val()) != '') d_20=0; }
+				   else{d_20 =	0;}
+			   }
+			   
+			   var d_21 = 0;
+			   if(!$('#questionS21many_1').is(':disabled')){
+				   $('.validquestS21 input:checkbox').each(function(){
+						 if(!$(this).is(':checked')){d_21++;}
+				   })
+				   if(d_21 == 5){	if($.trim($(".validquestS21  input:text").val()) != '') d_21=0; }
+				   else{d_21 =	0;}
+			   }
 		      
 		      
 		     
 			   
 			   
-			  console.log('t '+t+' d17 '+d_17+' d18 '+d_18); 
-		      if((t+d_17+d_18) > 0) return true; else false;	
+			  console.log('t '+t+' d17 '+d_17+' d18 '+d_18+' d20 '+d_20+' d21 '+d_21); 
+		      if((t+d_17+d_18+d_20+d_21) > 0) return true; else false;	
 	}
 
 

@@ -3805,7 +3805,7 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv delssl18" style="height: 230px;" >
 										<div><p class="hv">18.	Почему вы сменили врача? (возможно несколько вариантов ответа)</p></div>
 									    <div class="col-xs-4 validquestS18" style="width: 800px;">
-									      <table>
+									      <table onclick="sslvalidlev()">
 									      <tr>
 											<td>
 												<input type="checkbox" id="questionS18many_1"  value="Врачом оказана некачественная медицинская помощь" > Врачом оказана некачественная медицинская помощь&nbsp;<br>
@@ -3823,22 +3823,22 @@ $("#formOneReport").validate({
 									</div>
 									
 									<div  class="wrap-hv">
-										<div><p class="hv">19	Пользовались  ли вы правом выбора/смены медицинской организации? (один ответ)</p></div>
+										<div><p class="hv validquestS19">19	Пользовались  ли вы правом выбора/смены медицинской организации? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionS19">
+									      <select class="form-control input-sm" id="questionS19" onclick="sslvalidlev()">
 									      	<option value=""></option>
 									        <option>Да (к вопросу 21)</option>
 									        <option>Хотел(а), но не смог(ла) (к вопросу 20)</option>
-									        <option>Нет, не было необходимости  (к вопросу 22)</option>
+									        <option>Нет, не было необходимости (к вопросу 22)</option>
 									        <option>Нет, не знал(а), что это возможно</option>
 									      </select>
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 140px;" >
+									<div  class="wrap-hv validquestS20" style="height: 140px;" >
 										<div><p class="hv">20.	Что вам помешало поменять медицинскую организацию? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4 validquestS20" style="width: 800px;">
-									      <table>
+									    <div class="col-xs-4" style="width: 800px;">
+									      <table onclick="sslvalidlev()">
 									      <tr>
 											<td>
 												<input type="checkbox" id="questionS20many_1"  value="Не знал(а), куда обратиться" > Не знал(а), куда обратиться&nbsp;<br>
@@ -3851,9 +3851,9 @@ $("#formOneReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 200px;" >
+									<div  class="wrap-hv validquestS21" style="height: 200px;" >
 										<div><p class="hv">21.	Почему вы поменяли медицинскую организацию? (возможно  несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4 validquestS21" style="width: 800px;">
+									    <div class="col-xs-4 " style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
