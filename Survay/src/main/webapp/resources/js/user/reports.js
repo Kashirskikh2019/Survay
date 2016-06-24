@@ -63,3 +63,95 @@ function onepartreports(buttonId) {
 							    }		    
 	});
 }
+
+/*
+ * Метод отправляет данные на сервер с формы отчетов второго уровня поликлиника 
+ * 
+ */
+function secondpartreportsbigc(buttonId) {
+	
+/*	var search = {}
+	
+	search["datestart"] = $("input[name='datebeginslcbreport']").val();
+	search["dateend"] = $("input[name='dateendslcbreport']").val();
+	
+	search["lpu"] = $("#lpuFormOneRerort").val();ansFormOnePart1
+	
+	search["ans1"] = $("#ansFormOnePart1").is(':checked')
+	search["ans2"] = $("#ansFormOnePart2").is(':checked')
+	search["ans3"] = $("#ansFormOnePart3").is(':checked')
+	search["ans4"] = $("#ansFormOnePart4").is(':checked')
+	search["ans5"] = $("#ansFormOnePart5").is(':checked')
+	
+	
+	search["onefoms"] = $("#twoslbcTFOMS").is(':checked')
+	search["onesimaz"] = $("#twoslbcSimaz").is(':checked')
+	search["oneingos"] = $("#twoslbcIngos").is(':checked')
+	search["onerosno"] = $("#twoslbcRosno").is(':checked')
+	
+	var obj = document.getElementById(buttonId);
+	if (obj) {obj.disabled = true;} 
+	
+	console.log($("input[name='datebeginonereport']").val()+'   '+$("input[name='dateendonereport']").val());
+*/
+	var values = {} , org = [] , ans = [], sc2=0 ,  sc = 0;
+	
+	$.each($("#formslcbReport").serializeArray(), function (i, field) {
+	    if(field.name.indexOf('org[]')>=0){
+	    	org[sc] = field.value;
+	    	sc++;
+	    }
+	    else{
+	    	if(field.name.indexOf('ans[]')>=0){
+		    	ans[sc2] = field.value;
+		    	sc2++;
+		    }else{
+	        	values[field.name] =field.value;
+	        }
+	    	
+	    }
+	    
+	});
+	console.log('WWWW '+JSON.stringify(values));
+	console.log('WWWW1 '+JSON.stringify(org));
+	values['org'] = org;
+	values['ans'] = ans;
+	console.log('WWWW1 '+JSON.stringify(values));
+	
+/*	$.ajax({
+		url : 'firstPartReport',
+		type: 'Post',
+		dataType: 'json',
+		data : JSON.stringify(search),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+							success: function(data)
+							{
+								// pass to controller
+								document.location.href = '/survay/download'
+								 	
+								$("input[name='datebeginonereport']").val('');
+								$("input[name='dateendonereport']").val('');
+								
+								$( "#oneTFOMS" ).prop( "checked", false );
+								$( "#oneSimaz" ).prop( "checked", false );
+								$( "#oneIngos" ).prop( "checked", false );
+								$( "#oneRosno" ).prop( "checked", false );
+								
+								$( "#ansFormOnePart1" ).prop( "checked", false );
+								$( "#ansFormOnePart2" ).prop( "checked", false );
+								$( "#ansFormOnePart3" ).prop( "checked", false );
+								$( "#ansFormOnePart4" ).prop( "checked", false );
+								$( "#ansFormOnePart5" ).prop( "checked", false );
+								
+								$( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
+								obj.disabled = false;
+						    },
+						  
+							    error: function(e){  
+							      alert('Произошла ошибка обновите станицу'); 
+							     
+							    }		    
+	});*/
+}
+

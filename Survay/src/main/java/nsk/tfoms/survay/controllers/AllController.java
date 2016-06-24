@@ -23,6 +23,7 @@ import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
 import nsk.tfoms.survay.pojo.ParamOnePart;
+import nsk.tfoms.survay.pojo.ParamTwoPart;
 import nsk.tfoms.survay.service.ClinicService;
 import nsk.tfoms.survay.service.DayStacionarService;
 import nsk.tfoms.survay.service.StacionarService;
@@ -216,6 +217,33 @@ public class AllController
     	}
     	
        
+    }
+    
+    
+	/**
+     * Method for handling file download request from client
+     */
+    @RequestMapping(value = "/slcbPartTwoReport",method = RequestMethod.POST)
+    public @ResponseBody nsk.tfoms.survay.util.JsonResponse secondReport(HttpServletRequest request,HttpServletResponse response,
+    		@RequestBody ParamTwoPart paramtwopart) throws IOException {
+    	
+    	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+       
+    	List<List<SurvayClinic>> forOneOrgClinic = null;
+    	List<List<SurvayDaystacionar>> forOneOrgDayStac = null;
+    	List<List<SurvayStacionar>> forOneOrgStac = null;
+    	
+    	System.out.println("Test "+paramtwopart);
+    	
+
+    	
+    	
+	    
+	    res.setStatus("SUCCESS");
+	    res.setResult(new String("Ok"));
+
+		return res; 
+        
     }
     
    

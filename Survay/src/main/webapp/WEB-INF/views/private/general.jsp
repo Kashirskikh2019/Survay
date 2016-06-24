@@ -90,9 +90,19 @@ $(document).ready(function()
 	
 	$( "#dateBeginOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndOneReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	
 
 	$( "#dateBeginOneReportlg" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndOneReportlg" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	// level two reports
+	$( "#dateBeginTwoReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndTwoReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	
+	$( "#dateBeginslcbReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndslcbReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	
 });
 </script>
 <script>
@@ -101,6 +111,12 @@ $(document).ready(function() {
 $("#formOneReport").validate({
    	submitHandler: function() {
 		onepartreports('btnsf');
+	  }
+	});
+	
+$("#formslcbReport").validate({
+   	submitHandler: function() {
+   		secondpartreportsbigc('slcbbtn');
 	  }
 	});
 
@@ -179,9 +195,18 @@ $("#formOneReport").validate({
 			                        <li class="dropdown-submenu">
 						              <a href="#">Отчеты второго уровня</a>
 						              <ul class="dropdown-menu">
-						                <li><a href="#" id="idicAvalibelTwo">Индикатор доступности и качества медицинской помощи</a></li>
+						                <li><a href="#" data-toggle="modal" data-target="#myModalSSL">Индикатор доступности и качества медицинской помощи</a></li>
 						                <li class="divider"></li>
-						                <li><a href="#" id="idicInfoTwo">Индикатор информированности застрахованных о своих правах в системе ОМС</a></li>
+          		              				 <li class="dropdown-submenu">
+									              <a href="#">Оценка уровня удовлетворенности работы</a>
+									              <ul class="dropdown-menu">
+									                <li><a href="#"  data-toggle="modal" data-target="#myModalslclinic">Поликлиническая помощь</a></li>
+									                <li class="divider"></li>
+									                <li><a href="#">Дневной стационар</a></li>
+									                <li class="divider"></li>
+													<li><a href="#">Стационарная помощь</a></li>									                
+									              </ul>
+								            </li>	
 						              </ul>
 						            </li>
 			                        
@@ -297,6 +322,156 @@ $("#formOneReport").validate({
 						</div>
 					</div>
 <!-- CAST BLOCK MODAL WINDOWS FROM MENU -->
+
+
+<!-- BLOCK MODAL BIG REPORT SECOND LEVEL  CLINIC WINDOWS FROM MENU -->
+          		<div class="modal fade" id="myModalslclinic" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Отчет второго уровня поликлинической помощи</h3>
+									<p>Оценка уровня удовлетворенности работы амулаторно-поликлинической помощи по результатам анкетирования второго уровня</p>
+
+								</div>
+								<div class="modal-body backgr">
+										<form class="bigreportssl" id="formslcbReport" action="slcbPartTwoReport" method="">
+										<table cellspacing='15'>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите дату:</h4></td>
+										</tr>
+										<tr>
+											<td>
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateBeginslcbReport"  name="datebeginslcbreport" placeholder="" title="Укажите дату начала отчета">&nbsp;
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateEndslcbReport"  name="dateendslcbreport" placeholder="" title="Укажите дату окончания отчета">
+											</td>
+										</tr>
+										<tr><td><label class="error" style="display: none; color:red;"></label></td></tr>
+									 	<tr>
+											<td style="text-decoration: underline;"><h4>Выберите ЛПУ:</h4></td>
+										</tr>
+										<tr>
+											<td>
+											<div style="height: 200px;overflow: auto;width: 100%;">
+												<input type="checkbox" id="ansFormOnePart1"  value="Все" name="ans[]" required minlength="1">Все&nbsp;<br>
+													<c:forEach var="ls" items="${listmo}" varStatus="loop">
+												        <input type="checkbox" id="ansFormOnePart${loop.index+2}" value="${ls.value}" name="ans[]"> ${ls.value}&nbsp;<br>
+											        </c:forEach>
+											</div>	
+											</td>
+										</tr>  
+										<tr><td><label for="ans[]" class="error" id="ans-error" style="display: none; color:red;">Пожалуйста выберите хотя бы один вариант ответа</label></td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите СМО(ТФОМС):</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="twoslbcTFOMS"  value="twotfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="twoslbcSimaz" value="twosimaz" name="org[]"> СимазМед&nbsp;
+												<input type="checkbox" id="twoslbcIngos" value="twoingos" name="org[]"> Ингосстрах&nbsp;
+												<input type="checkbox" id="twoslbcRosno" value="tworosno" name="org[]"> РОСНО
+											</td>
+										</tr>
+										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr>
+										<td><button type="submit" value="Submit" id="slcbbtn"  class="btn btn-primary">Скачать отчет</button></td>
+										</tr>
+										</table>
+									</form>
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" id="closereportonepart" data-dismiss="modal">Закрыть окно</button>
+								</div>
+							</div>
+						</div>
+					</div>
+<!-- CAST BLOCK MODAL WINDOWS FROM MENU -->
+
+
+<!-- BLOCK MODAL SECOND LEVEL WINDOWS FROM MENU -->
+          		<div class="modal fade" id="myModalSSL" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Отчет второго уроня</h3>
+									<p>Индикатор доступности и качества медицинской помощи</p><br>
+
+								</div>
+								<div class="modal-body backgr">
+										<form class="cmxform2" id="formtwoReport" action="secondPartReport" method="">
+										<table cellspacing='15'>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите дату:</h4></td>
+										</tr>
+										<tr>
+											<td>
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateBeginTwoReport"  name="datebegintworeport" placeholder="" title="Укажите дату начала отчета">&nbsp;
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateEndTwoReport"  name="dateendtworeport" placeholder="" title="Укажите дату окончания отчета">
+											</td>
+										</tr>
+										<tr><td><label class="error" style="display: none; color:red;"></label></td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите ЛПУ:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<select class="form-control2 required" id="lpuFormTwoRerort" style="width: 350px" id="" title="Введите лечебное учреждение">
+											        <option value=""></option>
+											        <option>Все</option>
+											        <c:forEach var="ls" items="${listmo}">
+											        <option>${ls.value}</option>
+											        </c:forEach>
+											    </select>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите категорию ответа:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="ansFormOnePart1"  value="" name="ans[]" required minlength="1" checked> Удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart2" value="" name="ans[]" checked> Скорее удовлетворен(а), чем не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart3" value="" name="ans[]" checked> Скорее не удовлетворен(а), чем удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart4" value="" name="ans[]" checked> Не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormOnePart5" value="" name="ans[]" checked> Затрудняюсь ответить&nbsp;
+											</td>
+										</tr>
+										<tr><td><label for="ans[]" class="error" id="ans-error" style="display: none; color:red;">Пожалуйста выберите хотя бы один вариант ответа</label></td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите СМО(ТФОМС):</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="oneTFOMS"  value="onetfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="oneSimaz" value="onesimaz" name="org[]"> СимазМед&nbsp;
+												<input type="checkbox" id="oneIngos" value="oneingos" name="org[]"> Ингосстрах&nbsp;
+												<input type="checkbox" id="oneRosno" value="onerosno" name="org[]"> РОСНО
+											</td>
+										</tr>
+										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr>
+										<td><button type="submit" value="Submit" id="btnsf"  class="btn btn-primary">Скачать отчет</button></td>
+										</tr>
+										</table>
+									</form>
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" id="closereportonepart" data-dismiss="modal">Закрыть окно</button>
+								</div>
+							</div>
+						</div>
+					</div>
+<!-- CAST BLOCK SECOND LEVEL MODAL WINDOWS FROM MENU -->
+
 
 
 
