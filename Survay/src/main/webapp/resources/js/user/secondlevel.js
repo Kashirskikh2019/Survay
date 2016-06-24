@@ -2292,8 +2292,29 @@ function dsslid( varr,varr2) {
 			 }
 		 }
 		 
+		 if($("#questionS22").val() == 'Да, я получал(а) бесплатную медицинскую помощь на других территориях РФ по полису ОМС (к вопросу 24)' || 
+				 $("#questionS22").val() == 'Нет, не приходилось (к вопросу 24)'){
+				
+				$('.validquestS23 input:checkbox').each(function(){
+					 $(this).prop('disabled', true);
+				 })
+				 
+				 $(".validquestS23  input:text").prop('disabled', true);
+				$(".validquestS23").css({'opacity':0.4,'pointer-events':'none'});
+			}
+		 	else{
+		 		
+		 		$('.validquestS23 input:checkbox').each(function(){
+					 $(this).prop('disabled', false);
+				 })
+				 
+				 $(".validquestS23  input:text").prop('disabled', false);
+				$(".validquestS23").css({'opacity':1,'pointer-events':'visible'});
+		 	}
 		 
 		 
+		 if($("#questionS26").val() == 'Нет, никогда не приходилось (к вопросу 28)'){ $(".sslvalid27").css({'opacity':0.4,'pointer-events':'none'}); $('#questionS27').prop('disabled', true);}
+			else{$(".sslvalid27").css({'opacity':1,'pointer-events':'visible'}); $('#questionS27').prop('disabled', false);}
 		 
 		// ===========================================ХОВЕР============================================= 
 		 $('.validquestS19').hover(function() {
@@ -2443,13 +2464,23 @@ function dsslid( varr,varr2) {
 				   if(d_21 == 5){	if($.trim($(".validquestS21  input:text").val()) != '') d_21=0; }
 				   else{d_21 =	0;}
 			   }
+			   
+			   
+			   var d_23 = 0;
+			   if(!$('#questionS23many_1').is(':disabled')){
+				   $('.validquestS23 input:checkbox').each(function(){
+						 if(!$(this).is(':checked')){d_23++;}
+				   })
+				   if(d_23 == 2){	if($.trim($(".validquestS21  input:text").val()) != '') d_23=0; }
+				   else{d_23 =	0;}
+			   }
 		      
 		      
 		     
 			   
 			   
-			  console.log('t '+t+' d17 '+d_17+' d18 '+d_18+' d20 '+d_20+' d21 '+d_21); 
-		      if((t+d_17+d_18+d_20+d_21) > 0) return true; else false;	
+			  console.log('t '+t+' d17 '+d_17+' d18 '+d_18+' d20 '+d_20+' d21 '+d_21+' d23 '+d_23); 
+		      if((t+d_17+d_18+d_20+d_21+d_23) > 0) return true; else false;	
 	}
 
 

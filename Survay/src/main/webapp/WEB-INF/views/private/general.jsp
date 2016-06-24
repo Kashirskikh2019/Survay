@@ -3872,18 +3872,18 @@ $("#formOneReport").validate({
 									<div  class="wrap-hv">
 										<div><p class="hv">22	Пациент, застрахованный по ОМС, имеет право получать бесплатную медицинскую помощь на всей территории РФ, в том числе за пределами постоянного места жительства. Приходилось ли вам пользоваться этим правом? (один ответ)</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="questionS22">
+									      <select class="form-control input-sm" id="questionS22" onclick="sslvalidlev()">
 									      	<option value=""></option>
 									        <option>Да, я получал(а) бесплатную медицинскую помощь на других территориях РФ по полису ОМС (к вопросу 24)</option>
 									        <option>Пытался(лась), но мне было отказано в бесплатной медицинской помощи надругой территории РФ</option>
-									        <option>Нет, не приходилось  (к вопросу 24)</option>
+									        <option>Нет, не приходилось (к вопросу 24)</option>
 									      </select>
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv" style="height: 130px;" >
+									<div  class="wrap-hv validquestS23" style="height: 130px;" >
 										<div><p class="hv">23.	Почему вам отказали? (возможно несколько вариантов ответа)</p></div>
-									    <div class="col-xs-4 validquestS23" style="width: 800px;">
+									    <div class="col-xs-4 " style="width: 800px;">
 									      <table>
 									      <tr>
 											<td>
@@ -3986,7 +3986,7 @@ $("#formOneReport").validate({
 										    </div><br><br>
 										 </div> 
 										 
-										 <div  class="wrap-hv">
+										 <div  class="wrap-hv sslvalid27">
 											<div><p class="hv">27.	Кто выступал инициатором такой "благодарности"?</p></div>
 										    <div class="col-xs-4">
 										      <select class="form-control input-sm" id="questionS27">
