@@ -389,4 +389,72 @@ public class SurvayClinicSecondlevel implements Serializable {
 	}
 
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SurvayClinicSecondlevel [id=");
+		builder.append(id);
+		builder.append(", many=");
+		builder.append(many);
+		builder.append(", ageSecondlevel=");
+		builder.append(ageSecondlevel);
+		builder.append(", dataInputSecondlevel=");
+		builder.append(dataInputSecondlevel);
+		builder.append(", dataRespSecondlevel=");
+		builder.append(dataRespSecondlevel);
+		builder.append(", moSecondlevel=");
+		builder.append(moSecondlevel);
+		builder.append(", polzovatelSecondlevel=");
+		builder.append(polzovatelSecondlevel);
+		builder.append(", sexSecondlevel=");
+		builder.append(sexSecondlevel);
+		builder.append(", visitClinicSecondlevel=");
+		builder.append(visitClinicSecondlevel);
+		builder.append(", question5=");
+		builder.append(question5);
+		builder.append(", question9_1=");
+		builder.append(question9_1);
+		builder.append(", question9_2=");
+		builder.append(question9_2);
+		builder.append(", question11=");
+		builder.append(question11);
+		builder.append(", question16=");
+		builder.append(question16);
+		builder.append(", question17=");
+		builder.append(question17);
+		builder.append(", question19=");
+		builder.append(question19);
+		builder.append(", question27=");
+		builder.append(question27);
+		builder.append(", question30=");
+		builder.append(question30);
+		builder.append(", question33=");
+		builder.append(question33);
+		builder.append(", question34=");
+		builder.append(question34);
+		builder.append(", question35=");
+		builder.append(question35);
+		builder.append(", question36=");
+		builder.append(question36);
+		builder.append(", question37=");
+		builder.append(question37);
+		builder.append(", question38=");
+		builder.append(question38);
+		builder.append(", question41=");
+		builder.append(question41);
+		builder.append(", question42=");
+		builder.append(question42);
+		builder.append(", question43=");
+		builder.append(question43);
+		builder.append(", survayClinicSec1=");
+		builder.append(survayClinicSec1);
+		builder.append(", survayClinicSec25=");
+		builder.append(survayClinicSec25);
+		builder.append(", survayClinicSec2=");
+		builder.append(survayClinicSec2);
+		builder.append("]");
+		return builder.toString();
+	}
+
+
 }

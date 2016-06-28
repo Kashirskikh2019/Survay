@@ -354,10 +354,10 @@ $("#formslcbReport").validate({
 										</tr>
 										<tr>
 											<td>
-											<div style="height: 200px;overflow: auto;width: 100%;">
-												<input type="checkbox" id="ansFormOnePart1"  value="Все" name="ans[]" required minlength="1">Все&nbsp;<br>
+											<div style="height: 200px;overflow: auto;width: 100%;" id="divlistMO">
+												<input type="checkbox" id="ansFormOnePart1"  value="Все" name="ans[]" required minlength="1">Все<br>
 													<c:forEach var="ls" items="${listmo}" varStatus="loop">
-												        <input type="checkbox" id="ansFormOnePart${loop.index+2}" value="${ls.value}" name="ans[]"> ${ls.value}&nbsp;<br>
+												        <input type="checkbox" id="ansFormOnePart${loop.index+2}" value="${ls.value}" name="ans[]"> ${ls.value}<br>
 											        </c:forEach>
 											</div>	
 											</td>

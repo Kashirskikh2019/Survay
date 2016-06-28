@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import nsk.tfoms.survay.entity.SurvayClinic;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.QuestionManyDayStacionar;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.SCDSSLSec15;
@@ -359,5 +361,44 @@ public class DayStacionarServiceSecondLevel {
   public void delete(int id) {
 	  QuestionManyDayStacionar questionmanyds = em.find(QuestionManyDayStacionar.class, id);
 	  em.remove(questionmanyds);
-  } 
+  }
+  
+  
+  @Transactional
+  public List<SurvayClinicSecondlevel> getReport(String d1, String d2,String userp,List<String> lpulist) {
+	  
+	  String paste="", name_1="(";;
+	  String lpu = "";
+	  if(lpulist.contains("Все")){
+		  lpu = "Все";
+		  paste="p.moSecondlevel!=:lpu";
+	  }else{
+		  for (int i = 0; i < lpulist.size()-1; i++) {
+			  name_1 = name_1 + "p.moSecondlevel ='"+lpulist.get(i)+"' or ";
+		  }
+		  lpu = lpulist.get(lpulist.size()-1); name_1 = name_1 + "p.polzovatel =:lpu)";
+	  }
+
+	  
+	  String []mas = userp.split("!");
+	  String name="(";
+	  if(mas.length == 1){	userp = mas[0]; name = "p.polzovatelSecondlevel =:userp";}
+	  if(mas.length > 1){
+		  for (int i = 0; i < mas.length-1; i++) {
+			  name = name + "p.polzovatelSecondlevel ='"+mas[i]+"' or ";
+		  }
+		  userp = mas[mas.length-1]; name = name + "p.polzovatelSecondlevel =:userp)";
+	  }
+	  
+    List<SurvayClinicSecondlevel> result = em.createQuery("SELECT p FROM SurvayClinicSecondlevel p WHERE "+name+" and "+paste+" AND (p.dataRespSecondlevel BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinicSecondlevel.class)
+    .setParameter("d1", d1)  
+    .setParameter("d2", d2)  
+    .setParameter("userp", userp)
+    .setParameter("lpu", lpu)
+    //.setParameter("age", age)
+    .getResultList();
+    return result;
+  }
+  
+  
 }

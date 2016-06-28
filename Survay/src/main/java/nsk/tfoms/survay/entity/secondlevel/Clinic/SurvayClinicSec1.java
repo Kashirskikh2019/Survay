@@ -243,8 +243,8 @@ public class SurvayClinicSec1 implements Serializable {
 		builder.append(question21);
 		builder.append(", question23=");
 		builder.append(question23);
-		builder.append(", survayClinicSecondlevel=");
-		builder.append(survayClinicSecondlevel);
+		//builder.append(", survayClinicSecondlevel=");
+		//builder.append(survayClinicSecondlevel);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -216,8 +216,8 @@ public class QuestionManyClinic implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("QuestionManyClinic [idQuestionManyClinic=");
 		builder.append(idQuestionManyClinic);
-		builder.append(", survayClinicSecondlevel=");
-		builder.append(survayClinicSecondlevel);
+		//builder.append(", survayClinicSecondlevel=");
+		//builder.append(survayClinicSecondlevel);
 		builder.append(", question2_clinic=");
 		builder.append(question2_clinic);
 		builder.append(", question6_1_clinic=");

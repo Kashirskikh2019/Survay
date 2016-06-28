@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
+import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.pojo.ParamOnePart;
 import nsk.tfoms.survay.pojo.ParamTwoPart;
 import nsk.tfoms.survay.service.ClinicService;
 import nsk.tfoms.survay.service.DayStacionarService;
+import nsk.tfoms.survay.service.DayStacionarServiceSecondLevel;
 import nsk.tfoms.survay.service.StacionarService;
 import nsk.tfoms.survay.util.Util;
 import nsk.tfoms.survay.util.report.Reports;
@@ -40,6 +42,7 @@ public class AllController
 	@Autowired private DayStacionarService daystacionarservice;
 	@Autowired private StacionarService stacionarservice;
 	@Autowired private ClinicService personSvc;
+	@Autowired DayStacionarServiceSecondLevel dssl;
 	
     private static final int BUFFER_SIZE = 4096;
     
@@ -229,11 +232,35 @@ public class AllController
     	
     	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
        
-    	List<List<SurvayClinic>> forOneOrgClinic = null;
-    	List<List<SurvayDaystacionar>> forOneOrgDayStac = null;
-    	List<List<SurvayStacionar>> forOneOrgStac = null;
+    	List<List<SurvayClinicSecondlevel>> forOneOrgClinic = null;
     	
-    	System.out.println("Test "+paramtwopart);
+    	
+    	if(! parseorgtwoclinic(paramtwopart).equals(""))
+    	{
+    		//===================Clinic================================
+		 /*   List<SurvayClinic> list1 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<SurvayClinic> list2 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<SurvayClinic> list3 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<SurvayClinic> list4 = personSvc.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+		    
+		    forOneOrgClinic = new ArrayList<List<SurvayClinic>>();
+		    forOneOrgClinic.add(list1);
+		    forOneOrgClinic.add(list2);
+		    forOneOrgClinic.add(list3);
+		    forOneOrgClinic.add(list4);*/
+    		
+    		List<SurvayClinicSecondlevel> list1 = dssl.getReport(paramtwopart.getDatebeginslcbreport(), paramtwopart.getDateendslcbreport(), parseorgtwoclinic(paramtwopart), paramtwopart.getAns());
+    		System.out.println("Test "+list1);
+    		int k = 0;
+    		for (int i = 0; i < list1.size(); i++) {
+				if(list1.get(i).getPolzovatelSecondlevel().equals("tfoms")){
+					k++;
+				}
+			}
+    		System.out.println("ITOG "+ list1.size()+ " - "+ k);
+    	}   
+    	
+    	
     	
 
     	
@@ -244,6 +271,31 @@ public class AllController
 
 		return res; 
         
+    }
+    
+    
+
+    /*
+     * Method being search  organizacion and pass resalt to return
+     * 1 - tfoms
+     * 2 - ingos
+     * 3 - simaz
+     * 4 - rosno  
+     */
+    private String parseorgtwoclinic(ParamTwoPart paramtwopart)
+    {
+    	List<String> org = paramtwopart.getOrg();
+    	String orgs="";
+    	
+    	for (int i = 0; i < org.size(); i++) {
+    		
+			if(org.get(i).equals("twotfoms")){	orgs =orgs+"tfoms!";	}
+			if(org.get(i).equals("twoingos")){	orgs =orgs+"smo_ingos!";	}
+			if(org.get(i).equals("twosimaz")){	orgs =orgs+"smo_simaz!";	}
+			if(org.get(i).equals("tworosno")){	orgs =orgs+"smo_rosno!";	}
+		}
+        
+    	return orgs;
     }
     
    

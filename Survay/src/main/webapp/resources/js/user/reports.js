@@ -69,31 +69,7 @@ function onepartreports(buttonId) {
  * 
  */
 function secondpartreportsbigc(buttonId) {
-	
-/*	var search = {}
-	
-	search["datestart"] = $("input[name='datebeginslcbreport']").val();
-	search["dateend"] = $("input[name='dateendslcbreport']").val();
-	
-	search["lpu"] = $("#lpuFormOneRerort").val();ansFormOnePart1
-	
-	search["ans1"] = $("#ansFormOnePart1").is(':checked')
-	search["ans2"] = $("#ansFormOnePart2").is(':checked')
-	search["ans3"] = $("#ansFormOnePart3").is(':checked')
-	search["ans4"] = $("#ansFormOnePart4").is(':checked')
-	search["ans5"] = $("#ansFormOnePart5").is(':checked')
-	
-	
-	search["onefoms"] = $("#twoslbcTFOMS").is(':checked')
-	search["onesimaz"] = $("#twoslbcSimaz").is(':checked')
-	search["oneingos"] = $("#twoslbcIngos").is(':checked')
-	search["onerosno"] = $("#twoslbcRosno").is(':checked')
-	
-	var obj = document.getElementById(buttonId);
-	if (obj) {obj.disabled = true;} 
-	
-	console.log($("input[name='datebeginonereport']").val()+'   '+$("input[name='dateendonereport']").val());
-*/
+
 	var values = {} , org = [] , ans = [], sc2=0 ,  sc = 0;
 	
 	$.each($("#formslcbReport").serializeArray(), function (i, field) {
@@ -112,23 +88,21 @@ function secondpartreportsbigc(buttonId) {
 	    }
 	    
 	});
-	console.log('WWWW '+JSON.stringify(values));
-	console.log('WWWW1 '+JSON.stringify(org));
 	values['org'] = org;
 	values['ans'] = ans;
-	console.log('WWWW1 '+JSON.stringify(values));
 	
-/*	$.ajax({
-		url : 'firstPartReport',
+	$.ajax({
+		url : 'slcbPartTwoReport',
 		type: 'Post',
 		dataType: 'json',
-		data : JSON.stringify(search),
+		data : JSON.stringify(values),
 		contentType: 'application/json',
 	    mimeType: 'application/json',
 							success: function(data)
 							{
+								console.log('YPPPPPPPPPPA');
 								// pass to controller
-								document.location.href = '/survay/download'
+						/*		document.location.href = '/survay/download'
 								 	
 								$("input[name='datebeginonereport']").val('');
 								$("input[name='dateendonereport']").val('');
@@ -145,13 +119,19 @@ function secondpartreportsbigc(buttonId) {
 								$( "#ansFormOnePart5" ).prop( "checked", false );
 								
 								$( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
-								obj.disabled = false;
+								obj.disabled = false;*/
 						    },
 						  
 							    error: function(e){  
 							      alert('Произошла ошибка обновите станицу'); 
 							     
 							    }		    
-	});*/
+	});
+	
+	
+	
 }
+
+
+
 

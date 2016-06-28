@@ -326,8 +326,8 @@ public class SurvayClinicSec2 implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SurvayClinicSec2 [idSurvayClinicSec2=");
 		builder.append(idSurvayClinicSec2);
-		builder.append(", survayClinicSecondlevel=");
-		builder.append(survayClinicSecondlevel);
+		//builder.append(", survayClinicSecondlevel=");
+		//builder.append(survayClinicSecondlevel);
 		builder.append(", question12_clinic=");
 		builder.append(question12_clinic);
 		builder.append(", question22_clinic=");

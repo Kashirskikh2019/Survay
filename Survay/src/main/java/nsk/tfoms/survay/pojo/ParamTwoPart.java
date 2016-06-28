@@ -7,96 +7,51 @@ import java.util.List;
 public class ParamTwoPart {
 	
 	
-	private String datestart;
-	private String dateend;
-	
-	private String lpu;
-	
-	private String onefoms;
-	private String onesimaz;
-	private String oneingos;
-	private String onerosno;
-	
-	
-	
-	private List<String> mas;
-	
-	
-	public String getOnefoms() {
-		return onefoms;
+	private String datebeginslcbreport;
+	private String dateendslcbreport;
+	private List<String> org;
+	private List<String> ans;
+	public String getDatebeginslcbreport() {
+		return datebeginslcbreport;
 	}
-	public void setOnefoms(String onefoms) {
-		this.onefoms = onefoms;
+	public void setDatebeginslcbreport(String datebeginslcbreport) {
+		this.datebeginslcbreport = datebeginslcbreport;
 	}
-	public String getOnesimaz() {
-		return onesimaz;
+	public String getDateendslcbreport() {
+		return dateendslcbreport;
 	}
-	public void setOnesimaz(String onesimaz) {
-		this.onesimaz = onesimaz;
+	public void setDateendslcbreport(String dateendslcbreport) {
+		this.dateendslcbreport = dateendslcbreport;
 	}
-	public String getOneingos() {
-		return oneingos;
+	public List<String> getOrg() {
+		return org;
 	}
-	public void setOneingos(String oneingos) {
-		this.oneingos = oneingos;
+	public void setOrg(List<String> org) {
+		this.org = org;
 	}
-	public String getOnerosno() {
-		return onerosno;
+	public List<String> getAns() {
+		return ans;
 	}
-	
-	public String getDatestart() {
-		return datestart;
-	}
-	public void setDatestart(String datestart) {
-		this.datestart = datestart;
-	}
-	public String getDateend() {
-		return dateend;
-	}
-	public void setDateend(String dateend) {
-		this.dateend = dateend;
-	}
-	public void setOnerosno(String onerosno) {
-		this.onerosno = onerosno;
-	}
-	
-	public String getLpu() {
-		return lpu;
-	}
-	public void setLpu(String lpu) {
-		this.lpu = lpu;
-	}
-	
-	public List<String> getMas() {
-		mas = new ArrayList<String>();
-		
-		return mas;
-	}
-	public void setMas(List<String> mas) {
-		this.mas = mas;
+	public void setAns(List<String> ans) {
+		this.ans = ans;
 	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ParamTwoPart [datestart=");
-		builder.append(datestart);
-		builder.append(", dateend=");
-		builder.append(dateend);
-		builder.append(", lpu=");
-		builder.append(lpu);
-		builder.append(", onefoms=");
-		builder.append(onefoms);
-		builder.append(", onesimaz=");
-		builder.append(onesimaz);
-		builder.append(", oneingos=");
-		builder.append(oneingos);
-		builder.append(", onerosno=");
-		builder.append(onerosno);
-		builder.append(", mas=");
-		builder.append(mas);
+		builder.append("ParamTwoPart [datebeginslcbreport=");
+		builder.append(datebeginslcbreport);
+		builder.append(", dateendslcbreport=");
+		builder.append(dateendslcbreport);
+		builder.append(", org=");
+		builder.append(org);
+		builder.append(", ans=");
+		builder.append(ans);
 		builder.append("]");
 		return builder.toString();
 	}
 	
+	
+	
+		
 	
 }
