@@ -132,6 +132,75 @@ function secondpartreportsbigc(buttonId) {
 	
 }
 
+/*
+ * Метод отправляет данные на сервер с формы отчетов второго уровня поликлиника 
+ * 
+ */
+function secondpartreportsbigds(buttonId) {
+
+	var values = {} , org = [] , ans = [], sc2=0 ,  sc = 0;
+	
+	$.each($("#formsldsbReport").serializeArray(), function (i, field) {
+	    if(field.name.indexOf('org[]')>=0){
+	    	org[sc] = field.value;
+	    	sc++;
+	    }
+	    else{
+	    	if(field.name.indexOf('ans[]')>=0){
+		    	ans[sc2] = field.value;
+		    	sc2++;
+		    }else{
+	        	values[field.name] =field.value;
+	        }
+	    	
+	    }
+	    
+	});
+	values['org'] = org;
+	values['ans'] = ans;
+	
+	
+	$.ajax({
+		url : 'sldsbPartTwoReport',
+		type: 'Post',
+		dataType: 'json',
+		data : JSON.stringify(values),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+							success: function(data)
+							{
+								console.log('YPPPPPPPPPPA');
+								// pass to controller
+							/*	document.location.href = '/survay/download'
+								 	
+								$("input[name='datebeginonereport']").val('');
+								$("input[name='dateendonereport']").val('');
+								
+								$( "#oneTFOMS" ).prop( "checked", false );
+								$( "#oneSimaz" ).prop( "checked", false );
+								$( "#oneIngos" ).prop( "checked", false );
+								$( "#oneRosno" ).prop( "checked", false );
+								
+								$( "#ansFormOnePart1" ).prop( "checked", false );
+								$( "#ansFormOnePart2" ).prop( "checked", false );
+								$( "#ansFormOnePart3" ).prop( "checked", false );
+								$( "#ansFormOnePart4" ).prop( "checked", false );
+								$( "#ansFormOnePart5" ).prop( "checked", false );
+								
+								$( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
+								obj.disabled = false;*/
+						    },
+						  
+							    error: function(e){  
+							      alert('Произошла ошибка обновите станицу'); 
+							     
+							    }		    
+	});
+	
+	
+	
+}
+
 
 
 

@@ -365,40 +365,41 @@ public class DayStacionarServiceSecondLevel {
   
   
   @Transactional
-  public List<SurvayClinicSecondlevel> getReport(String d1, String d2,String userp,List<String> lpulist) {
+  public List<DayStacionarSecondlevel> getReport(String d1, String d2,String userp,List<String> lpulist) {
 	  
-	  String paste="", name_1="(";;
+	  String paste="";
 	  String lpu = "";
 	  if(lpulist.contains("Все")){
 		  lpu = "Все";
-		  paste="p.moSecondlevel!=:lpu";
+		  paste="and p.moSecondleveldaystacionar!=:lpu";
 	  }else{
+		  paste = "and (";
 		  for (int i = 0; i < lpulist.size()-1; i++) {
-			  name_1 = name_1 + "p.moSecondlevel ='"+lpulist.get(i)+"' or ";
+			  paste = paste + "p.moSecondleveldaystacionar ='"+lpulist.get(i)+"' or ";
 		  }
-		  lpu = lpulist.get(lpulist.size()-1); name_1 = name_1 + "p.polzovatel =:lpu)";
+		  lpu = lpulist.get(lpulist.size()-1); paste = paste + "p.moSecondleveldaystacionar =:lpu)";
 	  }
 
 	  
 	  String []mas = userp.split("!");
 	  String name="(";
-	  if(mas.length == 1){	userp = mas[0]; name = "p.polzovatelSecondlevel =:userp";}
+	  if(mas.length == 1){	userp = mas[0]; name = "p.polzSecondleveldaystacionar =:userp";}
 	  if(mas.length > 1){
 		  for (int i = 0; i < mas.length-1; i++) {
-			  name = name + "p.polzovatelSecondlevel ='"+mas[i]+"' or ";
+			  name = name + "p.polzSecondleveldaystacionar ='"+mas[i]+"' or ";
 		  }
-		  userp = mas[mas.length-1]; name = name + "p.polzovatelSecondlevel =:userp)";
+		  userp = mas[mas.length-1]; name = name + "p.polzSecondleveldaystacionar =:userp)";
 	  }
 	  
-    List<SurvayClinicSecondlevel> result = em.createQuery("SELECT p FROM SurvayClinicSecondlevel p WHERE "+name+" and "+paste+" AND (p.dataRespSecondlevel BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinicSecondlevel.class)
+    List<DayStacionarSecondlevel> result = em.createQuery("SELECT p FROM DayStacionarSecondlevel p WHERE "+name+" "+paste+" AND (p.dataRespSecondleveldaystacionar BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", DayStacionarSecondlevel.class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
     .setParameter("userp", userp)
     .setParameter("lpu", lpu)
-    //.setParameter("age", age)
     .getResultList();
     return result;
-  }
+  } 
+ 
   
   
 }
