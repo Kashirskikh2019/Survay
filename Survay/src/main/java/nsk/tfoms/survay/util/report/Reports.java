@@ -1023,8 +1023,9 @@ public class Reports {
          HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
          HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
          
+         
          i = i+3;
-		 for (String str : hSetOneDayStac) {
+		 for (String str : hSetOneStac) {
 		        	 
 		        	 excelRow = sheet.createRow(i);
 		             excelRow = sheet.getRow(i);		
