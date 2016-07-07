@@ -202,5 +202,68 @@ function secondpartreportsbigds(buttonId) {
 }
 
 
+function twopartreports(buttonId) {
+	
+	var search = {}
+	
+	search["datestart"] = $("input[name='datebegintworeport']").val();
+	search["dateend"] = $("input[name='dateendtworeport']").val();
+	
+	search["lpu"] = $("#lpuFormTwoRerort").val();ansFormOnePart1
+	
+	search["ans1"] = $("#ansFormTwoPart1").is(':checked')
+	search["ans2"] = $("#ansFormTwoPart2").is(':checked')
+	search["ans3"] = $("#ansFormTwoPart3").is(':checked')
+	search["ans4"] = $("#ansFormTwoPart4").is(':checked')
+	search["ans5"] = $("#ansFormTwoPart5").is(':checked')
+	
+	
+	search["onefoms"] = $("#twoTFOMS").is(':checked')
+	search["onesimaz"] = $("#twoSimaz").is(':checked')
+	search["oneingos"] = $("#twoIngos").is(':checked')
+	search["onerosno"] = $("#twoRosno").is(':checked')
+	
+	var obj = document.getElementById(buttonId);
+	if (obj) {obj.disabled = true;} 
+	
+	console.log($("input[name='datebegintworeport']").val()+'   '+$("input[name='dateendtworeport']").val());
+	$.ajax({
+		url : 'secondPartReport',
+		type: 'Post',
+		dataType: 'json',
+		data : JSON.stringify(search),
+		contentType: 'application/json',
+	    mimeType: 'application/json',
+							success: function(data)
+							{
+								// pass to controller
+								document.location.href = '/survay/download'
+								 	
+								$("input[name='datebegintworeport']").val('');
+								$("input[name='dateendtworeport']").val('');
+								
+								$( "#twoTFOMS" ).prop( "checked", false );
+								$( "#twoSimaz" ).prop( "checked", false );
+								$( "#twoIngos" ).prop( "checked", false );
+								$( "#twoRosno" ).prop( "checked", false );
+								
+								$( "#ansFormTwoPart1" ).prop( "checked", false );
+								$( "#ansFormTwoPart2" ).prop( "checked", false );
+								$( "#ansFormTwoPart3" ).prop( "checked", false );
+								$( "#ansFormTwoPart4" ).prop( "checked", false );
+								$( "#ansFormTwoPart5" ).prop( "checked", false );
+								
+								$( "#lpuFormTwoRerort" ).val($("#lpuFormTwoRerort").prop('defaultSelected'));
+								obj.disabled = false;
+						    },
+						  
+							    error: function(e){  
+							      alert('Произошла ошибка обновите станицу'); 
+							     
+							    }		    
+	});
+}
+
+
 
 

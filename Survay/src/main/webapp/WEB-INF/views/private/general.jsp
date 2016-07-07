@@ -117,6 +117,12 @@ $("#formOneReport").validate({
 	  }
 	});
 	
+$("#formtwoReport").validate({
+   	submitHandler: function() {
+		twopartreports('btntworep');
+	  }
+	});	
+	
 $("#formslcbReport").validate({
    	submitHandler: function() {
    		secondpartreportsbigc('slcbbtn');
@@ -481,7 +487,7 @@ $("#formsldsbReport").validate({
 
 								</div>
 								<div class="modal-body backgr">
-										<form class="cmxform2" id="formtwoReport" action="secondPartReport" method="">
+										<form class="cmxform2" id="formtwoReport" action="secondPartReport">
 										<table cellspacing='15'>
 										<tr>
 											<td style="text-decoration: underline;"><h4>Выберите дату:</h4></td>
@@ -512,11 +518,11 @@ $("#formsldsbReport").validate({
 										</tr>
 										<tr>
 											<td>
-												<input type="checkbox" id="ansFormOnePart1"  value="" name="ans[]" required minlength="1" checked> Удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart2" value="" name="ans[]" checked> Скорее удовлетворен(а), чем не удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart3" value="" name="ans[]" checked> Скорее не удовлетворен(а), чем удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart4" value="" name="ans[]" checked> Не удовлетворен(а)&nbsp;<br>
-												<input type="checkbox" id="ansFormOnePart5" value="" name="ans[]" checked> Затрудняюсь ответить&nbsp;
+												<input type="checkbox" id="ansFormTwoPart1"  value="" name="ans[]" required minlength="1" checked> Удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormTwoPart2" value="" name="ans[]" checked> Скорее удовлетворен(а), чем не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormTwoPart3" value="" name="ans[]" checked> Скорее не удовлетворен(а), чем удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormTwoPart4" value="" name="ans[]" checked> Не удовлетворен(а)&nbsp;<br>
+												<input type="checkbox" id="ansFormTwoPart5" value="" name="ans[]" checked> Затрудняюсь ответить&nbsp;
 											</td>
 										</tr>
 										<tr><td><label for="ans[]" class="error" id="ans-error" style="display: none; color:red;">Пожалуйста выберите хотя бы один вариант ответа</label></td></tr>
@@ -525,16 +531,16 @@ $("#formsldsbReport").validate({
 										</tr>
 										<tr>
 											<td>
-												<input type="checkbox" id="oneTFOMS"  value="onetfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
-												<input type="checkbox" id="oneSimaz" value="onesimaz" name="org[]"> СимазМед&nbsp;
-												<input type="checkbox" id="oneIngos" value="oneingos" name="org[]"> Ингосстрах&nbsp;
-												<input type="checkbox" id="oneRosno" value="onerosno" name="org[]"> РОСНО
+												<input type="checkbox" id="twoTFOMS"  value="onetfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="twoSimaz" value="onesimaz" name="org[]"> СимазМед&nbsp;
+												<input type="checkbox" id="twoIngos" value="oneingos" name="org[]"> Ингосстрах&nbsp;
+												<input type="checkbox" id="twoRosno" value="onerosno" name="org[]"> РОСНО
 											</td>
 										</tr>
 										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
 										<tr><td>&nbsp;</td></tr>
 										<tr>
-										<td><button type="submit" value="Submit" id="btnsf"  class="btn btn-primary">Скачать отчет</button></td>
+										<td><button type="submit" value="Submit" id="btntworep"  class="btn btn-primary">Скачать отчет</button></td>
 										</tr>
 										</table>
 									</form>
@@ -1227,9 +1233,11 @@ $("#formsldsbReport").validate({
 										<div><p class="hv">12.	Насколько вы удовлетворены качеством бесплатной медицинской помощи, получаемой в поликлинике? (один ответ)</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="question12_clinic" >
-									      	<option value=""></option>
-									        <option>Да</option>
-									        <option>Нет</option>
+											<option value=""></option>
+									        <option>Удовлетворен(а)</option>
+									        <option>Скорее не удовлетворен(а), чем удовлетворен(а)</option>
+									        <option>Скорее удовлетворен(а), чем не удовлетворен(а)</option>
+									        <option>Не удовлетворен(а)</option>
 									        <option>Затрудняюсь ответить</option>
 									      </select>
 									    </div><br><br>
@@ -2040,6 +2048,7 @@ $("#formsldsbReport").validate({
 								<div class="modal-header backgrheader">
 <!--  									<button type="button btn-primary" class="close"
 										data-dismiss="modal" aria-hidden="true">&times;</button>-->
+										
 									<h3 class="modal-title">Добавить анкету второго уровня</h3>
 									<p>Добавление анкеты  дневного стационара</p>
 

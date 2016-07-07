@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import nsk.tfoms.survay.entity.SurvayClinic;
+import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.QuestionManyDayStacionar;
@@ -398,7 +399,38 @@ public class DayStacionarServiceSecondLevel {
     .setParameter("lpu", lpu)
     .getResultList();
     return result;
-  } 
+  }
+  
+  
+  @Transactional
+  public List<DayStacionarSecondlevel > getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
+	  String agefor = "p.ageSecondleveldaystacionar<='"+age+"'";;
+	  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.ageSecondleveldaystacionar>='"+age+"'";		}
+	  
+	  String paste="p.moSecondleveldaystacionar=:lpu";
+	  // enter ALL we will passing in query NOT "ALL"(p.mo!=:lpu) because in db no records with  name 'ALL' => so we get all records 
+	  if(lpu.equals("Все"))	{	paste="p.moSecondleveldaystacionar!=:lpu";	}
+	  
+	  String []mas = userp.split("!");
+	  String name="(";
+	  if(mas.length == 1){	userp = mas[0]; name = "p.polzSecondleveldaystacionar =:userp";}
+	  if(mas.length > 1){
+		  for (int i = 0; i < mas.length-1; i++) {
+			  name = name + "p.polzSecondleveldaystacionar ='"+mas[i]+"' or ";
+		  }
+		  userp = mas[mas.length-1]; name = name + "p.polzSecondleveldaystacionar =:userp)";
+	  }
+	  
+    List<DayStacionarSecondlevel > result = em.createQuery("SELECT p FROM DayStacionarSecondlevel  p WHERE "+name+" and "+paste+" AND p.sexSecondleveldaystacionar=:sex AND "+agefor+" AND (p.dataRespSecondleveldaystacionar BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", DayStacionarSecondlevel .class)
+    .setParameter("d1", d1)  
+    .setParameter("d2", d2)  
+    .setParameter("userp", userp)
+    .setParameter("lpu", lpu)
+    .setParameter("sex", sex)
+    //.setParameter("age", age)
+    .getResultList();
+    return result;
+  }
  
   
   

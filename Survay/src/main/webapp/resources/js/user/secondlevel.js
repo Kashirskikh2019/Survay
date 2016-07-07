@@ -1633,7 +1633,7 @@ function dsslid( varr,varr2) {
 			    	  }
 		    	  
 			    	
-			    		
+			    	dsslvalidlev2();	
 		      }else
 		      {
 		    	 
@@ -1695,7 +1695,7 @@ function dsslid( varr,varr2) {
 	function secondlevelsls(varr) {
 		
 		
-		if(validateSecondS()){  $(".errorSSL").css('display','block');	}else{
+		if(validateSecondS()){  $(".errorSLS").css('display','block');	}else{
 		
 							var general = {}
 							var sec1 = {}
@@ -2112,6 +2112,7 @@ function dsslid( varr,varr2) {
 			      }
 		    	
 		
+			      sslvalidlev();
 			 },  
 			    error: function(e){  
 			      alert('Error: ' + e);  

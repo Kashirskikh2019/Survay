@@ -30,6 +30,7 @@ import nsk.tfoms.survay.service.ClinicService;
 import nsk.tfoms.survay.service.ClinicServiceSecondLevel;
 import nsk.tfoms.survay.service.DayStacionarService;
 import nsk.tfoms.survay.service.DayStacionarServiceSecondLevel;
+import nsk.tfoms.survay.service.SSLservice;
 import nsk.tfoms.survay.service.StacionarService;
 import nsk.tfoms.survay.util.Util;
 import nsk.tfoms.survay.util.report.Reports;
@@ -44,8 +45,10 @@ public class AllController
 	@Autowired private DayStacionarService daystacionarservice;
 	@Autowired private StacionarService stacionarservice;
 	@Autowired private ClinicService personSvc;
-	@Autowired ClinicServiceSecondLevel dssl;
-	@Autowired DayStacionarServiceSecondLevel servicedsslb;
+	
+	@Autowired private ClinicServiceSecondLevel dssl;
+	@Autowired private DayStacionarServiceSecondLevel DayStacionarSecondlevel;
+	@Autowired private SSLservice sslservice;
 	
     private static final int BUFFER_SIZE = 4096;
     
@@ -272,7 +275,7 @@ public class AllController
     	if(! parseorgtwoclinic(paramtwopart).equals(""))
     	{
     		
-    		List<DayStacionarSecondlevel> list1 = servicedsslb.getReport(paramtwopart.getDatebeginslcbreport(), paramtwopart.getDateendslcbreport(), parseorgtwoclinic(paramtwopart), paramtwopart.getAns());
+    		List<DayStacionarSecondlevel> list1 = DayStacionarSecondlevel.getReport(paramtwopart.getDatebeginslcbreport(), paramtwopart.getDateendslcbreport(), parseorgtwoclinic(paramtwopart), paramtwopart.getAns());
     		System.out.println("Test "+list1);
     		int k = 0;
     		for (int i = 0; i < list1.size(); i++) {
@@ -318,7 +321,78 @@ public class AllController
     
    
     
-    
+	/**
+     * Method for handling file download request from client
+     */
+    @RequestMapping(value = "/secondPartReport",method = RequestMethod.POST)
+    public @ResponseBody nsk.tfoms.survay.util.JsonResponse doDownloadtwoRep(HttpServletRequest request,HttpServletResponse response,
+    		@RequestBody ParamOnePart paramonepart) throws IOException {
+    	
+    	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+       
+
+    	List<List<SurvayClinicSecondlevel>> forOneOrgClinic = null;
+    	List<List<DayStacionarSecondlevel>> forOneOrgDayStac = null;
+    	List<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>> forOneOrgStac = null;
+    	
+    	
+    	if(! parseorg(paramonepart).equals(""))
+    	{
+    		//===================Clinic================================
+		    List<SurvayClinicSecondlevel> list1 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<SurvayClinicSecondlevel> list2 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<SurvayClinicSecondlevel> list3 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<SurvayClinicSecondlevel> list4 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+		    
+		    forOneOrgClinic = new ArrayList<List<SurvayClinicSecondlevel>>();
+		    forOneOrgClinic.add(list1);
+		    forOneOrgClinic.add(list2);
+		    forOneOrgClinic.add(list3);
+		    forOneOrgClinic.add(list4);
+		    
+		    //=============================DayStacionar===============================
+		    List<DayStacionarSecondlevel> list5 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<DayStacionarSecondlevel> list6 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<DayStacionarSecondlevel> list7 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<DayStacionarSecondlevel> list8 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+		    
+		    forOneOrgDayStac = new ArrayList<List<DayStacionarSecondlevel>>();
+		    forOneOrgDayStac.add(list5);
+		    forOneOrgDayStac.add(list6);
+		    forOneOrgDayStac.add(list7);
+		    forOneOrgDayStac.add(list8);
+		    
+		    
+		    //=========================================Stacionar==========================
+		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list9 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list10 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list11 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list12 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+
+		    forOneOrgStac = new ArrayList<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>>();
+		    forOneOrgStac.add(list9);
+		    forOneOrgStac.add(list10);
+		    forOneOrgStac.add(list11);
+		    forOneOrgStac.add(list12);
+		    
+		    new Reports().loadToExcelSLpg(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart),paramonepart);
+		    
+    	}
+    	else
+    	{
+    		// реализация для выделенных несколькох checkbox'ов  тфомс ингос
+    	}
+
+	    
+    	
+    	
+	    
+	    res.setStatus("SUCCESS");
+	    res.setResult(new String("Ok"));
+
+		return res; 
+        
+    }  
     
     
     

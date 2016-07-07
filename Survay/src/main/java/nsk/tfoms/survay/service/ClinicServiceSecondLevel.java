@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.secondlevel.Clinic.QuestionManyClinic;
 import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec1;
 import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSec2;
@@ -535,6 +536,37 @@ public class ClinicServiceSecondLevel {
     .getResultList();
     return result;
   } 
+  
+  @Transactional
+  
+  public List<SurvayClinicSecondlevel> getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
+	  String agefor = "p.ageSecondlevel<='"+age+"'";
+	  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.ageSecondlevel>='"+age+"'";		}
+	  
+	  String paste="p.moSecondlevel=:lpu";
+	  // enter ALL we will passing in query NOT "ALL"(p.mo!=:lpu) because in db no records with  name 'ALL' => so we get all records 
+	  if(lpu.equals("Все"))	{	paste="p.moSecondlevel!=:lpu";	}
+	  
+	  String []mas = userp.split("!");
+	  String name="(";
+	  if(mas.length == 1){	userp = mas[0]; name = "p.polzovatelSecondlevel =:userp";}
+	  if(mas.length > 1){
+		  for (int i = 0; i < mas.length-1; i++) {
+			  name = name + "p.polzovatelSecondlevel ='"+mas[i]+"' or ";
+		  }
+		  userp = mas[mas.length-1]; name = name + "p.polzovatelSecondlevel =:userp)";
+	  }
+	  
+    List<SurvayClinicSecondlevel> result = em.createQuery("SELECT p FROM SurvayClinicSecondlevel p WHERE "+name+" and "+paste+" AND p.sexSecondlevel=:sex AND "+agefor+" AND (p.dataRespSecondlevel BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinicSecondlevel.class)
+    .setParameter("d1", d1)  
+    .setParameter("d2", d2)  
+    .setParameter("userp", userp)
+    .setParameter("lpu", lpu)
+    .setParameter("sex", sex)
+    //.setParameter("age", age)
+    .getResultList();
+    return result;
+  }
 	
 
 }
