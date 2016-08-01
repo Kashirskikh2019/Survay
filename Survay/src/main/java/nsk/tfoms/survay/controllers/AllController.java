@@ -2,12 +2,15 @@ package nsk.tfoms.survay.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.sf.jasperreports.engine.JRException;
 import nsk.tfoms.survay.entity.SurvayClinic;
 import nsk.tfoms.survay.entity.SurvayDaystacionar;
 import nsk.tfoms.survay.entity.SurvayStacionar;
@@ -26,6 +30,7 @@ import nsk.tfoms.survay.entity.secondlevel.Clinic.SurvayClinicSecondlevel;
 import nsk.tfoms.survay.entity.secondlevel.DayStacionar.DayStacionarSecondlevel;
 import nsk.tfoms.survay.pojo.ParamOnePart;
 import nsk.tfoms.survay.pojo.ParamTwoPart;
+import nsk.tfoms.survay.service.BigReportSL;
 import nsk.tfoms.survay.service.ClinicService;
 import nsk.tfoms.survay.service.ClinicServiceSecondLevel;
 import nsk.tfoms.survay.service.DayStacionarService;
@@ -49,6 +54,7 @@ public class AllController
 	@Autowired private ClinicServiceSecondLevel dssl;
 	@Autowired private DayStacionarServiceSecondLevel DayStacionarSecondlevel;
 	@Autowired private SSLservice sslservice;
+	@Autowired private BigReportSL bigreportsl;
 	
     private static final int BUFFER_SIZE = 4096;
     
@@ -231,30 +237,26 @@ public class AllController
     
 	/**
      * Method for handling file download request from client
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 * @throws JRException 
      */
     @RequestMapping(value = "/slcbPartTwoReport",method = RequestMethod.POST)
     public @ResponseBody nsk.tfoms.survay.util.JsonResponse secondReport(HttpServletRequest request,HttpServletResponse response,
-    		@RequestBody ParamTwoPart paramtwopart) throws IOException {
+    		@RequestBody ParamTwoPart paramtwopart) throws IOException, ClassNotFoundException, SQLException, JRException {
     	
     	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+    	
        
     	List<List<SurvayClinicSecondlevel>> forOneOrgClinic = null;
     	
-    	
+    	System.out.println("TTTTTTTTTTTTEST "+paramtwopart);
     	if(! parseorgtwoclinic(paramtwopart).equals(""))
     	{
     		
-    		List<SurvayClinicSecondlevel> list1 = dssl.getReport(paramtwopart.getDatebeginslcbreport(), paramtwopart.getDateendslcbreport(), parseorgtwoclinic(paramtwopart), paramtwopart.getAns());
-    		System.out.println("Test "+list1);
-    		int k = 0;
-    		for (int i = 0; i < list1.size(); i++) {
-				if(list1.get(i).getPolzovatelSecondlevel().equals("tfoms")){
-					k++;
-				}
-			}
-    		System.out.println("ITOG "+ list1.size()+ " - "+ k);
+    		bigreportsl.BigReportClinic(paramtwopart);
+    		
     	}   
-    	
 	    
 	    res.setStatus("SUCCESS");
 	    res.setResult(new String("Ok"));
@@ -262,6 +264,11 @@ public class AllController
 		return res; 
         
     }
+    
+    @RequestMapping(value = "/report_big_clinic", method = RequestMethod.GET)
+    public void report_1_1(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        downloadFile(request, response, "\\reports\\pg_form_1_1.xls");
+	}
     
     @RequestMapping(value = "/sldsbPartTwoReport",method = RequestMethod.POST)
     public @ResponseBody nsk.tfoms.survay.util.JsonResponse secondReportdsb(HttpServletRequest request,HttpServletResponse response,
@@ -395,7 +402,42 @@ public class AllController
     }  
     
     
-    
+    private void downloadFile(HttpServletRequest request,HttpServletResponse response, String filePath) throws FileNotFoundException,IOException {
+		ServletContext context = request.getServletContext();
+        String appPath = context.getRealPath("");
+        System.out.println("appPath = " + appPath);
+ 
+        //String fullPath = appPath + filePath ;      
+        String fullPath = "D:\\Appeals3\\Appeal" + filePath ;
+        File downloadFile = new File(fullPath);
+        FileInputStream inputStream = new FileInputStream(downloadFile);
+         
+        String mimeType = context.getMimeType(fullPath);
+        if (mimeType == null) {
+            mimeType = "application/octet-stream";
+        }
+        System.out.println("MIME type: " + mimeType);
+ 
+        response.setContentType(mimeType);
+        response.setContentLength((int) downloadFile.length());
+ 
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"",
+                downloadFile.getName());
+        response.setHeader(headerKey, headerValue);
+ 
+        OutputStream outStream = response.getOutputStream();
+ 
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+ 
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, bytesRead);
+        }
+ 
+        inputStream.close();
+        outStream.close();
+	}    
     
     
     

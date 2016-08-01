@@ -11,6 +11,8 @@ public class ParamTwoPart {
 	private String dateendslcbreport;
 	private List<String> org;
 	private List<String> ans;
+	
+	
 	public String getDatebeginslcbreport() {
 		return datebeginslcbreport;
 	}

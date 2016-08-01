@@ -102,9 +102,9 @@ function secondpartreportsbigc(buttonId) {
 							{
 								console.log('YPPPPPPPPPPA');
 								// pass to controller
-						/*		document.location.href = '/survay/download'
+								document.location.href = '/survay/report_big_clinic'
 								 	
-								$("input[name='datebeginonereport']").val('');
+						/*		$("input[name='datebeginonereport']").val('');
 								$("input[name='dateendonereport']").val('');
 								
 								$( "#oneTFOMS" ).prop( "checked", false );

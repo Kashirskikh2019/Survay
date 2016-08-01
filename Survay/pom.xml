@@ -228,6 +228,12 @@
 		<version>1.0.0.GA</version>
 	</dependency>
 	
+	<dependency>
+		    <groupId>net.sf.jasperreports</groupId>
+		    <artifactId>jasperreports</artifactId>
+		    <version>5.6.1</version>
+	</dependency>
+	
 	
 	
 	
