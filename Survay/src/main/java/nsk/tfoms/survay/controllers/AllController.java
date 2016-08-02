@@ -59,6 +59,7 @@ public class AllController
     private static final int BUFFER_SIZE = 4096;
     
     
+    
 	@RequestMapping(value = "/general",method = RequestMethod.GET)
 	  public String listAll(Model model){
 		File mo = new File( servletContext.getRealPath("/WEB-INF/mo.txt"));
@@ -246,16 +247,15 @@ public class AllController
     		@RequestBody ParamTwoPart paramtwopart) throws IOException, ClassNotFoundException, SQLException, JRException {
     	
     	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
-    	
+    	File otch1 = new File( servletContext.getRealPath("/resources/pg_form_1_1dop.jrxml"));
+    	File file_for_ontch = new File( servletContext.getRealPath("/resources/pg_form_1_1.xls"));
        
     	List<List<SurvayClinicSecondlevel>> forOneOrgClinic = null;
     	
     	System.out.println("TTTTTTTTTTTTEST "+paramtwopart);
     	if(! parseorgtwoclinic(paramtwopart).equals(""))
     	{
-    		
-    		bigreportsl.BigReportClinic(paramtwopart);
-    		
+    		bigreportsl.BigReportClinic(paramtwopart,otch1,file_for_ontch);
     	}   
 	    
 	    res.setStatus("SUCCESS");

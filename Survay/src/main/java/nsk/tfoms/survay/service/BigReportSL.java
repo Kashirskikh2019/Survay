@@ -1,5 +1,6 @@
 package nsk.tfoms.survay.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import net.sf.jasperreports.engine.JRException;
@@ -26,16 +29,16 @@ import nsk.tfoms.survay.pojo.ParamTwoPart;
 @Service
 public class BigReportSL {
 
-	public void BigReportClinic(ParamTwoPart paramtwopart) throws ClassNotFoundException, SQLException, JRException  {
+	public void BigReportClinic(ParamTwoPart paramtwopart,File otch1, File file_for_ontch) throws ClassNotFoundException, SQLException, JRException  {
 		
 		Connection conn = connectForJasper();
 		Map mapReport = mapForJasper(paramtwopart);
-		JasperReport jasperReport = JasperCompileManager.compileReport("D:\\Appeals3\\Appeal\\reports\\pg_form_1_1dop.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(otch1.getAbsolutePath());
 		jasperReport.setProperty(JRTextElement.PROPERTY_PRINT_KEEP_FULL_TEXT, "true");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mapReport, conn);
 		JRXlsExporter exporter = new JRXlsExporter();
 		exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-		exporter.setExporterOutput(new SimpleOutputStreamExporterOutput("D:\\Appeals3\\Appeal\\reports\\pg_form_1_1.xls"));
+		exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file_for_ontch.getAbsolutePath()));
 		exporter.exportReport();
 		
 		disconnectForJasper(conn);
@@ -78,20 +81,24 @@ public class BigReportSL {
 		String username = "";
 		for(int i = 0;i<orgList.size(); i++){
 			
-			username = username.concat(orgList.get(i).replace("two", ""));
+			if(orgList.get(i).equals("twotfoms")){username = username.concat(orgList.get(i).replace("two", ""));}
+			else{username = username.concat(orgList.get(i).replace("two", "smo_"));}
+			
 		}
 		mapReport.put("username", username);
 		
 		List<String> lpuList = paramtwopart.getAns();
 		String lpu = "";
 		if(lpuList.contains("Все")){
-			mapReport.put("username", "Все");
+			mapReport.put("lpu", "Все");
 		}else{
 			for(int y = 0;y < lpuList.size(); y++){
 				lpu = lpu + lpuList.get(y);
 			}
 			mapReport.put("username", lpu);
 		}
+		
+		System.out.println("!!!!!!!!! "+mapReport);
 		
 		return mapReport;
 	}
