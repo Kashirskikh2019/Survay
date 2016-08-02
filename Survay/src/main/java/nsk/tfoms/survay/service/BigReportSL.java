@@ -95,7 +95,7 @@ public class BigReportSL {
 			for(int y = 0;y < lpuList.size(); y++){
 				lpu = lpu + lpuList.get(y);
 			}
-			mapReport.put("username", lpu);
+			mapReport.put("lpu", lpu);
 		}
 		
 		System.out.println("!!!!!!!!! "+mapReport);
