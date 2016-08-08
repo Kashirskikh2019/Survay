@@ -80,6 +80,7 @@ function secondpartreportsbigc(buttonId) {
 	    else{
 	    	if(field.name.indexOf('ans[]')>=0){
 		    	ans[sc2] = field.value;
+		    	console.log('@@@@@@@@@@@@@@ '+field.value);
 		    	sc2++;
 		    }else{
 	        	values[field.name] =field.value;

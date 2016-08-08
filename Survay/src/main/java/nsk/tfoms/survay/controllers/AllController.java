@@ -247,8 +247,8 @@ public class AllController
     		@RequestBody ParamTwoPart paramtwopart) throws IOException, ClassNotFoundException, SQLException, JRException {
     	
     	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
-    	File otch1 = new File( servletContext.getRealPath("/resources/pg_form_1_1dop.jrxml"));
-    	File file_for_ontch = new File( servletContext.getRealPath("/resources/pg_form_1_1.xls"));
+    	File otch1 = new File( servletContext.getRealPath("/resources/clinic_report.jrxml"));
+    	File file_for_ontch = new File( servletContext.getRealPath("/resources/clinic_report.xls"));
        
     	List<List<SurvayClinicSecondlevel>> forOneOrgClinic = null;
     	
@@ -267,7 +267,7 @@ public class AllController
     
     @RequestMapping(value = "/report_big_clinic", method = RequestMethod.GET)
     public void report_1_1(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        downloadFile(request, response, "\\reports\\pg_form_1_1.xls");
+        downloadFile(request, response, request.getServletContext().getRealPath("/resources/clinic_report.xls"));
 	}
     
     @RequestMapping(value = "/sldsbPartTwoReport",method = RequestMethod.POST)
@@ -408,7 +408,8 @@ public class AllController
         System.out.println("appPath = " + appPath);
  
         //String fullPath = appPath + filePath ;      
-        String fullPath = "D:\\Appeals3\\Appeal" + filePath ;
+        //String fullPath = "D:\\Appeals3\\Appeal" + filePath ;
+        String fullPath = filePath ;
         File downloadFile = new File(fullPath);
         FileInputStream inputStream = new FileInputStream(downloadFile);
          

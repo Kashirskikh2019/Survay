@@ -1996,7 +1996,7 @@ $("#formsldsbReport").validate({
 									        <option>Предприниматель</option>
 									        <option>Руководитель</option>
 									        <option>Служащий</option>
-									        <option>ИТР, специалист</option>
+									        <option>итр, специалист</option>
 									        <option>Научный работник, преподаватель, учитель</option>
 									        <option>Рабочий</option>
 									        <option>Пенсионер</option>
@@ -2905,7 +2905,7 @@ $("#formsldsbReport").validate({
 											        <option>Предприниматель</option>
 											        <option>Руководитель</option>
 											        <option>Служащий</option>
-											        <option>ИТР, специалист</option>
+											        <option>итр, специалист</option>
 											        <option>Научный работник, преподаватель, учитель</option>
 											        <option>Рабочий</option>
 											        <option>Пенсионер</option>
@@ -4305,7 +4305,7 @@ $("#formsldsbReport").validate({
 											        <option>Предприниматель</option>
 											        <option>Руководитель</option>
 											        <option>Служащий</option>
-											        <option>ИТР, специалист</option>
+											        <option>итр, специалист</option>
 											        <option>Научный работник, преподаватель, учитель</option>
 											        <option>Рабочий</option>
 											        <option>Пенсионер</option>
