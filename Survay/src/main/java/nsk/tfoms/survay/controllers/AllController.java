@@ -252,7 +252,6 @@ public class AllController
        
     	List<List<SurvayClinicSecondlevel>> forOneOrgClinic = null;
     	
-    	System.out.println("TTTTTTTTTTTTEST "+paramtwopart);
     	if(! parseorgtwoclinic(paramtwopart).equals(""))
     	{
     		bigreportsl.BigReportClinic(paramtwopart,otch1,file_for_ontch);
@@ -270,11 +269,18 @@ public class AllController
         downloadFile(request, response, request.getServletContext().getRealPath("/resources/clinic_report.xls"));
 	}
     
+    @RequestMapping(value = "/report_big_ds", method = RequestMethod.GET)
+    public void report_1_2(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        downloadFile(request, response, request.getServletContext().getRealPath("/resources/ds_report.xls"));
+	}
+    
     @RequestMapping(value = "/sldsbPartTwoReport",method = RequestMethod.POST)
     public @ResponseBody nsk.tfoms.survay.util.JsonResponse secondReportdsb(HttpServletRequest request,HttpServletResponse response,
-    		@RequestBody ParamTwoPart paramtwopart) throws IOException {
+    		@RequestBody ParamTwoPart paramtwopart) throws IOException, ClassNotFoundException, SQLException, JRException {
     	
     	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+    	File otch1 = new File( servletContext.getRealPath("/resources/ds_report.jrxml"));
+    	File file_for_ontch = new File( servletContext.getRealPath("/resources/ds_report.xls"));
        
     	List<List<DayStacionarSecondlevel>> forOneOrgClinic = null;
     	
@@ -282,15 +288,7 @@ public class AllController
     	if(! parseorgtwoclinic(paramtwopart).equals(""))
     	{
     		
-    		List<DayStacionarSecondlevel> list1 = DayStacionarSecondlevel.getReport(paramtwopart.getDatebeginslcbreport(), paramtwopart.getDateendslcbreport(), parseorgtwoclinic(paramtwopart), paramtwopart.getAns());
-    		System.out.println("Test "+list1);
-    		int k = 0;
-    		for (int i = 0; i < list1.size(); i++) {
-				if(list1.get(i).getPolzSecondleveldaystacionar().equals("tfoms")){
-					k++;
-				}
-			}
-    		System.out.println("ITOG DS"+ list1.size()+ " - "+ k);
+    		bigreportsl.BigReportClinic(paramtwopart,otch1,file_for_ontch);
     	}   
     	
 	    

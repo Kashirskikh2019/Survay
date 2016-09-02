@@ -134,7 +134,7 @@ function secondpartreportsbigc(buttonId) {
 }
 
 /*
- * Метод отправляет данные на сервер с формы отчетов второго уровня поликлиника 
+ * Метод отправляет данные на сервер с формы отчетов второго уровня дс
  * 
  */
 function secondpartreportsbigds(buttonId) {
@@ -172,9 +172,9 @@ function secondpartreportsbigds(buttonId) {
 							{
 								console.log('YPPPPPPPPPPA');
 								// pass to controller
-							/*	document.location.href = '/survay/download'
+								document.location.href = '/survay/report_big_ds'
 								 	
-								$("input[name='datebeginonereport']").val('');
+							/*	$("input[name='datebeginonereport']").val('');
 								$("input[name='dateendonereport']").val('');
 								
 								$( "#oneTFOMS" ).prop( "checked", false );
