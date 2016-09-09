@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="4564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="3105"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
@@ -11,206 +11,94 @@
 	<parameter name="lpu_header" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[with
-			survay as (select * from survay_clinic_secondlevel t where  $P{username} like '%'||t.POLZOVATEL_SECONDLEVEL||'%'),
-            quest25 as (select * from SURVAY_CLINIC_SEC_25 t ,survay t2 where t2.general_id = t.ID_SURVAY_CLINIC_SEC_25),
-            quest20 as (select * from SURVAY_CLINIC_SEC_2 t ,survay t2 where t2.general_id = t.ID_SURVAY_CLINIC_SEC_2),
-			r1c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%'),
-            r2c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.sex_secondlevel='Мужской' and t.age_secondlevel <='59'),
-            r3c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.sex_secondlevel='Женский' and t.age_secondlevel <='54'),
-            r4c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.sex_secondlevel='Мужской' and t.age_secondlevel >='60'),
-            r5c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.sex_secondlevel='Женский' and t.age_secondlevel >='55'),
-            r6c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Предприниматель'),
-            r7c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Руководитель'),
-            r8c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Служащий'),
-            r9c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='итр, специалист'),
-            r10c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Научный работник, преподаватель, учитель'),
-            r11c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Рабочий'),
-            r12c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Пенсионер'),
-            r13c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Домохозяйка'),
-            r14c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Учащийся'),
-            r15c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Безработный'),
-            r16c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION42_CLINIC='Другое (напишите)'),
+			survay as (select * from SURVAY_SL_STACIONAR t where  $P{username} like '%'||t.POLZOVATEL_SLS||'%'),
+            quest25 as (select * from SURVAY_CLINIC_SSL_SEC_2 t ,survay t2 where t2.GENERAL_ID_SLS = t.ID_SCSSL_SEC_2),
 
-            r17c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='Менее 10000 рублей'),
-            r18c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='10 - 15000 рублей'),
-            r19c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='15 - 20000 рублей'),
-            r20c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='20 - 25000 рублей'),
-            r21c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='25 - 30000 рублей'),
-            r22c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='Свыше 30000 рублей'),
-            r23c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.QUESTION43_CLINIC='Затрудняюсь ответить'),
+			r1c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%'),
+            r2c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.SEX_SLS='Мужской' and t.AGE_SLS <='59'),
+            r3c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.SEX_SLS='Женский' and t.AGE_SLS <='54'),
+            r4c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.SEX_SLS='Мужской' and t.AGE_SLS >='60'),
+            r5c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.SEX_SLS='Женский' and t.AGE_SLS >='55'),
+            r6c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Предприниматель'),
+            r7c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Руководитель'),
+            r8c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Служащий'),
+            r9c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='итр, специалист'),
+            r10c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Научный работник, преподаватель, учитель'),
+            r11c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Рабочий'),
+            r12c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Пенсионер'),
+            r13c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Домохозяйка'),
+            r14c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Учащийся'),
+            r15c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Безработный'),
+            r16c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS31='Другое (напишите)'),
 
-            r24c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.question41_clinic='Неполное среднее'),
-            r25c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.question41_clinic='Среднее'),
-            r26c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.question41_clinic='Среднее специальное'),
-            r27c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.question41_clinic='Неполное высшее'),
-            r28c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.question41_clinic='Высшее, в т.ч. ученая степень'),
+            r17c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='Менее 10000 рублей'),
+            r18c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='10 - 15000 рублей'),
+            r19c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='15 - 20000 рублей'),
+            r20c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='20 - 25000 рублей'),
+            r21c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='25 - 30000 рублей'),
+            r22c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='Свыше 30000 рублей'),
+            r23c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS32='Затрудняюсь ответить'),
 
-            r29c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_1_clinic='Знаю'),
-            r30c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_1_clinic='Что-то слышал'),
-            r31c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_1_clinic='Не знаю'),
-            r32c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_1_clinic='Затрудняюсь ответить'),
+            r24c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS30='Неполное среднее'),
+            r25c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS30='Среднее'),
+            r26c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS30='Среднее специальное'),
+            r27c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS30='Неполное высшее'),
+            r28c1 as (select count(*) c from survay t where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.questionS30='Высшее, в т.ч. ученая степень'),
 
-            r33c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_2_clinic='Знаю'),
-            r34c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_2_clinic='Что-то слышал'),
-            r35c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_2_clinic='Не знаю'),
-            r36c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_2_clinic='Затрудняюсь ответить'),
+            r29c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_1SEC2='Знаю'),
+            r30c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_1SEC2='Что-то слышал'),
+            r31c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_1SEC2='Не знаю'),
+            r32c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_1SEC2='Затрудняюсь ответить'),
 
-            r37c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_3_clinic='Знаю'),
-            r38c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_3_clinic='Что-то слышал'),
-            r39c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_3_clinic='Не знаю'),
-            r40c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_3_clinic='Затрудняюсь ответить'),
+            r33c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_2SEC2='Знаю'),
+            r34c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_2SEC2='Что-то слышал'),
+            r35c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_2SEC2='Не знаю'),
+            r36c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_2SEC2='Затрудняюсь ответить'),
 
-            r41c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_4_clinic='Знаю'),
-            r42c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_4_clinic='Что-то слышал'),
-            r43c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_4_clinic='Не знаю'),
-            r44c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_4_clinic='Затрудняюсь ответить'),
+            r37c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_3SEC2='Знаю'),
+            r38c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_3SEC2='Что-то слышал'),
+            r39c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_3SEC2='Не знаю'),
+            r40c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_3SEC2='Затрудняюсь ответить'),
 
-            r45c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_5_clinic='Знаю'),
-            r46c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_5_clinic='Что-то слышал'),
-            r47c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_5_clinic='Не знаю'),
-            r48c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_5_clinic='Затрудняюсь ответить'),
+            r41c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_4SEC2='Знаю'),
+            r42c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_4SEC2='Что-то слышал'),
+            r43c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_4SEC2='Не знаю'),
+            r44c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_4SEC2='Затрудняюсь ответить'),
 
-            r49c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_6_clinic='Знаю'),
-            r50c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_6_clinic='Что-то слышал'),
-            r51c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_6_clinic='Не знаю'),
-            r52c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_6_clinic='Затрудняюсь ответить'),
+            r45c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_5SEC2='Знаю'),
+            r46c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_5SEC2='Что-то слышал'),
+            r47c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_5SEC2='Не знаю'),
+            r48c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_5SEC2='Затрудняюсь ответить'),
 
-            r53c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_7_clinic='Знаю'),
-            r54c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_7_clinic='Что-то слышал'),
-            r55c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_7_clinic='Не знаю'),
-            r56c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_7_clinic='Затрудняюсь ответить'),
+            r49c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_6SEC2='Знаю'),
+            r50c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_6SEC2='Что-то слышал'),
+            r51c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_6SEC2='Не знаю'),
+            r52c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_6SEC2='Затрудняюсь ответить'),
 
-            r57c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_8_clinic='Знаю'),
-            r58c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_8_clinic='Что-то слышал'),
-            r59c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_8_clinic='Не знаю'),
-            r60c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_8_clinic='Затрудняюсь ответить'),
+            r53c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_7SEC2='Знаю'),
+            r54c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_7SEC2='Что-то слышал'),
+            r55c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_7SEC2='Не знаю'),
+            r56c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_7SEC2='Затрудняюсь ответить'),
 
-            r61c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_9_clinic='Знаю'),
-            r62c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_9_clinic='Что-то слышал'),
-            r63c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_9_clinic='Не знаю'),
-            r64c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_9_clinic='Затрудняюсь ответить'),
+            r57c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_8SEC2='Знаю'),
+            r58c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_8SEC2='Что-то слышал'),
+            r59c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_8SEC2='Не знаю'),
+            r60c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_8SEC2='Затрудняюсь ответить'),
 
-            r65c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_10_clinic='Знаю'),
-            r66c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_10_clinic='Что-то слышал'),
-            r67c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_10_clinic='Не знаю'),
-            r68c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_10_clinic='Затрудняюсь ответить'),
+            r61c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_9SEC2='Знаю'),
+            r62c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_9SEC2='Что-то слышал'),
+            r63c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_9SEC2='Не знаю'),
+            r64c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_9SEC2='Затрудняюсь ответить'),
 
-            r69c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_11_clinic='Знаю'),
-            r70c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_11_clinic='Что-то слышал'),
-            r71c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_11_clinic='Не знаю'),
-            r72c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_25 and t2.question25_11_clinic='Затрудняюсь ответить'),
+            r65c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_10SEC2='Знаю'),
+            r66c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_10SEC2='Что-то слышал'),
+            r67c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_10SEC2='Не знаю'),
+            r68c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_10SEC2='Затрудняюсь ответить'),
 
-
-
-
-
-
-
-
-            r73c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_1_clinic='Удовлетворен(а)'),
-            r74c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_1_clinic='Скорее удовлетворен(а), чем нет'),
-            r75c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_1_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r76c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_1_clinic='Не удовлетворен(а)'),
-            r77c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_1_clinic='Затрудняюсь ответить'),
-
-            r78c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_2_clinic='Удовлетворен(а)'),
-            r79c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_2_clinic='Скорее удовлетворен(а), чем нет'),
-            r80c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_2_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r81c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_2_clinic='Не удовлетворен(а)'),
-            r82c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_2_clinic='Затрудняюсь ответить'),
-
-            r83c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_3_clinic='Удовлетворен(а)'),
-            r84c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_3_clinic='Скорее удовлетворен(а), чем нет'),
-            r85c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_3_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r86c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_3_clinic='Не удовлетворен(а)'),
-            r87c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_3_clinic='Затрудняюсь ответить'),
-
-            r88c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_4_clinic='Удовлетворен(а)'),
-            r89c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_4_clinic='Скорее удовлетворен(а), чем нет'),
-            r90c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_4_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r91c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_4_clinic='Не удовлетворен(а)'),
-            r92c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_4_clinic='Затрудняюсь ответить'),
-
-            r93c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_5_clinic='Удовлетворен(а)'),
-            r94c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_5_clinic='Скорее удовлетворен(а), чем нет'),
-            r95c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_5_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r96c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_5_clinic='Не удовлетворен(а)'),
-            r97c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_5_clinic='Затрудняюсь ответить'),
-
-            r98c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_6_clinic='Удовлетворен(а)'),
-            r99c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_6_clinic='Скорее удовлетворен(а), чем нет'),
-            r100c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_6_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r101c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_6_clinic='Не удовлетворен(а)'),
-            r102c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_6_clinic='Затрудняюсь ответить'),
-
-            r103c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_7_clinic='Удовлетворен(а)'),
-            r104c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_7_clinic='Скорее удовлетворен(а), чем нет'),
-            r105c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_7_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r106c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_7_clinic='Не удовлетворен(а)'),
-            r107c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_7_clinic='Затрудняюсь ответить'),
-
-            r108c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_8_clinic='Удовлетворен(а)'),
-            r109c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_8_clinic='Скорее удовлетворен(а), чем нет'),
-            r110c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_8_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r111c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_8_clinic='Не удовлетворен(а)'),
-            r112c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_8_clinic='Затрудняюсь ответить'),
-
-            r113c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_9_clinic='Удовлетворен(а)'),
-            r114c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_9_clinic='Скорее удовлетворен(а), чем нет'),
-            r115c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_9_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r116c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_9_clinic='Не удовлетворен(а)'),
-            r117c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_9_clinic='Затрудняюсь ответить'),
-
-            r118c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_10_clinic='Удовлетворен(а)'),
-            r119c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_10_clinic='Скорее удовлетворен(а), чем нет'),
-            r120c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_10_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r121c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_10_clinic='Не удовлетворен(а)'),
-            r122c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_10_clinic='Затрудняюсь ответить'),
-
-            r123c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_11_clinic='Удовлетворен(а)'),
-            r124c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_11_clinic='Скорее удовлетворен(а), чем нет'),
-            r125c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_11_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r126c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_11_clinic='Не удовлетворен(а)'),
-            r127c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_11_clinic='Затрудняюсь ответить'),
-
-            r128c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_12_clinic='Удовлетворен(а)'),
-            r129c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_12_clinic='Скорее удовлетворен(а), чем нет'),
-            r130c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_12_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r131c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_12_clinic='Не удовлетворен(а)'),
-            r132c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_12_clinic='Затрудняюсь ответить'),
-
-            r133c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_13_clinic='Удовлетворен(а)'),
-            r134c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_13_clinic='Скорее удовлетворен(а), чем нет'),
-            r135c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_13_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r136c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_13_clinic='Не удовлетворен(а)'),
-            r137c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_13_clinic='Затрудняюсь ответить'),
-
-            r138c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_14_clinic='Удовлетворен(а)'),
-            r139c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_14_clinic='Скорее удовлетворен(а), чем нет'),
-            r140c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_14_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r141c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_14_clinic='Не удовлетворен(а)'),
-            r142c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_14_clinic='Затрудняюсь ответить'),
-
-            r143c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_15_clinic='Удовлетворен(а)'),
-            r144c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_15_clinic='Скорее удовлетворен(а), чем нет'),
-            r145c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_15_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r146c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_15_clinic='Не удовлетворен(а)'),
-            r147c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_15_clinic='Затрудняюсь ответить'),
-
-            r148c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_16_clinic='Удовлетворен(а)'),
-            r149c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_16_clinic='Скорее удовлетворен(а), чем нет'),
-            r150c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_16_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r151c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_16_clinic='Не удовлетворен(а)'),
-            r152c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_16_clinic='Затрудняюсь ответить'),
-
-            r153c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_17_clinic='Удовлетворен(а)'),
-            r154c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_17_clinic='Скорее удовлетворен(а), чем нет'),
-            r155c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_17_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
-            r156c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_17_clinic='Не удовлетворен(а)'),
-            r157c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question20_17_clinic='Затрудняюсь ответить')
-
-
-
+            r69c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_11SEC2='Знаю'),
+            r70c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_11SEC2='Что-то слышал'),
+            r71c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_11SEC2='Не знаю'),
+            r72c1 as (select count(*) c from survay t, quest25 t2 where (t.DATA_RESP_SLS between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_SLS, 1, 6)||'%' and t.GENERAL_ID_SLS = t2.ID_SCSSL_SEC_2 and t2.QUESTION14_11SEC2='Затрудняюсь ответить')
 
 		select
 			r1c1.c r1c1,r2c1.c r2c1,r3c1.c r3c1,r4c1.c r4c1,r5c1.c r5c1,r6c1.c r6c1,
@@ -227,185 +115,13 @@
             ,r65c1.c r65c1,r66c1.c r66c1,r67c1.c r67c1,r68c1.c r68c1,r69c1.c r69c1,r70c1.c r70c1
             ,r71c1.c r71c1,r72c1.c r72c1
 
-,r73c1.c r73c1
-,r74c1.c r74c1
-,r75c1.c r75c1
-,r76c1.c r76c1
-,r77c1.c r77c1
-,r78c1.c r78c1
-,r79c1.c r79c1
-,r80c1.c r80c1
-,r81c1.c r81c1
-,r82c1.c r82c1
-,r83c1.c r83c1
-,r84c1.c r84c1
-,r85c1.c r85c1
-,r86c1.c r86c1
-,r87c1.c r87c1
-,r88c1.c r88c1
-,r89c1.c r89c1
-,r90c1.c r90c1
-,r91c1.c r91c1
-,r92c1.c r92c1
-,r93c1.c r93c1
-,r94c1.c r94c1
-,r95c1.c r95c1
-,r96c1.c r96c1
-,r97c1.c r97c1
-,r98c1.c r98c1
-,r99c1.c r99c1
-,r100c1.c r100c1
-,r101c1.c r101c1
-,r102c1.c r102c1
-,r103c1.c r103c1
-,r104c1.c r104c1
-,r105c1.c r105c1
-,r106c1.c r106c1
-,r107c1.c r107c1
-,r108c1.c r108c1
-,r109c1.c r109c1
-,r110c1.c r110c1
-,r111c1.c r111c1
-,r112c1.c r112c1
-,r113c1.c r113c1
-,r114c1.c r114c1
-,r115c1.c r115c1
-,r116c1.c r116c1
-,r117c1.c r117c1
-,r118c1.c r118c1
-,r119c1.c r119c1
-,r120c1.c r120c1
-,r121c1.c r121c1
-,r122c1.c r122c1
-,r123c1.c r123c1
-,r124c1.c r124c1
-,r125c1.c r125c1
-,r126c1.c r126c1
-,r127c1.c r127c1
-,r128c1.c r128c1
-,r129c1.c r129c1
-,r130c1.c r130c1
-,r131c1.c r131c1
-,r132c1.c r132c1
-,r133c1.c r133c1
-,r134c1.c r134c1
-,r135c1.c r135c1
-,r136c1.c r136c1
-,r137c1.c r137c1
-,r138c1.c r138c1
-,r139c1.c r139c1
-,r140c1.c r140c1
-,r141c1.c r141c1
-,r142c1.c r142c1
-,r143c1.c r143c1
-,r144c1.c r144c1
-,r145c1.c r145c1
-,r146c1.c r146c1
-,r147c1.c r147c1
-,r148c1.c r148c1
-,r149c1.c r149c1
-,r150c1.c r150c1
-,r151c1.c r151c1
-,r152c1.c r152c1
-,r153c1.c r153c1
-,r154c1.c r154c1
-,r155c1.c r155c1
-,r156c1.c r156c1
-,r157c1.c r157c1
-
-
 
 
 		from
 			r1c1,r2c1,r3c1,r4c1,r5c1,r6c1,r7c1,r8c1,r9c1,r10c1,r11c1,r12c1,r13c1,r14c1,r15c1,r16c1
             ,r17c1,r18c1,r19c1,r20c1,r21c1,r22c1,r23c1,r24c1,r25c1,r26c1,r27c1,r28c1,r29c1,r30c1,r31c1,r32c1,r33c1,r34c1,r35c1,r36c1
             ,r37c1,r38c1,r39c1,r40c1,r41c1,r42c1,r43c1,r44c1,r45c1,r46c1,r47c1,r48c1,r49c1,r50c1,r51c1,r52c1,r53c1,r54c1,r55c1,r56c1
-            ,r57c1,r58c1,r59c1,r60c1,r61c1,r62c1,r63c1,r64c1,r65c1,r66c1,r67c1,r68c1,r69c1,r70c1,r71c1,r72c1
-,r73c1
-,r74c1
-,r75c1
-,r76c1
-,r77c1
-,r78c1
-,r79c1
-,r80c1
-,r81c1
-,r82c1
-,r83c1
-,r84c1
-,r85c1
-,r86c1
-,r87c1
-,r88c1
-,r89c1
-,r90c1
-,r91c1
-,r92c1
-,r93c1
-,r94c1
-,r95c1
-,r96c1
-,r97c1
-,r98c1
-,r99c1
-,r100c1
-,r101c1
-,r102c1
-,r103c1
-,r104c1
-,r105c1
-,r106c1
-,r107c1
-,r108c1
-,r109c1
-,r110c1
-,r111c1
-,r112c1
-,r113c1
-,r114c1
-,r115c1
-,r116c1
-,r117c1
-,r118c1
-,r119c1
-,r120c1
-,r121c1
-,r122c1
-,r123c1
-,r124c1
-,r125c1
-,r126c1
-,r127c1
-,r128c1
-,r129c1
-,r130c1
-,r131c1
-,r132c1
-,r133c1
-,r134c1
-,r135c1
-,r136c1
-,r137c1
-,r138c1
-,r139c1
-,r140c1
-,r141c1
-,r142c1
-,r143c1
-,r144c1
-,r145c1
-,r146c1
-,r147c1
-,r148c1
-,r149c1
-,r150c1
-,r151c1
-,r152c1
-,r153c1
-,r154c1
-,r155c1
-,r156c1
-,r157c1]]>
+            ,r57c1,r58c1,r59c1,r60c1,r61c1,r62c1,r63c1,r64c1,r65c1,r66c1,r67c1,r68c1,r69c1,r70c1,r71c1,r72c1]]>
 	</queryString>
 	<field name="r1c1" class="java.lang.Integer"/>
 	<field name="r2c1" class="java.lang.Integer"/>
@@ -479,91 +195,6 @@
 	<field name="r70c1" class="java.lang.Integer"/>
 	<field name="r71c1" class="java.lang.Integer"/>
 	<field name="r72c1" class="java.lang.Integer"/>
-	<field name="r73c1" class="java.lang.Integer"/>
-	<field name="r74c1" class="java.lang.Integer"/>
-	<field name="r75c1" class="java.lang.Integer"/>
-	<field name="r76c1" class="java.lang.Integer"/>
-	<field name="r77c1" class="java.lang.Integer"/>
-	<field name="r78c1" class="java.lang.Integer"/>
-	<field name="r79c1" class="java.lang.Integer"/>
-	<field name="r80c1" class="java.lang.Integer"/>
-	<field name="r81c1" class="java.lang.Integer"/>
-	<field name="r82c1" class="java.lang.Integer"/>
-	<field name="r83c1" class="java.lang.Integer"/>
-	<field name="r84c1" class="java.lang.Integer"/>
-	<field name="r85c1" class="java.lang.Integer"/>
-	<field name="r86c1" class="java.lang.Integer"/>
-	<field name="r87c1" class="java.lang.Integer"/>
-	<field name="r88c1" class="java.lang.Integer"/>
-	<field name="r89c1" class="java.lang.Integer"/>
-	<field name="r90c1" class="java.lang.Integer"/>
-	<field name="r91c1" class="java.lang.Integer"/>
-	<field name="r92c1" class="java.lang.Integer"/>
-	<field name="r93c1" class="java.lang.Integer"/>
-	<field name="r94c1" class="java.lang.Integer"/>
-	<field name="r95c1" class="java.lang.Integer"/>
-	<field name="r96c1" class="java.lang.Integer"/>
-	<field name="r97c1" class="java.lang.Integer"/>
-	<field name="r98c1" class="java.lang.Integer"/>
-	<field name="r99c1" class="java.lang.Integer"/>
-	<field name="r100c1" class="java.lang.Integer"/>
-	<field name="r101c1" class="java.lang.Integer"/>
-	<field name="r102c1" class="java.lang.Integer"/>
-	<field name="r103c1" class="java.lang.Integer"/>
-	<field name="r104c1" class="java.lang.Integer"/>
-	<field name="r105c1" class="java.lang.Integer"/>
-	<field name="r106c1" class="java.lang.Integer"/>
-	<field name="r107c1" class="java.lang.Integer"/>
-	<field name="r108c1" class="java.lang.Integer"/>
-	<field name="r109c1" class="java.lang.Integer"/>
-	<field name="r110c1" class="java.lang.Integer"/>
-	<field name="r111c1" class="java.lang.Integer"/>
-	<field name="r112c1" class="java.lang.Integer"/>
-	<field name="r113c1" class="java.lang.Integer"/>
-	<field name="r114c1" class="java.lang.Integer"/>
-	<field name="r115c1" class="java.lang.Integer"/>
-	<field name="r116c1" class="java.lang.Integer"/>
-	<field name="r117c1" class="java.lang.Integer"/>
-	<field name="r118c1" class="java.lang.Integer"/>
-	<field name="r119c1" class="java.lang.Integer"/>
-	<field name="r120c1" class="java.lang.Integer"/>
-	<field name="r121c1" class="java.lang.Integer"/>
-	<field name="r122c1" class="java.lang.Integer"/>
-	<field name="r123c1" class="java.lang.Integer"/>
-	<field name="r124c1" class="java.lang.Integer"/>
-	<field name="r125c1" class="java.lang.Integer"/>
-	<field name="r126c1" class="java.lang.Integer"/>
-	<field name="r127c1" class="java.lang.Integer"/>
-	<field name="r128c1" class="java.lang.Integer"/>
-	<field name="r129c1" class="java.lang.Integer"/>
-	<field name="r130c1" class="java.lang.Integer"/>
-	<field name="r131c1" class="java.lang.Integer"/>
-	<field name="r132c1" class="java.lang.Integer"/>
-	<field name="r133c1" class="java.lang.Integer"/>
-	<field name="r134c1" class="java.lang.Integer"/>
-	<field name="r135c1" class="java.lang.Integer"/>
-	<field name="r136c1" class="java.lang.Integer"/>
-	<field name="r137c1" class="java.lang.Integer"/>
-	<field name="r138c1" class="java.lang.Integer"/>
-	<field name="r139c1" class="java.lang.Integer"/>
-	<field name="r140c1" class="java.lang.Integer"/>
-	<field name="r141c1" class="java.lang.Integer"/>
-	<field name="r142c1" class="java.lang.Integer"/>
-	<field name="r143c1" class="java.lang.Integer"/>
-	<field name="r144c1" class="java.lang.Integer"/>
-	<field name="r145c1" class="java.lang.Integer"/>
-	<field name="r146c1" class="java.lang.Integer"/>
-	<field name="r147c1" class="java.lang.Integer"/>
-	<field name="r148c1" class="java.lang.Integer"/>
-	<field name="r149c1" class="java.lang.Integer"/>
-	<field name="r150c1" class="java.lang.Integer"/>
-	<field name="r151c1" class="java.lang.Integer"/>
-	<field name="r152c1" class="java.lang.Integer"/>
-	<field name="r153c1" class="java.lang.Integer"/>
-	<field name="r154c1" class="java.lang.Integer"/>
-	<field name="r155c1" class="java.lang.Integer"/>
-	<field name="r156c1" class="java.lang.Integer"/>
-	<field name="r157c1" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -653,7 +284,7 @@
 				<textElement verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Амбулаторно-поликлиническая"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Стационар"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="81" width="133" height="20" uuid="219ba925-ae2d-4e5a-80f6-79ede74f8d86"/>
@@ -5248,7 +4879,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r76c1}+" / "+Math.round(new Double($F{r76c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2454" width="105" height="40" uuid="56d4b8ba-4419-4226-ba5f-f7ce7a2881d3"/>
@@ -5258,9 +4889,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r77c1}+" / "+Math.round(new Double($F{r77c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="522" y="2453" width="105" height="40" uuid="5202743f-9b08-4544-a8fe-90573a4be7c7"/>
@@ -5272,7 +4903,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r75c1}+" / "+Math.round(new Double($F{r75c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2398" width="105" height="56" uuid="8de21c2a-8b6c-4ed1-b10f-b72113be9117"/>
@@ -5294,9 +4925,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r74c1}+" / "+Math.round(new Double($F{r74c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2398" width="105" height="56" uuid="23ccadb6-e976-47b7-9a7e-eaed29be34a9"/>
@@ -5332,7 +4963,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r73c1}+" / "+Math.round(new Double($F{r73c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2494" width="105" height="40" uuid="e6ddfb3f-0135-494a-a7b7-d8aa1cb805ab"/>
@@ -5344,7 +4975,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r81c1}+" / "+Math.round(new Double($F{r81c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="2493" width="310" height="40" uuid="87fdc06d-3b90-4f3e-b81b-ebee5bf88e9f"/>
@@ -5359,7 +4990,7 @@
 				<textFieldExpression><![CDATA["Организацией мест ожидания приема перед кабинетами"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="312" y="2533" width="105" height="40" uuid="6c773572-3822-4844-a8c0-c5b27c388e20"/>
+				<reportElement x="312" y="2493" width="105" height="40" uuid="6c773572-3822-4844-a8c0-c5b27c388e20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
@@ -5368,7 +4999,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r83c1}+" / "+Math.round(new Double($F{r83c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="522" y="2493" width="105" height="40" uuid="21ecc19e-2ca4-4dd3-ae32-32aae344b0a4"/>
@@ -5380,19 +5011,19 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r80c1}+" / "+Math.round(new Double($F{r80c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="417" y="2493" width="104" height="40" uuid="189b9918-b1ac-4b9c-93f4-96533095f36c"/>
+				<reportElement x="417" y="2493" width="105" height="40" uuid="189b9918-b1ac-4b9c-93f4-96533095f36c"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r79c1}+" / "+Math.round(new Double($F{r79c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2494" width="105" height="40" uuid="c0766afe-ab90-4ab8-bca1-8e827862eee6"/>
@@ -5402,9 +5033,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r82c1}+" / "+Math.round(new Double($F{r82c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2534" width="105" height="40" uuid="bdc3ed9f-9a29-4f2d-adb1-3f751693a3f7"/>
@@ -5416,7 +5047,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r86c1}+" / "+Math.round(new Double($F{r86c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="2533" width="310" height="40" uuid="6c22c736-5443-471b-aa81-e05aed9d00ec"/>
@@ -5431,6 +5062,18 @@
 				<textFieldExpression><![CDATA["Чистотой, санитарно-гигиеническими условиями"]]></textFieldExpression>
 			</textField>
 			<textField>
+				<reportElement x="312" y="2533" width="105" height="40" uuid="134ab938-333c-4481-a0ad-1bb7891c4f01"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
 				<reportElement x="522" y="2533" width="105" height="40" uuid="5825a70c-e9a2-4e5e-a80e-d92583b36b98"/>
 				<box>
 					<pen lineWidth="0.5"/>
@@ -5440,7 +5083,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r85c1}+" / "+Math.round(new Double($F{r85c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="417" y="2533" width="105" height="40" uuid="73c09447-694d-4b6d-b316-f94c8d3c65c4"/>
@@ -5450,9 +5093,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r84c1}+" / "+Math.round(new Double($F{r84c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2534" width="105" height="40" uuid="7cce4709-20af-43ab-980d-0f384b685fcf"/>
@@ -5462,9 +5105,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r87c1}+" / "+Math.round(new Double($F{r87c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2574" width="105" height="40" uuid="744fa10b-a308-4764-a331-f49e33e861a2"/>
@@ -5476,7 +5119,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r91c1}+" / "+Math.round(new Double($F{r91c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="2573" width="310" height="40" uuid="62833641-d913-4795-8c82-584634359259"/>
@@ -5500,7 +5143,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r88c1}+" / "+Math.round(new Double($F{r88c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="522" y="2573" width="105" height="40" uuid="b6e09f3f-c562-4ab2-9311-94367db0a56c"/>
@@ -5512,7 +5155,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r90c1}+" / "+Math.round(new Double($F{r90c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="417" y="2573" width="105" height="40" uuid="f3cfe0f9-d7fe-4fda-a12c-a805996b9365"/>
@@ -5522,9 +5165,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r89c1}+" / "+Math.round(new Double($F{r89c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2574" width="105" height="40" uuid="ec94b59b-7190-4882-bedd-edbd26657a47"/>
@@ -5534,9 +5177,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r92c1}+" / "+Math.round(new Double($F{r92c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="417" y="2613" width="105" height="40" uuid="7b7e50da-65ac-459c-955c-c4d890760ae1"/>
@@ -5546,9 +5189,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r94c1}+" / "+Math.round(new Double($F{r94c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2614" width="105" height="40" uuid="3f971974-5bdf-4ed2-923f-b5b7124ac190"/>
@@ -5560,7 +5203,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r96c1}+" / "+Math.round(new Double($F{r96c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="2613" width="310" height="40" uuid="25ce0736-a1cd-4ba2-b85e-1ef87487a0ba"/>
@@ -5584,7 +5227,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r93c1}+" / "+Math.round(new Double($F{r93c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2614" width="105" height="40" uuid="c60818d0-ddc9-4c82-b52c-154a6aa30356"/>
@@ -5594,9 +5237,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r97c1}+" / "+Math.round(new Double($F{r97c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="522" y="2613" width="105" height="40" uuid="fffd2bf8-600d-4338-af8c-488890bba8b5"/>
@@ -5608,7 +5251,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r95c1}+" / "+Math.round(new Double($F{r95c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="417" y="2653" width="105" height="40" uuid="4c2dae94-7f05-4d87-a214-8685d86d38b2"/>
@@ -5618,9 +5261,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r99c1}+" / "+Math.round(new Double($F{r99c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2654" width="105" height="40" uuid="59d30d0c-641a-42d3-84e6-de60fc5bc444"/>
@@ -5632,7 +5275,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r101c1}+" / "+Math.round(new Double($F{r101c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="312" y="2653" width="105" height="40" uuid="0f2f63e8-04cb-4ecb-9342-c95f316ff191"/>
@@ -5644,7 +5287,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r98c1}+" / "+Math.round(new Double($F{r98c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="2653" width="310" height="40" uuid="1e4fc96a-3b98-45ee-9d83-3b1f05394771"/>
@@ -5666,9 +5309,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r102c1}+" / "+Math.round(new Double($F{r102c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="522" y="2653" width="105" height="40" uuid="d0817a4b-5de6-4531-a6c9-4a994d127c96"/>
@@ -5680,7 +5323,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r100c1}+" / "+Math.round(new Double($F{r100c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="522" y="2693" width="105" height="40" uuid="f0a9836e-a843-444b-9370-3a49ded11435"/>
@@ -5692,7 +5335,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r105c1}+" / "+Math.round(new Double($F{r105c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="312" y="2693" width="105" height="40" uuid="8b626708-ab2f-4939-bd17-ce9ce3c5bbb4"/>
@@ -5704,7 +5347,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r103c1}+" / "+Math.round(new Double($F{r103c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="417" y="2693" width="105" height="40" uuid="b2fb6e79-180f-4795-9136-d24c4993bc9c"/>
@@ -5714,9 +5357,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r104c1}+" / "+Math.round(new Double($F{r104c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="2693" width="310" height="40" uuid="524dee6b-1460-498c-841a-c886480e662c"/>
@@ -5740,7 +5383,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r106c1}+" / "+Math.round(new Double($F{r106c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="732" y="2694" width="105" height="40" uuid="c607a692-e504-42c2-8542-9a4618c2c824"/>
@@ -5750,9 +5393,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r107c1}+" / "+Math.round(new Double($F{r107c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="627" y="2734" width="105" height="40" uuid="0da78bc3-0ff6-4f79-b248-76d3b947f984"/>
@@ -5774,7 +5417,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5786,7 +5429,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5858,7 +5501,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5870,7 +5513,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5906,7 +5549,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5942,7 +5585,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6026,7 +5669,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6038,7 +5681,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6074,7 +5717,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6110,7 +5753,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6146,7 +5789,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6170,7 +5813,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6230,7 +5873,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6254,7 +5897,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6302,7 +5945,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6326,7 +5969,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6338,7 +5981,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6374,7 +6017,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6434,7 +6077,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6470,7 +6113,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6506,7 +6149,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6530,7 +6173,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6662,7 +6305,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -6698,7 +6341,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -8708,18 +8351,6 @@
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Среднее"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="312" y="2493" width="104" height="40" uuid="ba51de3e-a2f4-40c1-aa2c-4b0df09b09f3"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{r78c1}+" / "+Math.round(new Double($F{r78c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

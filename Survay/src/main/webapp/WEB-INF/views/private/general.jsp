@@ -106,6 +106,10 @@ $(document).ready(function()
 	$( "#dateBeginsldsbReport" ).datepicker({dateFormat:'dd.mm.yy'});
 	$( "#dateEndsldsbReport" ).datepicker({dateFormat:'dd.mm.yy'});
 	
+	
+	$( "#dateBeginslsbReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	$( "#dateEndslsbReport" ).datepicker({dateFormat:'dd.mm.yy'});
+	
 });
 </script>
 <script>
@@ -133,7 +137,15 @@ $("#formsldsbReport").validate({
    	submitHandler: function() {
    		secondpartreportsbigds('sldsbbtn');
 	  }
+	});
+
+
+$("#formslsbReport").validate({
+   	submitHandler: function() {
+   		secondpartreportsbigs('slsbbtn');
+	  }
 	});	
+
 
 });
 </script>
@@ -219,7 +231,7 @@ $("#formsldsbReport").validate({
 									                <li class="divider"></li>
 									                <li><a href="#" data-toggle="modal" data-target="#myModalslds">Дневной стационар</a></li>
 									                <li class="divider"></li>
-													<li><a href="#">Стационарная помощь</a></li>									                
+													<li><a href="#" data-toggle="modal" data-target="#myModalsls">Стационарная помощь</a></li>									                
 									              </ul>
 								            </li>	
 						              </ul>
@@ -460,6 +472,74 @@ $("#formsldsbReport").validate({
 										<tr><td>&nbsp;</td></tr>
 										<tr>
 										<td><button type="submit" value="Submit" id="sldsbbtn"  class="btn btn-primary">Скачать отчет</button></td>
+										</tr>
+										</table>
+									</form>
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" id="closereportonepart" data-dismiss="modal">Закрыть окно</button>
+								</div>
+							</div>
+						</div>
+					</div>
+<!-- CAST BLOCK MODAL WINDOWS FROM MENU -->
+
+
+<!-- BLOCK MODAL BIG REPORT SECOND LEVEL  STAC WINDOWS FROM MENU -->
+          		<div class="modal fade" id="myModalsls" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header backgrheader">
+									<button type="button btn-primary" class="close"
+										data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h3 class="modal-title">Отчет второго уровня Стационарной помощи</h3>
+									<p>Оценка уровня удовлетворенности работы Стационарной помощи по результатам анкетирования второго уровня</p>
+
+								</div>
+								<div class="modal-body backgr">
+										<form class="bigreportssl" id="formslsbReport" action="slsbPartTwoReport" method="">
+										<table cellspacing='15'>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите дату:</h4></td>
+										</tr>
+										<tr>
+											<td>
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateBeginslsbReport"  name="datebeginslcbreport" placeholder="" title="Укажите дату начала отчета">&nbsp;
+											<input  class="form-control2 required"  aria-describedby="sizing-addon3" id="dateEndslsbReport"  name="dateendslcbreport" placeholder="" title="Укажите дату окончания отчета">
+											</td>
+										</tr>
+										<tr><td><label class="error" style="display: none; color:red;"></label></td></tr>
+									 	<tr>
+											<td style="text-decoration: underline;"><h4>Выберите ЛПУ:</h4></td>
+										</tr>
+										<tr>
+											<td>
+											<div style="height: 200px;overflow: auto;width: 100%;" id="divlistMO">
+												<input type="checkbox" id="ansFormOnePart1"  value="Все" name="ans[]" required minlength="1">Все<br>
+													<c:forEach var="ls" items="${listmo}" varStatus="loop">
+												        <input type="checkbox" id="ansFormOnePart${loop.index+2}" value="${ls.value}" name="ans[]"> ${ls.value}<br>
+											        </c:forEach>
+											</div>	
+											</td>
+										</tr>  
+										<tr><td><label for="ans[]" class="error" id="ans-error" style="display: none; color:red;">Пожалуйста выберите хотя бы один вариант ответа</label></td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите СМО(ТФОМС):</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" id="twosldsbTFOMS"  value="twotfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="twosldsbSimaz" value="twosimaz" name="org[]"> СимазМед&nbsp;
+												<input type="checkbox" id="twosldsbIngos" value="twoingos" name="org[]"> Ингосстрах&nbsp;
+												<input type="checkbox" id="twosldsbRosno" value="tworosno" name="org[]"> РОСНО
+											</td>
+										</tr>
+										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr>
+										<td><button type="submit" value="Submit" id="slsbbtn"  class="btn btn-primary">Скачать отчет</button></td>
 										</tr>
 										</table>
 									</form>

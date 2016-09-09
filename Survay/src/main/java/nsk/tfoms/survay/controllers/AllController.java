@@ -274,6 +274,11 @@ public class AllController
         downloadFile(request, response, request.getServletContext().getRealPath("/resources/ds_report.xls"));
 	}
     
+    @RequestMapping(value = "/report_big_s", method = RequestMethod.GET)
+    public void report_1_3(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        downloadFile(request, response, request.getServletContext().getRealPath("/resources/s_report.xls"));
+	}
+    
     @RequestMapping(value = "/sldsbPartTwoReport",method = RequestMethod.POST)
     public @ResponseBody nsk.tfoms.survay.util.JsonResponse secondReportdsb(HttpServletRequest request,HttpServletResponse response,
     		@RequestBody ParamTwoPart paramtwopart) throws IOException, ClassNotFoundException, SQLException, JRException {
@@ -282,7 +287,30 @@ public class AllController
     	File otch1 = new File( servletContext.getRealPath("/resources/ds_report.jrxml"));
     	File file_for_ontch = new File( servletContext.getRealPath("/resources/ds_report.xls"));
        
-    	List<List<DayStacionarSecondlevel>> forOneOrgClinic = null;
+    	
+    	
+    	if(! parseorgtwoclinic(paramtwopart).equals(""))
+    	{
+    		
+    		bigreportsl.BigReportClinic(paramtwopart,otch1,file_for_ontch);
+    	}   
+    	
+	    
+	    res.setStatus("SUCCESS");
+	    res.setResult(new String("Ok"));
+
+		return res; 
+        
+    }
+    
+    @RequestMapping(value = "/slsbPartTwoReport",method = RequestMethod.POST)
+    public @ResponseBody nsk.tfoms.survay.util.JsonResponse secondReportsb(HttpServletRequest request,HttpServletResponse response,
+    		@RequestBody ParamTwoPart paramtwopart) throws IOException, ClassNotFoundException, SQLException, JRException {
+    	
+    	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+    	File otch1 = new File( servletContext.getRealPath("/resources/s_report.jrxml"));
+    	File file_for_ontch = new File( servletContext.getRealPath("/resources/s_report.xls"));
+       
     	
     	
     	if(! parseorgtwoclinic(paramtwopart).equals(""))
