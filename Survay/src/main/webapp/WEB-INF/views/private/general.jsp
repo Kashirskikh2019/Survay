@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+oneTFOMS<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <%@ page session="false"%>
@@ -46,6 +46,20 @@ $(document).ready(function()
 		$("#oneTFOMS").attr("disabled", true);
 		$("#oneIngos").attr("disabled", true);
 		$("#oneRosno").attr("disabled", true);
+		
+		$("#twosldsbTFOMS").attr("disabled", true);
+		$("#twosldsbIngos").attr("disabled", true);
+		$("#twosldsbRosno").attr("disabled", true);
+		
+		$("#twoslbcTFOMS").attr("disabled", true);
+		$("#twoslbcIngos").attr("disabled", true);
+		$("#twoslbcRosno").attr("disabled", true);
+		
+		
+	
+		$("#twoslsbTFOMS").attr("disabled", true);
+		$("#twoslsbIngos").attr("disabled", true);
+		$("#twoslsbRosno").attr("disabled", true);
 	}
 	
 	if(user == 'smo_rosno')
@@ -53,6 +67,19 @@ $(document).ready(function()
 		$("#oneTFOMS").attr("disabled", true);
 		$("#oneIngos").attr("disabled", true);
 		$("#oneSimaz").attr("disabled", true);
+		
+		$("#twosldsbTFOMS").attr("disabled", true);
+		$("#twosldsbIngos").attr("disabled", true);
+		$("#twosldsbSimaz").attr("disabled", true);
+		
+		$("#twoslbcTFOMS").attr("disabled", true);
+		$("#twoslbcIngos").attr("disabled", true);
+		$("#twoslbcSimaz").attr("disabled", true);
+		
+		$("#twoslsbTFOMS").attr("disabled", true);
+		$("#twoslsbIngos").attr("disabled", true);
+		$("#twoslsbSimaz").attr("disabled", true);
+		
 	}
 	
 	if(user == 'smo_ingos')
@@ -60,6 +87,19 @@ $(document).ready(function()
 		$("#oneTFOMS").attr("disabled", true);
 		$("#oneRosno").attr("disabled", true);
 		$("#oneSimaz").attr("disabled", true);
+		
+		$("#twosldsbTFOMS").attr("disabled", true);
+		$("#twosldsbRosno").attr("disabled", true);
+		$("#twosldsbSimaz").attr("disabled", true);
+		
+		$("#twoslbcTFOMS").attr("disabled", true);
+		$("#twoslbcRosno").attr("disabled", true);
+		$("#twoslbcSimaz").attr("disabled", true);
+		
+		$("#twoslsbTFOMS").attr("disabled", true);
+		$("#twoslsbRosno").attr("disabled", true);
+		$("#twoslsbSimaz").attr("disabled", true);
+		
 	}
 	
 	$( "#dateBegin" ).datepicker({dateFormat:'dd.mm.yy'});
@@ -530,10 +570,10 @@ $("#formslsbReport").validate({
 										</tr>
 										<tr>
 											<td>
-												<input type="checkbox" id="twosldsbTFOMS"  value="twotfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
-												<input type="checkbox" id="twosldsbSimaz" value="twosimaz" name="org[]"> СимазМед&nbsp;
-												<input type="checkbox" id="twosldsbIngos" value="twoingos" name="org[]"> Ингосстрах&nbsp;
-												<input type="checkbox" id="twosldsbRosno" value="tworosno" name="org[]"> РОСНО
+												<input type="checkbox" id="twoslsbTFOMS"  value="twotfoms" name="org[]" required minlength="1"> ТФОМС&nbsp;
+												<input type="checkbox" id="twoslsbSimaz" value="twosimaz" name="org[]"> СимазМед&nbsp;
+												<input type="checkbox" id="twoslsbIngos" value="twoingos" name="org[]"> Ингосстрах&nbsp;
+												<input type="checkbox" id="twoslsbRosno" value="tworosno" name="org[]"> РОСНО
 											</td>
 										</tr>
 										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
