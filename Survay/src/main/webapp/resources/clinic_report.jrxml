@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="4564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
-	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.zoom" value="1.1000000000000003"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1221"/>
+	<property name="ireport.y" value="1216"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
@@ -14,6 +14,8 @@
 			survay as (select * from survay_clinic_secondlevel t where  $P{username} like '%'||t.POLZOVATEL_SECONDLEVEL||'%'),
             quest25 as (select * from SURVAY_CLINIC_SEC_25 t ,survay t2 where t2.general_id = t.ID_SURVAY_CLINIC_SEC_25),
             quest20 as (select * from SURVAY_CLINIC_SEC_2 t ,survay t2 where t2.general_id = t.ID_SURVAY_CLINIC_SEC_2),
+            many_quest as (select * from Question_many_clinic t ,survay t2 where t2.general_id = t.SURVAY_CLINIC_SECONDLEVEL_ID),
+           sc_sec1 as (select * from SURVAY_CLINIC_SEC_1 t ,survay t2 where t2.general_id = t.ID_SURVAY_CLINIC_SEC_1),
 			r1c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%'),
             r2c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.sex_secondlevel='Мужской' and t.age_secondlevel <='59'),
             r3c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.sex_secondlevel='Женский' and t.age_secondlevel <='54'),
@@ -213,7 +215,24 @@
             r159c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question22_clinic='Скорее удовлетворен(а), чем нет'),
             r160c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question22_clinic='Скорее не удовлетворен(а), чем удовлетворен(а)'),
             r161c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question22_clinic='Не удовлетворен(а)'),
-            r162c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question22_clinic='Затрудняюсь ответить')
+            r162c1 as (select count(*) c from survay t, quest20 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_2 and t2.question22_clinic='Затрудняюсь ответить'),
+
+            r163c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.VISIT_CLINIC_SECONDLEVEL='Один раз в несколько лет'),
+            r164c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.VISIT_CLINIC_SECONDLEVEL='Один - два раза в год'),
+            r165c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.VISIT_CLINIC_SECONDLEVEL='В среднем раз в месяц'),
+            r166c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.VISIT_CLINIC_SECONDLEVEL='Два - четыре раза в месяц'),
+            r167c1 as (select count(*) c from survay t where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.VISIT_CLINIC_SECONDLEVEL='Два - три раза в неделю или чаше'),
+
+            r168c1 as (select count(*) c from survay t, many_quest t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.SURVAY_CLINIC_SECONDLEVEL_ID and t2.QUESTION2_CLINIC='Близко расположена к дому'),
+            r169c1 as (select count(*) c from survay t, many_quest t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.SURVAY_CLINIC_SECONDLEVEL_ID and t2.QUESTION2_CLINIC='Здесь чисто и уютно, приятно находиться'),
+            r170c1 as (select count(*) c from survay t, many_quest t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.SURVAY_CLINIC_SECONDLEVEL_ID and t2.QUESTION2_CLINIC='Здесь работают хорошие специалисты'),
+            r171c1 as (select count(*) c from survay t, many_quest t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.SURVAY_CLINIC_SECONDLEVEL_ID and t2.QUESTION2_CLINIC='Большой спектр медицинских услуг'),
+            r172c1 as (select count(*) c from survay t, many_quest t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.SURVAY_CLINIC_SECONDLEVEL_ID and t2.QUESTION2_CLINIC='Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее'),
+            r173c1 as (select count(*) c from survay t, many_quest t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.SURVAY_CLINIC_SECONDLEVEL_ID and (t2.QUESTION2_CLINIC!='Я прикреплен(а) к этой поликлинике, наблюдался(лась) здесь ранее' and t2.QUESTION2_CLINIC!='Здесь чисто и уютно, приятно находиться' and t2.QUESTION2_CLINIC!='Здесь работают хорошие специалисты' and t2.QUESTION2_CLINIC!='Большой спектр медицинских услуг' and t2.QUESTION2_CLINIC!='Близко расположена к дому')),
+
+            r174c1 as (select count(*) c from survay t, sc_sec1 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_1 and t2.REPLACEMENT_CLINIC_SECONDLEVEL='Да'),
+            r175c1 as (select count(*) c from survay t, sc_sec1 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_1 and t2.REPLACEMENT_CLINIC_SECONDLEVEL='Нет'),
+            r176c1 as (select count(*) c from survay t, sc_sec1 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_1 and t2.REPLACEMENT_CLINIC_SECONDLEVEL='Затрудняюсь ответить')
 
 
 
@@ -323,6 +342,20 @@
 ,r160c1.c r160c1
 ,r161c1.c r161c1
 ,r162c1.c r162c1
+,r163c1.c r163c1
+,r164c1.c r164c1
+,r165c1.c r165c1
+,r166c1.c r166c1
+,r167c1.c r167c1
+,r168c1.c r168c1
+,r169c1.c r169c1
+,r170c1.c r170c1
+,r171c1.c r171c1
+,r172c1.c r172c1
+,r173c1.c r173c1
+,r174c1.c r174c1
+,r175c1.c r175c1
+,r176c1.c r176c1
 
 
 
@@ -422,7 +455,21 @@
 ,r159c1
 ,r160c1
 ,r161c1
-,r162c1]]>
+,r162c1
+,r163c1
+,r164c1
+,r165c1
+,r166c1
+,r167c1
+,r168c1
+,r169c1
+,r170c1
+,r171c1
+,r172c1
+,r173c1
+,r174c1
+,r175c1
+,r176c1]]>
 	</queryString>
 	<field name="r1c1" class="java.lang.Integer"/>
 	<field name="r2c1" class="java.lang.Integer"/>
@@ -586,6 +633,20 @@
 	<field name="r160c1" class="java.lang.Integer"/>
 	<field name="r161c1" class="java.lang.Integer"/>
 	<field name="r162c1" class="java.lang.Integer"/>
+	<field name="r163c1" class="java.lang.Integer"/>
+	<field name="r164c1" class="java.lang.Integer"/>
+	<field name="r165c1" class="java.lang.Integer"/>
+	<field name="r166c1" class="java.lang.Integer"/>
+	<field name="r167c1" class="java.lang.Integer"/>
+	<field name="r168c1" class="java.lang.Integer"/>
+	<field name="r169c1" class="java.lang.Integer"/>
+	<field name="r170c1" class="java.lang.Integer"/>
+	<field name="r171c1" class="java.lang.Integer"/>
+	<field name="r172c1" class="java.lang.Integer"/>
+	<field name="r173c1" class="java.lang.Integer"/>
+    <field name="r174c1" class="java.lang.Integer"/>
+	<field name="r175c1" class="java.lang.Integer"/>
+	<field name="r176c1" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -2606,7 +2667,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r172c1}+" / "+Math.round(new Double($F{r172c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1203" width="310" height="23" uuid="b412a844-d864-49c1-a940-6f76d80116ab"/>
@@ -2618,7 +2679,7 @@
 				<textElement verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Почему вы посещаете именно эту поликлиннику?"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Почему вы посещаете именно эту поликлиннику? (н.в.о.)"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1203" width="105" height="23" uuid="03245f97-4ed3-42e6-89e6-a6d4a165e532"/>
@@ -2630,7 +2691,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r170c1}+" / "+Math.round(new Double($F{r170c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="1203" width="105" height="23" uuid="f9893109-307d-46c8-b014-8358fca14e3c"/>
@@ -2642,7 +2703,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r168c1}+" / "+Math.round(new Double($F{r168c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1203" width="105" height="23" uuid="3e43e1ef-1061-4da8-a19a-cf890e50dcb4"/>
@@ -2654,7 +2715,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r169c1}+" / "+Math.round(new Double($F{r169c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1203" width="105" height="23" uuid="df5ac447-3334-4009-b7bd-bdbae1a4f309"/>
@@ -2666,7 +2727,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r171c1}+" / "+Math.round(new Double($F{r171c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1107" width="310" height="37" uuid="6e671473-d10a-41ae-b7e6-2ca2b3b53287"/>
@@ -2690,7 +2751,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r167c1}+" / "+Math.round(new Double($F{r167c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1144" width="105" height="22" uuid="82f388f2-8861-464a-888e-58ea1aeb363c"/>
@@ -2702,7 +2763,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r165c1}+" / "+Math.round(new Double($F{r165c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="1144" width="105" height="22" uuid="34041200-d378-4d5e-a3c4-8cf68fd6858b"/>
@@ -2714,7 +2775,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r163c1}+" / "+Math.round(new Double($F{r163c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1144" width="105" height="22" uuid="6fc8e99d-4dc3-4ac3-8a87-94e64fbb2d69"/>
@@ -2726,7 +2787,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r164c1}+" / "+Math.round(new Double($F{r164c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1144" width="105" height="22" uuid="84a2e114-2de1-4853-8f55-7939da618a05"/>
@@ -2738,7 +2799,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r166c1}+" / "+Math.round(new Double($F{r166c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="836" y="1203" width="105" height="23" uuid="b0c9d567-b04e-4cb0-abd8-5f9b1e501fb8"/>
@@ -2750,7 +2811,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r173c1}+" / "+Math.round(new Double($F{r173c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="836" y="1144" width="105" height="22" uuid="4d052dbf-5b04-4934-8f55-6d5f2b2e23e7"/>
@@ -2798,7 +2859,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Я прикреплен к этой поликюнаблюдался(лась) здесь роанее"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Я прикреплен к этой поликюнаблюдался(лась) здесь ранее"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1166" width="105" height="37" uuid="7a8a4a13-8e47-4ecb-a228-6830984e8815"/>
@@ -2942,7 +3003,8 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r174c1}+" / "+Math.round(new Double($F{r174c1})/new Double($F{r1c1})*10000)/100.0 + " %"
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="836" y="1226" width="105" height="47" uuid="7d78c1ce-fb68-4f00-91b8-b25405edc66e"/>
@@ -2978,7 +3040,8 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r176c1}+" / "+Math.round(new Double($F{r176c1})/new Double($F{r1c1})*10000)/100.0 + " %"
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1273" width="310" height="27" uuid="82d1be79-0734-4b61-9ed2-ba81d7c17c0e"/>
@@ -3024,9 +3087,10 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
+					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r175c1}+" / "+Math.round(new Double($F{r175c1})/new Double($F{r1c1})*10000)/100.0 + " %"
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1300" width="105" height="27" uuid="90ecaa53-2cf3-40a3-b50f-f72b4a3a08b4"/>

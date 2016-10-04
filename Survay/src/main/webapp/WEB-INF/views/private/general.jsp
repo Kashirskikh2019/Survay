@@ -444,7 +444,11 @@ $("#formslsbReport").validate({
 										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
 										<tr><td>&nbsp;</td></tr>
 										<tr>
-										<td><button type="submit" value="Submit" id="slcbbtn"  class="btn btn-primary">Скачать отчет</button></td>
+										<td><button  style="margin-top: 11px;" type="submit" value="Submit" id="slcbbtn"  class="btn btn-primary">Скачать отчет</button>
+										
+											<i id="slcb_spin" class="" aria-hidden="true"></i>
+												<span class="sr-only">Saving. Hang tight!</span>
+										</td>
 										</tr>
 										</table>
 									</form>

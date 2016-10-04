@@ -92,6 +92,8 @@ function secondpartreportsbigc(buttonId) {
 	values['org'] = org;
 	values['ans'] = ans;
 	
+	$("#slcb_spin").addClass("fa fa-cog fa-spin fa-2x fa-fw");
+	
 	$.ajax({
 		url : 'slcbPartTwoReport',
 		type: 'Post',
@@ -101,19 +103,27 @@ function secondpartreportsbigc(buttonId) {
 	    mimeType: 'application/json',
 							success: function(data)
 							{
-								console.log('YPPPPPPPPPPA');
+								//console.log('YPPPPPPPPPPA');
 								// pass to controller
-								document.location.href = '/survay/report_big_clinic'
+								document.location.href = '/survay/report_big_clinic';
+								$("#slcb_spin").removeClass("fa fa-cog fa-spin fa-2x fa-fw");
 								 	
-						/*		$("input[name='datebeginonereport']").val('');
-								$("input[name='dateendonereport']").val('');
+								$("input[name='datebeginslcbreport']").val('');
+								$("input[name='dateendslcbreport']").val('');
 								
-								$( "#oneTFOMS" ).prop( "checked", false );
-								$( "#oneSimaz" ).prop( "checked", false );
-								$( "#oneIngos" ).prop( "checked", false );
-								$( "#oneRosno" ).prop( "checked", false );
+								$( "#twoslbcTFOMS" ).prop( "checked", false );
+								$( "#twoslbcSimaz" ).prop( "checked", false );
+								$( "#twoslbcIngos" ).prop( "checked", false );
+								$( "#twoslbcRosno" ).prop( "checked", false );
 								
-								$( "#ansFormOnePart1" ).prop( "checked", false );
+								
+								
+								$("#formslcbReport input[type=checkbox]").each(function()
+							    {
+									$(this).prop( "checked", false );
+							    });
+								
+						/*		$( "#ansFormOnePart1" ).prop( "checked", false );
 								$( "#ansFormOnePart2" ).prop( "checked", false );
 								$( "#ansFormOnePart3" ).prop( "checked", false );
 								$( "#ansFormOnePart4" ).prop( "checked", false );
