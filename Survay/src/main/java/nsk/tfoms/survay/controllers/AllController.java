@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.jasperreports.engine.JRException;
@@ -130,6 +131,54 @@ public class AllController
     		@RequestBody ParamOnePart paramonepart) throws IOException {
     	
     	nsk.tfoms.survay.util.JsonResponse res = new nsk.tfoms.survay.util.JsonResponse();
+    	
+    	List<List<SurvayClinicSecondlevel>> forOneOrgClinic2 = null;
+    	List<List<DayStacionarSecondlevel>> forOneOrgDayStac2 = null;
+    	List<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>> forOneOrgStac2 = null;
+    	
+    	if(paramonepart.getPlus_twolevel().equals("true")){
+    		System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDD");
+        	
+        	if(! parseorg(paramonepart).equals(""))
+        	{
+        		//===================Clinic================================
+    		    List<SurvayClinicSecondlevel> list1 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+    		    List<SurvayClinicSecondlevel> list2 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+    		    List<SurvayClinicSecondlevel> list3 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+    		    List<SurvayClinicSecondlevel> list4 = dssl.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+    		    
+    		    forOneOrgClinic2 = new ArrayList<List<SurvayClinicSecondlevel>>();
+    		    forOneOrgClinic2.add(list1);
+    		    forOneOrgClinic2.add(list2);
+    		    forOneOrgClinic2.add(list3);
+    		    forOneOrgClinic2.add(list4);
+    		    
+    		    //=============================DayStacionar===============================
+    		    List<DayStacionarSecondlevel> list5 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+    		    List<DayStacionarSecondlevel> list6 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+    		    List<DayStacionarSecondlevel> list7 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+    		    List<DayStacionarSecondlevel> list8 = DayStacionarSecondlevel.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+    		    
+    		    forOneOrgDayStac2 = new ArrayList<List<DayStacionarSecondlevel>>();
+    		    forOneOrgDayStac2.add(list5);
+    		    forOneOrgDayStac2.add(list6);
+    		    forOneOrgDayStac2.add(list7);
+    		    forOneOrgDayStac2.add(list8);
+    		    
+    		    
+    		    //=========================================Stacionar==========================
+    		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list9 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 59,paramonepart.getLpu());
+    		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list10 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 54,paramonepart.getLpu());
+    		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list11 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Мужской", 60,paramonepart.getLpu());
+    		    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> list12 = sslservice.getReport(paramonepart.getDatestart(), paramonepart.getDateend(), parseorg(paramonepart), "Женский", 55,paramonepart.getLpu());
+
+    		    forOneOrgStac2 = new ArrayList<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>>();
+    		    forOneOrgStac2.add(list9);
+    		    forOneOrgStac2.add(list10);
+    		    forOneOrgStac2.add(list11);
+    		    forOneOrgStac2.add(list12);
+        	}
+    	}	
        
     	List<List<SurvayClinic>> forOneOrgClinic = null;
     	List<List<SurvayDaystacionar>> forOneOrgDayStac = null;
@@ -176,7 +225,7 @@ public class AllController
 		    forOneOrgStac.add(list11);
 		    forOneOrgStac.add(list12);
 		    
-		    new Reports().loadToExcelResalt2(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart),paramonepart);
+		    new Reports().loadToExcelResalt2(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart),paramonepart,forOneOrgClinic2,forOneOrgDayStac2,forOneOrgStac2);
 		    
     	}
     	else

@@ -23,6 +23,8 @@ public class ParamOnePart {
 	private String ans4;
 	private String ans5;
 	
+	private String plus_twolevel;
+	
 	private List<String> mas;
 	
 	
@@ -145,5 +147,11 @@ public class ParamOnePart {
 		builder.append(mas);
 		builder.append("]");
 		return builder.toString();
+	}
+	public String getPlus_twolevel() {
+		return plus_twolevel;
+	}
+	public void setPlus_twolevel(String plus_twolevel) {
+		this.plus_twolevel = plus_twolevel;
 	}
 }

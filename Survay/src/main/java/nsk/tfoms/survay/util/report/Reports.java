@@ -77,7 +77,10 @@ public class Reports {
 
     
     
-    public void loadToExcelResalt2(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart) throws FileNotFoundException, IOException
+    public void loadToExcelResalt2(List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayDaystacionar>> forOneOrgDayStac,List<List<SurvayStacionar>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart
+    		,List<List<SurvayClinicSecondlevel>> forOneOrgClinic2
+    		,List<List<DayStacionarSecondlevel>> forOneOrgDayStac2
+    		,List<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>> forOneOrgStac2) throws FileNotFoundException, IOException
     {
     	
     	 String applicationPath = request.getServletContext().getRealPath("");
@@ -1148,11 +1151,18 @@ public class Reports {
          excelCell.setCellValue("Количество опрошенных застрахованных по вопросам КМП, всего, в том числе");
          
          ReportPg1 reportpg1 = pg1fromcount(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac);
+         ReportPg1 reportpg2 = null;
+         if (paramonepart.getPlus_twolevel().equals("true")) reportpg2 = pg1fromsecondreport(forOneOrgClinic2,forOneOrgDayStac2,forOneOrgStac2);
          
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
-         excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 //excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac)+ countonquestionStac102(forOneOrgStac2)+countonquestionClinic122(forOneOrgClinic2)+countonquestionDC92(forOneOrgDayStac2));
+        	 excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));
+         }
+         else{ excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));}
+         
          
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(2);
@@ -1438,7 +1448,14 @@ public class Reports {
              excelCell.setCellValue("уровень оснащенности учреждения лечебно-диагностическим и материально-бытовым оборудованием");
              excelCell.setCellStyle(style2);
              
-            ReportPg2 pg2 =  pg2fromcount(forOneOrgClinic,forOneOrgStac);
+            ReportPg2 pg2 =  null;
+            if (paramonepart.getPlus_twolevel().equals("true")){
+            	pg2 =  pg2from_all_levels(forOneOrgClinic,forOneOrgStac,forOneOrgClinic2,forOneOrgStac2);
+            }
+            else{
+            	pg2 =  pg2fromcount(forOneOrgClinic,forOneOrgStac);
+            }
+            
              
              excelRow = sheet.createRow(7);
              excelRow = sheet.getRow(7);
@@ -3220,6 +3237,325 @@ public class Reports {
 		
 		return pg2;
 	}
+	
+	/*
+	 * Метод отрабатывает при условии что нажат checkbox
+	 * "вместе с вторым уровнем"
+	 */
+	private ReportPg2 pg2from_all_levels(
+			List<List<SurvayClinic>> forOneOrgClinic,List<List<SurvayStacionar>> forOneOrgStac,
+			List<List<SurvayClinicSecondlevel>> forOneOrgClinic2,List<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>> forOneOrgStac2)
+		{
+			ReportPg2 pg2 = new ReportPg2();
+			int item1 = 0;
+			int item2 = 0;
+			int item3 = 0;
+			int item4 = 0;
+			double allclinic1 = 0;
+			double allclinic2 = 0;
+			double allclinic3 = 0;
+			double allclinic4 = 0;
+			
+			int item5 = 0;
+			int item6 = 0;
+			int item7 = 0;
+			int item8 = 0;
+			double stac1 = 0;
+			double stac2 = 0;
+			double stac3 = 0;
+			double stac4 = 0;
+			
+			
+			for (int i = 0; i < forOneOrgClinic.size(); i++) {
+				
+				for (int j = 0; j < forOneOrgClinic.get(i).size(); j++) {
+					
+						// ============	все эти вопросы подпадают под один пункт отчета	==========================================
+					
+						if(forOneOrgClinic.get(i).get(j).getSeeADoctor().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic.get(i).get(j).getSeeADoctor().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+						
+						if(forOneOrgClinic.get(i).get(j).getWaitingTime().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic.get(i).get(j).getWaitingTime().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+						
+						if(forOneOrgClinic.get(i).get(j).getWaitingTime2().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic.get(i).get(j).getWaitingTime2().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+							
+						if(forOneOrgClinic.get(i).get(j).getLaboratoryResearch().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic.get(i).get(j).getLaboratoryResearch().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+						
+						if(forOneOrgClinic.get(i).get(j).getDiagnosticTests().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic.get(i).get(j).getDiagnosticTests().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+							
+						if(forOneOrgClinic.get(i).get(j).getTherapist().equals("Удовлетворен(а)"))
+						item2++;
+						if(forOneOrgClinic.get(i).get(j).getTherapist().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item2++;
+						
+						if(forOneOrgClinic.get(i).get(j).getClinicDoctor().equals("Удовлетворен(а)"))
+						item2++;
+						if(forOneOrgClinic.get(i).get(j).getClinicDoctor().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item2++;
+						
+						if(forOneOrgClinic.get(i).get(j).getMedicalSpecialists().equals("Удовлетворен(а)"))
+						item3++;
+						if(forOneOrgClinic.get(i).get(j).getMedicalSpecialists().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item3++;
+						
+						if(forOneOrgClinic.get(i).get(j).getRepairs().equals("Удовлетворен(а)"))
+						item4++;
+						if(forOneOrgClinic.get(i).get(j).getRepairs().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item4++;
+						
+						if(forOneOrgClinic.get(i).get(j).getEquipment().equals("Удовлетворен(а)"))
+						item4++;
+						if(forOneOrgClinic.get(i).get(j).getEquipment().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item4++;
+							
+				}
+				
+			
+				allclinic1 = allclinic1 + forOneOrgClinic.get(i).size()*5;
+				allclinic2 = allclinic2 + forOneOrgClinic.get(i).size()*2;
+				allclinic3 = allclinic3 + forOneOrgClinic.get(i).size()*1;
+				allclinic4 = allclinic4 + forOneOrgClinic.get(i).size()*2;
+				
+			}
+			System.out.println("@@@@1 "+allclinic1+" "+ item1);
+			System.out.println("@@@@2 "+allclinic2+" "+ item2);
+			System.out.println("@@@@3 "+allclinic3+" "+ item3);
+			System.out.println("@@@@4 "+allclinic4+" "+ item4);
+			
+			// ================================	второй уровень======================================			
+			
+			
+
+			for (int i = 0; i < forOneOrgClinic2.size(); i++) {
+				
+				for (int j = 0; j < forOneOrgClinic2.get(i).size(); j++) {
+					
+						// ============	все эти вопросы подпадают под один пункт отчета	==========================================
+					
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_6_clinic().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_6_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_7_clinic().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_7_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_8_clinic().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_8_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+							
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_9_clinic().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_9_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_10_clinic().equals("Удовлетворен(а)"))
+						item1++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_10_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item1++;
+							
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_11_clinic().equals("Удовлетворен(а)"))
+						item2++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_11_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item2++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_15_clinic().equals("Удовлетворен(а)"))
+						item2++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_15_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item2++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_12_clinic().equals("Удовлетворен(а)"))
+						item3++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_12_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item3++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_1_clinic().equals("Удовлетворен(а)"))
+						item4++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_1_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item4++;
+						
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_4_clinic().equals("Удовлетворен(а)"))
+						item4++;
+						if(forOneOrgClinic2.get(i).get(j).getSurvayClinicSec2().getQuestion20_4_clinic().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+						item4++;
+							
+				}
+				
+				// ================================	вычисляем общую сумму этих вопросов со всеми вариантами ответа======================================			
+				allclinic1 = allclinic1 + forOneOrgClinic2.get(i).size()*5;
+				allclinic2 = allclinic2 + forOneOrgClinic2.get(i).size()*2;
+				allclinic3 = allclinic3 + forOneOrgClinic2.get(i).size()*1;
+				allclinic4 = allclinic4 + forOneOrgClinic2.get(i).size()*2;
+				
+			}
+			
+			System.out.println("@@@@1_sum "+allclinic1+" "+ item1);
+			System.out.println("@@@@2_sum "+allclinic2+" "+ item2);
+			System.out.println("@@@@3_sum "+allclinic3+" "+ item3);
+			System.out.println("@@@@4_sum "+allclinic4+" "+ item4);
+			
+			
+			allclinic1 = (double)item1/allclinic1;
+			allclinic1 = Math.round(allclinic1 * 100);
+			pg2.setItem1(allclinic1);
+			
+			allclinic2 = (double)item2/allclinic2;
+			allclinic2 = Math.round(allclinic2 * 100);
+			pg2.setItem2(allclinic2);
+			
+			allclinic3 = (double)item3/allclinic3;
+			allclinic3 = Math.round(allclinic3 * 100);
+			pg2.setItem3(allclinic3);
+			
+			allclinic4 = (double)item4/allclinic4;
+			allclinic4 = Math.round(allclinic4 * 100);
+			pg2.setItem4(allclinic4);
+			
+			//===============================первый уровень===========================================
+			
+			for (int i = 0; i < forOneOrgStac.size(); i++) {
+				
+				for (int j = 0; j < forOneOrgStac.get(i).size(); j++) {
+					
+					if(forOneOrgStac.get(i).get(j).getTermsStac().equals("Удовлетворен(а)"))
+					item5++;
+					if(forOneOrgStac.get(i).get(j).getTermsStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item5++;
+					
+					if(forOneOrgStac.get(i).get(j).getFoodStac().equals("Удовлетворен(а)"))
+					item6++;
+					if(forOneOrgStac.get(i).get(j).getFoodStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item6++;
+					
+					if(forOneOrgStac.get(i).get(j).getMedicineStac().equals("Удовлетворен(а)"))
+					item7++;
+					if(forOneOrgStac.get(i).get(j).getMedicineStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item7++;
+					
+					if(forOneOrgStac.get(i).get(j).getRapairsStac().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac.get(i).get(j).getRapairsStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					if(forOneOrgStac.get(i).get(j).getEquipmentStac().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac.get(i).get(j).getEquipmentStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					if(forOneOrgStac.get(i).get(j).getLaboratoryStac().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac.get(i).get(j).getLaboratoryStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					if(forOneOrgStac.get(i).get(j).getComfortStac().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac.get(i).get(j).getComfortStac().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					
+				}
+				
+				stac1 = stac1 + forOneOrgStac.get(i).size()*1;
+				stac2 = stac2 + forOneOrgStac.get(i).size()*1;
+				stac3 = stac3 + forOneOrgStac.get(i).size()*1;
+				stac4 = stac4 + forOneOrgStac.get(i).size()*4;
+			}
+			
+			System.out.println("@@@@1_1 "+stac1+" "+ item5);
+			System.out.println("@@@@2_2 "+stac2+" "+ item6);
+			System.out.println("@@@@3_3 "+stac3+" "+ item7);
+			System.out.println("@@@@4_4 "+stac4+" "+ item8);
+			
+			System.out.println("TTTT "+forOneOrgStac2);
+			//================================второй уровень===========================================
+			for (int i = 0; i < forOneOrgStac2.size(); i++) {
+				
+				for (int j = 0; j < forOneOrgStac2.get(i).size(); j++) {
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_9sec1().equals("Удовлетворен(а)"))
+					item5++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_9sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item5++;
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_6sec1().equals("Удовлетворен(а)"))
+					item6++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_6sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item6++;
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_8sec1().equals("Удовлетворен(а)"))
+					item7++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_8sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item7++;
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_1sec1().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_1sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_7sec1().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_7sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_17sec1().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_17sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_2sec1().equals("Удовлетворен(а)"))
+					item8++;
+					if(forOneOrgStac2.get(i).get(j).getScsslsec1().getQuestionS9_2sec1().equals("Скорее удовлетворен(а), чем не удовлетворен(а)"))
+					item8++;
+					
+					
+				}
+				
+				stac1 = stac1 + forOneOrgStac2.get(i).size()*1;
+				stac2 = stac2 + forOneOrgStac2.get(i).size()*1;
+				stac3 = stac3 + forOneOrgStac2.get(i).size()*1;
+				stac4 = stac4 + forOneOrgStac2.get(i).size()*4;
+			}
+			
+			System.out.println("@@@@1_1_sum "+stac1+" "+ item5);
+			System.out.println("@@@@2_2_sum "+stac2+" "+ item6);
+			System.out.println("@@@@3_3_sum "+stac3+" "+ item7);
+			System.out.println("@@@@4_4_sum "+stac4+" "+ item8);
+			
+			stac1 = (double)item5/stac1;
+			stac1 = Math.round(stac1 * 100);
+			pg2.setItem5(stac1);
+			
+			stac2 = (double)item6/stac2;
+			stac2 = Math.round(stac2 * 100);
+			pg2.setItem6(stac2);
+			
+			stac3 = (double)item7/stac3;
+			stac3 = Math.round(stac3 * 100);
+			pg2.setItem7(stac3);
+			
+			stac4 = (double)item8/stac4;
+			stac4 = Math.round(stac4 * 100);
+			pg2.setItem8(stac4);
+			
+			return pg2;
+		}
 	
 	
 	public void loadToExcelSLpg(List<List<SurvayClinicSecondlevel>> forOneOrgClinic,List<List<DayStacionarSecondlevel>> forOneOrgDayStac,List<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>> forOneOrgStac, HttpServletRequest request,String user,ParamOnePart paramonepart) throws FileNotFoundException, IOException

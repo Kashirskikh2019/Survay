@@ -4,24 +4,26 @@
  */
 function onepartreports(buttonId) {
 	
-	var search = {}
+	var paramonepart = {}
 	
-	search["datestart"] = $("input[name='datebeginonereport']").val();
-	search["dateend"] = $("input[name='dateendonereport']").val();
+	paramonepart["datestart"] = $("input[name='datebeginonereport']").val();
+	paramonepart["dateend"] = $("input[name='dateendonereport']").val();
 	
-	search["lpu"] = $("#lpuFormOneRerort").val();ansFormOnePart1
+	paramonepart["lpu"] = $("#lpuFormOneRerort").val();ansFormOnePart1
 	
-	search["ans1"] = $("#ansFormOnePart1").is(':checked')
-	search["ans2"] = $("#ansFormOnePart2").is(':checked')
-	search["ans3"] = $("#ansFormOnePart3").is(':checked')
-	search["ans4"] = $("#ansFormOnePart4").is(':checked')
-	search["ans5"] = $("#ansFormOnePart5").is(':checked')
+	paramonepart["ans1"] = $("#ansFormOnePart1").is(':checked')
+	paramonepart["ans2"] = $("#ansFormOnePart2").is(':checked')
+	paramonepart["ans3"] = $("#ansFormOnePart3").is(':checked')
+	paramonepart["ans4"] = $("#ansFormOnePart4").is(':checked')
+	paramonepart["ans5"] = $("#ansFormOnePart5").is(':checked')
 	
 	
-	search["onefoms"] = $("#oneTFOMS").is(':checked')
-	search["onesimaz"] = $("#oneSimaz").is(':checked')
-	search["oneingos"] = $("#oneIngos").is(':checked')
-	search["onerosno"] = $("#oneRosno").is(':checked')
+	paramonepart["onefoms"] = $("#oneTFOMS").is(':checked')
+	paramonepart["onesimaz"] = $("#oneSimaz").is(':checked')
+	paramonepart["oneingos"] = $("#oneIngos").is(':checked')
+	paramonepart["onerosno"] = $("#oneRosno").is(':checked')
+	
+	paramonepart["plus_twolevel"] = $("#plus_twolevel").is(':checked')
 	
 	var obj = document.getElementById(buttonId);
 	if (obj) {obj.disabled = true;} 
@@ -31,7 +33,7 @@ function onepartreports(buttonId) {
 		url : 'firstPartReport',
 		type: 'Post',
 		dataType: 'json',
-		data : JSON.stringify(search),
+		data : JSON.stringify(paramonepart),
 		contentType: 'application/json',
 	    mimeType: 'application/json',
 							success: function(data)
@@ -52,6 +54,8 @@ function onepartreports(buttonId) {
 								$( "#ansFormOnePart3" ).prop( "checked", false );
 								$( "#ansFormOnePart4" ).prop( "checked", false );
 								$( "#ansFormOnePart5" ).prop( "checked", false );
+								
+								$( "#plus_twolevel" ).prop( "checked", false );
 								
 								$( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
 								obj.disabled = false;

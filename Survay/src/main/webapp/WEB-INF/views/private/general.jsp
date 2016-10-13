@@ -1,4 +1,4 @@
-oneTFOMS<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <%@ page session="false"%>
@@ -318,7 +318,7 @@ $("#formslsbReport").validate({
 								<div class="modal-header backgrheader">
 									<button type="button btn-primary" class="close"
 										data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h3 class="modal-title">Отчет первого уроня</h3>
+									<h3 class="modal-title">Отчет первого уровня</h3>
 									<p>Индикатор доступности и качества медицинской помощи</p><br>
 
 								</div>
@@ -375,6 +375,14 @@ $("#formslsbReport").validate({
 										</tr>
 										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
 										<tr><td>&nbsp;</td></tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="plus_twolevelname" id="plus_twolevel" value="plus_twolevelval">&nbsp;С учётом втрого уровня (для форм ПГ)
+											</td>
+										</tr>
+										<tr>
+										<td>&nbsp;</td>
+										</tr>
 										<tr>
 										<td><button type="submit" value="Submit" id="btnsf"  class="btn btn-primary">Скачать отчет</button></td>
 										</tr>
@@ -606,7 +614,7 @@ $("#formslsbReport").validate({
 								<div class="modal-header backgrheader">
 									<button type="button btn-primary" class="close"
 										data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h3 class="modal-title">Отчет второго уроня</h3>
+									<h3 class="modal-title">Отчет второго уровня</h3>
 									<p>Индикатор доступности и качества медицинской помощи</p><br>
 
 								</div>
@@ -4491,7 +4499,7 @@ $("#formslsbReport").validate({
   
 <!-- <script src="${pageContext.request.contextPath}/resources/js/annyang.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user/recognaizervoice.js"></script>  
-<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script>  --> 
+<script src="${pageContext.request.contextPath}/resources/js/ResponsiveVoice.js"></script> --> 
 </body>
 
 </html>
