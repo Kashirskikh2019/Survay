@@ -1158,8 +1158,8 @@ public class Reports {
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
          if (paramonepart.getPlus_twolevel().equals("true")){
-        	 //excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac)+ countonquestionStac102(forOneOrgStac2)+countonquestionClinic122(forOneOrgClinic2)+countonquestionDC92(forOneOrgDayStac2));
-        	 excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));
+        	 excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac)+ countonquestionStac102(forOneOrgStac2)+countonquestionClinic122(forOneOrgClinic2)+countonquestionDC92(forOneOrgDayStac2));
+        	 //excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));
          }
          else{ excelCell.setCellValue(countonquestionStac10(forOneOrgStac)+countonquestionClinic12(forOneOrgClinic)+countonquestionDC9(forOneOrgDayStac));}
          
@@ -1167,28 +1167,52 @@ public class Reports {
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(2);
          excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(reportpg1.getTotalTotalydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getTotalTotalydl()+reportpg2.getTotalTotalydl());
+         }
+         else{ excelCell.setCellValue(reportpg1.getTotalTotalydl());}
          
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(3);
          excelCell = excelRow.getCell(3);
-         excelCell.setCellValue(reportpg1.getTotalTotalallneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getTotalTotalallneydl() + reportpg2.getTotalTotalallneydl());
+         }else{
+             excelCell.setCellValue(reportpg1.getTotalTotalallneydl());        	 
+         }
+
          
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(4);
          excelCell = excelRow.getCell(4);
-         excelCell.setCellValue(reportpg1.getTotalTotalyydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getTotalTotalyydl() + reportpg2.getTotalTotalyydl());
+         }
+         else{
+             excelCell.setCellValue(reportpg1.getTotalTotalyydl());        	 
+         }
+
          
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(5);
          excelCell = excelRow.getCell(5);
-         excelCell.setCellValue(reportpg1.getTotalTotalneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getTotalTotalneydl() + reportpg2.getTotalTotalneydl());
+         }
+         else{excelCell.setCellValue(reportpg1.getTotalTotalneydl());}
+
          
          
          excelRow = sheet.getRow(6);		
          excelCell = excelRow.createCell(6);
          excelCell = excelRow.getCell(6);
-         excelCell.setCellValue(reportpg1.getTotalTotaldificalt());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getTotalTotaldificalt() + reportpg2.getTotalTotaldificalt());
+         }
+         else{
+             excelCell.setCellValue(reportpg1.getTotalTotaldificalt());        	 
+         }
+
          
          
          
@@ -1202,33 +1226,57 @@ public class Reports {
          excelRow = sheet.getRow(7);		
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
-         excelCell.setCellValue(countonquestionStac10(forOneOrgStac));
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(countonquestionStac10(forOneOrgStac) + countonquestionStac102(forOneOrgStac2));
+         }
+         else{excelCell.setCellValue(countonquestionStac10(forOneOrgStac));}
+         
          
          excelRow = sheet.getRow(7);		
          excelCell = excelRow.createCell(2);
          excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(reportpg1.getSctSydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getSctSydl() + reportpg2.getSctSydl());
+         }
+         else{excelCell.setCellValue(reportpg1.getSctSydl());}
+         
          
          excelRow = sheet.getRow(7);		
          excelCell = excelRow.createCell(3);
          excelCell = excelRow.getCell(3);
-         excelCell.setCellValue(reportpg1.getSctSallneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getSctSallneydl() + reportpg2.getSctSallneydl());
+         }
+         else{excelCell.setCellValue(reportpg1.getSctSallneydl());}
+         
          
          excelRow = sheet.getRow(7);		
          excelCell = excelRow.createCell(4);
          excelCell = excelRow.getCell(4);
-         excelCell.setCellValue(reportpg1.getSctSyydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getSctSyydl() + reportpg2.getSctSyydl());
+         }
+         else{excelCell.setCellValue(reportpg1.getSctSyydl());}
+         
          
          excelRow = sheet.getRow(7);		
          excelCell = excelRow.createCell(5);
          excelCell = excelRow.getCell(5);
-         excelCell.setCellValue(reportpg1.getSctSneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getSctSneydl() + reportpg2.getSctSneydl());
+         }
+         else{excelCell.setCellValue(reportpg1.getSctSneydl());}
+         
          
          
          excelRow = sheet.getRow(7);		
          excelCell = excelRow.createCell(6);
          excelCell = excelRow.getCell(6);
-         excelCell.setCellValue(reportpg1.getSctSdificalt());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(reportpg1.getSctSdificalt() + reportpg2.getSctSdificalt());
+         }
+         else{excelCell.setCellValue(reportpg1.getSctSdificalt());}
+         
          
          
          
@@ -1242,33 +1290,51 @@ public class Reports {
          excelRow = sheet.getRow(8);		
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
-         excelCell.setCellValue(countonquestionDC9(forOneOrgDayStac));
+         if (paramonepart.getPlus_twolevel().equals("true")){
+        	 excelCell.setCellValue(countonquestionDC9(forOneOrgDayStac) + countonquestionDC92(forOneOrgDayStac2));
+        	 
+         }else{ excelCell.setCellValue(countonquestionDC9(forOneOrgDayStac));}
          
          excelRow = sheet.getRow(8);		
          excelCell = excelRow.createCell(2);
          excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(reportpg1.getSctDSydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctDSydl() + reportpg2.getSctDSydl());        	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctDSydl());}
          
          excelRow = sheet.getRow(8);		
          excelCell = excelRow.createCell(3);
          excelCell = excelRow.getCell(3);
-         excelCell.setCellValue(reportpg1.getSctDSallneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctDSallneydl() + reportpg2.getSctDSallneydl());        	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctDSallneydl());}
          
          excelRow = sheet.getRow(8);		
          excelCell = excelRow.createCell(4);
          excelCell = excelRow.getCell(4);
-         excelCell.setCellValue(reportpg1.getSctDSyydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctDSyydl() + reportpg2.getSctDSyydl());
+         }else{
+         excelCell.setCellValue(reportpg1.getSctDSyydl());}
          
          excelRow = sheet.getRow(8);		
          excelCell = excelRow.createCell(5);
          excelCell = excelRow.getCell(5);
-         excelCell.setCellValue(reportpg1.getSctDSneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctDSneydl() + reportpg2.getSctDSneydl());        	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctDSneydl());}
          
          
          excelRow = sheet.getRow(8);		
          excelCell = excelRow.createCell(6);
          excelCell = excelRow.getCell(6);
-         excelCell.setCellValue(reportpg1.getSctDSdificalt());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctDSdificalt() + reportpg2.getSctDSdificalt());        	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctDSdificalt());}
          
          
          
@@ -1282,33 +1348,51 @@ public class Reports {
          excelRow = sheet.getRow(9);		
          excelCell = excelRow.createCell(1);
          excelCell = excelRow.getCell(1);
-         excelCell.setCellValue(countonquestionClinic12(forOneOrgClinic));
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(countonquestionClinic12(forOneOrgClinic) + countonquestionClinic122(forOneOrgClinic2));        	 
+         }else{
+         excelCell.setCellValue(countonquestionClinic12(forOneOrgClinic));}
          
          excelRow = sheet.getRow(9);		
          excelCell = excelRow.createCell(2);
          excelCell = excelRow.getCell(2);
-         excelCell.setCellValue(reportpg1.getSctClinicydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctClinicydl() + reportpg2.getSctClinicydl());        	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctClinicydl());}
          
          excelRow = sheet.getRow(9);		
          excelCell = excelRow.createCell(3);
          excelCell = excelRow.getCell(3);
-         excelCell.setCellValue(reportpg1.getSctClinicallneydl());         
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctClinicallneydl() + reportpg2.getSctClinicallneydl());
+             }else{
+         excelCell.setCellValue(reportpg1.getSctClinicallneydl());}
          
          excelRow = sheet.getRow(9);		
          excelCell = excelRow.createCell(4);
          excelCell = excelRow.getCell(4);
-         excelCell.setCellValue(reportpg1.getSctClinicyydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctClinicyydl() + reportpg2.getSctClinicyydl()); 	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctClinicyydl());}
          
          excelRow = sheet.getRow(9);		
          excelCell = excelRow.createCell(5);
          excelCell = excelRow.getCell(5);
-         excelCell.setCellValue(reportpg1.getSctClinicneydl());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctClinicneydl() + reportpg2.getSctClinicneydl()); 	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctClinicneydl());}
 
          
          excelRow = sheet.getRow(9);		
          excelCell = excelRow.createCell(6);
          excelCell = excelRow.getCell(6);
-         excelCell.setCellValue(reportpg1.getSctClinicdificalt());
+         if (paramonepart.getPlus_twolevel().equals("true")){
+             excelCell.setCellValue(reportpg1.getSctClinicdificalt() + reportpg2.getSctClinicdificalt());        	 
+         }else{
+         excelCell.setCellValue(reportpg1.getSctClinicdificalt());}
 
          
              for (int j = 5; j < 10; j++) {
