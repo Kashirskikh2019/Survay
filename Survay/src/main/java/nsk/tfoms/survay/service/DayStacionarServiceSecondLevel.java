@@ -421,7 +421,7 @@ public class DayStacionarServiceSecondLevel {
 		  userp = mas[mas.length-1]; name = name + "p.polzSecondleveldaystacionar =:userp)";
 	  }
 	  
-    List<DayStacionarSecondlevel > result = em.createQuery("SELECT p FROM DayStacionarSecondlevel  p WHERE "+name+" and "+paste+" AND p.sexSecondleveldaystacionar=:sex AND "+agefor+" AND (p.dataRespSecondleveldaystacionar BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", DayStacionarSecondlevel .class)
+    List<DayStacionarSecondlevel > result = em.createQuery("SELECT p FROM DayStacionarSecondlevel  p WHERE "+name+" and "+paste+" AND p.sexSecondleveldaystacionar=:sex AND "+agefor+" AND (p.dataRespSecondleveldaystacionar BETWEEN to_date(:d1,'dd.mm.yyyy') AND to_date(:d2,'dd.mm.yyyy'))  ORDER BY p.id DESC", DayStacionarSecondlevel .class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
     .setParameter("userp", userp)

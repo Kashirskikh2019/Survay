@@ -556,8 +556,8 @@ public class ClinicServiceSecondLevel {
 		  }
 		  userp = mas[mas.length-1]; name = name + "p.polzovatelSecondlevel =:userp)";
 	  }
-	  
-    List<SurvayClinicSecondlevel> result = em.createQuery("SELECT p FROM SurvayClinicSecondlevel p WHERE "+name+" and "+paste+" AND p.sexSecondlevel=:sex AND "+agefor+" AND (p.dataRespSecondlevel BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", SurvayClinicSecondlevel.class)
+	
+    List<SurvayClinicSecondlevel> result = em.createQuery("SELECT p FROM SurvayClinicSecondlevel p WHERE "+name+" and "+paste+" and p.sexSecondlevel=:sex and "+agefor+" and p.dataRespSecondlevel BETWEEN to_date(:d1,'dd.mm.yyyy') and to_date(:d2,'dd.mm.yyyy')  ORDER BY p.id DESC", SurvayClinicSecondlevel.class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
     .setParameter("userp", userp)
@@ -565,6 +565,13 @@ public class ClinicServiceSecondLevel {
     .setParameter("sex", sex)
     //.setParameter("age", age)
     .getResultList();
+    
+    for( SurvayClinicSecondlevel m : result){
+    	
+    	System.out.println("@@@@@@@@ "+m.getId()+" "+m.getDataRespSecondlevel() + " "+ m.getDataInputSecondlevel());	
+    }
+    
+    
     return result;
   }
 	

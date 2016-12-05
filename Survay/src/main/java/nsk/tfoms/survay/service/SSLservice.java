@@ -388,7 +388,7 @@ public class SSLservice {
 		  userp = mas[mas.length-1]; name = name + "p.polzSecondlSls =:userp)";
 	  }
 	  
-    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> result = em.createQuery("SELECT p FROM nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel p WHERE "+name+" and "+paste+" AND p.sexSls=:sex AND "+agefor+" AND (p.dataRespSls BETWEEN :d1 AND :d2)  ORDER BY p.id DESC", nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel.class)
+    List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> result = em.createQuery("SELECT p FROM nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel p WHERE "+name+" and "+paste+" AND p.sexSls=:sex AND "+agefor+" AND (p.dataRespSls BETWEEN to_date(:d1,'dd.mm.yyyy') AND to_date(:d2,'dd.mm.yyyy'))  ORDER BY p.id DESC", nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel.class)
     .setParameter("d1", d1)  
     .setParameter("d2", d2)  
     .setParameter("userp", userp)

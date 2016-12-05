@@ -137,7 +137,6 @@ public class AllController
     	List<List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel>> forOneOrgStac2 = null;
     	
     	if(paramonepart.getPlus_twolevel().equals("true")){
-    		System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDD");
         	
         	if(! parseorg(paramonepart).equals(""))
         	{
@@ -224,6 +223,7 @@ public class AllController
 		    forOneOrgStac.add(list10);
 		    forOneOrgStac.add(list11);
 		    forOneOrgStac.add(list12);
+		    
 		    
 		    new Reports().loadToExcelResalt2(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart),paramonepart,forOneOrgClinic2,forOneOrgDayStac2,forOneOrgStac2);
 		    
