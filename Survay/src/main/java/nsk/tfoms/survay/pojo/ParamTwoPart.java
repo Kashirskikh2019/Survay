@@ -11,6 +11,7 @@ public class ParamTwoPart {
 	private String dateendslcbreport;
 	private List<String> org;
 	private List<String> ans;
+	private List<String> ansAaS;
 	
 	
 	public String getDatebeginslcbreport() {
@@ -37,21 +38,18 @@ public class ParamTwoPart {
 	public void setAns(List<String> ans) {
 		this.ans = ans;
 	}
+	public List<String> getAnsAaS() {
+		return ansAaS;
+	}
+	public void setAnsAaS(List<String> ansAaS) {
+		this.ansAaS = ansAaS;
+	}
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ParamTwoPart [datebeginslcbreport=");
-		builder.append(datebeginslcbreport);
-		builder.append(", dateendslcbreport=");
-		builder.append(dateendslcbreport);
-		builder.append(", org=");
-		builder.append(org);
-		builder.append(", ans=");
-		builder.append(ans);
-		builder.append("]");
-		return builder.toString();
+		return "ParamTwoPart [datebeginslcbreport=" + datebeginslcbreport + ", dateendslcbreport=" + dateendslcbreport
+				+ ", org=" + org + ", ans=" + ans + ", ansAaS=" + ansAaS + "]";
 	}
-	
+		
 	
 	
 		

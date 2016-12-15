@@ -74,7 +74,7 @@ function onepartreports(buttonId) {
  */
 function secondpartreportsbigc(buttonId) {
 
-	var values = {} , org = [] , ans = [], sc2=0 ,  sc = 0;
+	var values = {} , org = [] , ans = [],ansAaS = [], sc2=0 ,sc3=0 ,  sc = 0;
 	
 	$.each($("#formslcbReport").serializeArray(), function (i, field) {
 	    if(field.name.indexOf('org[]')>=0){
@@ -84,10 +84,15 @@ function secondpartreportsbigc(buttonId) {
 	    else{
 	    	if(field.name.indexOf('ans[]')>=0){
 		    	ans[sc2] = field.value;
-		    	console.log('@@@@@@@@@@@@@@ '+field.value);
 		    	sc2++;
 		    }else{
-	        	values[field.name] =field.value;
+		    	if(field.name.indexOf('ansAaS[]')>=0){
+		    		ansAaS[sc3] = field.value;
+		    		sc3++;
+		    	}
+		    	else{
+		    		values[field.name] =field.value;
+		    	}
 	        }
 	    	
 	    }
@@ -95,6 +100,7 @@ function secondpartreportsbigc(buttonId) {
 	});
 	values['org'] = org;
 	values['ans'] = ans;
+	values['ansAaS'] = ansAaS;
 	
 	$("#slcb_spin").addClass("fa fa-cog fa-spin fa-2x fa-fw");
 	
@@ -119,6 +125,8 @@ function secondpartreportsbigc(buttonId) {
 								$( "#twoslbcSimaz" ).prop( "checked", false );
 								$( "#twoslbcIngos" ).prop( "checked", false );
 								$( "#twoslbcRosno" ).prop( "checked", false );
+								
+								$( "div[id^='ansFormOnePartAaS']" ).prop( "checked", false );
 								
 								
 								
