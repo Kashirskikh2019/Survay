@@ -161,7 +161,7 @@ function secondpartreportsbigc(buttonId) {
  */
 function secondpartreportsbigds(buttonId) {
 
-	var values = {} , org = [] , ans = [], sc2=0 ,  sc = 0;
+	var values = {} , org = [] , ans = [],ansAaS = [], sc2=0,sc3=0,  sc = 0;
 	
 	$.each($("#formsldsbReport").serializeArray(), function (i, field) {
 	    if(field.name.indexOf('org[]')>=0){
@@ -173,7 +173,12 @@ function secondpartreportsbigds(buttonId) {
 		    	ans[sc2] = field.value;
 		    	sc2++;
 		    }else{
+		    	if(field.name.indexOf('ansAaS[]')>=0){
+		    		ansAaS[sc3] = field.value;
+			    	sc3++;
+		    	}else{
 	        	values[field.name] =field.value;
+		    	}
 	        }
 	    	
 	    }
@@ -181,7 +186,9 @@ function secondpartreportsbigds(buttonId) {
 	});
 	values['org'] = org;
 	values['ans'] = ans;
+	values['ansAaS'] = ansAaS;
 	
+	$("#slcb_spin2").addClass("fa fa-cog fa-spin fa-2x fa-fw");
 	
 	$.ajax({
 		url : 'sldsbPartTwoReport',
@@ -192,26 +199,26 @@ function secondpartreportsbigds(buttonId) {
 	    mimeType: 'application/json',
 							success: function(data)
 							{
-								console.log('YPPPPPPPPPPA');
 								// pass to controller
-								document.location.href = '/survay/report_big_ds'
+								document.location.href = '/survay/report_big_ds';
+								$("#slcb_spin2").removeClass("fa fa-cog fa-spin fa-2x fa-fw");
 								 	
-							/*	$("input[name='datebeginonereport']").val('');
-								$("input[name='dateendonereport']").val('');
+								$("input[name='datebeginslcbreport']").val('');
+								$("input[name='dateendslcbreport']").val('');
 								
-								$( "#oneTFOMS" ).prop( "checked", false );
-								$( "#oneSimaz" ).prop( "checked", false );
-								$( "#oneIngos" ).prop( "checked", false );
-								$( "#oneRosno" ).prop( "checked", false );
+								/*$( "#twosldsbTFOMS" ).prop( "checked", false );
+								$( "#twosldsbSimaz" ).prop( "checked", false );
+								$( "#twosldsbIngos" ).prop( "checked", false );
+								$( "#twosldsbRosno" ).prop( "checked", false );
 								
-								$( "#ansFormOnePart1" ).prop( "checked", false );
-								$( "#ansFormOnePart2" ).prop( "checked", false );
-								$( "#ansFormOnePart3" ).prop( "checked", false );
-								$( "#ansFormOnePart4" ).prop( "checked", false );
-								$( "#ansFormOnePart5" ).prop( "checked", false );
+								$( "div[id^='ansFormOnePartAaS']" ).prop( "checked", false );*/
 								
-								$( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
-								obj.disabled = false;*/
+								
+								
+								$(".bigreportssl input[type=checkbox]").each(function()
+							    {
+									$(this).prop( "checked", false );
+							    });
 						    },
 						  
 							    error: function(e){  

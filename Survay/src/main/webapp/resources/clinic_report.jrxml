@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="6564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
-	<property name="ireport.zoom" value="1.3310000000000062"/>
+	<property name="ireport.zoom" value="1.100000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1490"/>
+	<property name="ireport.y" value="2401"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
@@ -292,9 +292,75 @@
             r203c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.repairs='Скорее удовлетворен(а), чем не удовлетворен(а)'),
             r204c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.repairs='Скорее не удовлетворен(а), чем удовлетворен(а)'),
             r205c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.repairs='Не удовлетворен(а)'),
-            r206c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.repairs='Затрудняюсь ответить')
+            r206c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.repairs='Затрудняюсь ответить'),
 
 
+
+r207c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.equipment='Удовлетворен(а)'),
+r208c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.equipment='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r209c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.equipment='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r210c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.equipment='Не удовлетворен(а)'),
+r211c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.equipment='Затрудняюсь ответить'),
+
+r212c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.see_a_doctor='Удовлетворен(а)'),
+r213c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.see_a_doctor='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r214c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.see_a_doctor='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r215c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.see_a_doctor='Не удовлетворен(а)'),
+r216c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.see_a_doctor='Затрудняюсь ответить'),
+
+r217c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time='Удовлетворен(а)'),
+r218c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r219c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r220c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time='Не удовлетворен(а)'),
+r221c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time='Затрудняюсь ответить'),
+
+r222c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time_2='Удовлетворен(а)'),
+r223c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time_2='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r224c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time_2='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r225c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time_2='Не удовлетворен(а)'),
+r226c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.waiting_time_2='Затрудняюсь ответить'),
+
+r227c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.laboratory_research='Удовлетворен(а)'),
+r228c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.laboratory_research='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r229c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.laboratory_research='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r230c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.laboratory_research='Не удовлетворен(а)'),
+r231c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.laboratory_research='Затрудняюсь ответить'),
+
+r232c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.diagnostic_tests='Удовлетворен(а)'),
+r233c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.diagnostic_tests='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r234c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.diagnostic_tests='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r235c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.diagnostic_tests='Не удовлетворен(а)'),
+r236c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.diagnostic_tests='Затрудняюсь ответить'),
+
+r237c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.therapist='Удовлетворен(а)'),
+r238c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.therapist='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r239c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.therapist='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r240c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.therapist='Не удовлетворен(а)'),
+r241c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.therapist='Затрудняюсь ответить'),
+
+r242c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.medical_specialists='Удовлетворен(а)'),
+r243c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.medical_specialists='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r244c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.medical_specialists='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r245c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.medical_specialists='Не удовлетворен(а)'),
+r246c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.medical_specialists='Затрудняюсь ответить'),
+
+r247c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.clinic_doctor='Удовлетворен(а)'),
+r248c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.clinic_doctor='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r249c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.clinic_doctor='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r250c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.clinic_doctor='Не удовлетворен(а)'),
+r251c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.clinic_doctor='Затрудняюсь ответить'),
+
+r252c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.quality_ambulance='Удовлетворен(а)'),
+r253c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.quality_ambulance='Скорее удовлетворен(а), чем не удовлетворен(а)'),
+r254c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.quality_ambulance='Скорее не удовлетворен(а), чем удовлетворен(а)'),
+r255c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.quality_ambulance='Не удовлетворен(а)'),
+r256c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.quality_ambulance='Затрудняюсь ответить'),
+
+r257c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.ambulance='Да'),
+r258c1 as (select count(*) c from survay_first t  where (t.DATA_RESP between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo, 1, 6)||'%'  and t.ambulance='Нет'),
+
+r259c1 as (select count(*) c from survay t, survay_clinic_sec_1 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_1 and t2.question21='Да'),
+r260c1 as (select count(*) c from survay t, survay_clinic_sec_1 t2 where (t.DATA_RESP_SECONDLEVEL between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_secondlevel, 1, 6)||'%' and t.general_id = t2.ID_SURVAY_CLINIC_SEC_1 and t2.question21='Нет (к вопросу 23)')
 
 
 
@@ -449,12 +515,61 @@
 ,r205c1.c r205c1
 ,r206c1.c r206c1
 ,r1c1p1.c r1c1p1
-
-
-
-
-
-		from
+,r207c1.c r207c1
+,r208c1.c r208c1
+,r209c1.c r209c1
+,r210c1.c r210c1
+,r211c1.c r211c1
+,r212c1.c r212c1
+,r213c1.c r213c1
+,r214c1.c r214c1
+,r215c1.c r215c1
+,r216c1.c r216c1
+,r217c1.c r217c1
+,r218c1.c r218c1
+,r219c1.c r219c1
+,r220c1.c r220c1
+,r221c1.c r221c1
+,r222c1.c r222c1
+,r223c1.c r223c1
+,r224c1.c r224c1
+,r225c1.c r225c1
+,r226c1.c r226c1
+,r227c1.c r227c1
+,r228c1.c r228c1
+,r229c1.c r229c1
+,r230c1.c r230c1
+,r231c1.c r231c1
+,r232c1.c r232c1
+,r233c1.c r233c1
+,r234c1.c r234c1
+,r235c1.c r235c1
+,r236c1.c r236c1
+,r237c1.c r237c1
+,r238c1.c r238c1
+,r239c1.c r239c1
+,r240c1.c r240c1
+,r241c1.c r241c1
+,r242c1.c r242c1
+,r243c1.c r243c1
+,r244c1.c r244c1
+,r245c1.c r245c1
+,r246c1.c r246c1
+,r247c1.c r247c1
+,r248c1.c r248c1
+,r249c1.c r249c1
+,r250c1.c r250c1
+,r251c1.c r251c1
+,r252c1.c r252c1
+,r253c1.c r253c1
+,r254c1.c r254c1
+,r255c1.c r255c1
+,r256c1.c r256c1
+,r257c1.c r257c1
+,r258c1.c r258c1
+,r259c1.c r259c1
+,r260c1.c r260c1
+from
 			r1c1,r2c1,r3c1,r4c1,r5c1,r6c1,r7c1,r8c1,r9c1,r10c1,r11c1,r12c1,r13c1,r14c1,r15c1,r16c1
             ,r17c1,r18c1,r19c1,r20c1,r21c1,r22c1,r23c1,r24c1,r25c1,r26c1,r27c1,r28c1,r29c1,r30c1,r31c1,r32c1,r33c1,r34c1,r35c1,r36c1
             ,r37c1,r38c1,r39c1,r40c1,r41c1,r42c1,r43c1,r44c1,r45c1,r46c1,r47c1,r48c1,r49c1,r50c1,r51c1,r52c1,r53c1,r54c1,r55c1,r56c1
@@ -593,7 +708,61 @@
 ,r204c1
 ,r205c1
 ,r206c1
-,r1c1p1]]>
+,r1c1p1
+,r207c1
+,r208c1
+,r209c1
+,r210c1
+,r211c1
+,r212c1
+,r213c1
+,r214c1
+,r215c1
+,r216c1
+,r217c1
+,r218c1
+,r219c1
+,r220c1
+,r221c1
+,r222c1
+,r223c1
+,r224c1
+,r225c1
+,r226c1
+,r227c1
+,r228c1
+,r229c1
+,r230c1
+,r231c1
+,r232c1
+,r233c1
+,r234c1
+,r235c1
+,r236c1
+,r237c1
+,r238c1
+,r239c1
+,r240c1
+,r241c1
+,r242c1
+,r243c1
+,r244c1
+,r245c1
+,r246c1
+,r247c1
+,r248c1
+,r249c1
+,r250c1
+,r251c1
+,r252c1
+,r253c1
+,r254c1
+,r255c1
+,r256c1
+,r257c1
+,r258c1
+,r259c1
+,r260c1]]>
 	</queryString>
 	<field name="r1c1" class="java.lang.Integer"/>
 	<field name="r2c1" class="java.lang.Integer"/>
@@ -802,6 +971,60 @@
 	<field name="r205c1" class="java.lang.Integer"/>
 	<field name="r206c1" class="java.lang.Integer"/>
 	<field name="r1c1p1" class="java.lang.Integer"/>
+	<field name="r207c1" class="java.lang.Integer"/>
+	<field name="r208c1" class="java.lang.Integer"/>
+	<field name="r209c1" class="java.lang.Integer"/>
+	<field name="r210c1" class="java.lang.Integer"/>
+	<field name="r211c1" class="java.lang.Integer"/>
+	<field name="r212c1" class="java.lang.Integer"/>
+	<field name="r213c1" class="java.lang.Integer"/>
+	<field name="r214c1" class="java.lang.Integer"/>
+	<field name="r215c1" class="java.lang.Integer"/>
+	<field name="r216c1" class="java.lang.Integer"/>
+	<field name="r217c1" class="java.lang.Integer"/>
+	<field name="r218c1" class="java.lang.Integer"/>
+	<field name="r219c1" class="java.lang.Integer"/>
+	<field name="r220c1" class="java.lang.Integer"/>
+	<field name="r221c1" class="java.lang.Integer"/>
+	<field name="r222c1" class="java.lang.Integer"/>
+	<field name="r223c1" class="java.lang.Integer"/>
+	<field name="r224c1" class="java.lang.Integer"/>
+	<field name="r225c1" class="java.lang.Integer"/>
+	<field name="r226c1" class="java.lang.Integer"/>
+	<field name="r227c1" class="java.lang.Integer"/>
+	<field name="r228c1" class="java.lang.Integer"/>
+	<field name="r229c1" class="java.lang.Integer"/>
+	<field name="r230c1" class="java.lang.Integer"/>
+	<field name="r231c1" class="java.lang.Integer"/>
+	<field name="r232c1" class="java.lang.Integer"/>
+	<field name="r233c1" class="java.lang.Integer"/>
+	<field name="r234c1" class="java.lang.Integer"/>
+	<field name="r235c1" class="java.lang.Integer"/>
+	<field name="r236c1" class="java.lang.Integer"/>
+	<field name="r237c1" class="java.lang.Integer"/>
+	<field name="r238c1" class="java.lang.Integer"/>
+	<field name="r239c1" class="java.lang.Integer"/>
+	<field name="r240c1" class="java.lang.Integer"/>
+	<field name="r241c1" class="java.lang.Integer"/>
+	<field name="r242c1" class="java.lang.Integer"/>
+	<field name="r243c1" class="java.lang.Integer"/>
+	<field name="r244c1" class="java.lang.Integer"/>
+	<field name="r245c1" class="java.lang.Integer"/>
+	<field name="r246c1" class="java.lang.Integer"/>
+	<field name="r247c1" class="java.lang.Integer"/>
+	<field name="r248c1" class="java.lang.Integer"/>
+	<field name="r249c1" class="java.lang.Integer"/>
+	<field name="r250c1" class="java.lang.Integer"/>
+	<field name="r251c1" class="java.lang.Integer"/>
+	<field name="r252c1" class="java.lang.Integer"/>
+	<field name="r253c1" class="java.lang.Integer"/>
+	<field name="r254c1" class="java.lang.Integer"/>
+	<field name="r255c1" class="java.lang.Integer"/>
+	<field name="r256c1" class="java.lang.Integer"/>
+	<field name="r257c1" class="java.lang.Integer"/>
+	<field name="r258c1" class="java.lang.Integer"/>
+	<field name="r259c1" class="java.lang.Integer"/>
+	<field name="r260c1" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1838,13 +2061,6 @@
 				<textFieldExpression><![CDATA["Защиту прав в случае их нарушения"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="2884" width="707" height="20" uuid="544cf74d-85ad-4775-9818-79a6e71f6c77"/>
-				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["3.Другое:"]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="311" y="2924" width="105" height="37" uuid="203bb271-5d3d-49e2-8792-5e7bd81734af"/>
 				<box>
 					<pen lineWidth="0.5"/>
@@ -1852,7 +2068,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["1 раз в несколько лет"]]></textFieldExpression>
 			</textField>
@@ -1974,7 +2190,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r29c1}+" / "+Math.round(new Double($F{r29c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r29c1}+" / "+Math.round(new Double($F{r29c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2597" width="77" height="22" uuid="72cedd9f-a312-4ce3-aa48-df681afaae1b"/>
@@ -1986,7 +2202,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r33c1}+" / "+Math.round(new Double($F{r33c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r33c1}+" / "+Math.round(new Double($F{r33c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2619" width="77" height="22" uuid="d81e4119-840a-427c-87ea-184618528edf"/>
@@ -1998,7 +2214,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r37c1}+" / "+Math.round(new Double($F{r37c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r37c1}+" / "+Math.round(new Double($F{r37c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2641" width="77" height="33" uuid="3a50a7d0-16f1-4f18-a9f8-65acbc6022de"/>
@@ -2010,7 +2226,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r41c1}+" / "+Math.round(new Double($F{r41c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r41c1}+" / "+Math.round(new Double($F{r41c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2674" width="77" height="32" uuid="f245bf27-f45c-4f7c-9341-085cc6ab1df5"/>
@@ -2022,7 +2238,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r45c1}+" / "+Math.round(new Double($F{r45c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r45c1}+" / "+Math.round(new Double($F{r45c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2706" width="77" height="21" uuid="3dc3b283-5543-4a0d-bffa-780871138c9f"/>
@@ -2034,7 +2250,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r49c1}+" / "+Math.round(new Double($F{r49c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r49c1}+" / "+Math.round(new Double($F{r49c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2727" width="77" height="34" uuid="af686a38-12b8-4aea-ab50-782c4c20d19e"/>
@@ -2046,7 +2262,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r53c1}+" / "+Math.round(new Double($F{r53c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r53c1}+" / "+Math.round(new Double($F{r53c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2761" width="77" height="34" uuid="de0bc43c-4068-4277-a934-66d82f90edd4"/>
@@ -2058,7 +2274,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r57c1}+" / "+Math.round(new Double($F{r57c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r57c1}+" / "+Math.round(new Double($F{r57c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2795" width="77" height="34" uuid="b44ed5be-feee-4747-94fe-fd197a2a4ff3"/>
@@ -2070,7 +2286,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r61c1}+" / "+Math.round(new Double($F{r61c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r61c1}+" / "+Math.round(new Double($F{r61c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2829" width="77" height="34" uuid="ca450611-3835-4922-9c38-f33463a98e32"/>
@@ -2082,7 +2298,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r65c1}+" / "+Math.round(new Double($F{r65c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r65c1}+" / "+Math.round(new Double($F{r65c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2863" width="77" height="21" uuid="a1e817a5-c2f6-4fb1-934c-8404a0973a40"/>
@@ -2094,7 +2310,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r69c1}+" / "+Math.round(new Double($F{r69c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r69c1}+" / "+Math.round(new Double($F{r69c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2727" width="98" height="34" uuid="827c73a8-07b1-4361-8f18-809674715fe3"/>
@@ -2106,7 +2322,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r54c1}+" / "+Math.round(new Double($F{r54c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r54c1}+" / "+Math.round(new Double($F{r54c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2863" width="98" height="21" uuid="554e326a-6a10-46f5-a3c6-3d796064a010"/>
@@ -2118,7 +2334,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r70c1}+" / "+Math.round(new Double($F{r70c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r70c1}+" / "+Math.round(new Double($F{r70c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2540" width="98" height="35" uuid="403dac9b-1c4f-4073-a816-84ad1cb0474a"/>
@@ -2142,7 +2358,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r66c1}+" / "+Math.round(new Double($F{r66c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r66c1}+" / "+Math.round(new Double($F{r66c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2575" width="98" height="22" uuid="4402e7cd-5f53-48a1-baa3-9e06e4ddca22"/>
@@ -2154,7 +2370,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r30c1}+" / "+Math.round(new Double($F{r30c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r30c1}+" / "+Math.round(new Double($F{r30c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2761" width="98" height="34" uuid="ff2d93b0-019c-4b4a-8cfa-11f380009d83"/>
@@ -2166,7 +2382,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r58c1}+" / "+Math.round(new Double($F{r58c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r58c1}+" / "+Math.round(new Double($F{r58c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2674" width="98" height="32" uuid="0b7e0d36-5a20-4d05-835d-d5f51376ec6b"/>
@@ -2178,7 +2394,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r46c1}+" / "+Math.round(new Double($F{r46c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r46c1}+" / "+Math.round(new Double($F{r46c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2597" width="98" height="22" uuid="7e5f9009-cd93-40a8-94a2-dcc1b3f448c5"/>
@@ -2190,7 +2406,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r34c1}+" / "+Math.round(new Double($F{r34c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r34c1}+" / "+Math.round(new Double($F{r34c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2795" width="98" height="34" uuid="8e0baa91-83d2-489c-ba5d-bc751dc5949a"/>
@@ -2202,7 +2418,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r62c1}+" / "+Math.round(new Double($F{r62c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r62c1}+" / "+Math.round(new Double($F{r62c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2641" width="98" height="33" uuid="fafbd45a-79c4-44f5-89ed-afa72d6d1f86"/>
@@ -2214,7 +2430,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r42c1}+" / "+Math.round(new Double($F{r42c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r42c1}+" / "+Math.round(new Double($F{r42c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2619" width="98" height="22" uuid="a624a43e-e92d-4146-89fe-b0aeb9e3e354"/>
@@ -2226,7 +2442,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r38c1}+" / "+Math.round(new Double($F{r38c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r38c1}+" / "+Math.round(new Double($F{r38c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="388" y="2706" width="98" height="21" uuid="21120404-8b44-4441-88fd-94cb7159e3c9"/>
@@ -2238,7 +2454,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r50c1}+" / "+Math.round(new Double($F{r50c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r50c1}+" / "+Math.round(new Double($F{r50c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2863" width="79" height="21" uuid="88665484-fbae-4ef0-b938-0bf3bcd01dfb"/>
@@ -2250,7 +2466,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r71c1}+" / "+Math.round(new Double($F{r71c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r71c1}+" / "+Math.round(new Double($F{r71c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2761" width="79" height="34" uuid="a40d3e97-3b28-4ad9-b458-bd92b0fbadfe"/>
@@ -2262,7 +2478,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r59c1}+" / "+Math.round(new Double($F{r59c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r59c1}+" / "+Math.round(new Double($F{r59c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2575" width="79" height="22" uuid="ae10ad41-44b4-4f8f-ac24-76d0fafc4b25"/>
@@ -2274,7 +2490,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r31c1}+" / "+Math.round(new Double($F{r31c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r31c1}+" / "+Math.round(new Double($F{r31c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2706" width="79" height="21" uuid="c3ae6eb0-e3db-40f6-b517-1c7bf8f54e17"/>
@@ -2286,7 +2502,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r51c1}+" / "+Math.round(new Double($F{r51c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r51c1}+" / "+Math.round(new Double($F{r51c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2674" width="79" height="32" uuid="c3a8c8fb-766c-4d12-b173-2abab0672fc1"/>
@@ -2298,7 +2514,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r47c1}+" / "+Math.round(new Double($F{r47c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r47c1}+" / "+Math.round(new Double($F{r47c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2540" width="79" height="35" uuid="2f132eff-e4de-4cb1-8dbf-7e18e3f5062f"/>
@@ -2322,7 +2538,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r67c1}+" / "+Math.round(new Double($F{r67c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r67c1}+" / "+Math.round(new Double($F{r67c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2619" width="79" height="22" uuid="a81629e2-6e57-4c36-8633-294677b0f46a"/>
@@ -2334,7 +2550,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r39c1}+" / "+Math.round(new Double($F{r39c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r39c1}+" / "+Math.round(new Double($F{r39c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2597" width="79" height="22" uuid="7938e3ff-01dd-42f3-b03c-323f2b49a9ed"/>
@@ -2346,7 +2562,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r35c1}+" / "+Math.round(new Double($F{r35c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r35c1}+" / "+Math.round(new Double($F{r35c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2727" width="79" height="34" uuid="623a0eba-0b3a-4397-88d1-96d5bf385021"/>
@@ -2358,7 +2574,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r55c1}+" / "+Math.round(new Double($F{r55c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r55c1}+" / "+Math.round(new Double($F{r55c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2641" width="79" height="33" uuid="aa022456-bc39-46ed-ac71-a5cd74007fe7"/>
@@ -2370,7 +2586,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r43c1}+" / "+Math.round(new Double($F{r43c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r43c1}+" / "+Math.round(new Double($F{r43c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="486" y="2795" width="79" height="34" uuid="6d7bb6bb-40fa-4093-8aa1-15676a47f6cb"/>
@@ -2382,7 +2598,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r63c1}+" / "+Math.round(new Double($F{r63c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r63c1}+" / "+Math.round(new Double($F{r63c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2863" width="144" height="21" uuid="7b765f24-e985-4b16-99ef-46a1fa80495a"/>
@@ -2394,7 +2610,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r72c1}+" / "+Math.round(new Double($F{r72c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r72c1}+" / "+Math.round(new Double($F{r72c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2761" width="144" height="34" uuid="f54032de-1b2a-4d46-89a6-5b5c0b04d0cd"/>
@@ -2406,7 +2622,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r60c1}+" / "+Math.round(new Double($F{r60c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r60c1}+" / "+Math.round(new Double($F{r60c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2575" width="144" height="22" uuid="be6736ba-ee94-419c-b5c2-1293f75faae3"/>
@@ -2418,7 +2634,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r32c1}+" / "+Math.round(new Double($F{r32c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r32c1}+" / "+Math.round(new Double($F{r32c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2706" width="144" height="21" uuid="8c1acf8e-622c-4bd7-8bcf-2603b80742f4"/>
@@ -2430,7 +2646,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r52c1}+" / "+Math.round(new Double($F{r52c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r52c1}+" / "+Math.round(new Double($F{r52c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2674" width="144" height="32" uuid="2be6e3f4-a951-4f79-871e-61d537dd41de"/>
@@ -2442,7 +2658,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r48c1}+" / "+Math.round(new Double($F{r48c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r48c1}+" / "+Math.round(new Double($F{r48c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2540" width="144" height="35" uuid="3888ecc6-37d3-45a3-8095-a6891c09885b"/>
@@ -2466,7 +2682,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r68c1}+" / "+Math.round(new Double($F{r68c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r68c1}+" / "+Math.round(new Double($F{r68c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2619" width="144" height="22" uuid="7c176bd9-b433-4f2e-941d-2cf83e845aec"/>
@@ -2478,7 +2694,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r40c1}+" / "+Math.round(new Double($F{r40c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r40c1}+" / "+Math.round(new Double($F{r40c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2597" width="144" height="22" uuid="ffcb66a5-a6b1-4de7-a18a-71289bec3c34"/>
@@ -2490,7 +2706,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r36c1}+" / "+Math.round(new Double($F{r36c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r36c1}+" / "+Math.round(new Double($F{r36c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2727" width="144" height="34" uuid="ed65aa1a-bf18-469b-9714-92d5deb88fe7"/>
@@ -2502,7 +2718,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r56c1}+" / "+Math.round(new Double($F{r56c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r56c1}+" / "+Math.round(new Double($F{r56c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2641" width="144" height="33" uuid="a27176f7-12b1-46aa-995f-b2caf8d5d354"/>
@@ -2514,7 +2730,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r44c1}+" / "+Math.round(new Double($F{r44c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r44c1}+" / "+Math.round(new Double($F{r44c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="565" y="2795" width="144" height="34" uuid="562fd4dd-82a2-475b-a511-315bfa7beb8e"/>
@@ -2526,7 +2742,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r64c1}+" / "+Math.round(new Double($F{r64c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r64c1}+" / "+Math.round(new Double($F{r64c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="2924" width="105" height="37" uuid="9b170e5c-873f-41c1-9a69-db21990cd286"/>
@@ -2536,7 +2752,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["1-2 раза в год"]]></textFieldExpression>
 			</textField>
@@ -2548,7 +2764,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["В среднем раз в месяц"]]></textFieldExpression>
 			</textField>
@@ -2560,7 +2776,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["2-4 раза в месяц"]]></textFieldExpression>
 			</textField>
@@ -2572,7 +2788,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["В среднем раз в месяц"]]></textFieldExpression>
 			</textField>
@@ -2656,7 +2872,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -2752,7 +2968,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -2764,7 +2980,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Другое"]]></textFieldExpression>
 			</textField>
@@ -2776,7 +2992,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Я прикреплен к этой поликюнаблюдался(лась) здесь ранее"]]></textFieldExpression>
 			</textField>
@@ -2788,7 +3004,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Большой спектр мед. услуг"]]></textFieldExpression>
 			</textField>
@@ -2800,7 +3016,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Близко расположена к дому"]]></textFieldExpression>
 			</textField>
@@ -2812,7 +3028,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Здесь работают хорошие специалисты"]]></textFieldExpression>
 			</textField>
@@ -2824,7 +3040,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -2836,7 +3052,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Здесь чисто и уютно, приятно нахлодиться"]]></textFieldExpression>
 			</textField>
@@ -2848,7 +3064,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Нет"]]></textFieldExpression>
 			</textField>
@@ -2860,7 +3076,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Мне не приходилось вызывать врача на дом"]]></textFieldExpression>
 			</textField>
@@ -2896,7 +3112,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Да"]]></textFieldExpression>
 			</textField>
@@ -2932,7 +3148,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Не в полной мере"]]></textFieldExpression>
 			</textField>
@@ -2944,7 +3160,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Мне не приходилось получать подобное направление"]]></textFieldExpression>
 			</textField>
@@ -2980,7 +3196,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Затрудняюсь ответить"]]></textFieldExpression>
 			</textField>
@@ -2992,7 +3208,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3184,7 +3400,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Да, полностью удобен"]]></textFieldExpression>
 			</textField>
@@ -3220,7 +3436,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Скорее не удобен"]]></textFieldExpression>
 			</textField>
@@ -3232,7 +3448,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3244,7 +3460,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Совершенно не удобен"]]></textFieldExpression>
 			</textField>
@@ -3256,7 +3472,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3280,7 +3496,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3316,7 +3532,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["По большей части удобен"]]></textFieldExpression>
 			</textField>
@@ -3364,7 +3580,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Другое"]]></textFieldExpression>
 			</textField>
@@ -3400,7 +3616,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["В регистратуре"]]></textFieldExpression>
 			</textField>
@@ -3412,7 +3628,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Через информационные терминалы в поликлинике"]]></textFieldExpression>
 			</textField>
@@ -3436,7 +3652,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Через интернет (портал госуслуг)"]]></textFieldExpression>
 			</textField>
@@ -3460,7 +3676,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3472,7 +3688,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3484,7 +3700,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["По телефону"]]></textFieldExpression>
 			</textField>
@@ -3952,7 +4168,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Более чем через неделю"]]></textFieldExpression>
 			</textField>
@@ -3964,7 +4180,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -3976,7 +4192,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["На следующий день"]]></textFieldExpression>
 			</textField>
@@ -3988,7 +4204,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["В тот же день"]]></textFieldExpression>
 			</textField>
@@ -4000,7 +4216,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4036,7 +4252,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["При последнем посещении через какой период времени после записи вы смогли попасть на прием?"]]></textFieldExpression>
 			</textField>
@@ -4048,7 +4264,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["В течении 2-7 дней"]]></textFieldExpression>
 			</textField>
@@ -4072,7 +4288,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true" isUnderline="true"/>
+					<font size="10" isBold="false" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["К участковому терапевту"]]></textFieldExpression>
 			</textField>
@@ -4120,7 +4336,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true" isUnderline="true"/>
+					<font size="10" isBold="false" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["К врачу - специалисту"]]></textFieldExpression>
 			</textField>
@@ -4204,7 +4420,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true" isItalic="true" isUnderline="true"/>
+					<font size="10" isBold="false" isItalic="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Сколько в среднем вам приходится ожидать приема врача в очереди перед кабинетом ?"]]></textFieldExpression>
 			</textField>
@@ -4216,7 +4432,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4228,7 +4444,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Более 30 минут"]]></textFieldExpression>
 			</textField>
@@ -4276,7 +4492,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Более 1 часа"]]></textFieldExpression>
 			</textField>
@@ -4300,7 +4516,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["До 5 минут"]]></textFieldExpression>
 			</textField>
@@ -4312,7 +4528,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["15 - 30 минут"]]></textFieldExpression>
 			</textField>
@@ -4336,7 +4552,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4348,7 +4564,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["10-15 минут"]]></textFieldExpression>
 			</textField>
@@ -4696,7 +4912,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4708,7 +4924,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Диспансеризацию прошел(а) быстро,т.к. все было хорошо организованно"]]></textFieldExpression>
 			</textField>
@@ -4720,7 +4936,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4732,7 +4948,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Другое"]]></textFieldExpression>
 			</textField>
@@ -4744,7 +4960,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Диспансеризация заняла мног8о времени,т.к. приходилось по долгу ждать приёма врачей"]]></textFieldExpression>
 			</textField>
@@ -4756,7 +4972,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4768,7 +4984,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Диспансеризацию прошел(а) быстро, врачи были недостаточно внимательны и относились ко всему формально"]]></textFieldExpression>
 			</textField>
@@ -4876,7 +5092,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Нет"]]></textFieldExpression>
 			</textField>
@@ -4888,7 +5104,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -4912,7 +5128,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Да, всегда"]]></textFieldExpression>
 			</textField>
@@ -4948,7 +5164,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Чаще да, чем нет"]]></textFieldExpression>
 			</textField>
@@ -4984,7 +5200,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5008,7 +5224,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Чаще нет, чем да"]]></textFieldExpression>
 			</textField>
@@ -5020,7 +5236,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
@@ -5238,6 +5454,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r210c1}+" / "+Math.round(new Double($F{r210c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1319" width="310" height="20" uuid="62833641-d913-4795-8c82-584634359259"/>
@@ -5261,6 +5478,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r207c1}+" / "+Math.round(new Double($F{r207c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1319" width="105" height="20" uuid="b6e09f3f-c562-4ab2-9311-94367db0a56c"/>
@@ -5272,6 +5490,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r209c1}+" / "+Math.round(new Double($F{r209c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1319" width="105" height="20" uuid="f3cfe0f9-d7fe-4fda-a12c-a805996b9365"/>
@@ -5283,6 +5502,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r208c1}+" / "+Math.round(new Double($F{r208c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1319" width="105" height="20" uuid="ec94b59b-7190-4882-bedd-edbd26657a47"/>
@@ -5294,6 +5514,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r211c1}+" / "+Math.round(new Double($F{r211c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1079" width="105" height="20" uuid="7b7e50da-65ac-459c-955c-c4d890760ae1"/>
@@ -6325,7 +6546,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r158c1}+" / "+Math.round(new Double($F{r158c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r158c1}+" / "+Math.round(new Double($F{r158c1})/new Double($F{r158c1}+$F{r159c1}+$F{r160c1}+$F{r161c1}+$F{r162c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="2269" width="105" height="30" uuid="6e501ef7-47e0-47f4-b7f7-b4e9a1693745"/>
@@ -6337,7 +6558,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r160c1}+" / "+Math.round(new Double($F{r160c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r160c1}+" / "+Math.round(new Double($F{r160c1})/new Double($F{r158c1}+$F{r159c1}+$F{r160c1}+$F{r161c1}+$F{r162c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="2269" width="105" height="30" uuid="03dd6e8c-bf7f-4d6e-b247-cf9496de9d5d"/>
@@ -6349,7 +6570,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r162c1}+" / "+Math.round(new Double($F{r162c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r162c1}+" / "+Math.round(new Double($F{r162c1})/new Double($F{r158c1}+$F{r159c1}+$F{r160c1}+$F{r161c1}+$F{r162c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="2269" width="105" height="30" uuid="10546db2-97ca-4969-bb5f-7858488a8f71"/>
@@ -6361,7 +6582,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r161c1}+" / "+Math.round(new Double($F{r161c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r161c1}+" / "+Math.round(new Double($F{r161c1})/new Double($F{r158c1}+$F{r159c1}+$F{r160c1}+$F{r161c1}+$F{r162c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2269" width="310" height="30" uuid="ae410d8f-35f9-419b-a447-db1c27a62c7b"/>
@@ -6385,7 +6606,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r159c1}+" / "+Math.round(new Double($F{r159c1})/new Double($F{r1c1})*10000)/100.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r159c1}+" / "+Math.round(new Double($F{r159c1})/new Double($F{r158c1}+$F{r159c1}+$F{r160c1}+$F{r161c1}+$F{r162c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="3484" width="105" height="39" uuid="87877f5b-40ec-4b46-8e99-5a9ce5123f6e"/>
@@ -9498,8 +9719,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r202c1}+" / "+Math.round(new Double($F{r202c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r202c1}+" / "+Math.round(new Double($F{r202c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1219" width="105" height="20" uuid="6937841f-2008-4cc1-b0a0-0494e9e687ad"/>
@@ -9511,8 +9731,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r206c1}+" / "+Math.round(new Double($F{r206c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r206c1}+" / "+Math.round(new Double($F{r206c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1219" width="105" height="20" uuid="c036e57f-d645-44c1-bbb5-7c021d15c865"/>
@@ -9524,8 +9743,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r203c1}+" / "+Math.round(new Double($F{r203c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r203c1}+" / "+Math.round(new Double($F{r203c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1219" width="105" height="20" uuid="9e9df59e-5d8b-45c1-8c88-cf66989f86a8"/>
@@ -9537,8 +9755,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r204c1}+" / "+Math.round(new Double($F{r204c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r204c1}+" / "+Math.round(new Double($F{r204c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1219" width="310" height="20" uuid="29645fcd-f41d-4999-9fd3-1021cc558a19"/>
@@ -9562,8 +9779,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r205c1}+" / "+Math.round(new Double($F{r205c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r205c1}+" / "+Math.round(new Double($F{r205c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1239" width="835" height="20" uuid="3f38bbee-f0a0-486d-bf56-3b2f6a648340"/>
@@ -9807,6 +10023,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r214c1}+" / "+Math.round(new Double($F{r214c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1419" width="105" height="20" uuid="bfac2394-db97-4675-9b92-46949b366f0a"/>
@@ -9818,6 +10035,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r215c1}+" / "+Math.round(new Double($F{r215c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1419" width="310" height="20" uuid="7498cc37-5e1b-469e-80f5-3708bdce0767"/>
@@ -9864,6 +10082,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r212c1}+" / "+Math.round(new Double($F{r212c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1419" width="105" height="20" uuid="3c20b837-5056-43c7-a1cc-fd0871e9b8a2"/>
@@ -9875,6 +10094,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r213c1}+" / "+Math.round(new Double($F{r213c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1379" width="105" height="20" uuid="f13c92d7-f9c0-4334-a904-1e9223cc3b65"/>
@@ -9897,6 +10117,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r216c1}+" / "+Math.round(new Double($F{r216c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1479" width="105" height="20" uuid="6ff27cfb-cb6d-40ee-aaba-8a337355dee1"/>
@@ -9977,6 +10198,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r217c1}+" / "+Math.round(new Double($F{r217c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="1479" width="105" height="20" uuid="26553c6b-adb3-4c72-92c9-69d275147cf4"/>
@@ -9999,6 +10221,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r218c1}+" / "+Math.round(new Double($F{r218c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1519" width="105" height="20" uuid="ac25ec07-fc74-44c7-9d0d-23f15017d803"/>
@@ -10010,6 +10233,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r221c1}+" / "+Math.round(new Double($F{r221c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1519" width="105" height="20" uuid="3ea3ee35-4b77-407c-b3f3-f6f2280a2c60"/>
@@ -10021,6 +10245,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r220c1}+" / "+Math.round(new Double($F{r220c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1479" width="105" height="20" uuid="c39b4c9d-ec9c-4fb2-b5f9-bbef83632ae5"/>
@@ -10043,6 +10268,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r219c1}+" / "+Math.round(new Double($F{r219c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1539" width="835" height="20" uuid="742f9069-ae67-4633-9685-9830dfa8f381"/>
@@ -10089,6 +10315,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r224c1}+" / "+Math.round(new Double($F{r224c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1599" width="835" height="20" uuid="1702a5a2-5de9-449c-bbc1-5bcc1df81a76"/>
@@ -10169,6 +10396,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r226c1}+" / "+Math.round(new Double($F{r226c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="1619" width="105" height="20" uuid="4303358d-86dc-480e-b729-6927bc477509"/>
@@ -10180,6 +10408,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r222c1}+" / "+Math.round(new Double($F{r222c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1579" width="105" height="20" uuid="2f064a44-8d36-47a6-a191-21aad0b76bfb"/>
@@ -10202,6 +10431,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r223c1}+" / "+Math.round(new Double($F{r223c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1619" width="105" height="20" uuid="d11f3819-6a6c-4e67-aeed-467e9e6e90bc"/>
@@ -10213,6 +10443,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r225c1}+" / "+Math.round(new Double($F{r225c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1679" width="105" height="20" uuid="8045d785-f3f0-4d30-9974-ba291e585df7"/>
@@ -10247,6 +10478,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r231c1}+" / "+Math.round(new Double($F{r231c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="1719" width="105" height="20" uuid="0e0936a0-40ee-4250-8027-7143183eea2c"/>
@@ -10258,6 +10490,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r227c1}+" / "+Math.round(new Double($F{r227c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1719" width="310" height="20" uuid="f48ab070-1a22-42f9-b391-eff70d36cdf7"/>
@@ -10304,6 +10537,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r229c1}+" / "+Math.round(new Double($F{r229c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1679" width="105" height="20" uuid="cf9860bb-541d-4cbd-82e0-359b5b554f9d"/>
@@ -10326,6 +10560,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r230c1}+" / "+Math.round(new Double($F{r230c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1679" width="105" height="20" uuid="a981576d-f95b-4b51-9334-6116f7488cb9"/>
@@ -10348,6 +10583,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r228c1}+" / "+Math.round(new Double($F{r228c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1679" width="105" height="20" uuid="720dff90-20ae-494b-aae9-859c36c82d66"/>
@@ -10405,6 +10641,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r233c1}+" / "+Math.round(new Double($F{r233c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="1819" width="105" height="20" uuid="25273d49-05c5-49bd-8b3a-f763d0188213"/>
@@ -10416,6 +10653,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r235c1}+" / "+Math.round(new Double($F{r235c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1819" width="105" height="20" uuid="713c0823-7cc6-4c85-8310-f3cbbf7642f9"/>
@@ -10427,6 +10665,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r234c1}+" / "+Math.round(new Double($F{r234c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1839" width="835" height="20" uuid="8077ae11-db0b-44b6-b0ae-78cf823f9c01"/>
@@ -10484,6 +10723,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r232c1}+" / "+Math.round(new Double($F{r232c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1779" width="105" height="20" uuid="6465bfe9-3a42-45bc-8933-849483e0ae58"/>
@@ -10506,6 +10746,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r236c1}+" / "+Math.round(new Double($F{r236c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1799" width="835" height="20" uuid="21503cff-01b5-47fe-9b0f-5d216656ef51"/>
@@ -10552,6 +10793,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r240c1}+" / "+Math.round(new Double($F{r240c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="1879" width="105" height="20" uuid="412b1e49-e770-4a49-b6d2-b1ed61c8eb7e"/>
@@ -10631,6 +10873,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r237c1}+" / "+Math.round(new Double($F{r237c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1919" width="105" height="20" uuid="59a572ec-75f6-4ddb-9b7d-b6faafb8a5cb"/>
@@ -10642,6 +10885,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r239c1}+" / "+Math.round(new Double($F{r239c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1919" width="105" height="20" uuid="421b70de-d9a2-4ee0-b078-fe76738a1d14"/>
@@ -10653,6 +10897,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r238c1}+" / "+Math.round(new Double($F{r238c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="1919" width="310" height="20" uuid="71b99bf3-e012-40ad-a6d1-f202776e5a65"/>
@@ -10687,6 +10932,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r241c1}+" / "+Math.round(new Double($F{r241c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1979" width="105" height="20" uuid="ba9ae728-e314-4860-99b3-e16132352667"/>
@@ -10721,6 +10967,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r243c1}+" / "+Math.round(new Double($F{r243c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="2019" width="105" height="20" uuid="10c11cd8-25ee-4763-9286-38ad1d9a62ed"/>
@@ -10732,6 +10979,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r246c1}+" / "+Math.round(new Double($F{r246c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2019" width="310" height="20" uuid="428d94a8-24c6-423e-b3bb-bcce5544fc6e"/>
@@ -10755,6 +11003,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r244c1}+" / "+Math.round(new Double($F{r244c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="2019" width="105" height="20" uuid="93f8f941-9828-4cf8-ad8a-1001cc3360d1"/>
@@ -10766,6 +11015,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r245c1}+" / "+Math.round(new Double($F{r245c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="1979" width="105" height="20" uuid="000fe1d1-5619-443a-a9cc-114f135bea52"/>
@@ -10823,6 +11073,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r242c1}+" / "+Math.round(new Double($F{r242c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="1979" width="105" height="20" uuid="c130828a-d9b1-4c20-8e90-bd5ceb1c37ac"/>
@@ -10914,6 +11165,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r250c1}+" / "+Math.round(new Double($F{r250c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="2119" width="105" height="20" uuid="7c3982b6-4edf-484c-b695-d82bfc092cd5"/>
@@ -10925,6 +11177,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r248c1}+" / "+Math.round(new Double($F{r248c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2079" width="105" height="20" uuid="8cb0e195-b961-4e7b-b26f-3ac1e540ab8e"/>
@@ -10970,6 +11223,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r249c1}+" / "+Math.round(new Double($F{r249c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="2079" width="105" height="20" uuid="87719833-72b7-464a-b271-90e70c7db4e1"/>
@@ -10992,6 +11246,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r251c1}+" / "+Math.round(new Double($F{r251c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="2119" width="105" height="20" uuid="67581101-eeb8-40b9-9d03-a86edd701cc8"/>
@@ -11003,6 +11258,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r247c1}+" / "+Math.round(new Double($F{r247c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="2439" width="709" height="41" uuid="357daa7d-5fee-46f7-99cd-dab19202632e"/>
@@ -11093,6 +11349,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r254c1}+" / "+Math.round(new Double($F{r254c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="416" y="2219" width="105" height="30" uuid="557fd363-31da-4fbc-bbcb-5ad17b54d830"/>
@@ -11104,6 +11361,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r253c1}+" / "+Math.round(new Double($F{r253c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2249" width="835" height="20" uuid="2617c959-fa0f-4956-b6fa-9e8d0ed04cba"/>
@@ -11139,6 +11397,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r252c1}+" / "+Math.round(new Double($F{r252c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="2219" width="105" height="30" uuid="c1da07f8-8d31-4eeb-9fca-0fac21bf8140"/>
@@ -11150,6 +11409,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r256c1}+" / "+Math.round(new Double($F{r256c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="2219" width="105" height="30" uuid="a6cf9639-8ef0-489e-b550-294372b7c1a9"/>
@@ -11161,6 +11421,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{r255c1}+" / "+Math.round(new Double($F{r255c1})/new Double($F{r1c1p1})*1000)/10.0 + "%"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2199" width="835" height="20" uuid="9ce0c0e3-03aa-4a41-9f0f-e4ce734909f2"/>
@@ -11195,7 +11456,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r259c1}+" / "+Math.round(new Double($F{r259c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2339" width="520" height="20" uuid="b7ea8c96-afc0-4b55-8377-ace7d90b151f"/>
@@ -11230,7 +11491,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r260c1}+" / "+Math.round(new Double($F{r260c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2359" width="310" height="30" uuid="a3d647ff-c3b3-4f2a-bc20-e5823d54b965"/>
@@ -11254,7 +11515,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r258c1}+" / "+Math.round(new Double($F{r258c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2409" width="310" height="30" uuid="b8f13968-6324-4985-9522-6f742e82b5f3"/>
@@ -11290,7 +11551,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r257c1}+" / "+Math.round(new Double($F{r257c1})/new Double($F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="2389" width="520" height="20" uuid="7b5b83bd-38a2-4ee3-b695-6e3bfaa53d2a"/>

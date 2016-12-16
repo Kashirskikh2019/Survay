@@ -146,30 +146,6 @@ public class BigReportSL {
 			if (list_ansAaS.get(i).equals("3")){sex_man2 = "Мужской"; age_man2 = "60";}
 			if (list_ansAaS.get(i).equals("4")){sex_gerl2 = "Женский"; age_gerl2 = "55";}
 		}
-		
-		/*if(list_ansAaS.size() == 4){}
-		else if(list_ansAaS.size() == 1 && list_ansAaS.get(0).equals("1")){ sex_man2 = ""; age_man2 = "0"; sex_gerl1 = ""; age_gerl1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 1 && list_ansAaS.get(0).equals("2")){ sex_man2 = ""; age_man2 = "0"; sex_man1 = ""; age_man1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 1 && list_ansAaS.get(0).equals("3")){ sex_man1 = ""; age_man1 = "0"; sex_gerl1 = ""; age_gerl1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 1 && list_ansAaS.get(0).equals("4")){ sex_man1 = ""; age_man1 = "0"; sex_gerl1 = ""; age_gerl1 = "0"; sex_man2 = ""; age_man2 = "0";}
-		
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("1") && list_ansAaS.get(1).equals("2")){ sex_man2 = ""; age_man2 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("1") && list_ansAaS.get(1).equals("3")){ sex_gerl1 = ""; age_gerl1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("1") && list_ansAaS.get(1).equals("4")){ sex_man2 = ""; age_man2 = "0"; sex_gerl1 = ""; age_gerl1 = "0";}
-		
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("2") && list_ansAaS.get(1).equals("1")){ sex_man2 = ""; age_man2 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("2") && list_ansAaS.get(1).equals("3")){ sex_man1 = ""; age_man1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("2") && list_ansAaS.get(1).equals("4")){ sex_man1 = ""; age_man1 = "0"; sex_man2 = ""; age_man2 = "0";}
-		
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("3") && list_ansAaS.get(1).equals("1")){ sex_gerl1 = ""; age_gerl1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("3") && list_ansAaS.get(1).equals("2")){ sex_man1 = ""; age_man1 = "0"; sex_gerl2 = ""; age_gerl2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("3") && list_ansAaS.get(1).equals("4")){ sex_man1 = ""; age_man1 = "0"; sex_gerl1 = ""; age_gerl1 = "0";}
-		
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("4") && list_ansAaS.get(1).equals("1")){ sex_man2 = ""; age_man2 = "0"; sex_gerl1 = ""; age_gerl1 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("4") && list_ansAaS.get(1).equals("2")){ sex_man1 = ""; age_man1 = "0"; sex_man2 = ""; age_man2 = "0";}
-		else if(list_ansAaS.size() == 2 && list_ansAaS.get(0).equals("4") && list_ansAaS.get(1).equals("3")){ sex_man1 = ""; age_man1 = "0"; sex_gerl1 = ""; age_gerl1 = "0";}*/
-		
-		
 			
 		mapReport.put("sex_man1", sex_man1);
 		mapReport.put("age_man1", age_man1);
