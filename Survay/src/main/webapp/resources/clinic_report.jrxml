@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="6564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
 	<property name="ireport.zoom" value="1.100000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2401"/>
+	<property name="ireport.y" value="2208"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
