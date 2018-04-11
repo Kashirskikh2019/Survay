@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="6564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
 	<property name="ireport.zoom" value="1.210000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="5344"/>
+	<property name="ireport.y" value="980"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
@@ -9313,7 +9313,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r198c1}+$F{r193c1}+$F{r79c1}+$F{r84c1}+$F{r94c1}+$F{r134c1}+$F{r139c1}+$F{r149c1}+$F{r154c1}+" / "+Math.round(new Double($F{r198c1}+$F{r193c1}+$F{r79c1}+$F{r84c1}+$F{r94c1}+$F{r134c1}+$F{r139c1}+$F{r149c1}+$F{r154c1})/new Double(($F{r1c1}*8)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r198c1}+$F{r193c1}+" / "+Math.round(new Double($F{r198c1}+$F{r193c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="939" width="310" height="20" uuid="030c5dee-8270-4e5b-b628-655485586a06"/>
@@ -9337,7 +9337,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r197c1}+$F{r192c1}+$F{r78c1}+$F{r83c1}+$F{r93c1}+$F{r133c1}+$F{r138c1}+$F{r148c1}+$F{r153c1}+" / "+Math.round(new Double($F{r197c1}+$F{r192c1}+$F{r78c1}+$F{r83c1}+$F{r93c1}+$F{r133c1}+$F{r138c1}+$F{r148c1}+$F{r153c1})/new Double(($F{r1c1}*8)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r197c1}+$F{r192c1}+" / "+Math.round(new Double($F{r197c1}+$F{r192c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="311" y="959" width="105" height="20" uuid="4df393a3-cf9d-4d6c-9fbd-7a9e7f2705e4"/>
@@ -9565,7 +9565,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r199c1}+$F{r194c1}+$F{r80c1}+$F{r85c1}+$F{r95c1}+$F{r135c1}+$F{r140c1}+$F{r150c1}+$F{r155c1}+" / "+Math.round(new Double($F{r199c1}+$F{r194c1}+$F{r80c1}+$F{r85c1}+$F{r95c1}+$F{r135c1}+$F{r140c1}+$F{r150c1}+$F{r155c1})/new Double(($F{r1c1}*8)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r199c1}+$F{r194c1}+" / "+Math.round(new Double($F{r199c1}+$F{r194c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="521" y="999" width="105" height="20" uuid="851f3ea5-f6bc-4cda-9e47-598fa22edd16"/>
@@ -9637,7 +9637,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r200c1}+$F{r195c1}+$F{r81c1}+$F{r86c1}+$F{r96c1}+$F{r136c1}+$F{r141c1}+$F{r151c1}+$F{r156c1}+" / "+Math.round(new Double($F{r200c1}+$F{r195c1}+$F{r81c1}+$F{r86c1}+$F{r96c1}+$F{r136c1}+$F{r141c1}+$F{r151c1}+$F{r156c1})/new Double(($F{r1c1}*8)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r200c1}+$F{r195c1}+" / "+Math.round(new Double($F{r200c1}+$F{r195c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="626" y="959" width="105" height="20" uuid="1de6a848-6596-4ce7-a69c-9f5ea9d10838"/>
@@ -9697,7 +9697,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r201c1}+$F{r196c1}+$F{r82c1}+$F{r87c1}+$F{r97c1}+$F{r137c1}+$F{r142c1}+$F{r152c1}+$F{r157c1}+" / "+Math.round(new Double($F{r201c1}+$F{r196c1}+$F{r82c1}+$F{r87c1}+$F{r97c1}+$F{r137c1}+$F{r142c1}+$F{r152c1}+$F{r157c1})/new Double(($F{r1c1}*8)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r201c1}+$F{r196c1}+" / "+Math.round(new Double($F{r201c1}+$F{r196c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="1019" width="105" height="20" uuid="8d2e6cdf-5fab-43c8-884d-dadf19479f88"/>
@@ -9709,7 +9709,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r196c1}+$F{r82c1}+$F{r87c1}+$F{r97c1}+$F{r137c1}+$F{r142c1}+$F{r152c1}+$F{r157c1}+" / "+Math.round(new Double($F{r196c1}+$F{r82c1}+$F{r87c1}+$F{r97c1}+$F{r137c1}+$F{r142c1}+$F{r152c1}+$F{r157c1})/new Double($F{r1c1}*9)*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r196c1}+" / "+Math.round(new Double($F{r196c1})/new Double($F{r1c1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="731" y="999" width="105" height="20" uuid="1d5da497-2270-47b2-ab37-bf7c041c6ac0"/>

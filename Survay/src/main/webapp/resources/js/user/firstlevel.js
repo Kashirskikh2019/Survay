@@ -751,7 +751,7 @@ function onecliniceditid( varr,varr2) {
 		    	  
 		    	  for(i =0 ; i < response.result.length ; i++){
 		    		  $("#mo option:contains(" + response.result[i].mo +")").prop('selected', true);
-		    		  $("#age option:contains(" + response.result[i].age +")").prop('selected', true);
+		    		  $("#age").val(response.result[i].age);
 		    		  $("#ambulance option:contains(" + response.result[i].ambulance +")").prop('selected', true);
 		    		  $("#clinicDoctor option:contains(" + response.result[i].clinicDoctor +")").prop('selected', true);
 		    		  $("#diagnosticTests option:contains(" + response.result[i].diagnosticTests +")").prop('selected', true);
@@ -990,7 +990,7 @@ function onedaystacid( varr,varr2) {
 					  $("#ambulanceDaystac option:contains(" + response.result[i].ambulanceDaystac +")").prop('selected', true);
 					  $("#qualityAmbulanceDaystac option:contains(" + response.result[i].qualityAmbulanceDaystac +")").prop('selected', true);
 					  $("#sexDaystac option:contains(" + response.result[i].sexDaystac +")").prop('selected', true);
-					  $("#ageDaystac option:contains(" + response.result[i].ageDaystac +")").prop('selected', true);
+					  $("#ageDaystac").val(response.result[i].ageDaystac);
 		    		  
 					  $("#idoneDayStac").val(response.result[i].id);
 					  
@@ -1233,7 +1233,7 @@ function onestacid( varr,varr2) {
 						$("#ambulanceStac option:contains(" + response.result[i].ambulanceStac +")").prop('selected', true);
 						$("#qualityAmbulanceStac option:contains(" + response.result[i].qualityAmbulanceStac +")").prop('selected', true);
 						$("#sexStac option:contains(" + response.result[i].sexStac +")").prop('selected', true);
-						$("#ageStac option:contains(" + response.result[i].ageStac +")").prop('selected', true);
+						$("#ageStac").val(response.result[i].ageStac);
 						
 						$("#idoneStac").val(response.result[i].id);
 		    	  }

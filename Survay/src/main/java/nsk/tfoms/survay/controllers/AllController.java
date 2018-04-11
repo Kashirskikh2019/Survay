@@ -457,6 +457,10 @@ public class AllController
 		    forOneOrgStac.add(list11);
 		    forOneOrgStac.add(list12);
 		    
+		    System.out.println("DDDD 1 "+forOneOrgClinic);
+		    System.out.println("DDDD 2 "+forOneOrgDayStac);
+		    System.out.println("DDDD 3 "+forOneOrgStac);
+		    
 		    new Reports().loadToExcelSLpg(forOneOrgClinic,forOneOrgDayStac,forOneOrgStac,request, parseorg(paramonepart),paramonepart);
 		    
     	}

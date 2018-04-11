@@ -160,6 +160,45 @@ function testclic(){
 		
 		if($("#question37").val() == 'Нет, никогда не приходилось к (вопросу 39)'){$(".del38").css({'opacity':0.4,'pointer-events':'none'}); $('#question38').prop('disabled', true);}
 		else{$(".del38").css({'opacity':1,'pointer-events':'visible'}); $('#question38').prop('disabled', false);}
+		
+	if($("#ageSecondLevelClinic").val() < 18){
+		
+		$('#question41').prop('disabled', true);$(".del40").css({'opacity':0.4,'pointer-events':'none'});	
+		$('#question42').prop('disabled', true);$(".del40").css({'opacity':0.4,'pointer-events':'none'});
+		$('#question43').prop('disabled', true);$(".del40").css({'opacity':0.4,'pointer-events':'none'});
+	}else{
+		
+		$('#question41').prop('disabled', false);$(".del40").css({'opacity':1,'pointer-events':'visible'});	
+		$('#question42').prop('disabled', false);$(".del40").css({'opacity':1,'pointer-events':'visible'});
+		$('#question43').prop('disabled', false);$(".del40").css({'opacity':1,'pointer-events':'visible'});
+	}	
+	
+	
+	
+	if($("#ageSecondleveldaystacionar").val() < 18){
+		
+		$('#questionDS31').prop('disabled', true);$(".del30").css({'opacity':0.4,'pointer-events':'none'});	
+		$('#questionDS32').prop('disabled', true);$(".del30").css({'opacity':0.4,'pointer-events':'none'});
+		$('#questionDS33').prop('disabled', true);$(".del30").css({'opacity':0.4,'pointer-events':'none'});
+	}else{
+		
+		$('#questionDS31').prop('disabled', false);$(".del30").css({'opacity':1,'pointer-events':'visible'});	
+		$('#questionDS32').prop('disabled', false);$(".del30").css({'opacity':1,'pointer-events':'visible'});
+		$('#questionDS33').prop('disabled', false);$(".del30").css({'opacity':1,'pointer-events':'visible'});
+	}	
+	
+	
+	if($("#ageSls").val() < 18){
+		
+		$('#questionS30').prop('disabled', true);$(".del29").css({'opacity':0.4,'pointer-events':'none'});	
+		$('#questionS31').prop('disabled', true);$(".del29").css({'opacity':0.4,'pointer-events':'none'});
+		$('#questionS32').prop('disabled', true);$(".del29").css({'opacity':0.4,'pointer-events':'none'});
+	}else{
+		
+		$('#questionS30').prop('disabled', false);$(".del29").css({'opacity':1,'pointer-events':'visible'});	
+		$('#questionS31').prop('disabled', false);$(".del29").css({'opacity':1,'pointer-events':'visible'});
+		$('#questionS32').prop('disabled', false);$(".del29").css({'opacity':1,'pointer-events':'visible'});
+	}	
 	
 	}		
 
@@ -533,7 +572,7 @@ function secondcliniceditid( varr,varr2) {
 		    		  $("#idClinicSecondLevel").val(response.result[i].id);
 		    		  $("input[name='dataRespNSecondLevel']").val(response.result[i].dataRespSecondlevel);
 		    		  
-		    		  $("#ageSecondLevelClinic option:contains(" + response.result[i].ageSecondlevel +")").prop('selected', true);
+		    		  $("#ageSecondLevelClinic").val(response.result[i].ageSecondlevel);
 		    		  $("#moSecondLevel option:contains(" + response.result[i].moSecondlevel +")").prop('selected', true);
 		    		  $("#sexSecondLevelClinic option:contains(" + response.result[i].sexSecondlevel +")").prop('selected', true);
 		    		  $("#visitClinicSecondLevel option:contains(" + response.result[i].visitClinicSecondlevel +")").prop('selected', true);
@@ -1459,7 +1498,7 @@ function dsslid( varr,varr2) {
 			    		  
 			    		  $("#questionDS33 option:contains(" + response.result[i].questionDS33 +")").prop('selected', true);
 			    		  $("#sexSecondleveldaystacionar option:contains(" + response.result[i].sexSecondleveldaystacionar +")").prop('selected', true);
-			    		  $("#ageSecondleveldaystacionar option:contains(" + response.result[i].ageSecondleveldaystacionar +")").prop('selected', true);
+			    		  $("#ageSecondleveldaystacionar").val(response.result[i].ageSecondleveldaystacionar);
 			    		  $("#polzSecondleveldaystacionar option:contains(" + response.result[i].polzSecondleveldaystacionar +")").prop('selected', true);
 			    		  
 			    		  $("#question8sec1 option:contains(" + response.result[0].survayclinicdaystacionarSec1.question8sec1 +")").prop('selected', true);
@@ -1975,7 +2014,8 @@ function dsslid( varr,varr2) {
 				    		  $("#question24_5sec3 option:contains(" + response.result[0].scsslsec3.question24_5sec3 +")").prop('selected', true);
 				    		  
 				    		  $("#sexSls option:contains(" + response.result[i].sexSls +")").prop('selected', true);
-				    		  $("#ageSls option:contains(" + response.result[i].ageSls +")").prop('selected', true);
+				    		  
+				    		  $("#ageSls").val(response.result[i].ageSls);
 				    		  
 				    		  for(i =0 ; i < response.result[0].manySSL.length ; i++){
 				    			  

@@ -2146,7 +2146,7 @@ $("#formslsbReport").validate({
 								    <div  class="wrap-hv">
 										<div><p class="hv">40.	Возраст респондента (лет):</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="ageSecondLevelClinic"  title="Введите возраст">
+									      <select class="form-control input-sm" id="ageSecondLevelClinic"  title="Введите возраст" onclick="testclic()">
 									      	<option value=""></option>
 									      	<c:forEach var="ag" items="${listage}">
 									        <option>${ag.value}</option>
@@ -2155,7 +2155,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									</div>    
 									
-									<div  class="wrap-hv">
+									<div  class="wrap-hv del40">
 										<div><p class="hv">41.	Ваше образование:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="question41" title="Введите пол">
@@ -2169,7 +2169,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									 </div> 
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv del40">
 										<div><p class="hv">42.	Ваше социальное положение</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="question42" >
@@ -2189,7 +2189,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									 </div> 
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv del40">
 										<div><p class="hv">43.	Каков среднемесячный доход вашей семьи на одного человека?</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="question43">
@@ -3052,7 +3052,7 @@ $("#formslsbReport").validate({
 										 <div  class="wrap-hv">
 										<div><p class="hv">30.	Возраст респондента (лет):</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="ageSecondleveldaystacionar">
+									      <select class="form-control input-sm" id="ageSecondleveldaystacionar" onclick="testclic()">
 									      	<option value=""></option>
 									      	<c:forEach var="ag" items="${listage}">
 									        <option>${ag.value}</option>
@@ -3061,7 +3061,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv">
+									<div  class="wrap-hv del30">
 										<div><p class="hv">31.	Ваше образование:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="questionDS31" title="Введите пол">
@@ -3075,7 +3075,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									 </div> 
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv del30">
 										<div><p class="hv">32.	Ваше социальное положение</p></div>
 									    <div class="col-xs-4">
 									    <table class="optdrtable">
@@ -3103,7 +3103,7 @@ $("#formslsbReport").validate({
 									    
 									 </div> 
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv del30">
 										<div><p class="hv">33.	Каков среднемесячный доход вашей семьи на одного человека?</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="questionDS33">
@@ -4452,7 +4452,7 @@ $("#formslsbReport").validate({
 										 <div  class="wrap-hv">
 										<div><p class="hv">29.	Возраст респондента (лет):</p></div>
 									    <div class="col-xs-4">
-									      <select class="form-control input-sm" id="ageSls">
+									      <select class="form-control input-sm" id="ageSls" onclick="testclic()">
 									      	<option value=""></option>
 									      	<c:forEach var="ag" items="${listage}">
 									        <option>${ag.value}</option>
@@ -4461,7 +4461,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									</div>
 									
-									<div  class="wrap-hv">
+									<div  class="wrap-hv del29">
 										<div><p class="hv">30.	Ваше образование:</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="questionS30">
@@ -4475,7 +4475,7 @@ $("#formslsbReport").validate({
 									    </div><br><br>
 									 </div> 
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv del29">
 										<div><p class="hv">31.	Ваше социальное положение</p></div>
 									    <div class="col-xs-4">
 									    <table class="optdrtable">
@@ -4503,7 +4503,7 @@ $("#formslsbReport").validate({
 									    
 									 </div> 
 									 
-									 <div  class="wrap-hv">
+									 <div  class="wrap-hv del29">
 										<div><p class="hv">32.	Каков среднемесячный доход вашей семьи на одного человека?</p></div>
 									    <div class="col-xs-4">
 									      <select class="form-control input-sm" id="questionS32">

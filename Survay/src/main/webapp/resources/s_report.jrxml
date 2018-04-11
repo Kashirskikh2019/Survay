@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="7564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
-	<property name="ireport.zoom" value="1.100000000000004"/>
+	<property name="ireport.zoom" value="1.3310000000000053"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2251"/>
+	<property name="ireport.y" value="1140"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
@@ -7152,7 +7152,7 @@ r336c1 as  (select count(*) c from survay t, quest_many t2 where (t.DATA_RESP_SL
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r178c1}+$F{r183c1}+$F{r84c1}+$F{r89c1}+$F{r119c1}+$F{r124c1}+$F{r129c1}+$F{r134c1}+$F{r139c1}+$F{r144c1}+$F{r149c1}+$F{r159c1}+$F{r94c1}+" / "+Math.round(new Double($F{r178c1}+$F{r183c1}+$F{r84c1}+$F{r89c1}+$F{r119c1}+$F{r124c1}+$F{r129c1}+$F{r134c1}+$F{r139c1}+$F{r144c1}+$F{r149c1}+$F{r159c1}+$F{r94c1})/new Double(($F{r1c1}*12)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r178c1}+$F{r183c1}+" / "+Math.round(new Double($F{r178c1}+$F{r183c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="730" y="997" width="105" height="20" uuid="56e688f1-5f72-4bfb-9ddf-0ed61143cdd2"/>
@@ -7260,7 +7260,7 @@ r336c1 as  (select count(*) c from survay t, quest_many t2 where (t.DATA_RESP_SL
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r181c1}+$F{r186c1}+$F{r87c1}+$F{r92c1}+$F{r122c1}+$F{r127c1}+$F{r132c1}+$F{r137c1}+$F{r142c1}+$F{r147c1}+$F{r152c1}+$F{r162c1}+$F{r97c1}+" / "+Math.round(new Double($F{r181c1}+$F{r186c1}+$F{r87c1}+$F{r92c1}+$F{r122c1}+$F{r127c1}+$F{r132c1}+$F{r137c1}+$F{r142c1}+$F{r147c1}+$F{r152c1}+$F{r162c1}+$F{r97c1})/new Double(($F{r1c1}*12)+$F{r181c1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r181c1}+$F{r186c1}+" / "+Math.round(new Double($F{r181c1}+$F{r186c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="977" width="310" height="20" uuid="95633139-ca97-41ff-914e-668a7f7f534b"/>
@@ -7284,7 +7284,7 @@ r336c1 as  (select count(*) c from survay t, quest_many t2 where (t.DATA_RESP_SL
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r180c1}+$F{r185c1}+$F{r86c1}+$F{r91c1}+$F{r121c1}+$F{r126c1}+$F{r131c1}+$F{r136c1}+$F{r141c1}+$F{r146c1}+$F{r151c1}+$F{r161c1}+$F{r96c1}+" / "+Math.round(new Double($F{r180c1}+$F{r185c1}+$F{r86c1}+$F{r91c1}+$F{r121c1}+$F{r126c1}+$F{r131c1}+$F{r136c1}+$F{r141c1}+$F{r146c1}+$F{r151c1}+$F{r161c1}+$F{r96c1})/new Double(($F{r1c1}*12)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r180c1}+$F{r185c1}+" / "+Math.round(new Double($F{r180c1}+$F{r185c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="415" y="957" width="105" height="20" uuid="46775e2a-36e7-4f0c-8345-29f9443463f9"/>
@@ -7344,7 +7344,7 @@ r336c1 as  (select count(*) c from survay t, quest_many t2 where (t.DATA_RESP_SL
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r179c1}+$F{r184c1}+$F{r85c1}+$F{r90c1}+$F{r120c1}+$F{r125c1}+$F{r130c1}+$F{r135c1}+$F{r140c1}+$F{r145c1}+$F{r150c1}+$F{r160c1}+$F{r95c1}+" / "+Math.round(new Double($F{r179c1}+$F{r184c1}+$F{r85c1}+$F{r90c1}+$F{r120c1}+$F{r125c1}+$F{r130c1}+$F{r135c1}+$F{r140c1}+$F{r145c1}+$F{r150c1}+$F{r160c1}+$F{r95c1})/new Double(($F{r1c1}*12)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r179c1}+$F{r184c1}+" / "+Math.round(new Double($F{r179c1}+$F{r184c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="977" width="105" height="20" uuid="22e0f4cf-e141-4657-9bb6-b58912d63a91"/>
@@ -7380,7 +7380,7 @@ r336c1 as  (select count(*) c from survay t, quest_many t2 where (t.DATA_RESP_SL
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{r177c1}+$F{r182c1}+$F{r83c1}+$F{r88c1}+$F{r118c1}+$F{r123c1}+$F{r128c1}+$F{r133c1}+$F{r138c1}+$F{r143c1}+$F{r148c1}+$F{r158c1}+$F{r93c1}+" / "+Math.round(new Double($F{r177c1}+$F{r182c1}+$F{r83c1}+$F{r88c1}+$F{r118c1}+$F{r123c1}+$F{r128c1}+$F{r133c1}+$F{r138c1}+$F{r143c1}+$F{r148c1}+$F{r158c1}+$F{r93c1})/new Double(($F{r1c1}*12)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{r177c1}+$F{r182c1}+" / "+Math.round(new Double($F{r177c1}+$F{r182c1})/new Double(($F{r1c1}*2)+$F{r1c1p1})*1000)/10.0 + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="625" y="997" width="105" height="20" uuid="7b01d0e8-ada3-43e7-97b5-c9a57c13a6a4"/>
