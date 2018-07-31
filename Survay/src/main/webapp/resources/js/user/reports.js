@@ -25,6 +25,9 @@ function onepartreports(buttonId) {
 	
 	paramonepart["plus_twolevel"] = $("#plus_twolevel").is(':checked')
 	
+	paramonepart["kids"] = $("#kids").is(':checked')
+	paramonepart["adult"] = $("#adult").is(':checked')
+	
 	var obj = document.getElementById(buttonId);
 	if (obj) {obj.disabled = true;} 
 	
@@ -56,6 +59,9 @@ function onepartreports(buttonId) {
 								$( "#ansFormOnePart5" ).prop( "checked", false );
 								
 								$( "#plus_twolevel" ).prop( "checked", false );
+								
+								$( "#kids" ).prop( "checked", false );
+								$( "#adult" ).prop( "checked", false );
 								
 								$( "#lpuFormOneRerort" ).val($("#lpuFormOneRerort").prop('defaultSelected'));
 								obj.disabled = false;
@@ -321,6 +327,9 @@ function twopartreports(buttonId) {
 	search["oneingos"] = $("#twoIngos").is(':checked')
 	search["onerosno"] = $("#twoRosno").is(':checked')
 	
+	search["kids"] = $("#kids").is(':checked')
+	search["adult"] = $("#adult").is(':checked')
+	
 	var obj = document.getElementById(buttonId);
 	if (obj) {obj.disabled = true;} 
 	
@@ -350,6 +359,9 @@ function twopartreports(buttonId) {
 								$( "#ansFormTwoPart3" ).prop( "checked", false );
 								$( "#ansFormTwoPart4" ).prop( "checked", false );
 								$( "#ansFormTwoPart5" ).prop( "checked", false );
+								
+								$( "#kids" ).prop( "checked", false );
+								$( "#adult" ).prop( "checked", false );
 								
 								$( "#lpuFormTwoRerort" ).val($("#lpuFormTwoRerort").prop('defaultSelected'));
 								obj.disabled = false;

@@ -403,9 +403,9 @@ public class DayStacionarServiceSecondLevel {
   
   
   @Transactional
-  public List<DayStacionarSecondlevel > getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
-	  String agefor = "p.ageSecondleveldaystacionar<='"+age+"'";;
-	  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.ageSecondleveldaystacionar>='"+age+"'";		}
+  public List<DayStacionarSecondlevel > getReport(String d1, String d2,String userp,String sex,Integer age_min,Integer age_max,String lpu) {
+	  String agefor = "p.ageSecondleveldaystacionar between "+age_min+" and "+age_max+" ";;
+	  if((sex.equals("Мужской") && age_min >= 60) || (sex.equals("Женский") && age_min >= 55)){	agefor = "p.ageSecondleveldaystacionar>= "+age_min+" ";		}
 	  
 	  String paste="p.moSecondleveldaystacionar=:lpu";
 	  // enter ALL we will passing in query NOT "ALL"(p.mo!=:lpu) because in db no records with  name 'ALL' => so we get all records 

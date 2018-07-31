@@ -7,8 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletOutputStream;
@@ -45,7 +47,10 @@ public class Reports {
 
 	
 	
-	 /*
+	 private static final boolean SurvayClinic = false;
+
+
+	/*
      * Выргужаем фаил и удаляем с сервака
      * 
      */
@@ -822,12 +827,30 @@ public class Reports {
          
          //========================================================ВТОРОЙ ЛИСТ 'ОПРОШЕННЫЕ ЛПУ'=========================================================================================
          
+         Map<String, List<SurvayClinic>> countOnMO = new HashMap<String, List<SurvayClinic>>();
+         
+         
+         
+         
          for (int i = 0; i < forOneOrgClinic.size(); i++)
          {
         	 for (int j = 0; j < forOneOrgClinic.get(i).size(); j++)
         	 {
-        		 hSetOneOrgClinic.add(forOneOrgClinic.get(i).get(j).getMo()+"!"+forOneOrgClinic.get(i).get(j).getPolzovatel());
+        		 // вычисляем количество проанкетированных в разрезе мо и юзера 
+        		 	SurvayClinic cl = forOneOrgClinic.get(i).get(j);
+                     String key = cl.getMo()+"!"+cl.getPolzovatel();
+                     if (countOnMO.get(key) == null) {
+                    	 countOnMO.put(key, new ArrayList<SurvayClinic>());
+                     }
+                     countOnMO.get(key).add(cl);
+        		 
     		 }
+         }
+         
+         Set<String> groupedKeySet = countOnMO.keySet();
+         for (String location: groupedKeySet) {
+            List<SurvayClinic> stdnts = countOnMO.get(location);
+            hSetOneOrgClinic.add(location+"!"+stdnts.size());
          }
          
          
@@ -897,19 +920,44 @@ public class Reports {
              HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
              HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
              
+             excelCell = excelRow.createCell(2);
+             excelCell = excelRow.getCell(2);
+             excelCell.setCellValue(mas[2]);
+             
+             adr = new CellRangeAddress(0, i, 2, 2);
+             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+             
              i++;
          }
          
          
          //============================================ДНЕВНОЙ СТАЦИОНАР ЛИСТ 'ОПРОШЕННЫЕ ЛПУ'============================================
          
+         Map<String, List<SurvayDaystacionar>> countOnMOds = new HashMap<String, List<SurvayDaystacionar>>();
+         
          for (int ii = 0; ii < forOneOrgDayStac.size(); ii++)
          {
         	 for (int j = 0; j < forOneOrgDayStac.get(ii).size(); j++)
         	 {
-        		 hSetOneDayStac.add(forOneOrgDayStac.get(ii).get(j).getMoDayStac()+"!"+forOneOrgDayStac.get(ii).get(j).getPolzovateldaystacionar());
-    		 }
-         }
+        		 // вычисляем количество проанкетированных в разрезе мо и юзера 
+        		 SurvayDaystacionar ds = forOneOrgDayStac.get(ii).get(j);
+                  String key = ds.getMoDayStac()+"!"+ds.getPolzovateldaystacionar();
+                  if (countOnMOds.get(key) == null) {
+                 	 countOnMOds.put(key, new ArrayList<SurvayDaystacionar>());
+                  }
+                  countOnMOds.get(key).add(ds);
+     		 
+ 		    }
+        }
+      
+      groupedKeySet = countOnMOds.keySet();
+      for (String location: groupedKeySet) {
+         List<SurvayDaystacionar> stdnts = countOnMOds.get(location);
+         hSetOneDayStac.add(location+"!"+stdnts.size());
+      }
          
          excelRow = sheet.createRow(i+1);
          excelRow = sheet.getRow(i+1);		
@@ -975,19 +1023,42 @@ public class Reports {
 		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
 		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
 		             
+		             
+		             excelCell = excelRow.createCell(2);
+		             excelCell = excelRow.getCell(2);
+		             excelCell.setCellValue(mas[2]);
+		             
+		             adr = new CellRangeAddress(0, i, 2, 2);
+		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             
 		             i++;
 	         }
         
          
          //============================================СТАЦИОНАР ЛИСТ 'ОПРОШЕННЫЕ ЛПУ'============================================
 		 
+		 Map<String,List<SurvayStacionar>> groupByStac = new HashMap<String, List<SurvayStacionar>>();
+		 
 		 for (int ii = 0; ii < forOneOrgStac.size(); ii++)
          {
         	 for (int j = 0; j < forOneOrgStac.get(ii).size(); j++)
         	 {
-        		 hSetOneStac.add(forOneOrgStac.get(ii).get(j).getMoonestac()+"!"+forOneOrgStac.get(ii).get(j).getPolzovatelonestac());
+        		 SurvayStacionar stac = forOneOrgStac.get(ii).get(j);
+                 String strKey = stac.getMoonestac()+"!"+stac.getPolzovatelonestac();
+        			 if(groupByStac.get(strKey) == null){
+        				 groupByStac.put(strKey, new ArrayList<SurvayStacionar>());
+        			 }
+        			 groupByStac.get(strKey).add(new SurvayStacionar());
     		 }
          }
+		 
+		 Set<String> setStac = groupByStac.keySet();
+		 for(String s : setStac){
+			 hSetOneStac.add(s+"!"+groupByStac.get(s).size());
+		 }
 		 
 		 excelRow = sheet.createRow(i+1);
          excelRow = sheet.getRow(i+1);		
@@ -1049,6 +1120,16 @@ public class Reports {
 		             excelCell.setCellValue(mas[1]);
 		             
 		             adr = new CellRangeAddress(0, i, 1, 1);
+		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             HSSFRegionUtil.setBorderBottom(CellStyle.BORDER_THIN, adr, sheet, wb);
+		             
+		             excelCell = excelRow.createCell(2);
+		             excelCell = excelRow.getCell(2);
+		             excelCell.setCellValue(mas[2]);
+		             
+		             adr = new CellRangeAddress(0, i, 2, 2);
 		             HSSFRegionUtil.setBorderTop(CellStyle.BORDER_THIN, adr, sheet, wb);
 		             HSSFRegionUtil.setBorderLeft(CellStyle.BORDER_THIN, adr, sheet, wb);
 		             HSSFRegionUtil.setBorderRight(CellStyle.BORDER_THIN, adr, sheet, wb);

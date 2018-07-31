@@ -14,8 +14,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 
@@ -147,6 +149,7 @@ public class BigReportSL {
 			if (list_ansAaS.get(i).equals("4")){sex_gerl2 = "Женский"; age_gerl2 = "55";}
 		}
 			
+		
 		mapReport.put("sex_man1", sex_man1);
 		mapReport.put("age_man1", age_man1);
 		mapReport.put("sex_gerl1", sex_gerl1);
@@ -156,7 +159,10 @@ public class BigReportSL {
 		mapReport.put("sex_gerl2", sex_gerl2);
 		mapReport.put("age_gerl2", age_gerl2);
 		
-		
+/*		Set<Entry<String, Object>> entrySet = mapReport.entrySet();
+		for(Entry<String, Object> g:entrySet){
+			System.out.println("TEST "+g.getValue()
+		}*/
 		
 		
 		return mapReport;

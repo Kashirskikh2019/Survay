@@ -29,6 +29,7 @@ function testclic(){
 		$(".del29").css({'opacity':0.4,'pointer-events':'none'});
 	}
 	else{
+		
 		 $('.validquest28 input:checkbox').each(function(){
 			 $(this).prop('disabled', false);
 		 })
@@ -51,13 +52,15 @@ function testclic(){
 		$(".del30,.del29").css({'opacity':0.4,'pointer-events':'none'});
 		}
 	else{
+		
 		$('.validquest29 input:checkbox').each(function(){
 			 $(this).prop('disabled', false);
 		 })
 		 $(".validquest29  input:text").prop('disabled', false);
 		$(".del30").css({'opacity':1,'pointer-events':'visible'});
+		
 		}
-
+    
 		 var tt = 0;
 		 $('div#quest28 input:checkbox').each(function(){
 			 
@@ -70,6 +73,7 @@ function testclic(){
 			 })
 			 $(".validquest29  input:text").prop('disabled', true);
 			 $(".del30").css({'opacity':0.4,'pointer-events':'none'});
+			 
 			 }
 		 else{
 			 if($.trim($('div#quest28 input:text').val()) != '') {
@@ -161,7 +165,7 @@ function testclic(){
 		if($("#question37").val() == 'Нет, никогда не приходилось к (вопросу 39)'){$(".del38").css({'opacity':0.4,'pointer-events':'none'}); $('#question38').prop('disabled', true);}
 		else{$(".del38").css({'opacity':1,'pointer-events':'visible'}); $('#question38').prop('disabled', false);}
 		
-	if($("#ageSecondLevelClinic").val() < 18){
+/*	if($("#ageSecondLevelClinic").val() < 18){
 		
 		$('#question41').prop('disabled', true);$(".del40").css({'opacity':0.4,'pointer-events':'none'});	
 		$('#question42').prop('disabled', true);$(".del40").css({'opacity':0.4,'pointer-events':'none'});
@@ -198,7 +202,7 @@ function testclic(){
 		$('#questionS30').prop('disabled', false);$(".del29").css({'opacity':1,'pointer-events':'visible'});	
 		$('#questionS31').prop('disabled', false);$(".del29").css({'opacity':1,'pointer-events':'visible'});
 		$('#questionS32').prop('disabled', false);$(".del29").css({'opacity':1,'pointer-events':'visible'});
-	}	
+	}	*/
 	
 	}		
 

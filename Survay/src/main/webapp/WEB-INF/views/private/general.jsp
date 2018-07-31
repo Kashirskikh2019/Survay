@@ -373,6 +373,20 @@ $("#formslsbReport").validate({
 												<input type="checkbox" id="oneRosno" value="onerosno" name="org[]"> РОСНО
 											</td>
 										</tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите дети/взрослые:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="kidsname" id="kids" value="kids">&nbsp;Дети
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="adultname" id="adult" value="adult">&nbsp;Взрослые
+											</td>
+										</tr>
+										<tr>
 										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
 										<tr><td>&nbsp;</td></tr>
 										<tr>
@@ -615,8 +629,8 @@ $("#formslsbReport").validate({
 										<tr>
 											<td>
 											<div style="height: 100px;overflow: auto;width: 100%;" id="divlistAaS">
-										        <input type="checkbox" id="ansFormOnePartAaS_1" value="1" name="ansAaS[]"  required minlength="1">Мужчины 18-59 лет<br>
-										        <input type="checkbox" id="ansFormOnePartAaS_2" value="2" name="ansAaS[]">Женщины 18-54 года<br>
+										        <input type="checkbox" id="ansFormOnePartAaS_1" value="1" name="ansAaS[]"  required minlength="1">Мужчины 0-59 лет<br>
+										        <input type="checkbox" id="ansFormOnePartAaS_2" value="2" name="ansAaS[]">Женщины 0-54 года<br>
 										        <input type="checkbox" id="ansFormOnePartAaS_3" value="3" name="ansAaS[]">Мужчины 60 и старше<br>
 										        <input type="checkbox" id="ansFormOnePartAaS_4" value="4" name="ansAaS[]">Женщины 55 и старше<br>
 											</div>	
@@ -720,6 +734,19 @@ $("#formslsbReport").validate({
 										</tr>
 										<tr><td><label for="org[]" class="error" id="org-error" style="display: none; color:red;">Пожалуйста выберите хотя бы одну организацию</label></td></tr>
 										<tr><td>&nbsp;</td></tr>
+										<tr>
+											<td style="text-decoration: underline;"><h4>Выберите дети/взрослые:</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="kidsname" id="kids" value="kids">&nbsp;Дети
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="adultname" id="adult" value="adult">&nbsp;Взрослые
+											</td>
+										</tr>
 										<tr>
 										<td><button type="submit" value="Submit" id="btntworep"  class="btn btn-primary">Скачать отчет</button></td>
 										</tr>
@@ -3708,6 +3735,7 @@ $("#formslsbReport").validate({
 									        <option>Чаще да, чем нет</option>
 									        <option>Чаще нет, чем да</option>
 									        <option>Нет</option>
+									        <option>Затрудняюсь ответить</option>
 									      </select>
 									    </div><br><br>
 									</div>			

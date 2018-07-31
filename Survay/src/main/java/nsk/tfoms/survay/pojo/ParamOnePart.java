@@ -24,10 +24,18 @@ public class ParamOnePart {
 	private String ans5;
 	
 	private String plus_twolevel;
+	private String kids;
+	private String adult;
 	
 	private List<String> mas;
 	
 	
+	public String getKids() {
+		return kids;
+	}
+	public String getAdult() {
+		return adult;
+	}
 	public String getOnefoms() {
 		return onefoms;
 	}
@@ -80,6 +88,13 @@ public class ParamOnePart {
 	}
 	public String getAns2() {
 		return ans2;
+	}
+	
+	public String setKids(String kids) {
+		return this.kids = kids;
+	}
+	public String setAdult(String adult) {
+		return this.adult = adult;
 	}
 	public void setAns2(String ans2) {
 		this.ans2 = ans2;

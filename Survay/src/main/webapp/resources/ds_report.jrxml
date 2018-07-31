@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinic_report" pageWidth="1190" pageHeight="8564" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e8bb59c-6e55-4421-b317-447427e39136">
 	<property name="ireport.zoom" value="1.3310000000000037"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1716"/>
+	<property name="ireport.y" value="42"/>
 	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
 	<parameter name="dateBegin" class="java.lang.String"/>
 	<parameter name="dateEnd" class="java.lang.String"/>
@@ -20,17 +20,17 @@
 	<queryString>
 		<![CDATA[with
             survay_first as (select * from survay_daystacionar t where $P{username} like '%'||t.POLZOVATEL_daystac||'%'
-            and ( t.sex_daystac=$P{sex_man1} and t.age_daystac <=$P{age_man1}
-                  or t.sex_daystac=$P{sex_gerl1} and t.age_daystac <=$P{age_gerl1}
-                  or t.sex_daystac=$P{sex_man2} and t.age_daystac >=$P{age_man2}
-                  or t.sex_daystac=$P{sex_gerl2} and t.age_daystac >=$P{age_gerl2}
+            and ( t.sex_daystac=$P{sex_man1} and t.age_daystac <=to_number($P{age_man1})
+                  or t.sex_daystac=$P{sex_gerl1} and t.age_daystac <=to_number($P{age_gerl1})
+                  or t.sex_daystac=$P{sex_man2} and t.age_daystac >=to_number($P{age_man2})
+                  or t.sex_daystac=$P{sex_gerl2} and t.age_daystac >=to_number($P{age_gerl2})
                 )
             ),
 			survay as (select * from SURVAY_CLINIC_DAYSTACIONAR_TWO t where  $P{username} like '%'||t.POLZOVATEL_daystacionar_two||'%'
-            and (   t.sex_DAYSTACIONAR_TWO=$P{sex_man1} and t.age_DAYSTACIONAR_TWO <=$P{age_man1}
-                    or t.sex_DAYSTACIONAR_TWO=$P{sex_gerl1} and t.age_DAYSTACIONAR_TWO <=$P{age_gerl1}
-                    or t.sex_DAYSTACIONAR_TWO=$P{sex_man2} and t.age_DAYSTACIONAR_TWO >=$P{age_man2}
-                    or t.sex_DAYSTACIONAR_TWO=$P{sex_gerl2} and t.age_DAYSTACIONAR_TWO >=$P{age_gerl2}
+            and (   t.sex_DAYSTACIONAR_TWO=$P{sex_man1} and t.age_DAYSTACIONAR_TWO <=to_number($P{age_man1})
+                    or t.sex_DAYSTACIONAR_TWO=$P{sex_gerl1} and t.age_DAYSTACIONAR_TWO <=to_number($P{age_gerl1})
+                    or t.sex_DAYSTACIONAR_TWO=$P{sex_man2} and t.age_DAYSTACIONAR_TWO >=to_number($P{age_man2})
+                    or t.sex_DAYSTACIONAR_TWO=$P{sex_gerl2} and t.age_DAYSTACIONAR_TWO >=to_number($P{age_gerl2})
                 )
 
             ),
@@ -41,10 +41,10 @@
             quest_many as (select * from question_many_daysstacionar t ,survay t2 where t2.GENERAL_ID_DSSL = t.ID_SURVAY_CLINIC_DSSL),
             r1c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%'),
             r1c1p1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystac, 1, 6)||'%'),
-            r2c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.SEX_daystacionar_two='Мужской' and t.AGE_daystacionar_two <='59'),
-            r3c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and SEX_daystacionar_two='Женский' and t.AGE_daystacionar_two <='54'),
-            r4c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and SEX_daystacionar_two='Мужской' and t.AGE_daystacionar_two >='60'),
-            r5c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and SEX_daystacionar_two='Женский' and t.AGE_daystacionar_two >='55'),
+            r2c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.SEX_daystacionar_two='Мужской' and t.AGE_daystacionar_two <=59),
+            r3c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and SEX_daystacionar_two='Женский' and t.AGE_daystacionar_two <=54),
+            r4c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and SEX_daystacionar_two='Мужской' and t.AGE_daystacionar_two >=60),
+            r5c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and SEX_daystacionar_two='Женский' and t.AGE_daystacionar_two >=55),
             r6c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.questionDS32='Предприниматель'),
             r7c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.questionDS32='Руководитель'),
             r8c1 as (select count(*) c from survay t where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.questionDS32='Служащий'),
@@ -221,10 +221,10 @@
             r146c1 as (select count(*) c from survay t, quest10 t2 where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.GENERAL_ID_DSSL = t2.ID_SURVAY_CLINIC_DSSL_SEC_2 and t2.QUESTION7SEC2='Не удовлетворен(а)'),
             r147c1 as (select count(*) c from survay t, quest10 t2 where (t.DATA_RESP_daystacionar_two between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.MO_daystacionar_two, 1, 6)||'%' and t.GENERAL_ID_DSSL = t2.ID_SURVAY_CLINIC_DSSL_SEC_2 and t2.QUESTION7SEC2='Затрудняюсь ответить'),
 
-            r148c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Мужской' and t.age_daystac<='59'),
-            r149c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Женский' and t.age_daystac<='54'),
-            r150c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Мужской' and t.age_daystac>='60'),
-            r151c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Женский' and t.age_daystac>='55'),
+            r148c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Мужской' and t.age_daystac<=59),
+            r149c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Женский' and t.age_daystac<=54),
+            r150c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Мужской' and t.age_daystac>=60),
+            r151c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.sex_daystac='Женский' and t.age_daystac>=55),
 
             r152c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.quality_daystac='Удовлетворен(а)'),
             r153c1 as (select count(*) c from survay_first t where (t.DATA_RESP_daystac between to_date($P{dateBegin},'dd.mm.yyyy') and to_date($P{dateEnd},'dd.mm.yyyy')) and $P{lpu} like '%'||SUBSTR(t.mo_daystac, 1, 6)||'%' and t.quality_daystac='Скорее удовлетворен(а), чем не удовлетворен(а)'),
@@ -1399,7 +1399,7 @@ from
 				<textFieldExpression><![CDATA[$P{username}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="134" y="80" width="78" height="20" uuid="5cdd09ce-61a6-4312-8299-0d63f7e903f3"/>
+				<reportElement x="134" y="80" width="79" height="20" uuid="5cdd09ce-61a6-4312-8299-0d63f7e903f3"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Dotted" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Dotted" lineColor="#000000"/>
@@ -5227,7 +5227,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isUnderline="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ВСЕГО женщины 18-54 года:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ВСЕГО женщины 0-54 года:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="415" y="101" width="105" height="20" uuid="49140cb8-a3e1-492c-8867-f3d6e4be1a43"/>
@@ -5263,7 +5263,7 @@ from
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isUnderline="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ВСЕГО мужчины 18-59 лет."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ВСЕГО мужчины 0-59 лет."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="121" width="310" height="20" uuid="4e05e70b-ed00-46db-9ac5-a27f81e6edb3"/>
@@ -5275,7 +5275,7 @@ from
 				<textElement verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Второй уровень мужчины 18-59 лет:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Второй уровень мужчины 0-59 лет:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="161" width="105" height="20" uuid="71d754af-1cc0-4160-a4a8-bbb8f141e182"/>
@@ -5371,7 +5371,7 @@ from
 				<textElement verticalAlignment="Middle">
 					<font size="10" isItalic="true" isStrikeThrough="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Первый уровень мужчины 18-59 лет:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Первый уровень мужчины 0-59 лет:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="221" width="105" height="20" uuid="14c0ca94-20a0-40cc-9442-6efa5e08de9b"/>
@@ -5479,7 +5479,7 @@ from
 				<textElement verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Второй уровень женщины 18-54 года:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Второй уровень женщины 0-54 года:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="81" width="105" height="20" uuid="b7de15b0-4109-4f09-a2e3-24359888b29f"/>
@@ -5635,7 +5635,7 @@ from
 				<textElement verticalAlignment="Middle">
 					<font size="10" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Первый уровень женщины 18-54 года:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Первый уровень женщины 0-54 года:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="939" width="310" height="20" uuid="c227bbe0-3fe4-4887-836e-5146e0cc027e"/>

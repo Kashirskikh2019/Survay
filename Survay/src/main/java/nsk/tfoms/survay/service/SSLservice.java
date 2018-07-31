@@ -370,9 +370,9 @@ public class SSLservice {
   
   
   @Transactional
-  public List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> getReport(String d1, String d2,String userp,String sex,Integer age,String lpu) {
-	  String agefor = "p.ageSls<='"+age+"'";;
-	  if((sex.equals("Мужской") && age >= 60) || (sex.equals("Женский") && age >= 55)){	agefor = "p.ageSls>='"+age+"'";		}
+  public List<nsk.tfoms.survay.entity.secondlevel.Stacionar.StacionarSecondlevel> getReport(String d1, String d2,String userp,String sex,Integer age_min,Integer age_max,String lpu) {
+	  String agefor = "p.ageSls between "+age_min+" and "+age_max+" ";
+	  if((sex.equals("Мужской") && age_min >= 60) || (sex.equals("Женский") && age_min >= 55)){	agefor = "p.ageSls>= "+age_min+" ";		}
 	  
 	  String paste="p.moSLS=:lpu";
 	  // enter ALL we will passing in query NOT "ALL"(p.mo!=:lpu) because in db no records with  name 'ALL' => so we get all records 
